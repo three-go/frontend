@@ -2,7 +2,7 @@ import React from "react";
 
 import { Modal, StyleSheet, Text, View, ScrollView } from "react-native";
 
-const ContentModal = ({ title, content, children, isVisible }) => {
+const ContentModal = ({ title, content, isVisible, children }) => {
   return (
     <View style={styles.container}>
       <Modal animationType="fade" transparent={true} visible={isVisible}>
@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: "row",
-    alignItems: "center",
     justifyContent: "space-evenly",
+    alignItems: "center",
     width: "100%",
     marginTop: 22,
   },
