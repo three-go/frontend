@@ -1,4 +1,5 @@
 import React from "react";
+
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
 /*
@@ -25,7 +26,7 @@ const SmallButton = ({ content, color, onPress }) => (
 const styles = StyleSheet.create({
   container: (bgColor) => {
     return {
-      width: 60,
+      width: 80,
       height: 35,
       backgroundColor: bgColor,
       borderRadius: 20,
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
   text: {
     padding: 8,
     color: "#ffffff",
-    fontSize: 10,
+    fontSize: 12,
   },
 });
 
