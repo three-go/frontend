@@ -5,7 +5,7 @@ import { Keyboard } from "react-native";
 import { SmallButton, InputModal } from "../../components";
 
 const InputModalContainer = () => {
-  const [modalVisible, setModalVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
   const [name, setName] = useState("");
 
   // 유저 스코어 로직 가져오는 로직 필요
