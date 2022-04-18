@@ -10,8 +10,7 @@ import {
   View,
 } from "react-native";
 
-const App = () => {
-};
+const App = () => {};
 
 const styles = StyleSheet.create({
   sectionContainer: {
