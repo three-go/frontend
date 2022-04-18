@@ -62,9 +62,9 @@ const styles = StyleSheet.create({
     margin: 20,
     padding: 15,
     borderRadius: 20,
-    backgroundColor: "white",
+    backgroundColor: "#f8f9fa",
     elevation: 5,
-    shadowColor: "black",
+    shadowColor: "#212529",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   textStyle: {
-    color: "white",
+    color: "#f8f9fa",
     fontWeight: "bold",
     textAlign: "center",
   },

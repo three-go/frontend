@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   },
   text: {
     padding: 8,
-    color: "#ffffff",
+    color: "#f8f9fa",
     fontSize: 12,
   },
 });
