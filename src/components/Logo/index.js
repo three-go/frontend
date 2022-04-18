@@ -10,7 +10,7 @@ import { TouchableOpacity, Text, View, Image, StyleSheet } from "react-native";
 */
 const Logo = ({ size }) => (
   <Image
-    source={require("../../assets/logo.png")}
+    source={require("../../../public/assets/logo.png")}
     style={styles.container(size)}
     resizeMode="contain"
   />
