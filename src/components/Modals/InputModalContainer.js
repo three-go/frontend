@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 import { Keyboard } from "react-native";
 
-import { SmallButton, InputModal } from "../../components";
+import { SmallButton } from "..";
+import InputModal from "./InputModal";
 
 const InputModalContainer = () => {
   const [modalVisible, setModalVisible] = useState(false);
