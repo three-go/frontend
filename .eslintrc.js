@@ -31,7 +31,7 @@ module.exports = {
     "no-var": "error",
     "no-unused-vars": "warn",
     "func-style": ["error", "expression"],
-    "react/prop-types": "warn",
+    "react/prop-types": "off",
     "import/order": [
       "error",
       {

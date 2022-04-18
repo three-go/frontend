@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Keyboard } from "react-native";
 
-import InputModal from "./InputModal";
+import { SmallButton, InputModal } from "../../components";
 
 const InputModalContainer = () => {
   const [modalVisible, setModalVisible] = useState(true);
@@ -21,10 +21,12 @@ const InputModalContainer = () => {
     <InputModal
       score="200"
       modalVisible={modalVisible}
-      setModalVisible={setModalVisible}
       name={name}
+      setName={setName}
       onRegister={onRegister}
-    />
+    >
+      <SmallButton content="등록" color="#2196F3" onPress={onRegister} />
+    </InputModal>
   );
 };
 
