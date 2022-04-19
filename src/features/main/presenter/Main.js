@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#212529",
   },
   gameWrapper: {
-    justifyContent: "space-around",
     flexDirection: "row",
+    justifyContent: "space-around",
     width: "100%",
     height: 100,
     marginTop: 50,
