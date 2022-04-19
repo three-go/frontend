@@ -42,7 +42,7 @@ const MainContainer = ({ navigation }) => {
   const handleStartGame = () => {
     setGameNumber(null);
     setDescriptionModalVisible(!descriptionModalVisible);
-    navigation.navigate("Test");
+    navigation.navigate("GameLayout");
   };
 
   return (

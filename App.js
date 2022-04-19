@@ -3,9 +3,8 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import MainContainer from "./src/features/main";
-import Test from "./src/features/main/Test";
-
+import { GameLayout } from "./src/components";
+import { MainContainer } from "./src/features";
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -17,7 +16,12 @@ const App = () => {
           component={MainContainer}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="Test" component={Test} />
+
+        <Stack.Screen
+          name="GameLayout"
+          component={GameLayout}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
