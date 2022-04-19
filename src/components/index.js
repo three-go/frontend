@@ -1,5 +1,12 @@
 import { DefaultButton, SmallButton, SquareButton } from "./Buttons";
 import Logo from "./Logo";
-import InputModalContainer from "./Modals/InputModalContainer";
+import { InputModalContainer, ContentModal } from "./Modals";
 
-export { DefaultButton, SquareButton, SmallButton, Logo, InputModalContainer };
+export {
+  DefaultButton,
+  SquareButton,
+  SmallButton,
+  Logo,
+  InputModalContainer,
+  ContentModal,
+};

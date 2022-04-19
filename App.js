@@ -1,9 +1,9 @@
 import React from "react";
 
-import { Text } from "react-native";
+import MainContainer from "./src/features/main";
 
 const App = () => {
-  return <Text>Hello World</Text>;
+  return <MainContainer />;
 };
 
 export default App;
