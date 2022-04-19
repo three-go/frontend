@@ -4,19 +4,17 @@ import { Modal, StyleSheet, Text, View, ScrollView } from "react-native";
 
 const ContentModal = ({ title, content, isVisible, children }) => {
   return (
-    <View style={styles.container}>
-      <Modal animationType="fade" transparent={true} visible={isVisible}>
-        <View style={styles.container}>
-          <View style={styles.modalContainer}>
-            <Text style={styles.title}>{title}</Text>
-            <ScrollView style={styles.contentContainer}>
-              <Text>{content}</Text>
-            </ScrollView>
-            <View style={styles.buttonContainer}>{children}</View>
-          </View>
+    <Modal animationType="fade" transparent={true} visible={isVisible}>
+      <View style={styles.container}>
+        <View style={styles.modalContainer}>
+          <Text style={styles.title}>{title}</Text>
+          <ScrollView style={styles.contentContainer}>
+            <Text>{content}</Text>
+          </ScrollView>
+          <View style={styles.buttonContainer}>{children}</View>
         </View>
-      </Modal>
-    </View>
+      </View>
+    </Modal>
   );
 };
 
