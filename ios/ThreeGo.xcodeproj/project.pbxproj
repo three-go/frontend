@@ -24,9 +24,9 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = ThreeGo;
 		};
-		D4737805280EA48F00C8FE9C /* PBXContainerItemProxy */ = {
+		2D535A09280ED21B00636BC8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D4737801280EA48F00C8FE9C /* RNExitApp.xcodeproj */;
+			containerPortal = 2D535A05280ED21B00636BC8 /* RNExitApp.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 15209BEF1D250F63000D0F44;
 			remoteInfo = RNExitApp;
@@ -44,13 +44,13 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ThreeGo/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ThreeGo/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-ThreeGo-ThreeGoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ThreeGo-ThreeGoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D535A05280ED21B00636BC8 /* RNExitApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNExitApp.xcodeproj; path = "../node_modules/react-native-exit-app/ios/RNExitApp.xcodeproj"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-ThreeGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThreeGo.debug.xcconfig"; path = "Target Support Files/Pods-ThreeGo/Pods-ThreeGo.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-ThreeGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThreeGo.release.xcconfig"; path = "Target Support Files/Pods-ThreeGo/Pods-ThreeGo.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-ThreeGo-ThreeGoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThreeGo-ThreeGoTests.debug.xcconfig"; path = "Target Support Files/Pods-ThreeGo-ThreeGoTests/Pods-ThreeGo-ThreeGoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-ThreeGo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ThreeGo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ThreeGo/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-ThreeGo-ThreeGoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThreeGo-ThreeGoTests.release.xcconfig"; path = "Target Support Files/Pods-ThreeGo-ThreeGoTests/Pods-ThreeGo-ThreeGoTests.release.xcconfig"; sourceTree = "<group>"; };
-		D4737801280EA48F00C8FE9C /* RNExitApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNExitApp.xcodeproj; path = ../../../../.Trash/RNExitApp.xcodeproj; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -114,10 +114,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2D535A06280ED21B00636BC8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2D535A0A280ED21B00636BC8 /* libRNExitApp.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				D4737801280EA48F00C8FE9C /* RNExitApp.xcodeproj */,
+				2D535A05280ED21B00636BC8 /* RNExitApp.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -155,14 +163,6 @@
 				89C6BE57DB24E9ADA2F236DE /* Pods-ThreeGo-ThreeGoTests.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		D4737802280EA48F00C8FE9C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D4737806280EA48F00C8FE9C /* libRNExitApp.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,8 +241,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = D4737802280EA48F00C8FE9C /* Products */;
-					ProjectRef = D4737801280EA48F00C8FE9C /* RNExitApp.xcodeproj */;
+					ProductGroup = 2D535A06280ED21B00636BC8 /* Products */;
+					ProjectRef = 2D535A05280ED21B00636BC8 /* RNExitApp.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -254,11 +254,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		D4737806280EA48F00C8FE9C /* libRNExitApp.a */ = {
+		2D535A0A280ED21B00636BC8 /* libRNExitApp.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNExitApp.a;
-			remoteRef = D4737805280EA48F00C8FE9C /* PBXContainerItemProxy */;
+			remoteRef = 2D535A09280ED21B00636BC8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
