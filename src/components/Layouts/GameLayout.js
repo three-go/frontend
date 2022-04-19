@@ -24,11 +24,9 @@ const GameLayout = ({ children }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "red",
   },
   header: {
     height: "10%",
-    backgroundColor: "pink",
   },
   gameBoard: {
     height: "90%",
