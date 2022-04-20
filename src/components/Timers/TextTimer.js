@@ -1,37 +1,51 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
-import { View, Text, StyleSheet } from "react-native";
+import { Text, StyleSheet } from "react-native";
 
-const TextTimer = () => {
-  // 전역 상태관리에서 text 및 count 불러오기 추가 필요
-  const [guideContent, setGuideContent] = useState("맵 숨겨지기");
-  const [count, setCount] = useState(10);
-
+const TextTimer = ({ setIsFinish, timerInfo, setTimerInfo }) => {
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      if (count === 0) {
-        return;
-      }
+    let timeoutId;
 
-      setCount(count - 1);
-    }, 1000);
+    if (timerInfo.count > 0) {
+      timeoutId = setTimeout(() => {
+        setTimerInfo((state) => {
+          return {
+            ...state,
+            count: state.count - 1,
+          };
+        });
+      }, 1000);
+    }
+
+    if (timerInfo.count === 0) {
+      setIsFinish(true);
+    }
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [count]);
+  }, [timerInfo, setTimerInfo, setIsFinish]);
 
   return (
-    <Text>
-      {guideContent} <Text style={styles.number}>{count}</Text> 초 전
+    <Text style={styles.text(timerInfo.size)}>
+      {timerInfo.text}
+      <Text style={styles.number(timerInfo.size)}>{timerInfo.count}</Text>초 전
     </Text>
   );
 };
 
 const styles = StyleSheet.create({
-  number: {
-    fontSize: 18,
-    color: "#525281",
+  text: (size) => {
+    return {
+      color: "#ffffff",
+      fontSize: size ? size : 12,
+    };
+  },
+  number: (size) => {
+    return {
+      color: "#ffffff",
+      fontSize: size ? size * 2 : 18,
+    };
   },
 });
 
