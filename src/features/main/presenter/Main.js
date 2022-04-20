@@ -6,7 +6,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { DefaultButton, SquareButton, Logo } from "../../../components";
 import { game } from "../../../utils";
 
-const Main = ({ onExitApp, handleShowModal }) => {
+const Main = ({
+  onExitApp,
+  handleShowScoreModal,
+  handleSelectGameNumberAndShowDescriptionModal,
+}) => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor="#212529" barStyle="light-content" />
@@ -17,7 +21,12 @@ const Main = ({ onExitApp, handleShowModal }) => {
       <View style={styles.gameWrapper}>
         {game.names.map((v, i) => {
           return (
-            <SquareButton key={v} content={v} color={`${game.colors[i]}`} />
+            <SquareButton
+              key={v}
+              content={v}
+              color={game.colors[i]}
+              onPress={handleSelectGameNumberAndShowDescriptionModal(i)}
+            />
           );
         })}
       </View>
@@ -26,7 +35,7 @@ const Main = ({ onExitApp, handleShowModal }) => {
         <DefaultButton
           content="점수 보기"
           color="#69db7c"
-          onPress={handleShowModal}
+          onPress={handleShowScoreModal}
         />
       </View>
 
