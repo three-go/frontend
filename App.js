@@ -3,8 +3,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { GameLayout } from "./src/components";
-import { MainContainer } from "./src/features";
+import { MainContainer, Game1Container } from "./src/features";
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -18,8 +17,8 @@ const App = () => {
         />
 
         <Stack.Screen
-          name="GameLayout"
-          component={GameLayout}
+          name="Game1"
+          component={Game1Container}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

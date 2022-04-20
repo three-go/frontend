@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   container: (bgColor) => {
     return {
       width: 80,
-      height: 35,
+      height: 40,
       backgroundColor: bgColor,
       borderRadius: 20,
       alignItems: "center",

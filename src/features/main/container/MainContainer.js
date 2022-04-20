@@ -5,7 +5,7 @@ import RNExitApp from "react-native-exit-app";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import SystemNavigationBar from "react-native-system-navigation-bar";
 
-import { DefaultButton, ContentModal } from "../../../components";
+import { DefaultButton, SmallButton, ContentModal } from "../../../components";
 import { game } from "../../../utils";
 import Main from "../presenter/Main";
 
@@ -42,7 +42,7 @@ const MainContainer = ({ navigation }) => {
   const handleStartGame = () => {
     setGameNumber(null);
     setDescriptionModalVisible(!descriptionModalVisible);
-    navigation.navigate("GameLayout");
+    navigation.navigate("Game1");
   };
 
   return (
@@ -75,10 +75,15 @@ const MainContainer = ({ navigation }) => {
           content={game.description[gameNumber]}
           isVisible={descriptionModalVisible}
         >
-          <DefaultButton
+          <SmallButton
             content="게임 시작"
             color="#69db7c"
             onPress={handleStartGame}
+          />
+          <SmallButton
+            content="닫기"
+            color="#e03131"
+            onPress={handleSelectGameNumberAndShowDescriptionModal()}
           />
         </ContentModal>
       )}
