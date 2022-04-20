@@ -1,10 +1,10 @@
 import { DefaultButton, SmallButton, SquareButton } from "./Buttons";
-import Logo from "./Logo";
-import { InputModalContainer, ContentModal } from "./Modals";
+import ChanceIcons from "./ChanceIcons";
 import { GameHeader } from "./Headers";
 import { GameLayout } from "./Layouts";
+import Logo from "./Logo";
+import { InputModalContainer, ContentModal } from "./Modals";
 import { TextTimer } from "./Timers";
-import ChanceIcons from "./ChanceIcons";
 
 export {
   DefaultButton,

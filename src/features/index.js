@@ -1,4 +1,4 @@
-import Game1Container from "./game1/container/Game1Container";
-import MainContainer from "./main";
+import { Game1Container, Game1 } from "./game1";
+import { MainContainer, Main } from "./main";
 
-export { MainContainer, Game1Container };
+export { MainContainer, Main, Game1Container, Game1 };

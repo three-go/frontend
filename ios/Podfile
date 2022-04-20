@@ -19,7 +19,6 @@ target 'ThreeGo' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  pod 'RNExitApp', :path => '../node_modules/react-native-exit-app'
 
   target 'ThreeGoTests' do
     inherit! :complete
