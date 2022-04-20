@@ -5,12 +5,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { GameHeader } from "../index";
 
-/*
-  [GameLayout 호출 방식 예시]
-  <GameLayout>
-    <View>게임 보드 내용</View>
-  </GameLayout>
-*/
 const GameLayout = ({ children }) => {
   return (
     <SafeAreaView style={styles.container} edges={["top"]}>
