@@ -26,12 +26,12 @@ const SmallButton = ({ content, color, onPress }) => (
 const styles = StyleSheet.create({
   container: (bgColor) => {
     return {
+      justifyContent: "center",
+      alignItems: "center",
       width: 80,
       height: 40,
-      backgroundColor: bgColor,
       borderRadius: 20,
-      alignItems: "center",
-      justifyContent: "center",
+      backgroundColor: bgColor,
     };
   },
   text: {
