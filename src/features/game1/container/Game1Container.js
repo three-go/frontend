@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Game1 } from "..";
 
@@ -16,14 +16,25 @@ const Game1Container = () => {
   const [startTimer, setStartTimer] = useState({
     text: "맵이 가려지기",
     count: 10,
-    size: 12,
+    size: 15,
   });
 
   const [inputTimer, setInputTimer] = useState({
     text: "입력이 종료되기",
     count: 10,
-    size: 12,
+    size: 15,
   });
+
+  const [selectedDirection, setSelectedDirection] = useState({});
+  const [directions, setDirections] = useState([]);
+
+  useEffect(() => {
+    if (!selectedDirection.direction) {
+      return;
+    }
+
+    setDirections((prevState) => [...prevState, selectedDirection]);
+  }, [selectedDirection]);
 
   return (
     <Game1
@@ -39,6 +50,9 @@ const Game1Container = () => {
       setStartTimer={setStartTimer}
       inputTimer={inputTimer}
       setInputTimer={setInputTimer}
+      selectedDirection={selectedDirection}
+      setSelectedDirection={setSelectedDirection}
+      directions={directions}
     />
   );
 };

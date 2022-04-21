@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     height: "100%",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#FCF8F6",
   },
 });
 

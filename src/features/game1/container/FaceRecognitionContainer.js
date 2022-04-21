@@ -4,7 +4,10 @@ import { Platform } from "react-native";
 
 import FaceRecognition from "../presenter/FaceRecognition";
 
-const FaceRecognitionContainer = ({ onSelectedDirection }) => {
+const FaceRecognitionContainer = ({
+  selectedDirection,
+  onSelectedDirection,
+}) => {
   const [isFaceCenter, setIsFaceCenter] = useState(false);
   const [isFaceFront, setIsFaceFront] = useState(false);
 
@@ -26,33 +29,38 @@ const FaceRecognitionContainer = ({ onSelectedDirection }) => {
     }
 
     if (isFaceCenter && isFaceFront) {
-      if (faces[0].leftEyePosition.y < 80) {
+      if (faces[0].leftEyePosition.y < 40) {
         setIsFaceCenter(false);
-        onSelectedDirection("위 쪽");
+        onSelectedDirection({ direction: "up" });
       }
 
-      if (faces[0].leftEyePosition.y > 350) {
+      if (faces[0].leftEyePosition.y > 400) {
         setIsFaceCenter(false);
-        onSelectedDirection("아래 쪽");
+        onSelectedDirection({ direction: "down" });
       }
 
       if (faces[0].yawAngle < -36) {
         setIsFaceFront(false);
         Platform.OS === "ios"
-          ? onSelectedDirection("왼 쪽")
-          : onSelectedDirection("오른 쪽");
+          ? onSelectedDirection({ direction: "left" })
+          : onSelectedDirection({ direction: "right" });
       }
 
       if (faces[0].yawAngle > 36) {
         setIsFaceFront(false);
         Platform.OS === "ios"
-          ? onSelectedDirection("오른 쪽")
-          : onSelectedDirection("왼 쪽");
+          ? onSelectedDirection({ direction: "right" })
+          : onSelectedDirection({ direction: "left" });
       }
     }
   };
 
-  return <FaceRecognition handlerFacePosition={handlerFacePosition} />;
+  return (
+    <FaceRecognition
+      selectedDirection={selectedDirection}
+      handlerFacePosition={handlerFacePosition}
+    />
+  );
 };
 
 export default FaceRecognitionContainer;

@@ -79,7 +79,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
  */
 
 project.ext.react = [
-    enableHermes: false,  // clean and rebuild if changing
+    enableHermes: true,  // clean and rebuild if changing
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -322,7 +322,7 @@ def isNewArchitectureEnabled() {
 }
 
 project.ext.vectoricons = [
-  iconFontNames: [ "MeterialIcons.ttf", "MaterialCommunityIcons.ttf" ]
+  iconFontNames: [ "MeterialIcons.ttf", "MaterialCommunityIcons.ttf", "AntDesign.ttf" ]
 ]
 
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
