@@ -1,32 +1,38 @@
-const createInitialMap = (r, c) => {
-  return Array.from(Array(r), () => Array(c).fill(1));
+const createInitialMap = (row, column) => {
+  return Array.from(Array(row), () => new Array(column).fill(1));
 };
 
 const createWall = (map, n, row, column) => {
-  const record = map.slice();
+  const result = map.map((value) => value.slice());
 
   while (n > 0) {
     const r = Math.floor(Math.random() * row);
     const c = Math.floor(Math.random() * column);
 
-    if (r < row && c < column && record[r][c] < 2 && !(r === 0 && c === 0)) {
-      record[r][c] = 0;
+    if (
+      r < row &&
+      c < column &&
+      map[r][c] < 2 &&
+      map[r][c] !== 0 &&
+      !(r === 0 && c === 0)
+    ) {
+      result[r][c] = 0;
       map[r][c] = 0;
       n--;
     }
   }
 
-  return map;
+  return result;
 };
 
 const validateMap = (map) => {
-  let result = false;
+  let pass = false;
+  const result = map.map((value) => value.slice());
 
   const walk = (row, column) => {
     if (map[row][column] == 2) {
-      result = true;
+      pass = true;
     } else if (map[row][column] == 1) {
-      console.log("이동", row, column);
       map[row][column] = 9;
 
       if (row < map.length - 1) {
@@ -46,7 +52,10 @@ const validateMap = (map) => {
 
   walk(0, 0);
 
-  return result;
+  return {
+    pass: pass,
+    maze: result,
+  };
 };
 
 const createMap = (stage) => {
@@ -54,6 +63,7 @@ const createMap = (stage) => {
   let column = 0;
   let totalWall = 0;
   let pass = false;
+  let maze = null;
 
   if (stage === 1) {
     row = 4;
@@ -69,14 +79,18 @@ const createMap = (stage) => {
     totalWall = 8;
   }
 
-  const initialMap = createInitialMap(row, column);
-  initialMap[row - 1][column - 1] = 2;
-
-  const map = createWall(initialMap, totalWall, row, column);
-
   while (!pass) {
-    pass = validateMap(map);
+    const initialMap = createInitialMap(row, column);
+    initialMap[row - 1][column - 1] = 2;
+
+    const map = createWall(initialMap, totalWall, row, column);
+    const results = validateMap(map);
+
+    pass = results.pass;
+    maze = results.maze;
   }
 
-  return map;
+  return maze;
 };
+
+export { createMap };

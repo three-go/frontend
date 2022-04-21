@@ -1,3 +1,4 @@
-import { game } from "./property";
+import { createMap } from "../utils/map";
+import { game } from "../utils/property";
 
-export { game };
+export { game, createMap };
