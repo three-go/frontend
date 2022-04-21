@@ -63,7 +63,7 @@ const MainContainer = ({ navigation }) => {
         >
           <DefaultButton
             content="닫기"
-            color="#e03131"
+            color="#c92a2a"
             onPress={handleShowScoreModal}
           />
         </ContentModal>
@@ -77,12 +77,12 @@ const MainContainer = ({ navigation }) => {
         >
           <SmallButton
             content="게임 시작"
-            color="#69db7c"
+            color="#00BBD1"
             onPress={handleStartGame}
           />
           <SmallButton
             content="닫기"
-            color="#e03131"
+            color="#c92a2a"
             onPress={handleSelectGameNumberAndShowDescriptionModal()}
           />
         </ContentModal>

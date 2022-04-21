@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 300,
     height: 450,
-    backgroundColor: "#96A1A8",
+    backgroundColor: "#FCF8F6",
   },
   recordArea: {
     justifyContent: "center",

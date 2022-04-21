@@ -34,7 +34,7 @@ const Main = ({
       <View style={styles.button}>
         <DefaultButton
           content="점수 보기"
-          color="#69db7c"
+          color="#96A1A8"
           onPress={handleShowScoreModal}
         />
       </View>
@@ -42,7 +42,7 @@ const Main = ({
       <View style={styles.button}>
         <DefaultButton
           content="게임 종료"
-          color="#e03131"
+          color="#c92a2a"
           onPress={onExitApp}
         />
       </View>
@@ -62,11 +62,11 @@ const styles = StyleSheet.create({
   },
   gameWrapper: {
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-evenly",
     width: "100%",
     height: 100,
     marginTop: 50,
-    marginBottom: 50,
+    marginBottom: 100,
   },
   button: {
     marginBottom: 20,
