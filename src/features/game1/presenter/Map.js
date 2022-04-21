@@ -29,7 +29,7 @@ const Item = ({ opened, width, height }) => (
       borderColor: "#ffffff",
       backgroundColor: opened ? "#f9c2ff" : "#a3a1dd",
     }}
-  ></View>
+  />
 );
 
 const FixedItem = ({ width, height, fixedBgColor }) => (
@@ -42,7 +42,7 @@ const FixedItem = ({ width, height, fixedBgColor }) => (
       borderColor: "#ffffff",
       backgroundColor: fixedBgColor,
     }}
-  ></View>
+  />
 );
 
 const Map = () => {
