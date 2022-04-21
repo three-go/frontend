@@ -4,7 +4,10 @@ import { Platform } from "react-native";
 
 import FaceRecognition from "../presenter/FaceRecognition";
 
-const FaceRecognitionContainer = ({ onSelectedDirection }) => {
+const FaceRecognitionContainer = ({
+  selectedDirection,
+  onSelectedDirection,
+}) => {
   const [isFaceCenter, setIsFaceCenter] = useState(false);
   const [isFaceFront, setIsFaceFront] = useState(false);
 
@@ -52,7 +55,12 @@ const FaceRecognitionContainer = ({ onSelectedDirection }) => {
     }
   };
 
-  return <FaceRecognition handlerFacePosition={handlerFacePosition} />;
+  return (
+    <FaceRecognition
+      selectedDirection={selectedDirection}
+      handlerFacePosition={handlerFacePosition}
+    />
+  );
 };
 
 export default FaceRecognitionContainer;

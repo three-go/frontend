@@ -19,6 +19,7 @@ const Game1 = ({
   setStartTimer,
   inputTimer,
   setInputTimer,
+  selectedDirection,
   setSelectedDirection,
   directions,
 }) => {
@@ -54,6 +55,7 @@ const Game1 = ({
 
           {!isInput && isStart && isReady && (
             <FaceRecognitionContainer
+              selectedDirection={selectedDirection}
               onSelectedDirection={setSelectedDirection}
             />
           )}
