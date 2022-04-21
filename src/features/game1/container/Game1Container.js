@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Game1 } from "..";
 
@@ -25,6 +25,17 @@ const Game1Container = () => {
     size: 15,
   });
 
+  const [selectedDirection, setSelectedDirection] = useState({});
+  const [directions, setDirections] = useState([]);
+
+  useEffect(() => {
+    if (!selectedDirection.direction) {
+      return;
+    }
+
+    setDirections((prevState) => [...prevState, selectedDirection]);
+  }, [selectedDirection]);
+
   return (
     <Game1
       isReady={isReady}
@@ -39,6 +50,9 @@ const Game1Container = () => {
       setStartTimer={setStartTimer}
       inputTimer={inputTimer}
       setInputTimer={setInputTimer}
+      selectedDirection={selectedDirection}
+      setSelectedDirection={setSelectedDirection}
+      directions={directions}
     />
   );
 };
