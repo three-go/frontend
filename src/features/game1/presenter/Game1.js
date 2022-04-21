@@ -3,6 +3,7 @@ import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 
 import { GameLayout, TextTimer } from "../../../components";
+import MapContainer from "../container/MapContainer";
 
 const Game1 = ({
   isReady,
@@ -42,11 +43,7 @@ const Game1 = ({
             />
           )}
 
-          {!isStart && isReady && (
-            <Text style={{ color: "#ffffff", fontSize: 30 }}>
-              맵이 보이는 중 !!!
-            </Text>
-          )}
+          {!isStart && isReady && <MapContainer stage={1} />}
 
           {!isInput && isStart && isReady && (
             <Text style={{ color: "#ffffff", fontSize: 30 }}>
