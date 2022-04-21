@@ -11,7 +11,6 @@ const ChanceIcons = () => {
 
   return (
     <View style={styles.heartWrapper}>
-      <Icon name="heart" size={28} color="#f45a5a" />
       {createChanceIcons(defaultChance, restChance).map((iconName, index) => (
         <Icon key={index} name={iconName} size={28} color="#f45a5a" />
       ))}
@@ -25,7 +24,7 @@ const createChanceIcons = (defaultChance, restChance) => {
 
   for (let i = 0; i < defaultChance; i++) {
     if (restCount > 0) {
-      restCount--;
+      --restCount;
       result.push("heart");
     } else {
       result.push("heart-broken-outline");
