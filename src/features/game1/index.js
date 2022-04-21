@@ -1,5 +1,5 @@
 import { Game1Container, FaceRecognitionContainer } from "./container";
-import { Game1, Map, FaceRecognition } from "./presenter";
+import { Game1, Map, FaceRecognition, FaceDirectionRecord } from "./presenter";
 
 export {
   Game1Container,
@@ -7,4 +7,5 @@ export {
   Game1,
   Map,
   FaceRecognition,
+  FaceDirectionRecord,
 };

@@ -3,6 +3,8 @@ import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 
 import { GameLayout, TextTimer } from "../../../components";
+import { FaceRecognitionContainer } from "../container";
+import FaceDirectionRecord from "./FaceDirectionRecord";
 
 const Game1 = ({
   isReady,
@@ -17,6 +19,8 @@ const Game1 = ({
   setStartTimer,
   inputTimer,
   setInputTimer,
+  setSelectedDirection,
+  directions,
 }) => {
   return (
     <GameLayout
@@ -49,9 +53,9 @@ const Game1 = ({
           )}
 
           {!isInput && isStart && isReady && (
-            <Text style={{ color: "#ffffff", fontSize: 30 }}>
-              카메라 보이는 중 !!!
-            </Text>
+            <FaceRecognitionContainer
+              onSelectedDirection={setSelectedDirection}
+            />
           )}
 
           {isInput && isStart && isReady && (
@@ -63,7 +67,7 @@ const Game1 = ({
       </View>
 
       <View style={styles.recordArea}>
-        {isReady && <View style={styles.recordZone} />}
+        {isReady && <FaceDirectionRecord directions={directions} />}
       </View>
     </GameLayout>
   );
@@ -82,7 +86,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 300,
     height: 450,
-    backgroundColor: "#c0eb75",
+    backgroundColor: "#96A1A8",
   },
   recordArea: {
     justifyContent: "center",
@@ -90,11 +94,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "20%",
     backgroundColor: "#212529",
-  },
-  recordZone: {
-    width: 300,
-    height: 80,
-    backgroundColor: "#c0eb75",
   },
 });
 
