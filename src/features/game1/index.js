@@ -1,5 +1,10 @@
-import Game1Container from "./container/Game1Container";
-import FaceRecognition from "./presenter/FaceRecognition";
-import Game1 from "./presenter/Game1";
+import { Game1Container, FaceRecognitionContainer } from "./container";
+import { Game1, Map, FaceRecognition } from "./presenter";
 
-export { Game1Container, Game1, FaceRecognition };
+export {
+  Game1Container,
+  FaceRecognitionContainer,
+  Game1,
+  Map,
+  FaceRecognition,
+};
