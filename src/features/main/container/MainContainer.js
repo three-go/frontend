@@ -22,7 +22,7 @@ const MainContainer = ({ navigation }) => {
     if (Platform.OS === "android") {
       hideSoftKey();
     }
-  });
+  }, []);
 
   const exitApp = () => {
     RNExitApp.exitApp();
