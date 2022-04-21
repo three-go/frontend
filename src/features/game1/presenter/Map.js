@@ -11,10 +11,12 @@ const FIXED_HEIGHT = 450;
 
 // map 만들기 함수 실행 후 가져올 값
 const GAME_MAP = [
-  [1, 0, 0],
-  [1, 0, 0],
-  [1, 0, 0],
-  [1, 1, 1],
+  [1, 0, 0, 0, 0],
+  [1, 0, 0, 0, 0],
+  [1, 0, 0, 0, 0],
+  [1, 0, 0, 0, 0],
+  [1, 0, 0, 0, 0],
+  [1, 1, 1, 1, 1],
 ];
 
 const Item = ({ opened, width, height }) => (
@@ -26,6 +28,19 @@ const Item = ({ opened, width, height }) => (
       borderWidth: 2,
       borderColor: "#ffffff",
       backgroundColor: opened ? "#f9c2ff" : "#a3a1dd",
+    }}
+  ></View>
+);
+
+const FixedItem = ({ width, height, fixedBgColor }) => (
+  <View
+    style={{
+      width,
+      height,
+      borderRadius: 10,
+      borderWidth: 2,
+      borderColor: "#ffffff",
+      backgroundColor: fixedBgColor,
     }}
   ></View>
 );
@@ -63,13 +78,24 @@ const Map = () => {
 
   return (
     <View style={styles.container}>
-      {GAME_MAP.map((line, index) => (
+      {GAME_MAP.map((line, rowIndex) => (
         <FlatList
-          key={index}
+          key={rowIndex}
           data={line}
-          renderItem={({ item }) => (
-            <Item opened={item} width={boxWidth} height={boxHeigth} />
-          )}
+          renderItem={({ item, index }) => {
+            if (
+              isStartOrEndCell(rowIndex, index, rowCount - 1, columnCount - 1)
+            ) {
+              return (
+                <FixedItem
+                  width={boxWidth}
+                  height={boxHeigth}
+                  fixedBgColor="#525281"
+                />
+              );
+            }
+            return <Item opened={item} width={boxWidth} height={boxHeigth} />;
+          }}
           keyExtractor={(item, index) => index}
           numColumns={columnCount}
         />
@@ -84,12 +110,34 @@ const Map = () => {
       >
         <Icon name="heart" size={50} color="#f45a5a" style={{ zIndex: 1 }} />
       </View>
+      <View style={styles.startText}>
+        <Text title="start" />
+      </View>
       {/*움직임 테스트용 컴포넌트*/}
       <View style={styles.chracterBox}>
         <Button title="test" onPress={handleMoveCharacter} />
       </View>
+      <View style={styles.startText}>
+        <Text style={{ color: "#a3a1dd" }}>start</Text>
+      </View>
+      <View style={styles.endText}>
+        <Text style={{ color: "#a3a1dd" }}>end</Text>
+      </View>
     </View>
   );
+};
+
+// util 함수로 분리 예정
+const isStartOrEndCell = (rowIndex, cellIndex, endRowIndex, endCellIndex) => {
+  if (rowIndex === 0 && cellIndex === 0) {
+    return true;
+  }
+
+  if (rowIndex === endRowIndex && cellIndex === endCellIndex) {
+    return true;
+  }
+
+  return false;
 };
 
 const styles = StyleSheet.create({
@@ -116,6 +164,16 @@ const styles = StyleSheet.create({
   test: {
     position: "absolute",
     top: -100,
+  },
+  startText: {
+    position: "absolute",
+    top: -20,
+    left: 10,
+  },
+  endText: {
+    position: "absolute",
+    bottom: -20,
+    right: 15,
   },
 });
 
