@@ -26,7 +26,7 @@ const InputModalContainer = () => {
       setName={setName}
       onRegister={onRegister}
     >
-      <SmallButton content="등록" color="#2196F3" onPress={onRegister} />
+      <SmallButton content="등록" color="#00BBD1" onPress={onRegister} />
     </InputModal>
   );
 };

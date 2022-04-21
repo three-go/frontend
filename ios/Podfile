@@ -20,6 +20,8 @@ target 'ThreeGo' do
   )
 
 
+  pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
+
   target 'ThreeGoTests' do
     inherit! :complete
     # Pods for testing
