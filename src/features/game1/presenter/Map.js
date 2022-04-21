@@ -1,129 +1,91 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { FlatList, View, Text, StyleSheet, Button } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-import useCharacter from "../../../hooks/useCharacter";
-
-// constant로 관리해야할 값
-const FIXED_WIDTH = 300;
-const FIXED_HEIGHT = 450;
-
-// map 만들기 함수 실행 후 가져올 값
-const GAME_MAP = [
-  [1, 0, 0, 0, 0],
-  [1, 0, 0, 0, 0],
-  [1, 0, 0, 0, 0],
-  [1, 0, 0, 0, 0],
-  [1, 0, 0, 0, 0],
-  [1, 1, 1, 1, 1],
-];
-
-const Item = ({ opened, width, height }) => (
-  <View
-    style={{
-      width,
-      height,
-      borderRadius: 10,
-      borderWidth: 2,
-      borderColor: "#ffffff",
-      backgroundColor: opened ? "#f9c2ff" : "#a3a1dd",
-    }}
-  />
-);
-
-const FixedItem = ({ width, height, fixedBgColor }) => (
-  <View
-    style={{
-      width,
-      height,
-      borderRadius: 10,
-      borderWidth: 2,
-      borderColor: "#ffffff",
-      backgroundColor: fixedBgColor,
-    }}
-  />
-);
-
-const Map = () => {
-  const chracterDetail = useCharacter(GAME_MAP);
-  const columnCount = GAME_MAP[0].length;
-  const rowCount = GAME_MAP.length;
-  const boxWidth = FIXED_WIDTH / columnCount;
-  const boxHeigth = FIXED_HEIGHT / rowCount;
-
-  // 움직임 테스트용 데이터
-  const testDirection = ["down", "down", "down", "right", "right"];
-  const [testIndex, setTestIndex] = useState(0);
-
-  const handleMoveCharacter = () => {
-    switch (testDirection[testIndex]) {
-      case "left":
-        chracterDetail.moveLeft();
-        break;
-      case "right":
-        chracterDetail.moveRight();
-        break;
-      case "up":
-        chracterDetail.moveUp();
-        break;
-      case "down":
-        chracterDetail.moveDown();
-        break;
-    }
-
-    // 움직임 테스트용 로직
-    setTestIndex(testIndex + 1);
-  };
-
+const Map = ({ gameMap, characterInfo, arrInfo, boxStyle, onMove }) => {
   return (
     <View style={styles.container}>
-      {GAME_MAP.map((line, rowIndex) => (
+      {/* 게임 맵 view */}
+      {gameMap.map((line, rowIndex) => (
         <FlatList
           key={rowIndex}
           data={line}
           renderItem={({ item, index }) => {
-            if (
-              isStartOrEndCell(rowIndex, index, rowCount - 1, columnCount - 1)
-            ) {
-              return (
-                <FixedItem
-                  width={boxWidth}
-                  height={boxHeigth}
-                  fixedBgColor="#525281"
-                />
-              );
-            }
-            return <Item opened={item} width={boxWidth} height={boxHeigth} />;
+            let bgColor = getBackgroundColor(
+              rowIndex,
+              index,
+              arrInfo.rowCount - 1,
+              arrInfo.columnCount - 1,
+              Boolean(item)
+            );
+
+            return createCell(boxStyle.boxWidth, boxStyle.boxHeigth, bgColor);
           }}
-          keyExtractor={(item, index) => index}
-          numColumns={columnCount}
+          keyExtractor={(_, index) => index}
+          numColumns={arrInfo.columnCount}
         />
       ))}
+
+      {/* 캐릭터 이동 view */}
       <View
         style={styles.chracterBox(
-          boxWidth,
-          boxHeigth,
-          boxHeigth * chracterDetail.position.y,
-          boxWidth * chracterDetail.position.x
+          boxStyle.boxWidth,
+          boxStyle.boxHeigth,
+          boxStyle.boxHeigth * characterInfo.position.y,
+          boxStyle.boxWidth * characterInfo.position.x
         )}
       >
         <Icon name="heart" size={50} color="#f45a5a" style={{ zIndex: 1 }} />
       </View>
-      <View style={styles.startText}>
-        <Text title="start" />
-      </View>
-      {/*움직임 테스트용 컴포넌트*/}
-      <View style={styles.chracterBox}>
-        <Button title="test" onPress={handleMoveCharacter} />
-      </View>
+
+      {/* start marker view */}
       <View style={styles.startText}>
         <Text style={{ color: "#a3a1dd" }}>start</Text>
       </View>
+      {/* end marker view */}
       <View style={styles.endText}>
         <Text style={{ color: "#a3a1dd" }}>end</Text>
       </View>
+
+      {/*움직임 테스트용 컴포넌트*/}
+      <View style={styles.chracterBox}>
+        <Button title="test" onPress={onMove} />
+      </View>
     </View>
+  );
+};
+
+// UI 그리기(스타일 지정) 헬퍼 함수
+const getBackgroundColor = (
+  rowIndex,
+  cellIndex,
+  lastRowIndex,
+  lastCellIndex,
+  canPass
+) => {
+  if (isStartOrEndCell(rowIndex, cellIndex, lastRowIndex, lastCellIndex)) {
+    bgColor = "#525281";
+  } else {
+    bgColor = canPass ? "#f9c2ff" : "#a3a1dd";
+  }
+
+  return bgColor;
+};
+
+// UI 그리기(스타일 지정) 헬퍼 함수
+const createCell = (width, height, bgColor) => {
+  return (
+    <View
+      style={{
+        width,
+        height,
+        borderRadius: 10,
+        borderWidth: 2,
+        borderColor: "#ffffff",
+        backgroundColor: bgColor,
+      }}
+    />
   );
 };
 
@@ -177,4 +139,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Map;
+export default React.memo(Map);
