@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 300,
     height: 450,
-    backgroundColor: "#c0eb75",
+    backgroundColor: "#FCF8F6",
   },
   recordArea: {
     justifyContent: "center",
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   recordZone: {
     width: 300,
     height: 80,
-    backgroundColor: "#c0eb75",
+    backgroundColor: "#FCF8F6",
   },
 });
 

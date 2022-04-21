@@ -19,12 +19,10 @@ const GameHeader = ({
   return (
     <View>
       {isReady && (
-        <View
-          style={isReady ? styles.container(true) : styles.container(false)}
-        >
+        <View style={styles.container}>
           <SmallButton
             content="뒤로 가기"
-            color="#525281"
+            color="#96A1A8"
             onPress={onPressBack}
           />
 
@@ -45,7 +43,7 @@ const GameHeader = ({
           )}
 
           {isInput && isStart && isReady && (
-            <Text style={{ color: "#ffffff", fontSize: 18 }}>스코어: 00점</Text>
+            <Text style={{ color: "#FCF8F6", fontSize: 15 }}>스코어: 00점</Text>
           )}
 
           <ChanceIcons />
@@ -56,18 +54,16 @@ const GameHeader = ({
 };
 
 const styles = StyleSheet.create({
-  container: (isReady) => {
-    return {
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItems: "center",
-      width: "100%",
-      height: "100%",
-      paddingLeft: 8,
-      paddingRight: 8,
-      backgroundColor: isReady ? "#212529" : "#212529",
-      color: "#ffffff",
-    };
+  container: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
+    paddingLeft: 8,
+    paddingRight: 8,
+    backgroundColor: "#212529",
+    color: "#FCF8F6",
   },
 });
 
