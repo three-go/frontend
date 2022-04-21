@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 
-import { FlatList, View, Text, StyleSheet, Button } from "react-native";
+import {
+  FlatList,
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  Animated,
+} from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const Map = ({ gameMap, characterInfo, arrInfo, boxStyle, onMove }) => {
+  const animation = useRef(
+    new Animated.ValueXY({
+      x: boxStyle.boxWidth * characterInfo.position.x,
+      y: boxStyle.boxHeigth * characterInfo.position.y,
+    })
+  ).current;
+
+  useEffect(() => {
+    Animated.timing(animation, {
+      toValue: {
+        x: boxStyle.boxWidth * characterInfo.position.x,
+        y: boxStyle.boxHeigth * characterInfo.position.y,
+      },
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  }, [characterInfo.position.x, characterInfo.position.y]);
+
   return (
     <View style={styles.container}>
       {/* 게임 맵 view */}
@@ -12,7 +37,7 @@ const Map = ({ gameMap, characterInfo, arrInfo, boxStyle, onMove }) => {
           key={rowIndex}
           data={line}
           renderItem={({ item, index }) => {
-            let bgColor = getBackgroundColor(
+            const bgColor = getBackgroundColor(
               rowIndex,
               index,
               arrInfo.rowCount - 1,
@@ -28,16 +53,23 @@ const Map = ({ gameMap, characterInfo, arrInfo, boxStyle, onMove }) => {
       ))}
 
       {/* 캐릭터 이동 view */}
-      <View
-        style={styles.chracterBox(
-          boxStyle.boxWidth,
-          boxStyle.boxHeigth,
-          boxStyle.boxHeigth * characterInfo.position.y,
-          boxStyle.boxWidth * characterInfo.position.x
-        )}
+      <Animated.View
+        style={[
+          styles.chracterBox(boxStyle.boxWidth, boxStyle.boxHeigth),
+          {
+            transform: [
+              {
+                translateX: animation.x,
+              },
+              {
+                translateY: animation.y,
+              },
+            ],
+          },
+        ]}
       >
         <Icon name="heart" size={50} color="#f45a5a" style={{ zIndex: 1 }} />
-      </View>
+      </Animated.View>
 
       {/* start marker view */}
       <View style={styles.startText}>
@@ -111,13 +143,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "#ffffff",
   },
-  chracterBox: (width, height, top, left) => {
+  chracterBox: (width, height) => {
     return {
       position: "absolute",
       width,
       height,
-      top,
-      left,
       justifyContent: "center",
       alignItems: "center",
       zIndex: 0,
