@@ -50,10 +50,6 @@ const MainContainer = ({ navigation }) => {
     navigation.navigate("Game1");
   };
 
-  console.log("----------------------------------");
-  console.log("currentGameKey", currentGameKey);
-  console.log("----------------------------------");
-
   return (
     <SafeAreaProvider>
       <Main

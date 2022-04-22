@@ -2,12 +2,16 @@ import React from "react";
 
 import { Text, View, StyleSheet } from "react-native";
 
+import FailModalContainer from "../../../../Temp/FailModalContainer";
+import NextStageModalContainer from "../../../../Temp/NextStageModalContainer";
+import ResetModalContainer from "../../../../Temp/ResetModalContainer";
 import {
   GameLayout,
   InputModalContainer,
   TextTimer,
 } from "../../../components";
 import { FaceRecognitionContainer } from "../container";
+import MapContainer from "../container/MapContainer";
 import FaceDirectionRecord from "./FaceDirectionRecord";
 
 const Game1 = ({
@@ -26,6 +30,7 @@ const Game1 = ({
   selectedDirection,
   setSelectedDirection,
   directions,
+  setDirections,
   currentGameKey,
 }) => {
   return (
@@ -55,9 +60,12 @@ const Game1 = ({
               )}
 
               {!isStart && isReady && (
-                <Text style={{ color: "#212529", fontSize: 30 }}>
-                  맵이 보이는 중 !!!
-                </Text>
+                <MapContainer
+                  stage={1}
+                  directions={directions}
+                  onAnimationEnd={setDirections}
+                />
+                // <NextStageModalContainer />
               )}
 
               {!isInput && isStart && isReady && (
