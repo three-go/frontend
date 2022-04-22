@@ -26,17 +26,21 @@ const SquareButton = ({ content, color, onPress }) => (
 const styles = StyleSheet.create({
   container: (bgColor) => {
     return {
-      width: 100,
-      height: 100,
+      width: 120,
+      height: 120,
       backgroundColor: bgColor,
       borderRadius: 4,
+      borderWidth: 4,
+      borderColor: "#FCF8F6",
       alignItems: "center",
       justifyContent: "center",
     };
   },
   text: {
     padding: 8,
-    color: "#ffffff",
+    color: "#FCF8F6",
+    fontSize: 18,
+    fontWeight: "bold",
   },
 });
 

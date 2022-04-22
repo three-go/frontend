@@ -37,13 +37,13 @@ const TextTimer = ({ setIsFinish, timerInfo, setTimerInfo }) => {
 const styles = StyleSheet.create({
   text: (size) => {
     return {
-      color: "#ffffff",
+      color: "#FCF8F6",
       fontSize: size ? size : 12,
     };
   },
   number: (size) => {
     return {
-      color: "#ffffff",
+      color: "#FCF8F6",
       fontSize: size ? size * 2 : 18,
     };
   },

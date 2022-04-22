@@ -1,17 +1,16 @@
 import React from "react";
 
-import { Modal, StyleSheet, Text, View, ScrollView } from "react-native";
+import { Modal, StyleSheet, View, Text } from "react-native";
 
-const ContentModal = ({ title, content, isVisible, children }) => {
+const ButtonModal = ({ content, isVisible, children }) => {
+  const count = React.Children.count(children);
+
   return (
     <Modal animationType="fade" transparent={true} visible={isVisible}>
       <View style={styles.container}>
         <View style={styles.modalContainer}>
-          <Text style={styles.title}>{title}</Text>
-          <ScrollView style={styles.contentContainer}>
-            <Text>{content}</Text>
-          </ScrollView>
-          <View style={styles.buttonContainer}>{children}</View>
+          <Text style={styles.textContainer}>{content}</Text>
+          <View style={styles.buttonContainer(count)}>{children}</View>
         </View>
       </View>
     </Modal>
@@ -26,10 +25,10 @@ const styles = StyleSheet.create({
     marginTop: 22,
   },
   modalContainer: {
+    justifyContent: "center",
     alignItems: "center",
-    width: "80%",
-    height: "70%",
-    margin: 20,
+    width: "75%",
+    height: "20%",
     padding: 35,
     borderWidth: 5,
     borderRadius: 20,
@@ -44,22 +43,20 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-  title: {
-    marginBottom: 15,
-    textAlign: "center",
-    fontSize: 25,
+  textContainer: {
+    marginBottom: 20,
+    color: "#FCF8F6",
+    fontSize: 18,
     fontWeight: "bold",
   },
-  contentContainer: {
-    flex: 1,
-  },
-  buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    width: "100%",
-    marginTop: 22,
+  buttonContainer: (count) => {
+    return {
+      flexDirection: "row",
+      justifyContent: count > 1 ? "space-between" : "center",
+      alignItems: "center",
+      width: "100%",
+    };
   },
 });
 
-export default ContentModal;
+export default ButtonModal;
