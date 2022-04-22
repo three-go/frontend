@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { Game1 } from "..";
+import { GameContext } from "../../../context";
 
 const Game1Container = () => {
+  const { currentGameKey } = useContext(GameContext);
+
   const [isReady, setIsReady] = useState(false);
   const [isStart, setIsStart] = useState(false);
   const [isInput, setIsInput] = useState(false);
@@ -57,8 +60,9 @@ const Game1Container = () => {
       setInputTimer={setInputTimer}
       selectedDirection={selectedDirection}
       setSelectedDirection={setSelectedDirection}
-      setDirections={setDirections}
       directions={directions}
+      setDirections={setDirections}
+      currentGameKey={currentGameKey}
     />
   );
 };
