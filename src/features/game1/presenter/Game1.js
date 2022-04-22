@@ -22,6 +22,7 @@ const Game1 = ({
   setInputTimer,
   selectedDirection,
   setSelectedDirection,
+  setDirections,
   directions,
 }) => {
   return (
@@ -48,7 +49,13 @@ const Game1 = ({
             />
           )}
 
-          {!isStart && isReady && <MapContainer stage={1} />}
+          {!isStart && isReady && (
+            <MapContainer
+              stage={1}
+              directions={directions}
+              onAnimationEnd={setDirections}
+            />
+          )}
 
           {!isInput && isStart && isReady && (
             <FaceRecognitionContainer
