@@ -26,7 +26,12 @@ const Game1Container = () => {
   });
 
   const [selectedDirection, setSelectedDirection] = useState({});
-  const [directions, setDirections] = useState([]);
+  const [directions, setDirections] = useState([
+    { direction: "down" },
+    { direction: "right" },
+    { direction: "down" },
+    { direction: "right" },
+  ]);
 
   useEffect(() => {
     if (!selectedDirection.direction) {
@@ -52,6 +57,7 @@ const Game1Container = () => {
       setInputTimer={setInputTimer}
       selectedDirection={selectedDirection}
       setSelectedDirection={setSelectedDirection}
+      setDirections={setDirections}
       directions={directions}
     />
   );
