@@ -40,7 +40,7 @@
   _bridgeAdapter = [[RCTSurfacePresenterBridgeAdapter alloc] initWithBridge:bridge contextContainer:_contextContainer];
   bridge.surfacePresenter = _bridgeAdapter.surfacePresenter;
 #endif
-
+  
   UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"ThreeGo", nil);
 
   if (@available(iOS 13.0, *)) {
@@ -54,6 +54,7 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+
   return YES;
 }
 

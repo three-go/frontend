@@ -2,6 +2,9 @@ import React from "react";
 
 import { Text, View, StyleSheet } from "react-native";
 
+import FailModalContainer from "../../../../Temp/FailModalContainer";
+import NextStageModalContainer from "../../../../Temp/NextStageModalContainer";
+import ResetModalContainer from "../../../../Temp/ResetModalContainer";
 import { GameLayout, TextTimer } from "../../../components";
 import MapContainer from "../container/MapContainer";
 import { FaceRecognitionContainer } from "../container";
@@ -55,6 +58,7 @@ const Game1 = ({
               directions={directions}
               onAnimationEnd={setDirections}
             />
+            // <NextStageModalContainer />
           )}
 
           {!isInput && isStart && isReady && (
