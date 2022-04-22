@@ -10,7 +10,15 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-const Map = ({ gameMap, characterInfo, arrInfo, boxStyle, onMove }) => {
+const Map = ({
+  gameMap,
+  characterInfo,
+  arrInfo,
+  boxStyle,
+  directions,
+  onMove,
+  onAnimationEnd,
+}) => {
   const animation = useRef(
     new Animated.ValueXY({
       x: boxStyle.boxWidth * characterInfo.position.x,
@@ -26,7 +34,18 @@ const Map = ({ gameMap, characterInfo, arrInfo, boxStyle, onMove }) => {
       },
       duration: 1000,
       useNativeDriver: true,
-    }).start();
+    }).start(() => {
+      if (
+        boxStyle.boxWidth * characterInfo.position.x === 0 &&
+        boxStyle.boxHeigth * characterInfo.position.y === 0
+      ) {
+        return;
+      }
+
+      const copy = directions.slice();
+      copy.shift();
+      onAnimationEnd(copy);
+    });
   }, [characterInfo.position.x, characterInfo.position.y]);
 
   return (
