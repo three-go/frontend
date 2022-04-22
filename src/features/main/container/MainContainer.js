@@ -54,8 +54,8 @@ const MainContainer = ({ navigation }) => {
     <SafeAreaProvider>
       <Main
         onExitApp={exitApp}
-        handleShowScoreModal={handleShowScoreModal}
-        handleSetGameNameAndShowDescriptionModal={
+        onShowScoreModal={handleShowScoreModal}
+        onSetGameNameAndShowDescriptionModal={
           handleSetGameNameAndShowDescriptionModal
         }
       />

@@ -8,8 +8,8 @@ import { game } from "../../../utils";
 
 const Main = ({
   onExitApp,
-  handleShowScoreModal,
-  handleSetGameNameAndShowDescriptionModal,
+  onShowScoreModal,
+  onSetGameNameAndShowDescriptionModal,
 }) => {
   return (
     <SafeAreaView style={styles.container}>
@@ -25,7 +25,7 @@ const Main = ({
               key={game.names[v]}
               content={game.names[v]}
               color={game.colors[v]}
-              onPress={handleSetGameNameAndShowDescriptionModal(v)}
+              onPress={onSetGameNameAndShowDescriptionModal(v)}
             />
           );
         })}
@@ -35,7 +35,7 @@ const Main = ({
         <DefaultButton
           content="점수 보기"
           color="#96A1A8"
-          onPress={handleShowScoreModal}
+          onPress={onShowScoreModal}
         />
       </View>
 
