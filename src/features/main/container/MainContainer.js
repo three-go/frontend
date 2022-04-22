@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { Platform } from "react-native";
 import RNExitApp from "react-native-exit-app";
@@ -6,13 +6,15 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import SystemNavigationBar from "react-native-system-navigation-bar";
 
 import { DefaultButton, SmallButton, ContentModal } from "../../../components";
+import { GameContext } from "../../../context";
 import { game } from "../../../utils";
 import Main from "../presenter/Main";
 
 const MainContainer = ({ navigation }) => {
+  const { currentGameKey, setCurrentGameKey } = useContext(GameContext);
+
   const [scoreModalVisible, setScoreModalVisible] = useState(false);
   const [descriptionModalVisible, setDescriptionModalVisible] = useState(false);
-  const [gameNumber, setGameNumber] = useState(null);
 
   useEffect(() => {
     const hideSoftKey = async () => {
@@ -32,33 +34,40 @@ const MainContainer = ({ navigation }) => {
     setScoreModalVisible(!scoreModalVisible);
   };
 
-  const handleSelectGameNumberAndShowDescriptionModal = (n) => {
+  const handleShowDescriptionModal = () => {
+    setDescriptionModalVisible(!descriptionModalVisible);
+  };
+
+  const handleSetGameNameAndShowDescriptionModal = (name) => {
     return () => {
-      setGameNumber(n);
+      setCurrentGameKey(name);
       setDescriptionModalVisible(!descriptionModalVisible);
     };
   };
 
   const handleStartGame = () => {
-    setGameNumber(null);
     setDescriptionModalVisible(!descriptionModalVisible);
     navigation.navigate("Game1");
   };
+
+  console.log("----------------------------------");
+  console.log("currentGameKey", currentGameKey);
+  console.log("----------------------------------");
 
   return (
     <SafeAreaProvider>
       <Main
         onExitApp={exitApp}
         handleShowScoreModal={handleShowScoreModal}
-        handleSelectGameNumberAndShowDescriptionModal={
-          handleSelectGameNumberAndShowDescriptionModal
+        handleSetGameNameAndShowDescriptionModal={
+          handleSetGameNameAndShowDescriptionModal
         }
       />
 
       {scoreModalVisible && (
         <ContentModal
           title="점수 현황"
-          content="김춘식 : 100점"
+          content="김춘식 : 500점"
           isVisible={scoreModalVisible}
         >
           <DefaultButton
@@ -72,7 +81,7 @@ const MainContainer = ({ navigation }) => {
       {descriptionModalVisible && (
         <ContentModal
           title="게임 설명"
-          content={game.description[gameNumber]}
+          content={game.description[currentGameKey]}
           isVisible={descriptionModalVisible}
         >
           <SmallButton
@@ -83,7 +92,7 @@ const MainContainer = ({ navigation }) => {
           <SmallButton
             content="닫기"
             color="#c92a2a"
-            onPress={handleSelectGameNumberAndShowDescriptionModal()}
+            onPress={handleShowDescriptionModal}
           />
         </ContentModal>
       )}

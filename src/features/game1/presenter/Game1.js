@@ -2,10 +2,11 @@ import React from "react";
 
 import { Text, View, StyleSheet } from "react-native";
 
-import FailModalContainer from "../../../../Temp/FailModalContainer";
-import NextStageModalContainer from "../../../../Temp/NextStageModalContainer";
-import ResetModalContainer from "../../../../Temp/ResetModalContainer";
-import { GameLayout, TextTimer } from "../../../components";
+import {
+  GameLayout,
+  InputModalContainer,
+  TextTimer,
+} from "../../../components";
 import { FaceRecognitionContainer } from "../container";
 import FaceDirectionRecord from "./FaceDirectionRecord";
 
@@ -25,6 +26,7 @@ const Game1 = ({
   selectedDirection,
   setSelectedDirection,
   directions,
+  currentGameKey,
 }) => {
   return (
     <GameLayout
@@ -40,48 +42,57 @@ const Game1 = ({
       inputTimer={inputTimer}
       setInputTimer={setInputTimer}
     >
-      <View style={styles.playArea}>
-        <View style={styles.playZone}>
-          {!isReady && (
-            <TextTimer
-              setIsFinish={setIsReady}
-              timerInfo={readyTimer}
-              setTimerInfo={setReadyTimer}
-            />
-          )}
+      {currentGameKey === "game1" && (
+        <View style={styles.container}>
+          <View style={styles.playArea}>
+            <View style={styles.playZone}>
+              {!isReady && (
+                <TextTimer
+                  setIsFinish={setIsReady}
+                  timerInfo={readyTimer}
+                  setTimerInfo={setReadyTimer}
+                />
+              )}
 
-          {!isStart && isReady && (
-            // <Text style={{ color: "#ffffff", fontSize: 30 }}>
-            //   맵이 보이는 중 !!!
-            // </Text>
-            // <FailModalContainer />
-            <NextStageModalContainer />
-            // <ResetModalContainer />
-          )}
+              {!isStart && isReady && (
+                <Text style={{ color: "#212529", fontSize: 30 }}>
+                  맵이 보이는 중 !!!
+                </Text>
+              )}
 
-          {!isInput && isStart && isReady && (
-            <FaceRecognitionContainer
-              selectedDirection={selectedDirection}
-              onSelectedDirection={setSelectedDirection}
-            />
-          )}
+              {!isInput && isStart && isReady && (
+                <FaceRecognitionContainer
+                  selectedDirection={selectedDirection}
+                  onSelectedDirection={setSelectedDirection}
+                />
+              )}
 
-          {isInput && isStart && isReady && (
-            <Text style={{ color: "#ffffff", fontSize: 30 }}>
-              게임 진행 중 !!!
-            </Text>
-          )}
+              {isInput && isStart && isReady && (
+                <View>
+                  <Text style={{ color: "#212529", fontSize: 30 }}>
+                    게임 진행 중 !!!
+                  </Text>
+                  <InputModalContainer />
+                </View>
+              )}
+            </View>
+          </View>
+
+          <View style={styles.recordArea}>
+            {isReady && <FaceDirectionRecord directions={directions} />}
+          </View>
         </View>
-      </View>
-
-      <View style={styles.recordArea}>
-        {isReady && <FaceDirectionRecord directions={directions} />}
-      </View>
+      )}
     </GameLayout>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+  },
   playArea: {
     justifyContent: "center",
     alignItems: "center",
@@ -94,7 +105,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 300,
     height: 450,
-    backgroundColor: "#FCF8F6",
+    backgroundColor: "#96A1A8",
   },
   recordArea: {
     justifyContent: "center",

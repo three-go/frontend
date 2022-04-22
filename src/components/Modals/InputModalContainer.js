@@ -3,16 +3,15 @@ import React, { useState } from "react";
 import { Keyboard } from "react-native";
 
 import { SmallButton } from "..";
+import { setItemToAsync } from "../../utils";
 import InputModal from "./InputModal";
 
 const InputModalContainer = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(true);
   const [name, setName] = useState("");
 
-  // 유저 스코어 로직 가져오는 로직 필요
-
-  const onRegister = (name) => {
-    // 유저 스코어 등록 로직 필요
+  const onRegister = () => {
+    setItemToAsync();
     setModalVisible(false);
     setName("");
     Keyboard.dismiss();

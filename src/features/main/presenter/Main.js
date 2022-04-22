@@ -9,7 +9,7 @@ import { game } from "../../../utils";
 const Main = ({
   onExitApp,
   handleShowScoreModal,
-  handleSelectGameNumberAndShowDescriptionModal,
+  handleSetGameNameAndShowDescriptionModal,
 }) => {
   return (
     <SafeAreaView style={styles.container}>
@@ -19,13 +19,13 @@ const Main = ({
       </View>
 
       <View style={styles.gameWrapper}>
-        {game.names.map((v, i) => {
+        {game.keys.map((v) => {
           return (
             <SquareButton
-              key={v}
-              content={v}
-              color={game.colors[i]}
-              onPress={handleSelectGameNumberAndShowDescriptionModal(i)}
+              key={game.names[v]}
+              content={game.names[v]}
+              color={game.colors[v]}
+              onPress={handleSetGameNameAndShowDescriptionModal(v)}
             />
           );
         })}
