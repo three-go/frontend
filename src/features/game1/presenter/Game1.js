@@ -6,6 +6,7 @@ import FailModalContainer from "../../../../Temp/FailModalContainer";
 import NextStageModalContainer from "../../../../Temp/NextStageModalContainer";
 import ResetModalContainer from "../../../../Temp/ResetModalContainer";
 import { GameLayout, TextTimer } from "../../../components";
+import MapContainer from "../container/MapContainer";
 import { FaceRecognitionContainer } from "../container";
 import FaceDirectionRecord from "./FaceDirectionRecord";
 
@@ -24,6 +25,7 @@ const Game1 = ({
   setInputTimer,
   selectedDirection,
   setSelectedDirection,
+  setDirections,
   directions,
 }) => {
   return (
@@ -51,12 +53,12 @@ const Game1 = ({
           )}
 
           {!isStart && isReady && (
-            // <Text style={{ color: "#ffffff", fontSize: 30 }}>
-            //   맵이 보이는 중 !!!
-            // </Text>
-            // <FailModalContainer />
-            <NextStageModalContainer />
-            // <ResetModalContainer />
+            <MapContainer
+              stage={1}
+              directions={directions}
+              onAnimationEnd={setDirections}
+            />
+            // <NextStageModalContainer />
           )}
 
           {!isInput && isStart && isReady && (
