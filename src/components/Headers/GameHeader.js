@@ -1,8 +1,9 @@
 import React from "react";
 
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Pressable } from "react-native";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-import { ChanceIcons, SmallButton, TextTimer } from "../index";
+import { ChanceIcons, TextTimer } from "../index";
 
 const GameHeader = ({
   onPressBack,
@@ -15,16 +16,15 @@ const GameHeader = ({
   setStartTimer,
   inputTimer,
   setInputTimer,
+  score,
 }) => {
   return (
     <View>
       {isReady && (
         <View style={styles.container}>
-          <SmallButton
-            content="뒤로 가기"
-            color="#96A1A8"
-            onPress={onPressBack}
-          />
+          <Pressable onPress={onPressBack} style={styles.back}>
+            <Icon name="arrow-left-thick" size={40} color="#96A1A8" />
+          </Pressable>
 
           {!isStart && isReady && (
             <TextTimer
@@ -43,7 +43,10 @@ const GameHeader = ({
           )}
 
           {isInput && isStart && isReady && (
-            <Text style={{ color: "#FCF8F6", fontSize: 15 }}>스코어: 00점</Text>
+            <Text style={styles.score}>
+              SCORE{"\n"}
+              {score}
+            </Text>
           )}
 
           <ChanceIcons />
@@ -64,6 +67,18 @@ const styles = StyleSheet.create({
     paddingRight: 8,
     backgroundColor: "#212529",
     color: "#FCF8F6",
+  },
+  back: {
+    justifyContent: "center",
+    width: 80,
+    height: 40,
+    paddingLeft: 18,
+  },
+  score: {
+    color: "#FCF8F6",
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
 

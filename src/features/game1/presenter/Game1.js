@@ -27,7 +27,11 @@ const Game1 = ({
   selectedDirection,
   setSelectedDirection,
   directions,
-  setDirections,
+  setIsWin,
+  stage,
+  gameMap,
+  score,
+  setScore,
   currentGameKey,
 }) => {
   return (
@@ -43,6 +47,7 @@ const Game1 = ({
       setStartTimer={setStartTimer}
       inputTimer={inputTimer}
       setInputTimer={setInputTimer}
+      score={score}
     >
       {currentGameKey === "game1" && (
         <View style={styles.container}>
@@ -58,9 +63,12 @@ const Game1 = ({
 
               {!isStart && isReady && (
                 <MapContainer
-                  stage={1}
+                  stage={stage}
                   directions={directions}
-                  onAnimationEnd={setDirections}
+                  isStart={isStart}
+                  isReady={isReady}
+                  setIsWin={setIsWin}
+                  gameMap={gameMap}
                 />
               )}
 
@@ -72,12 +80,17 @@ const Game1 = ({
               )}
 
               {isInput && isStart && isReady && (
-                <View>
-                  <Text style={{ color: "#212529", fontSize: 30 }}>
-                    게임 진행 중 !!!
-                  </Text>
-                  {/* <InputModalContainer /> */}
-                </View>
+                <MapContainer
+                  stage={stage}
+                  directions={directions}
+                  isStart={isStart}
+                  isReady={isReady}
+                  isInput={isInput}
+                  setIsWin={setIsWin}
+                  gameMap={gameMap}
+                  score={score}
+                  setScore={setScore}
+                />
               )}
             </View>
           </View>
@@ -109,7 +122,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 300,
     height: 450,
-    backgroundColor: "#96A1A8",
   },
   recordArea: {
     justifyContent: "center",

@@ -17,6 +17,7 @@ const GameLayout = ({
   setStartTimer,
   inputTimer,
   setInputTimer,
+  score,
 }) => {
   const navigation = useNavigation();
 
@@ -38,6 +39,7 @@ const GameLayout = ({
           setStartTimer={setStartTimer}
           inputTimer={inputTimer}
           setInputTimer={setInputTimer}
+          score={score}
         />
       </View>
       <View style={styles.gameBoard}>{children}</View>

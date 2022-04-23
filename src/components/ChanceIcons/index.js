@@ -4,10 +4,10 @@ import { View, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const ChanceIcons = () => {
-  // 전역 상태관리에서 defaultChanceCount, resctChanceCount 값 불러오기 추가 필요
+  // 상위 컴포넌트에서 defaultChanceCount, resctChanceCount 값 불러오기 추가 필요
   // (전체 시도 가능 횟수, 남은 횟수)
   const defaultChance = 3;
-  const restChance = 1;
+  const restChance = 3;
 
   return (
     <View style={styles.heartWrapper}>
