@@ -2,13 +2,13 @@ import React from "react";
 
 import { Text, View, StyleSheet } from "react-native";
 
+import MapContainer from "../container/MapContainer";
 import {
   GameLayout,
   InputModalContainer,
   TextTimer,
 } from "../../../components";
 import { FaceRecognitionContainer } from "../container";
-import MapContainer from "../container/MapContainer";
 import FaceDirectionRecord from "./FaceDirectionRecord";
 
 const Game1 = ({
