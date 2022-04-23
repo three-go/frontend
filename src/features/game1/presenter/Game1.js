@@ -32,7 +32,6 @@ const Game1 = ({
   gameMap,
   score,
   setScore,
-  setDirections,
   currentGameKey,
 }) => {
   return (
@@ -48,6 +47,7 @@ const Game1 = ({
       setStartTimer={setStartTimer}
       inputTimer={inputTimer}
       setInputTimer={setInputTimer}
+      score={score}
     >
       {currentGameKey === "game1" && (
         <View style={styles.container}>
