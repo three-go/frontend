@@ -1,54 +1,75 @@
-import React, { useState, useMemo } from "react";
+import React, { useEffect } from "react";
 
-import { Map } from "../presenter";
+import DefaultMap from "../presenter/DefaultMap";
 import useCharacter from "../../../hooks/useCharacter";
-import { createMap } from "../../../utils";
+import { Map } from "../presenter";
 
-const MapContainer = ({ stage, directions, onAnimationEnd }) => {
+const MapContainer = ({
+  gameMap,
+  stage,
+  directions,
+  isStart,
+  isReady,
+  isInput,
+  setIsWin,
+  score,
+  setScore,
+}) => {
   const FIXED_WIDTH = 300;
   const FIXED_HEIGHT = 450;
-
-  const gameMap = useMemo(() => {
-    return createMap(stage);
-  }, [stage]);
-  const chracterInfo = useCharacter(gameMap);
+  const characterInfo = useCharacter(gameMap, score, setScore);
 
   const arrInfo = {
-    columnCount: gameMap[0].length,
-    rowCount: gameMap.length,
+    columnCount: gameMap && gameMap[0].length,
+    rowCount: gameMap && gameMap.length,
   };
 
   const boxStyle = {
-    boxWidth: FIXED_WIDTH / arrInfo.columnCount,
-    boxHeigth: FIXED_HEIGHT / arrInfo.rowCount,
+    boxWidth: (FIXED_WIDTH - 10) / arrInfo.columnCount,
+    boxHeigth: (FIXED_HEIGHT - 10) / arrInfo.rowCount,
   };
 
-  const handleMoveCharacter = () => {
-    switch (directions[0].direction) {
+  useEffect(() => {
+    if (isInput && isStart && isReady && directions.length === 0) {
+      const { x, y } = characterInfo.position;
+      if (x === arrInfo.columnCount - 1 && y === arrInfo.rowCount - 1) {
+        setIsWin(true);
+      } else {
+        setIsWin(false);
+      }
+    }
+
+    if (!directions[0]) {
+      return;
+    }
+
+    switch (isInput && directions[0].direction) {
       case "left":
-        chracterInfo.moveLeft();
+        characterInfo.moveLeft();
         break;
       case "right":
-        chracterInfo.moveRight();
+        characterInfo.moveRight();
         break;
       case "up":
-        chracterInfo.moveUp();
+        characterInfo.moveUp();
         break;
       case "down":
-        chracterInfo.moveDown();
+        characterInfo.moveDown();
         break;
+      default:
+        "left";
     }
-  };
+  }, [directions]);
 
-  return (
+  return !isStart && isReady ? (
+    <DefaultMap gameMap={gameMap} arrInfo={arrInfo} boxStyle={boxStyle} />
+  ) : (
     <Map
       gameMap={gameMap}
-      characterInfo={chracterInfo}
+      characterInfo={characterInfo}
       arrInfo={arrInfo}
       boxStyle={boxStyle}
       directions={directions}
-      onMove={handleMoveCharacter}
-      onAnimationEnd={onAnimationEnd}
     />
   );
 };
