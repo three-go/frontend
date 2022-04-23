@@ -55,17 +55,23 @@ const Game1Container = () => {
   }, [selectedDirection]);
 
   useEffect(() => {
+    let timeoutId;
+
     if (isInput && isStart && isReady) {
       if (directions.length < 1) {
         return;
       }
 
-      setTimeout(() => {
+      timeoutId = setTimeout(() => {
         const copy = directions.slice();
         copy.shift();
         setDirections(copy);
-      }, 500);
+      }, 1000);
     }
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [isInput, directions.length]);
 
   return (
