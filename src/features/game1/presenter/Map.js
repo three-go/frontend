@@ -11,7 +11,7 @@ import Animated, {
 } from "react-native-reanimated";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-const Map2 = ({ gameMap, characterInfo, arrInfo, boxStyle, directions }) => {
+const Map = ({ gameMap, characterInfo, arrInfo, boxStyle, directions }) => {
   const traslateX = useSharedValue(
     boxStyle.boxWidth * characterInfo.position.x
   );
@@ -47,7 +47,7 @@ const Map2 = ({ gameMap, characterInfo, arrInfo, boxStyle, directions }) => {
     const wrongColor = "#f45a5a";
     const defaultColor = "#FCF8F6";
 
-    if (!characterInfo.isValid) {
+    if (characterInfo && !characterInfo.isValid) {
       borderColor.value = withSequence(
         withTiming(wrongColor, { duration: 500 }),
         withTiming(defaultColor, { duration: 500 })
@@ -61,38 +61,24 @@ const Map2 = ({ gameMap, characterInfo, arrInfo, boxStyle, directions }) => {
         true
       );
     } else {
-      borderColor.value = defaultColor;
-      rotation.value = 0;
+      traslateX.value = withSpring(
+        boxStyle.boxWidth * characterInfo.position.x,
+        {
+          duration: 1000,
+        }
+      );
+
+      translateY.value = withSpring(
+        boxStyle.boxHeigth * characterInfo.position.y,
+        { duration: 1000 }
+      );
     }
 
-    traslateX.value = withSpring(boxStyle.boxWidth * characterInfo.position.x, {
-      duration: 1500,
-    });
-    translateY.value = withSpring(
-      boxStyle.boxHeigth * characterInfo.position.y,
-      { duration: 1500 }
-    );
-  }, [characterInfo.position.x, characterInfo.position.y, directions.length]);
-
-  // useEffect(() => {
-  //   const wrongColor = "#f45a5a";
-  //   const defaultColor = "#FCF8F6";
-
-  //   if (!characterInfo.isValid) {
-  //     borderColor.value = withSequence(
-  //       withTiming(wrongColor, { duration: 500 }),
-  //       withTiming(defaultColor, { duration: 500 })
-  //     );
-
-  //     rotation.value = withRepeat(
-  //       withTiming(3, {
-  //         duration: 250,
-  //       }),
-  //       4,
-  //       true
-  //     );
-  //   }
-  // }, [directions.length]);
+    return () => {
+      borderColor.value = defaultColor;
+      rotation.value = 0;
+    };
+  }, [directions.length]);
 
   return (
     <Animated.View
@@ -246,4 +232,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default React.memo(Map2);
+export default React.memo(Map);
