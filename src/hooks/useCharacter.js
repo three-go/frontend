@@ -48,28 +48,24 @@ const useCharacter = (gameMap, score, setScore) => {
     }
 
     result = checkMove(isInBoundary, nextPosition);
-
-    if (!result.canMove) {
-      setScore(score - result.minusScore);
-      setIsValid(false);
-    } else {
-      setIsValid(true);
-    }
+    setScore((prev) => prev - result.minusScore);
+    setIsValid(result.canMove);
 
     return result.canMove;
   };
 
   const checkMove = (isInBoundary, nextPosition) => {
+    // minusSore 상수 처리 필요
     if (isInBoundary && nextPosition > 0) {
-      return { canMove: true, minusScore: 0 };
+      return { canMove: true, minusScore: 1 };
     }
 
     if (!isInBoundary) {
-      return { canMove: false, minusScore: 20 };
+      return { canMove: false, minusScore: 21 };
     }
 
     if (!nextPosition) {
-      return { canMove: false, minusScore: 10 };
+      return { canMove: false, minusScore: 11 };
     }
   };
 
