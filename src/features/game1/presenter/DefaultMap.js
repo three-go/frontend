@@ -86,10 +86,9 @@ const isStartOrEndCell = (rowIndex, cellIndex, endRowIndex, endCellIndex) => {
 
 const styles = StyleSheet.create({
   container: {
-    position: "absolute",
     flexWrap: "wrap",
-    width: 300,
-    height: 450,
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 10,
     borderWidth: 5,
     borderColor: "#FCF8F6",
@@ -110,10 +109,13 @@ const styles = StyleSheet.create({
   chracterBox: (width, height) => {
     return {
       position: "absolute",
+      top: 0,
+      left: 0,
       width,
       height,
       justifyContent: "center",
       alignItems: "center",
+      borderRadius: 10,
       zIndex: 0,
     };
   },
