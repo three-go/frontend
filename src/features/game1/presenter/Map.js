@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { FlatList, View, Text, StyleSheet } from "react-native";
 import Animated, {
@@ -123,11 +123,11 @@ const Map = ({ gameMap, characterInfo, arrInfo, boxStyle, directions }) => {
 
       {/* start marker view */}
       <View style={styles.startText}>
-        <Text style={{ fontSize: 16, color: "#FCF8F6" }}>Start</Text>
+        <Text style={styles.text}>Start</Text>
       </View>
       {/* end marker view */}
       <View style={styles.endText}>
-        <Text style={{ fontSize: 16, color: "#FCF8F6" }}>End</Text>
+        <Text style={styles.text}>End</Text>
       </View>
     </Animated.View>
   );
@@ -141,6 +141,8 @@ const getBackgroundColor = (
   lastCellIndex,
   canPass
 ) => {
+  let bgColor;
+
   if (isStartOrEndCell(rowIndex, cellIndex, lastRowIndex, lastCellIndex)) {
     bgColor = "#21D0B2";
   } else {
@@ -154,35 +156,13 @@ const getBackgroundColor = (
 const createCell = (width, height, bgColor, canPass) => {
   if (!canPass) {
     return (
-      <View
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          width,
-          height,
-          borderRadius: 10,
-          borderWidth: 2,
-          borderColor: "#ffffff",
-          backgroundColor: bgColor,
-        }}
-      >
+      <View style={styles.cell(width, height, bgColor)}>
         <Icon name="close" size={width} color="#5c6977" />
       </View>
     );
   }
 
-  return (
-    <View
-      style={{
-        width,
-        height,
-        borderRadius: 10,
-        borderWidth: 2,
-        borderColor: "#ffffff",
-        backgroundColor: bgColor,
-      }}
-    />
-  );
+  return <View style={styles.cell(width, height, bgColor)} />;
 };
 
 // util 함수로 분리 예정
@@ -209,6 +189,18 @@ const styles = StyleSheet.create({
     borderColor: "#FCF8F6",
     backgroundColor: "#FCF8F6",
   },
+  cell: (width, height, bgColor) => {
+    return {
+      justifyContent: "center",
+      alignItems: "center",
+      width,
+      height,
+      borderRadius: 10,
+      borderWidth: 2,
+      borderColor: "#ffffff",
+      backgroundColor: bgColor,
+    };
+  },
   chracterBox: (width, height) => {
     return {
       position: "absolute",
@@ -229,6 +221,10 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 5,
     right: 15,
+  },
+  text: {
+    fontSize: 16,
+    color: "#FCF8F6",
   },
 });
 
