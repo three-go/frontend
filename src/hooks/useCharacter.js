@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const useCharacter = (gameMap, score, setScore) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isValid, setIsValid] = useState(false);
+  const [isValid, setIsValid] = useState(true);
 
   const moveLeft = () => {
     canMove("left") && setPosition({ ...position, x: position.x - 1 });
@@ -38,12 +38,12 @@ const useCharacter = (gameMap, score, setScore) => {
 
       case "up":
         isInBoundary = position.y - 1 > -1;
-        nextPosition = gameMap[position.y - 1][position.x];
+        nextPosition = gameMap[position.y - 1];
         break;
 
       case "down":
         isInBoundary = position.x - 1 > -1;
-        nextPosition = gameMap[position.y][position.x - 1];
+        nextPosition = gameMap[position.y];
         break;
     }
 
