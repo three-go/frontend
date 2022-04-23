@@ -99,6 +99,8 @@ const styles = StyleSheet.create({
     width: "80%",
     height: "50%",
     padding: "5%",
+    borderRadius: 20,
+    backgroundColor: "#FFFFFF",
   },
   notAuthorizedViewTitle: {
     fontSize: 20,
