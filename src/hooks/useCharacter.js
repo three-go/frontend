@@ -38,12 +38,14 @@ const useCharacter = (gameMap, score, setScore) => {
 
       case "up":
         isInBoundary = position.y - 1 > -1;
-        nextPosition = gameMap[position.y - 1];
+        nextPosition =
+          gameMap[position.y - 1] && gameMap[position.y - 1][position.x];
         break;
 
       case "down":
-        isInBoundary = position.x - 1 > -1;
-        nextPosition = gameMap[position.y];
+        isInBoundary = position.y + 1 < gameMap.length;
+        nextPosition =
+          gameMap[position.y + 1] && gameMap[position.y + 1][position.x];
         break;
     }
 

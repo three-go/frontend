@@ -111,7 +111,9 @@ const styles = StyleSheet.create({
     width: 300,
     height: 450,
     borderRadius: 10,
-    backgroundColor: "#ffffff",
+    borderWidth: 5,
+    borderColor: "#FCF8F6",
+    backgroundColor: "#FCF8F6",
   },
   chracterBox: (width, height) => {
     return {
