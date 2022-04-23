@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { useNavigation } from "@react-navigation/native";
 
-import { ButtonModal, SmallButton } from "../src/components";
+import { ButtonModal, SmallButton } from "..";
 
 const FailModalContainer = () => {
   const [modalVisible, setModalVisible] = useState(true);
