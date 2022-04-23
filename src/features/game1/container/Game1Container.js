@@ -6,6 +6,7 @@ const Game1Container = () => {
   const [isReady, setIsReady] = useState(false);
   const [isStart, setIsStart] = useState(false);
   const [isInput, setIsInput] = useState(false);
+  const [cameraPermissionStatus, setCameraPermissionStatus] = useState("");
 
   const [readyTimer, setReadyTimer] = useState({
     text: "게임시작",
@@ -59,6 +60,8 @@ const Game1Container = () => {
       setSelectedDirection={setSelectedDirection}
       setDirections={setDirections}
       directions={directions}
+      cameraPermissionStatus={cameraPermissionStatus}
+      setCameraPermissionStatus={setCameraPermissionStatus}
     />
   );
 };

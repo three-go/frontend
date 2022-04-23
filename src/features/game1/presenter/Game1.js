@@ -6,8 +6,8 @@ import FailModalContainer from "../../../../Temp/FailModalContainer";
 import NextStageModalContainer from "../../../../Temp/NextStageModalContainer";
 import ResetModalContainer from "../../../../Temp/ResetModalContainer";
 import { GameLayout, TextTimer } from "../../../components";
-import MapContainer from "../container/MapContainer";
 import { FaceRecognitionContainer } from "../container";
+import MapContainer from "../container/MapContainer";
 import FaceDirectionRecord from "./FaceDirectionRecord";
 
 const Game1 = ({
@@ -27,6 +27,8 @@ const Game1 = ({
   setSelectedDirection,
   setDirections,
   directions,
+  cameraPermissionStatus,
+  setCameraPermissionStatus,
 }) => {
   return (
     <GameLayout
@@ -41,6 +43,7 @@ const Game1 = ({
       setStartTimer={setStartTimer}
       inputTimer={inputTimer}
       setInputTimer={setInputTimer}
+      cameraPermissionStatus={cameraPermissionStatus}
     >
       <View style={styles.playArea}>
         <View style={styles.playZone}>
@@ -65,6 +68,8 @@ const Game1 = ({
             <FaceRecognitionContainer
               selectedDirection={selectedDirection}
               onSelectedDirection={setSelectedDirection}
+              cameraPermissionStatus={cameraPermissionStatus}
+              setCameraPermissionStatus={setCameraPermissionStatus}
             />
           )}
 
@@ -77,7 +82,9 @@ const Game1 = ({
       </View>
 
       <View style={styles.recordArea}>
-        {isReady && <FaceDirectionRecord directions={directions} />}
+        {isReady && (
+          <FaceDirectionRecord directions={directions} isInput={isInput} />
+        )}
       </View>
     </GameLayout>
   );
