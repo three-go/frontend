@@ -1,24 +1,9 @@
 import React, { useRef, useEffect } from "react";
 
-import {
-  FlatList,
-  View,
-  Text,
-  StyleSheet,
-  Button,
-  Animated,
-} from "react-native";
+import { FlatList, View, Text, StyleSheet, Animated } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-const Map = ({
-  gameMap,
-  characterInfo,
-  arrInfo,
-  boxStyle,
-  directions,
-  onMove,
-  onAnimationEnd,
-}) => {
+const Map = ({ gameMap, characterInfo, arrInfo, boxStyle, directions }) => {
   const animation = useRef(
     new Animated.ValueXY({
       x: boxStyle.boxWidth * characterInfo.position.x,
@@ -32,44 +17,39 @@ const Map = ({
         x: boxStyle.boxWidth * characterInfo.position.x,
         y: boxStyle.boxHeigth * characterInfo.position.y,
       },
-      duration: 1000,
+      duration: 500,
       useNativeDriver: true,
-    }).start(() => {
-      if (
-        boxStyle.boxWidth * characterInfo.position.x === 0 &&
-        boxStyle.boxHeigth * characterInfo.position.y === 0
-      ) {
-        return;
-      }
-
-      const copy = directions.slice();
-      copy.shift();
-      onAnimationEnd(copy);
-    });
+    }).start();
   }, [characterInfo.position.x, characterInfo.position.y]);
 
   return (
     <View style={styles.container}>
       {/* 게임 맵 view */}
-      {gameMap.map((line, rowIndex) => (
-        <FlatList
-          key={rowIndex}
-          data={line}
-          renderItem={({ item, index }) => {
-            const bgColor = getBackgroundColor(
-              rowIndex,
-              index,
-              arrInfo.rowCount - 1,
-              arrInfo.columnCount - 1,
-              Boolean(item)
-            );
+      {gameMap &&
+        gameMap.map((line, rowIndex) => (
+          <FlatList
+            key={rowIndex}
+            data={line}
+            renderItem={({ item, index }) => {
+              const bgColor = getBackgroundColor(
+                rowIndex,
+                index,
+                arrInfo.rowCount - 1,
+                arrInfo.columnCount - 1,
+                Boolean(item)
+              );
 
-            return createCell(boxStyle.boxWidth, boxStyle.boxHeigth, bgColor);
-          }}
-          keyExtractor={(_, index) => index}
-          numColumns={arrInfo.columnCount}
-        />
-      ))}
+              return createCell(
+                boxStyle.boxWidth,
+                boxStyle.boxHeigth,
+                bgColor,
+                Boolean(item)
+              );
+            }}
+            keyExtractor={(_, index) => index}
+            numColumns={arrInfo.columnCount}
+          />
+        ))}
 
       {/* 캐릭터 이동 view */}
       <Animated.View
@@ -87,21 +67,16 @@ const Map = ({
           },
         ]}
       >
-        <Icon name="heart" size={50} color="#f45a5a" style={{ zIndex: 1 }} />
+        <Icon name="heart" size={50} color="#f45a5a" style={{ zIndex: 2 }} />
       </Animated.View>
 
       {/* start marker view */}
       <View style={styles.startText}>
-        <Text style={{ color: "#a3a1dd" }}>start</Text>
+        <Text style={{ fontSize: 16, color: "#FCF8F6" }}>Start</Text>
       </View>
       {/* end marker view */}
       <View style={styles.endText}>
-        <Text style={{ color: "#a3a1dd" }}>end</Text>
-      </View>
-
-      {/*움직임 테스트용 컴포넌트*/}
-      <View style={styles.chracterBox}>
-        <Button title="test" onPress={onMove} />
+        <Text style={{ fontSize: 16, color: "#FCF8F6" }}>End</Text>
       </View>
     </View>
   );
@@ -116,16 +91,35 @@ const getBackgroundColor = (
   canPass
 ) => {
   if (isStartOrEndCell(rowIndex, cellIndex, lastRowIndex, lastCellIndex)) {
-    bgColor = "#525281";
+    bgColor = "#21D0B2";
   } else {
-    bgColor = canPass ? "#f9c2ff" : "#a3a1dd";
+    bgColor = canPass ? "#5fceec" : "#2F455C";
   }
 
   return bgColor;
 };
 
 // UI 그리기(스타일 지정) 헬퍼 함수
-const createCell = (width, height, bgColor) => {
+const createCell = (width, height, bgColor, canPass) => {
+  if (!canPass) {
+    return (
+      <View
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          width,
+          height,
+          borderRadius: 10,
+          borderWidth: 2,
+          borderColor: "#ffffff",
+          backgroundColor: bgColor,
+        }}
+      >
+        <Icon name="close" size={width} color="#5c6977" />
+      </View>
+    );
+  }
+
   return (
     <View
       style={{
@@ -169,21 +163,18 @@ const styles = StyleSheet.create({
       height,
       justifyContent: "center",
       alignItems: "center",
+      borderRadius: 10,
       zIndex: 0,
     };
   },
-  test: {
-    position: "absolute",
-    top: -100,
-  },
   startText: {
     position: "absolute",
-    top: -20,
+    top: 5,
     left: 10,
   },
   endText: {
     position: "absolute",
-    bottom: -20,
+    bottom: 5,
     right: 15,
   },
 });
