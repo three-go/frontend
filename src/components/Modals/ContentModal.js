@@ -1,16 +1,29 @@
 import React from "react";
 
-import { Modal, StyleSheet, Text, View, ScrollView } from "react-native";
+import { Modal, StyleSheet, Text, View } from "react-native";
 
-const ContentModal = ({ title, content, isVisible, children }) => {
+import Carousel from "../../../Temp/Carousel";
+
+const ContentModal = ({
+  isVisible,
+  title,
+  content,
+  handleRenderScoreItem,
+  size,
+  children,
+}) => {
   return (
     <Modal animationType="fade" transparent={true} visible={isVisible}>
       <View style={styles.container}>
         <View style={styles.modalContainer}>
           <Text style={styles.title}>{title}</Text>
-          <ScrollView style={styles.contentContainer}>
-            <Text>{content}</Text>
-          </ScrollView>
+          <View style={styles.contentContainer}>
+            <Carousel
+              content={content}
+              renderItem={handleRenderScoreItem}
+              size={size}
+            />
+          </View>
           <View style={styles.buttonContainer}>{children}</View>
         </View>
       </View>
@@ -46,12 +59,15 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 15,
+    color: "#FCF8F6",
     textAlign: "center",
     fontSize: 25,
     fontWeight: "bold",
   },
   contentContainer: {
     flex: 1,
+    width: 300,
+    backgroundColor: "#96A1A8",
   },
   buttonContainer: {
     flexDirection: "row",

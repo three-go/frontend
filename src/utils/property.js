@@ -5,13 +5,10 @@ const gameNames = {
 
 const gameColors = {
   game1: "#00BBD1",
-  game2: "##00E0EA",
+  game2: "#00E0EA",
 };
 
-const gameDescription = {
-  game1: "게임 설명 1111",
-  game2: "게임 설명 2222",
-};
+const gameDescription = [["게임 설명 1111"], ["게임 설명 2222"]];
 
 const gameKey = ["game1", "game2"];
 
