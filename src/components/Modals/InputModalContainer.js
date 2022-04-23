@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 
+import { useNavigation } from "@react-navigation/native";
 import { Keyboard } from "react-native";
+import uuid from "react-native-uuid";
 
 import { SmallButton } from "..";
 import { GameContext } from "../../context";
@@ -8,17 +10,36 @@ import { setItemToAsync, getItemFromAsync } from "../../utils";
 import InputModal from "./InputModal";
 
 const InputModalContainer = () => {
+  const navigation = useNavigation();
+
   const { currentGameKey } = useContext(GameContext);
 
   const [modalVisible, setModalVisible] = useState(true);
   const [userName, setUserName] = useState("");
 
-  const onRegister = () => {
-    const scoreData = getItemFromAsync(currentGameKey);
+  const onRegister = async () => {
+    const data = await getItemFromAsync(currentGameKey);
 
-    setItemToAsync(currentGameKey);
+    if (!data) {
+      await setItemToAsync(currentGameKey, [
+        {
+          id: uuid.v4(),
+          name: userName.trim() === "" ? "이름없음" : userName,
+          score: 100,
+        },
+      ]);
+    } else {
+      data.push({
+        id: uuid.v4(),
+        name: userName.trim() === "" ? "이름없음" : userName,
+        score: 100,
+      });
+      await setItemToAsync(currentGameKey, data);
+    }
+
     setModalVisible(false);
     Keyboard.dismiss();
+    navigation.navigate("Main");
   };
 
   return (

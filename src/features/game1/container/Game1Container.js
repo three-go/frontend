@@ -18,13 +18,13 @@ const Game1Container = () => {
 
   const [startTimer, setStartTimer] = useState({
     text: "맵이 가려지기",
-    count: 10,
+    count: 2,
     size: 15,
   });
 
   const [inputTimer, setInputTimer] = useState({
     text: "입력이 종료되기",
-    count: 10,
+    count: 2,
     size: 15,
   });
 

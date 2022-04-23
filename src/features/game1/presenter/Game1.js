@@ -2,12 +2,12 @@ import React from "react";
 
 import { Text, View, StyleSheet } from "react-native";
 
-import FailModalContainer from "../../../../Temp/FailModalContainer";
-import NextStageModalContainer from "../../../../Temp/NextStageModalContainer";
-import ResetModalContainer from "../../../../Temp/ResetModalContainer";
 import {
+  FailModalContainer,
   GameLayout,
   InputModalContainer,
+  NextStageModalContainer,
+  ResetModalContainer,
   TextTimer,
 } from "../../../components";
 import { FaceRecognitionContainer } from "../container";
