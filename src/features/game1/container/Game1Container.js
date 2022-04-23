@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
 import { Game1 } from "..";
+import { createMap } from "../../../utils";
 
 const Game1Container = () => {
   const [isReady, setIsReady] = useState(false);
   const [isStart, setIsStart] = useState(false);
   const [isInput, setIsInput] = useState(false);
+  const [isWin, setIsWin] = useState(false);
+  const [score, setScore] = useState(500);
 
   const [readyTimer, setReadyTimer] = useState({
     text: "게임시작",
@@ -28,10 +31,17 @@ const Game1Container = () => {
   const [selectedDirection, setSelectedDirection] = useState({});
   const [directions, setDirections] = useState([
     { direction: "down" },
-    { direction: "right" },
+    { direction: "down" },
     { direction: "down" },
     { direction: "right" },
+    { direction: "right" },
+    { direction: "right" },
   ]);
+
+  const [stage, setStage] = useState(3);
+  const gameMap = useMemo(() => {
+    return createMap(stage);
+  }, [stage]);
 
   useEffect(() => {
     if (!selectedDirection.direction) {
@@ -40,6 +50,20 @@ const Game1Container = () => {
 
     setDirections((prevState) => [...prevState, selectedDirection]);
   }, [selectedDirection]);
+
+  useEffect(() => {
+    if (isInput && isStart && isReady) {
+      if (directions.length < 1) {
+        return;
+      }
+
+      setTimeout(() => {
+        const copy = directions.slice();
+        copy.shift();
+        setDirections(copy);
+      }, 500);
+    }
+  }, [isInput, directions.length]);
 
   return (
     <Game1
@@ -57,8 +81,12 @@ const Game1Container = () => {
       setInputTimer={setInputTimer}
       selectedDirection={selectedDirection}
       setSelectedDirection={setSelectedDirection}
-      setDirections={setDirections}
       directions={directions}
+      setIsWin={setIsWin}
+      score={score}
+      setScore={setScore}
+      stage={stage}
+      gameMap={gameMap}
     />
   );
 };
