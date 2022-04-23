@@ -24,9 +24,14 @@ const MapContainer = ({
     rowCount: gameMap && gameMap.length,
   };
 
+  const borderWidth = {
+    horizontal: 10 + 2 * arrInfo.columnCount,
+    vertical: 10 + 2 * arrInfo.columnCount,
+  };
+
   const boxStyle = {
-    boxWidth: (FIXED_WIDTH - 10) / arrInfo.columnCount,
-    boxHeigth: (FIXED_HEIGHT - 10) / arrInfo.rowCount,
+    boxWidth: (FIXED_WIDTH - borderWidth.horizontal) / arrInfo.columnCount,
+    boxHeigth: (FIXED_HEIGHT - borderWidth.vertical) / arrInfo.rowCount,
   };
 
   useEffect(() => {
