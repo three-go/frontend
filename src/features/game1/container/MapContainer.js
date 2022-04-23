@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from "react";
 
-import { Map } from "../presenter";
 import useCharacter from "../../../hooks/useCharacter";
 import { createMap } from "../../../utils";
+import { Map } from "../presenter";
 
 const MapContainer = ({ stage, directions, onAnimationEnd }) => {
   const FIXED_WIDTH = 300;
