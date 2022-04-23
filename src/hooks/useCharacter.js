@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const useCharacter = (gameMap) => {
+const useCharacter = (gameMap, score, setScore) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isValid, setIsValid] = useState(false);
 
@@ -21,26 +21,56 @@ const useCharacter = (gameMap) => {
   };
 
   const canMove = (direction) => {
-    let canMove = false;
+    let isInBoundary = true;
+    let nextPosition = -Infinity;
+    let result = {};
 
     switch (direction) {
       case "left":
-        canMove = position.x - 1 > -1;
+        isInBoundary = position.x - 1 > -1;
+        nextPosition = gameMap[position.y][position.x - 1];
         break;
+
       case "right":
-        canMove = position.x + 1 < gameMap[0].length;
+        isInBoundary = position.x + 1 < gameMap[0].length;
+        nextPosition = gameMap[position.y][position.x + 1];
         break;
+
       case "up":
-        canMove = position.y - 1 > -1;
+        isInBoundary = position.y - 1 > -1;
+        nextPosition = gameMap[position.y - 1][position.x];
         break;
+
       case "down":
-        canMove = position.y + 1 < gameMap.length;
+        isInBoundary = position.x - 1 > -1;
+        nextPosition = gameMap[position.y][position.x - 1];
         break;
     }
 
-    canMove ? setIsValid(true) : setIsValid(false);
+    result = checkMove(isInBoundary, nextPosition);
 
-    return canMove;
+    if (!result.canMove) {
+      setScore(score - result.minusScore);
+      setIsValid(false);
+    } else {
+      setIsValid(true);
+    }
+
+    return result.canMove;
+  };
+
+  const checkMove = (isInBoundary, nextPosition) => {
+    if (isInBoundary && nextPosition > 0) {
+      return { canMove: true, minusScore: 0 };
+    }
+
+    if (!isInBoundary) {
+      return { canMove: false, minusScore: 20 };
+    }
+
+    if (!nextPosition) {
+      return { canMove: false, minusScore: 10 };
+    }
   };
 
   return {
