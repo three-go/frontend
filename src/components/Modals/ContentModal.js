@@ -2,7 +2,7 @@ import React from "react";
 
 import { Modal, StyleSheet, Text, View } from "react-native";
 
-import Carousel from "../../../Temp/Carousel";
+import Carousel from "../Layouts/Carousel";
 
 const ContentModal = ({
   isVisible,

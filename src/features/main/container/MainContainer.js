@@ -5,7 +5,6 @@ import RNExitApp from "react-native-exit-app";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import SystemNavigationBar from "react-native-system-navigation-bar";
 
-import Page from "../../../../Temp/Page";
 import { DefaultButton, SmallButton, ContentModal } from "../../../components";
 import { GameContext } from "../../../context";
 import {
@@ -15,6 +14,7 @@ import {
   descendOrderArray,
 } from "../../../utils";
 import Main from "../presenter/Main";
+import Page from "../presenter/Page";
 
 const size = {
   SCREEN_WIDTH: 300,
