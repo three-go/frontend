@@ -17,6 +17,7 @@ const GameLayout = ({
   setStartTimer,
   inputTimer,
   setInputTimer,
+  cameraPermissionStatus,
   score,
 }) => {
   const navigation = useNavigation();
@@ -39,6 +40,7 @@ const GameLayout = ({
           setStartTimer={setStartTimer}
           inputTimer={inputTimer}
           setInputTimer={setInputTimer}
+          cameraPermissionStatus={cameraPermissionStatus}
           score={score}
         />
       </View>

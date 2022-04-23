@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Platform } from "react-native";
 
@@ -7,9 +7,23 @@ import FaceRecognition from "../presenter/FaceRecognition";
 const FaceRecognitionContainer = ({
   selectedDirection,
   onSelectedDirection,
+  cameraPermissionStatus,
+  setCameraPermissionStatus,
 }) => {
   const [isFaceCenter, setIsFaceCenter] = useState(false);
   const [isFaceFront, setIsFaceFront] = useState(false);
+  const [isDirectionPreviewTextShow, setIsDirectionPreviewTextShow] =
+    useState(true);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setIsDirectionPreviewTextShow(false);
+    }, 800);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [selectedDirection]);
 
   const handlerFacePosition = ({ faces }) => {
     if (!faces[0]) {
@@ -19,7 +33,7 @@ const FaceRecognitionContainer = ({
     if (
       !isFaceCenter &&
       faces[0].leftEyePosition.y > 60 &&
-      faces[0].leftEyePosition.y < 300
+      faces[0].leftEyePosition.y < 390
     ) {
       setIsFaceCenter(true);
     }
@@ -31,16 +45,19 @@ const FaceRecognitionContainer = ({
     if (isFaceCenter && isFaceFront) {
       if (faces[0].leftEyePosition.y < 40) {
         setIsFaceCenter(false);
+        setIsDirectionPreviewTextShow(true);
         onSelectedDirection({ direction: "up" });
       }
 
-      if (faces[0].leftEyePosition.y > 400) {
+      if (faces[0].leftEyePosition.y > 390) {
         setIsFaceCenter(false);
+        setIsDirectionPreviewTextShow(true);
         onSelectedDirection({ direction: "down" });
       }
 
       if (faces[0].yawAngle < -36) {
         setIsFaceFront(false);
+        setIsDirectionPreviewTextShow(true);
         Platform.OS === "ios"
           ? onSelectedDirection({ direction: "left" })
           : onSelectedDirection({ direction: "right" });
@@ -48,6 +65,7 @@ const FaceRecognitionContainer = ({
 
       if (faces[0].yawAngle > 36) {
         setIsFaceFront(false);
+        setIsDirectionPreviewTextShow(true);
         Platform.OS === "ios"
           ? onSelectedDirection({ direction: "right" })
           : onSelectedDirection({ direction: "left" });
@@ -59,6 +77,9 @@ const FaceRecognitionContainer = ({
     <FaceRecognition
       selectedDirection={selectedDirection}
       handlerFacePosition={handlerFacePosition}
+      cameraPermissionStatus={cameraPermissionStatus}
+      setCameraPermissionStatus={setCameraPermissionStatus}
+      isDirectionPreviewTextShow={isDirectionPreviewTextShow}
     />
   );
 };

@@ -2,13 +2,13 @@ import React from "react";
 
 import { Text, View, StyleSheet } from "react-native";
 
-import MapContainer from "../container/MapContainer";
 import {
   GameLayout,
   InputModalContainer,
   TextTimer,
 } from "../../../components";
 import { FaceRecognitionContainer } from "../container";
+import MapContainer from "../container/MapContainer";
 import FaceDirectionRecord from "./FaceDirectionRecord";
 
 const Game1 = ({
@@ -27,6 +27,8 @@ const Game1 = ({
   selectedDirection,
   setSelectedDirection,
   directions,
+  cameraPermissionStatus,
+  setCameraPermissionStatus,
   setIsWin,
   stage,
   gameMap,
@@ -47,6 +49,7 @@ const Game1 = ({
       setStartTimer={setStartTimer}
       inputTimer={inputTimer}
       setInputTimer={setInputTimer}
+      cameraPermissionStatus={cameraPermissionStatus}
       score={score}
     >
       {currentGameKey === "game1" && (
@@ -76,6 +79,8 @@ const Game1 = ({
                 <FaceRecognitionContainer
                   selectedDirection={selectedDirection}
                   onSelectedDirection={setSelectedDirection}
+                  cameraPermissionStatus={cameraPermissionStatus}
+                  setCameraPermissionStatus={setCameraPermissionStatus}
                 />
               )}
 
@@ -94,9 +99,10 @@ const Game1 = ({
               )}
             </View>
           </View>
-
           <View style={styles.recordArea}>
-            {isReady && <FaceDirectionRecord directions={directions} />}
+            {isReady && (
+              <FaceDirectionRecord directions={directions} isInput={isInput} />
+            )}
           </View>
         </View>
       )}

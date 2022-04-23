@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext, useMemo } from "react";
 
+import { Game1 } from "..";
 import { GameContext } from "../../../context";
 import { createMap } from "../../../utils";
-import { Game1 } from "..";
 
 const Game1Container = () => {
   const { currentGameKey } = useContext(GameContext);
@@ -10,6 +10,7 @@ const Game1Container = () => {
   const [isReady, setIsReady] = useState(false);
   const [isStart, setIsStart] = useState(false);
   const [isInput, setIsInput] = useState(false);
+  const [cameraPermissionStatus, setCameraPermissionStatus] = useState("");
   const [isWin, setIsWin] = useState(false);
   const [score, setScore] = useState(500);
 
@@ -91,6 +92,8 @@ const Game1Container = () => {
       selectedDirection={selectedDirection}
       setSelectedDirection={setSelectedDirection}
       directions={directions}
+      cameraPermissionStatus={cameraPermissionStatus}
+      setCameraPermissionStatus={setCameraPermissionStatus}
       setIsWin={setIsWin}
       score={score}
       setScore={setScore}
