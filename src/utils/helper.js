@@ -14,8 +14,8 @@ export const convertContentToArray = (object, keyList) => {
   return result;
 };
 
-export const descendOrderScoreArray = (array) => {
+export const descendOrderArray = (array, key) => {
   return array.sort((a, b) => {
-    return b.score - a.score;
+    return b[key] - a[key];
   });
 };

@@ -12,7 +12,7 @@ import {
   game,
   getItemFromAsync,
   convertContentToArray,
-  descendOrderScoreArray,
+  descendOrderArray,
 } from "../../../utils";
 import Main from "../presenter/Main";
 
@@ -86,7 +86,7 @@ const MainContainer = ({ navigation }) => {
   const handleRenderScoreItem = ({ item }) => {
     return (
       <Page
-        item={descendOrderScoreArray(item)}
+        item={descendOrderArray(item, "score")}
         style={styles.pageWrapper(size)}
       />
     );
