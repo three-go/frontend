@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
-import { Map } from "../presenter";
 import DefaultMap from "../presenter/DefaultMap";
 import useCharacter from "../../../hooks/useCharacter";
+import { Map } from "../presenter";
 
 const MapContainer = ({
   gameMap,

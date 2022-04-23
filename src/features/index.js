@@ -6,7 +6,7 @@ import {
   FaceRecognition,
   FaceDirectionRecord,
 } from "./game1";
-import { MainContainer, Main } from "./main";
+import { MainContainer, Main, Page } from "./main";
 
 export {
   MainContainer,
@@ -17,4 +17,5 @@ export {
   FaceRecognitionContainer,
   FaceRecognition,
   FaceDirectionRecord,
+  Page,
 };
