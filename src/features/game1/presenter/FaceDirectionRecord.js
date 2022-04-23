@@ -1,10 +1,16 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 import { View, ScrollView, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
 
-const FaceDirectionRecord = ({ directions }) => {
+const FaceDirectionRecord = ({ directions, isInput }) => {
   const scrollView = useRef(null);
+
+  useEffect(() => {
+    if (isInput) {
+      scrollView.current.scrollTo({ x: 0, y: 0, animated: true });
+    }
+  }, [isInput]);
 
   return (
     <View style={styles.container}>
@@ -14,12 +20,16 @@ const FaceDirectionRecord = ({ directions }) => {
         contentContainerStyle={styles.contentContainer}
         horizontal={true}
         onContentSizeChange={() => {
-          scrollView.current.scrollToEnd({ animated: false });
+          if (!isInput) {
+            scrollView.current.scrollToEnd({ animated: true });
+          }
         }}
       >
         {directions.map((item, index) => {
-          const isLastItem = !directions[index + 1];
-          const iconColor = isLastItem ? "#FF0000" : "#FFFFFF";
+          const isHilightedItem = isInput
+            ? index === 0
+            : !directions[index + 1];
+          const iconColor = isHilightedItem ? "#00E0EA" : "#FFFFFF";
 
           return (
             <View key={index} style={styles.itemContainer}>
