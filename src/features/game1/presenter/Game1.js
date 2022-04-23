@@ -2,7 +2,6 @@ import React from "react";
 
 import { Text, View, StyleSheet } from "react-native";
 
-import MapContainer from "../container/MapContainer";
 import {
   GameLayout,
   InputModalContainer,
@@ -100,20 +99,13 @@ const Game1 = ({
               )}
             </View>
           </View>
-
-<<<<<<< HEAD
-      <View style={styles.recordArea}>
-        {isReady && (
-          <FaceDirectionRecord directions={directions} isInput={isInput} />
-        )}
-      </View>
-=======
           <View style={styles.recordArea}>
-            {isReady && <FaceDirectionRecord directions={directions} />}
+            {isReady && (
+              <FaceDirectionRecord directions={directions} isInput={isInput} />
+            )}
           </View>
         </View>
       )}
->>>>>>> e703f393b63b94479c4f0ed50a6422fdc47cc14c
     </GameLayout>
   );
 };
