@@ -17,7 +17,7 @@ const MapContainer = ({
 }) => {
   const FIXED_WIDTH = 300;
   const FIXED_HEIGHT = 450;
-  const chracterInfo = useCharacter(gameMap, score, setScore);
+  const characterInfo = useCharacter(gameMap, score, setScore);
 
   const arrInfo = {
     columnCount: gameMap && gameMap[0].length,
@@ -25,13 +25,13 @@ const MapContainer = ({
   };
 
   const boxStyle = {
-    boxWidth: FIXED_WIDTH / arrInfo.columnCount,
-    boxHeigth: FIXED_HEIGHT / arrInfo.rowCount,
+    boxWidth: (FIXED_WIDTH - 10) / arrInfo.columnCount,
+    boxHeigth: (FIXED_HEIGHT - 10) / arrInfo.rowCount,
   };
 
   useEffect(() => {
     if (isInput && isStart && isReady && directions.length === 0) {
-      const { x, y } = chracterInfo.position;
+      const { x, y } = characterInfo.position;
       if (x === arrInfo.columnCount - 1 && y === arrInfo.rowCount - 1) {
         setIsWin(true);
       } else {
@@ -45,16 +45,16 @@ const MapContainer = ({
 
     switch (isInput && directions[0].direction) {
       case "left":
-        chracterInfo.moveLeft();
+        characterInfo.moveLeft();
         break;
       case "right":
-        chracterInfo.moveRight();
+        characterInfo.moveRight();
         break;
       case "up":
-        chracterInfo.moveUp();
+        characterInfo.moveUp();
         break;
       case "down":
-        chracterInfo.moveDown();
+        characterInfo.moveDown();
         break;
       default:
         "left";
@@ -66,7 +66,7 @@ const MapContainer = ({
   ) : (
     <Map
       gameMap={gameMap}
-      characterInfo={chracterInfo}
+      characterInfo={characterInfo}
       arrInfo={arrInfo}
       boxStyle={boxStyle}
       directions={directions}
