@@ -3,11 +3,8 @@ import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 
 import {
-  FailModalContainer,
   GameLayout,
   InputModalContainer,
-  NextStageModalContainer,
-  ResetModalContainer,
   TextTimer,
 } from "../../../components";
 import { FaceRecognitionContainer } from "../container";
@@ -65,7 +62,6 @@ const Game1 = ({
                   directions={directions}
                   onAnimationEnd={setDirections}
                 />
-                // <NextStageModalContainer />
               )}
 
               {!isInput && isStart && isReady && (
@@ -80,7 +76,7 @@ const Game1 = ({
                   <Text style={{ color: "#212529", fontSize: 30 }}>
                     게임 진행 중 !!!
                   </Text>
-                  <InputModalContainer />
+                  {/* <InputModalContainer /> */}
                 </View>
               )}
             </View>

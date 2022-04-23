@@ -1,5 +1,9 @@
 import { getItemFromAsync, setItemToAsync } from "../utils/asyncStorageHelper";
-import { convertContentToArray, descendOrderArray } from "../utils/helper";
+import {
+  convertContentToArray,
+  descendOrderArray,
+  startVibrate,
+} from "../utils/helper";
 import { createMap } from "../utils/map";
 import { game } from "../utils/property";
 
@@ -10,4 +14,5 @@ export {
   setItemToAsync,
   convertContentToArray,
   descendOrderArray,
+  startVibrate,
 };
