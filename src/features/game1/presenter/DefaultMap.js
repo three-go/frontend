@@ -49,6 +49,8 @@ const getBackgroundColor = (
   lastCellIndex,
   canPass
 ) => {
+  let bgColor;
+
   if (isStartOrEndCell(rowIndex, cellIndex, lastRowIndex, lastCellIndex)) {
     bgColor = "#21D0B2";
   } else {

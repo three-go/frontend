@@ -2,9 +2,6 @@ import React from "react";
 
 import { Text, View, StyleSheet } from "react-native";
 
-import FailModalContainer from "../../../../Temp/FailModalContainer";
-import NextStageModalContainer from "../../../../Temp/NextStageModalContainer";
-import ResetModalContainer from "../../../../Temp/ResetModalContainer";
 import MapContainer from "../container/MapContainer";
 import {
   GameLayout,
@@ -12,7 +9,6 @@ import {
   TextTimer,
 } from "../../../components";
 import { FaceRecognitionContainer } from "../container";
-import MapContainer from "../container/MapContainer";
 import FaceDirectionRecord from "./FaceDirectionRecord";
 
 const Game1 = ({
