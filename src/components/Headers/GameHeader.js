@@ -16,6 +16,7 @@ const GameHeader = ({
   setStartTimer,
   inputTimer,
   setInputTimer,
+  cameraPermissionStatus,
   score,
 }) => {
   return (
@@ -34,13 +35,16 @@ const GameHeader = ({
             />
           )}
 
-          {!isInput && isStart && isReady && (
-            <TextTimer
-              setIsFinish={setIsInput}
-              timerInfo={inputTimer}
-              setTimerInfo={setInputTimer}
-            />
-          )}
+          {!isInput &&
+            cameraPermissionStatus === "READY" &&
+            isStart &&
+            isReady && (
+              <TextTimer
+                setIsFinish={setIsInput}
+                timerInfo={inputTimer}
+                setTimerInfo={setInputTimer}
+              />
+            )}
 
           {isInput && isStart && isReady && (
             <Text style={styles.score}>
