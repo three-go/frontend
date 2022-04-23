@@ -1,29 +1,103 @@
 import React, { useRef, useEffect } from "react";
 
-import { FlatList, View, Text, StyleSheet, Animated } from "react-native";
+import { FlatList, View, Text, StyleSheet } from "react-native";
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  withSpring,
+  withRepeat,
+  withSequence,
+} from "react-native-reanimated";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-const Map = ({ gameMap, characterInfo, arrInfo, boxStyle, directions }) => {
-  const animation = useRef(
-    new Animated.ValueXY({
-      x: boxStyle.boxWidth * characterInfo.position.x,
-      y: boxStyle.boxHeigth * characterInfo.position.y,
-    })
-  ).current;
+const Map2 = ({ gameMap, characterInfo, arrInfo, boxStyle, directions }) => {
+  const traslateX = useSharedValue(
+    boxStyle.boxWidth * characterInfo.position.x
+  );
+  const translateY = useSharedValue(
+    boxStyle.boxHeigth * characterInfo.position.y
+  );
+  const rotation = useSharedValue(0);
+  const borderColor = useSharedValue("#FCF8F6");
+
+  const transformStyles = useAnimatedStyle(() => {
+    return {
+      transform: [
+        { translateX: traslateX.value },
+        { translateY: translateY.value },
+      ],
+    };
+  });
+
+  const rotateStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ rotateZ: `${rotation.value}deg` }],
+    };
+  });
+
+  const backgroundInterpolate = useAnimatedStyle(
+    () => ({
+      borderColor: borderColor.value,
+    }),
+    []
+  );
 
   useEffect(() => {
-    Animated.timing(animation, {
-      toValue: {
-        x: boxStyle.boxWidth * characterInfo.position.x,
-        y: boxStyle.boxHeigth * characterInfo.position.y,
-      },
-      duration: 500,
-      useNativeDriver: true,
-    }).start();
-  }, [characterInfo.position.x, characterInfo.position.y]);
+    const wrongColor = "#f45a5a";
+    const defaultColor = "#FCF8F6";
+
+    if (!characterInfo.isValid) {
+      borderColor.value = withSequence(
+        withTiming(wrongColor, { duration: 500 }),
+        withTiming(defaultColor, { duration: 500 })
+      );
+
+      rotation.value = withRepeat(
+        withTiming(3, {
+          duration: 250,
+        }),
+        4,
+        true
+      );
+    } else {
+      borderColor.value = defaultColor;
+      rotation.value = 0;
+    }
+
+    traslateX.value = withSpring(boxStyle.boxWidth * characterInfo.position.x, {
+      duration: 1500,
+    });
+    translateY.value = withSpring(
+      boxStyle.boxHeigth * characterInfo.position.y,
+      { duration: 1500 }
+    );
+  }, [characterInfo.position.x, characterInfo.position.y, directions.length]);
+
+  // useEffect(() => {
+  //   const wrongColor = "#f45a5a";
+  //   const defaultColor = "#FCF8F6";
+
+  //   if (!characterInfo.isValid) {
+  //     borderColor.value = withSequence(
+  //       withTiming(wrongColor, { duration: 500 }),
+  //       withTiming(defaultColor, { duration: 500 })
+  //     );
+
+  //     rotation.value = withRepeat(
+  //       withTiming(3, {
+  //         duration: 250,
+  //       }),
+  //       4,
+  //       true
+  //     );
+  //   }
+  // }, [directions.length]);
 
   return (
-    <View style={styles.container}>
+    <Animated.View
+      style={[styles.container, rotateStyle, backgroundInterpolate]}
+    >
       {/* 게임 맵 view */}
       {gameMap &&
         gameMap.map((line, rowIndex) => (
@@ -55,16 +129,7 @@ const Map = ({ gameMap, characterInfo, arrInfo, boxStyle, directions }) => {
       <Animated.View
         style={[
           styles.chracterBox(boxStyle.boxWidth, boxStyle.boxHeigth),
-          {
-            transform: [
-              {
-                translateX: animation.x,
-              },
-              {
-                translateY: animation.y,
-              },
-            ],
-          },
+          transformStyles,
         ]}
       >
         <Icon name="heart" size={50} color="#f45a5a" style={{ zIndex: 2 }} />
@@ -78,7 +143,7 @@ const Map = ({ gameMap, characterInfo, arrInfo, boxStyle, directions }) => {
       <View style={styles.endText}>
         <Text style={{ fontSize: 16, color: "#FCF8F6" }}>End</Text>
       </View>
-    </View>
+    </Animated.View>
   );
 };
 
@@ -154,7 +219,9 @@ const styles = StyleSheet.create({
     width: 300,
     height: 450,
     borderRadius: 10,
-    backgroundColor: "#ffffff",
+    borderWidth: 5,
+    borderColor: "#FCF8F6",
+    backgroundColor: "#FCF8F6",
   },
   chracterBox: (width, height) => {
     return {
@@ -179,4 +246,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default React.memo(Map);
+export default React.memo(Map2);
