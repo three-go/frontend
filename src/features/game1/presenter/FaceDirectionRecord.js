@@ -52,8 +52,11 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flexDirection: "row",
-    width: 300,
+    width: 310,
     height: "100%",
+    borderRadius: 10,
+    borderColor: "#FCF8F6",
+    borderWidth: 5,
     backgroundColor: "#96A1A8",
   },
   contentContainer: {
