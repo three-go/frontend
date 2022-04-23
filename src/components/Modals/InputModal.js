@@ -27,9 +27,7 @@ const InputModal = ({
         <View style={styles.modalView}>
           <Text style={styles.modalText}>점수: {score}</Text>
 
-          <Text style={styles.modalText}>
-            스코어에 등록할 이름을 입력해 주세요 .
-          </Text>
+          <Text style={styles.modalText}>등록할 이름을 입력해 주세요 .</Text>
 
           <TextInput
             style={styles.inputStyle}
@@ -74,9 +72,16 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
   },
+  modalText: {
+    color: "#FCF8F6",
+    textAlign: "center",
+    fontSize: 18,
+  },
   inputStyle: {
     borderBottomWidth: 1,
-    borderColor: "#00E0EA",
+    borderColor: "#FCF8F6",
+    fontSize: 18,
+    textAlign: "center",
   },
   button: {
     padding: 10,
@@ -87,9 +92,6 @@ const styles = StyleSheet.create({
   textStyle: {
     color: "#FCF8F6",
     fontWeight: "bold",
-    textAlign: "center",
-  },
-  modalText: {
     textAlign: "center",
   },
 });

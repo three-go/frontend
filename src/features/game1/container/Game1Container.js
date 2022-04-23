@@ -1,9 +1,12 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useContext, useMemo } from "react";
 
-import { Game1 } from "..";
+import { GameContext } from "../../../context";
 import { createMap } from "../../../utils";
+import { Game1 } from "..";
 
 const Game1Container = () => {
+  const { currentGameKey } = useContext(GameContext);
+
   const [isReady, setIsReady] = useState(false);
   const [isStart, setIsStart] = useState(false);
   const [isInput, setIsInput] = useState(false);
@@ -87,6 +90,8 @@ const Game1Container = () => {
       setScore={setScore}
       stage={stage}
       gameMap={gameMap}
+      setDirections={setDirections}
+      currentGameKey={currentGameKey}
     />
   );
 };

@@ -3,7 +3,7 @@ import ChanceIcons from "./ChanceIcons";
 import { GameHeader } from "./Headers";
 import { GameLayout } from "./Layouts";
 import Logo from "./Logo";
-import { InputModalContainer, ContentModal } from "./Modals";
+import { InputModalContainer, ContentModal, ButtonModal } from "./Modals";
 import { TextTimer } from "./Timers";
 
 export {
@@ -13,6 +13,7 @@ export {
   Logo,
   InputModalContainer,
   ContentModal,
+  ButtonModal,
   GameHeader,
   GameLayout,
   TextTimer,

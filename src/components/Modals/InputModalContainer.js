@@ -1,20 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { Keyboard } from "react-native";
 
 import { SmallButton } from "..";
+import { GameContext } from "../../context";
+import { setItemToAsync, getItemFromAsync } from "../../utils";
 import InputModal from "./InputModal";
 
 const InputModalContainer = () => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [name, setName] = useState("");
+  const { currentGameKey } = useContext(GameContext);
 
-  // 유저 스코어 로직 가져오는 로직 필요
+  const [modalVisible, setModalVisible] = useState(true);
+  const [userName, setUserName] = useState("");
 
-  const onRegister = (name) => {
-    // 유저 스코어 등록 로직 필요
+  const onRegister = () => {
+    const scoreData = getItemFromAsync(currentGameKey);
+
+    setItemToAsync(currentGameKey);
     setModalVisible(false);
-    setName("");
     Keyboard.dismiss();
   };
 
@@ -22,8 +25,8 @@ const InputModalContainer = () => {
     <InputModal
       score="200"
       modalVisible={modalVisible}
-      name={name}
-      setName={setName}
+      name={userName}
+      setName={setUserName}
       onRegister={onRegister}
     >
       <SmallButton content="등록" color="#00BBD1" onPress={onRegister} />
