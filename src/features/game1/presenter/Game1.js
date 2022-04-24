@@ -1,9 +1,10 @@
 import React from "react";
 
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 
 import {
   GameLayout,
+  NextStageModalContainer,
   InputModalContainer,
   TextTimer,
 } from "../../../components";
@@ -24,17 +25,21 @@ const Game1 = ({
   setStartTimer,
   inputTimer,
   setInputTimer,
+  stage,
+  score,
+  setScore,
+  isEnd,
+  setIsEnd,
+  isWin,
+  setIsWin,
   selectedDirection,
   setSelectedDirection,
   directions,
   cameraPermissionStatus,
   setCameraPermissionStatus,
-  setIsWin,
-  stage,
   gameMap,
-  score,
-  setScore,
   currentGameKey,
+  handleNextStage,
 }) => {
   return (
     <GameLayout
@@ -49,8 +54,8 @@ const Game1 = ({
       setStartTimer={setStartTimer}
       inputTimer={inputTimer}
       setInputTimer={setInputTimer}
-      cameraPermissionStatus={cameraPermissionStatus}
       score={score}
+      cameraPermissionStatus={cameraPermissionStatus}
     >
       {currentGameKey === "game1" && (
         <View style={styles.container}>
@@ -63,7 +68,6 @@ const Game1 = ({
                   setTimerInfo={setReadyTimer}
                 />
               )}
-
               {!isStart && isReady && (
                 <MapContainer
                   stage={stage}
@@ -74,7 +78,6 @@ const Game1 = ({
                   gameMap={gameMap}
                 />
               )}
-
               {!isInput && isStart && isReady && (
                 <FaceRecognitionContainer
                   selectedDirection={selectedDirection}
@@ -83,7 +86,6 @@ const Game1 = ({
                   setCameraPermissionStatus={setCameraPermissionStatus}
                 />
               )}
-
               {isInput && isStart && isReady && (
                 <MapContainer
                   stage={stage}
@@ -95,10 +97,16 @@ const Game1 = ({
                   gameMap={gameMap}
                   score={score}
                   setScore={setScore}
+                  setIsEnd={setIsEnd}
                 />
+              )}
+              {isEnd && <InputModalContainer score={score} />}
+              {isWin && (
+                <NextStageModalContainer onNextStage={handleNextStage} />
               )}
             </View>
           </View>
+
           <View style={styles.recordArea}>
             {isReady && (
               <FaceDirectionRecord directions={directions} isInput={isInput} />

@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 
-// import { useNavigation } from "@react-navigation/native";
-
 import { ButtonModal, SmallButton } from "..";
 
-const NextStageModalContainer = () => {
+const NextStageModalContainer = ({ onNextStage }) => {
   const [modalVisible, setModalVisible] = useState(true);
-  // const navigation = useNavigation();
 
   const handleNextStage = () => {
-    // 다음단계 함수();
-    console.log("다음단계로!!!");
     setModalVisible(false);
+    onNextStage();
   };
 
   return (

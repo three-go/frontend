@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
-import DefaultMap from "../presenter/DefaultMap";
 import useCharacter from "../../../hooks/useCharacter";
 import { Map } from "../presenter";
+import DefaultMap from "../presenter/DefaultMap";
 
 const MapContainer = ({
   gameMap,
@@ -14,6 +14,7 @@ const MapContainer = ({
   setIsWin,
   score,
   setScore,
+  setIsEnd,
 }) => {
   const FIXED_WIDTH = 300;
   const FIXED_HEIGHT = 450;
@@ -34,11 +35,20 @@ const MapContainer = ({
     boxHeigth: (FIXED_HEIGHT - borderWidth.vertical) / arrInfo.rowCount,
   };
 
+  const handleCheckStage = (n) => {
+    if (n < 3) {
+      setIsWin(true);
+    } else if (stage === 3) {
+      setIsEnd(true);
+    }
+  };
+
   useEffect(() => {
     if (isInput && isStart && isReady && directions.length === 0) {
       const { x, y } = characterInfo.position;
+
       if (x === arrInfo.columnCount - 1 && y === arrInfo.rowCount - 1) {
-        setIsWin(true);
+        handleCheckStage(stage);
       } else {
         setIsWin(false);
       }

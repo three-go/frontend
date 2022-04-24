@@ -53,10 +53,10 @@ const FaceRecognition = ({
           />
         </View>
       )}
-      {isDirectionPreviewTextShow && selectedDirection.direction && (
+      {isDirectionPreviewTextShow && selectedDirection?.direction && (
         <View style={styles.previewDirection}>
           <Text style={styles.directionText}>
-            {selectedDirection.direction?.toUpperCase()}
+            {selectedDirection?.direction.toUpperCase()}
           </Text>
         </View>
       )}

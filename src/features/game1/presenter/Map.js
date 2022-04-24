@@ -88,7 +88,7 @@ const Map = ({ gameMap, characterInfo, arrInfo, boxStyle, directions }) => {
       {gameMap &&
         gameMap.map((line, rowIndex) => (
           <FlatList
-            key={rowIndex}
+            key={rowIndex + Date.now()}
             data={line}
             renderItem={({ item, index }) => {
               const bgColor = getBackgroundColor(

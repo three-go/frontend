@@ -10,8 +10,8 @@ const Page = ({ item, style }) => {
           item.map((value, index) => {
             return (
               <View key={value.id} style={styles.wrapper(index)}>
-                <Text style={styles.text(index)}>{value.name}</Text>
-                <Text style={styles.text(index)}>{value.score}</Text>
+                <Text style={styles.text}>{value.name}</Text>
+                <Text style={styles.text}>{value.score}</Text>
               </View>
             );
           })
@@ -45,13 +45,12 @@ const styles = StyleSheet.create({
       backgroundColor: index % 2 === 0 ? "#96A1A8" : "#FCF8F6",
     };
   },
-  text: (index) => {
-    return {
-      width: "50%",
-      color: "#212529",
-      textAlign: "center",
-      fontSize: 15,
-    };
+  text: {
+    width: "50%",
+    color: "#212529",
+    textAlign: "center",
+    fontSize: 15,
+    fontWeight: "bold",
   },
   empty: {
     flexDirection: "row",
