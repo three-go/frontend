@@ -5,6 +5,7 @@ import { View, StyleSheet } from "react-native";
 import {
   GameLayout,
   NextStageModalContainer,
+  InputModalContainer,
   TextTimer,
 } from "../../../components";
 import { FaceRecognitionContainer } from "../container";
@@ -25,19 +26,20 @@ const Game1 = ({
   inputTimer,
   setInputTimer,
   stage,
-  setStage,
   score,
   setScore,
+  isEnd,
+  setIsEnd,
   isWin,
   setIsWin,
   selectedDirection,
   setSelectedDirection,
   directions,
-  setDirections,
   cameraPermissionStatus,
   setCameraPermissionStatus,
   gameMap,
   currentGameKey,
+  handleNextStage,
 }) => {
   return (
     <GameLayout
@@ -66,7 +68,6 @@ const Game1 = ({
                   setTimerInfo={setReadyTimer}
                 />
               )}
-
               {!isStart && isReady && (
                 <MapContainer
                   stage={stage}
@@ -77,7 +78,6 @@ const Game1 = ({
                   gameMap={gameMap}
                 />
               )}
-
               {!isInput && isStart && isReady && (
                 <FaceRecognitionContainer
                   selectedDirection={selectedDirection}
@@ -86,28 +86,23 @@ const Game1 = ({
                   setCameraPermissionStatus={setCameraPermissionStatus}
                 />
               )}
-
               {isInput && isStart && isReady && (
                 <MapContainer
                   stage={stage}
-                  setStage={setStage}
                   directions={directions}
                   isStart={isStart}
                   isReady={isReady}
                   isInput={isInput}
                   setIsWin={setIsWin}
                   gameMap={gameMap}
-                  setDirections={setDirections}
                   score={score}
                   setScore={setScore}
-                  setIsReady={setIsReady}
-                  setIsStart={setIsStart}
-                  setIsInput={setIsInput}
-                  setReadyTimer={setReadyTimer}
-                  setStartTimer={setStartTimer}
-                  setInputTimer={setInputTimer}
+                  setIsEnd={setIsEnd}
                 />
-                // {isWin && <NextStageModalContainer />}
+              )}
+              {isEnd && <InputModalContainer score={score} />}
+              {isWin && (
+                <NextStageModalContainer onNextStage={handleNextStage} />
               )}
             </View>
           </View>

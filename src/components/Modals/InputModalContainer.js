@@ -9,7 +9,7 @@ import { GameContext } from "../../context";
 import { setItemToAsync, getItemFromAsync } from "../../utils";
 import InputModal from "./InputModal";
 
-const InputModalContainer = () => {
+const InputModalContainer = ({ score }) => {
   const navigation = useNavigation();
 
   const { currentGameKey } = useContext(GameContext);
@@ -25,26 +25,26 @@ const InputModalContainer = () => {
         {
           id: uuid.v4(),
           name: userName.trim() === "" ? "이름없음" : userName,
-          score: 100,
+          score,
         },
       ]);
     } else {
       data.push({
         id: uuid.v4(),
         name: userName.trim() === "" ? "이름없음" : userName,
-        score: 100,
+        score,
       });
       await setItemToAsync(currentGameKey, data);
     }
 
     setModalVisible(false);
     Keyboard.dismiss();
-    navigation.navigate("Main");
+    navigation.navigate("Main", { visible: true });
   };
 
   return (
     <InputModal
-      score="200"
+      score={score}
       modalVisible={modalVisible}
       name={userName}
       setName={setUserName}

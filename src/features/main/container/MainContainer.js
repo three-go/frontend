@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 
+import { useRoute } from "@react-navigation/native";
 import { Platform, StyleSheet } from "react-native";
 import RNExitApp from "react-native-exit-app";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -24,6 +25,7 @@ const size = {
 };
 
 const MainContainer = ({ navigation }) => {
+  const route = useRoute();
   const { currentGameKey, setCurrentGameKey } = useContext(GameContext);
 
   const [scoreModalVisible, setScoreModalVisible] = useState(false);
@@ -40,6 +42,13 @@ const MainContainer = ({ navigation }) => {
 
     if (Platform.OS === "android") {
       hideSoftKey();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (route.params?.visible) {
+      setScoreModalVisible(true);
+      route.params.visible = false;
     }
   });
 

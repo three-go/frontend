@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useMemo } from "react";
 
 import { Game1 } from "..";
 import { GameContext } from "../../../context";
-// import { createMap } from "../../../utils";
+import { createMap } from "../../../utils";
 
 const Game1Container = () => {
   const { currentGameKey } = useContext(GameContext);
@@ -10,9 +10,10 @@ const Game1Container = () => {
   const [isReady, setIsReady] = useState(false);
   const [isStart, setIsStart] = useState(false);
   const [isInput, setIsInput] = useState(false);
-  const [cameraPermissionStatus, setCameraPermissionStatus] = useState("");
   const [isWin, setIsWin] = useState(false);
+  const [isEnd, setIsEnd] = useState(false);
   const [score, setScore] = useState(500);
+  const [cameraPermissionStatus, setCameraPermissionStatus] = useState("");
 
   const [readyTimer, setReadyTimer] = useState({
     text: "게임시작",
@@ -22,62 +23,59 @@ const Game1Container = () => {
 
   const [startTimer, setStartTimer] = useState({
     text: "맵이 가려지기",
-    count: 2,
+    count: 10,
     size: 15,
   });
 
   const [inputTimer, setInputTimer] = useState({
     text: "입력이 종료되기",
-    count: 2,
+    count: 15,
     size: 15,
   });
 
   const [selectedDirection, setSelectedDirection] = useState({});
-  const [directions, setDirections] = useState([
-    { direction: "down" },
-    { direction: "down" },
-    { direction: "down" },
-    { direction: "down" },
-    { direction: "down" },
-    { direction: "right" },
-    { direction: "right" },
-    { direction: "right" },
-    { direction: "right" },
-  ]);
+  const [directions, setDirections] = useState([]);
 
   const [stage, setStage] = useState(1);
 
   const gameMap = useMemo(() => {
-    // return createMap(stage);
-    if (stage === 1) {
-      return [
-        [1, 0, 0],
-        [1, 0, 0],
-        [1, 0, 0],
-        [1, 1, 2],
-      ];
-    } else if (stage === 2) {
-      return [
-        [1, 0, 0, 0],
-        [1, 0, 0, 0],
-        [1, 0, 0, 0],
-        [1, 0, 0, 0],
-        [1, 1, 1, 2],
-      ];
-    } else if (stage === 3) {
-      return [
-        [1, 0, 0, 0, 0],
-        [1, 0, 0, 0, 0],
-        [1, 0, 0, 0, 0],
-        [1, 0, 0, 0, 0],
-        [1, 0, 0, 0, 0],
-        [1, 1, 1, 1, 2],
-      ];
-    }
+    return createMap(stage);
   }, [stage]);
 
+  const handleNextStage = () => {
+    setStage((prev) => prev + 1);
+
+    setIsReady(false);
+    setIsStart(false);
+    setIsInput(false);
+    setIsWin(false);
+
+    setReadyTimer((prev) => {
+      return {
+        ...prev,
+        count: 3,
+      };
+    });
+
+    setStartTimer((prev) => {
+      return {
+        ...prev,
+        count: 10,
+      };
+    });
+
+    setInputTimer((prev) => {
+      return {
+        ...prev,
+        count: 15,
+      };
+    });
+
+    setSelectedDirection((prev) => {});
+  };
+
   useEffect(() => {
-    if (!selectedDirection.direction) {
+    if (!selectedDirection?.direction) {
       return;
     }
 
@@ -122,8 +120,9 @@ const Game1Container = () => {
       setIsWin={setIsWin}
       score={score}
       setScore={setScore}
+      isEnd={isEnd}
+      setIsEnd={setIsEnd}
       stage={stage}
-      setStage={setStage}
       selectedDirection={selectedDirection}
       setSelectedDirection={setSelectedDirection}
       directions={directions}
@@ -132,6 +131,7 @@ const Game1Container = () => {
       setCameraPermissionStatus={setCameraPermissionStatus}
       gameMap={gameMap}
       currentGameKey={currentGameKey}
+      handleNextStage={handleNextStage}
     />
   );
 };
