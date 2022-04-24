@@ -31,6 +31,7 @@ module.exports = {
     "no-unused-vars": "warn",
     "func-style": ["error", "expression"],
     "react/prop-types": "off",
+    "react-hooks/exhaustive-deps": "off",
     "import/order": [
       "error",
       {

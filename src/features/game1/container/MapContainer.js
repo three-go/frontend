@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 
-import DefaultMap from "../presenter/DefaultMap";
 import useCharacter from "../../../hooks/useCharacter";
 import { Map } from "../presenter";
+import DefaultMap from "../presenter/DefaultMap";
 
 const MapContainer = ({
   gameMap,
+  setDirections,
   stage,
+  setStage,
   directions,
   isStart,
   isReady,
@@ -14,6 +16,12 @@ const MapContainer = ({
   setIsWin,
   score,
   setScore,
+  setIsReady,
+  setIsStart,
+  setIsInput,
+  setReadyTimer,
+  setStartTimer,
+  setInputTimer,
 }) => {
   const FIXED_WIDTH = 300;
   const FIXED_HEIGHT = 450;
@@ -34,11 +42,54 @@ const MapContainer = ({
     boxHeigth: (FIXED_HEIGHT - borderWidth.vertical) / arrInfo.rowCount,
   };
 
+  const handleNextStage = (n) => {
+    if (n < 3) {
+      setStage((prev) => prev + 1);
+      // setIsWin(true);
+      setIsReady(false);
+      setIsStart(false);
+      setIsInput(false);
+      setReadyTimer((prev) => {
+        return {
+          ...prev,
+          count: 3,
+        };
+      });
+      setStartTimer((prev) => {
+        return {
+          ...prev,
+          count: 3,
+        };
+      });
+      setInputTimer((prev) => {
+        return {
+          ...prev,
+          count: 3,
+        };
+      });
+      setDirections([
+        { direction: "down" },
+        { direction: "down" },
+        { direction: "down" },
+        { direction: "down" },
+        { direction: "down" },
+        { direction: "right" },
+        { direction: "right" },
+        { direction: "right" },
+        { direction: "right" },
+      ]);
+    } else if (stage === 3) {
+      console.log("마지막 탄 입니다.");
+      // setIsWin(false);
+    }
+  };
+
   useEffect(() => {
     if (isInput && isStart && isReady && directions.length === 0) {
       const { x, y } = characterInfo.position;
+
       if (x === arrInfo.columnCount - 1 && y === arrInfo.rowCount - 1) {
-        setIsWin(true);
+        handleNextStage(stage);
       } else {
         setIsWin(false);
       }

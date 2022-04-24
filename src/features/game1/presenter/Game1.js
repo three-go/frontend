@@ -1,10 +1,10 @@
 import React from "react";
 
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 
 import {
   GameLayout,
-  InputModalContainer,
+  NextStageModalContainer,
   TextTimer,
 } from "../../../components";
 import { FaceRecognitionContainer } from "../container";
@@ -24,16 +24,19 @@ const Game1 = ({
   setStartTimer,
   inputTimer,
   setInputTimer,
+  stage,
+  setStage,
+  score,
+  setScore,
+  isWin,
+  setIsWin,
   selectedDirection,
   setSelectedDirection,
   directions,
+  setDirections,
   cameraPermissionStatus,
   setCameraPermissionStatus,
-  setIsWin,
-  stage,
   gameMap,
-  score,
-  setScore,
   currentGameKey,
 }) => {
   return (
@@ -49,8 +52,8 @@ const Game1 = ({
       setStartTimer={setStartTimer}
       inputTimer={inputTimer}
       setInputTimer={setInputTimer}
-      cameraPermissionStatus={cameraPermissionStatus}
       score={score}
+      cameraPermissionStatus={cameraPermissionStatus}
     >
       {currentGameKey === "game1" && (
         <View style={styles.container}>
@@ -87,18 +90,28 @@ const Game1 = ({
               {isInput && isStart && isReady && (
                 <MapContainer
                   stage={stage}
+                  setStage={setStage}
                   directions={directions}
                   isStart={isStart}
                   isReady={isReady}
                   isInput={isInput}
                   setIsWin={setIsWin}
                   gameMap={gameMap}
+                  setDirections={setDirections}
                   score={score}
                   setScore={setScore}
+                  setIsReady={setIsReady}
+                  setIsStart={setIsStart}
+                  setIsInput={setIsInput}
+                  setReadyTimer={setReadyTimer}
+                  setStartTimer={setStartTimer}
+                  setInputTimer={setInputTimer}
                 />
+                // {isWin && <NextStageModalContainer />}
               )}
             </View>
           </View>
+
           <View style={styles.recordArea}>
             {isReady && (
               <FaceDirectionRecord directions={directions} isInput={isInput} />

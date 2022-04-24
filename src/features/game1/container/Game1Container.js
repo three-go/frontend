@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useMemo } from "react";
 
 import { Game1 } from "..";
 import { GameContext } from "../../../context";
-import { createMap } from "../../../utils";
+// import { createMap } from "../../../utils";
 
 const Game1Container = () => {
   const { currentGameKey } = useContext(GameContext);
@@ -37,14 +37,43 @@ const Game1Container = () => {
     { direction: "down" },
     { direction: "down" },
     { direction: "down" },
+    { direction: "down" },
+    { direction: "down" },
+    { direction: "right" },
     { direction: "right" },
     { direction: "right" },
     { direction: "right" },
   ]);
 
-  const [stage, setStage] = useState(3);
+  const [stage, setStage] = useState(1);
+
   const gameMap = useMemo(() => {
-    return createMap(stage);
+    // return createMap(stage);
+    if (stage === 1) {
+      return [
+        [1, 0, 0],
+        [1, 0, 0],
+        [1, 0, 0],
+        [1, 1, 2],
+      ];
+    } else if (stage === 2) {
+      return [
+        [1, 0, 0, 0],
+        [1, 0, 0, 0],
+        [1, 0, 0, 0],
+        [1, 0, 0, 0],
+        [1, 1, 1, 2],
+      ];
+    } else if (stage === 3) {
+      return [
+        [1, 0, 0, 0, 0],
+        [1, 0, 0, 0, 0],
+        [1, 0, 0, 0, 0],
+        [1, 0, 0, 0, 0],
+        [1, 0, 0, 0, 0],
+        [1, 1, 1, 1, 2],
+      ];
+    }
   }, [stage]);
 
   useEffect(() => {
@@ -89,17 +118,19 @@ const Game1Container = () => {
       setStartTimer={setStartTimer}
       inputTimer={inputTimer}
       setInputTimer={setInputTimer}
-      selectedDirection={selectedDirection}
-      setSelectedDirection={setSelectedDirection}
-      directions={directions}
-      cameraPermissionStatus={cameraPermissionStatus}
-      setCameraPermissionStatus={setCameraPermissionStatus}
+      isWin={isWin}
       setIsWin={setIsWin}
       score={score}
       setScore={setScore}
       stage={stage}
-      gameMap={gameMap}
+      setStage={setStage}
+      selectedDirection={selectedDirection}
+      setSelectedDirection={setSelectedDirection}
+      directions={directions}
       setDirections={setDirections}
+      cameraPermissionStatus={cameraPermissionStatus}
+      setCameraPermissionStatus={setCameraPermissionStatus}
+      gameMap={gameMap}
       currentGameKey={currentGameKey}
     />
   );
