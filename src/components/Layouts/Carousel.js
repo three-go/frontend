@@ -5,8 +5,6 @@ import { FlatList, StyleSheet, View } from "react-native";
 import { game } from "../../utils";
 
 const Carousel = ({ content, renderItem, size }) => {
-  console.log("content", content);
-
   return (
     <View style={styles.container}>
       <FlatList
