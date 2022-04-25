@@ -9,6 +9,7 @@ import Animated, {
   withRepeat,
   withSequence,
 } from "react-native-reanimated";
+import uuid from "react-native-uuid";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const Map = ({ gameMap, characterInfo, arrInfo, boxStyle, directions }) => {
@@ -88,7 +89,7 @@ const Map = ({ gameMap, characterInfo, arrInfo, boxStyle, directions }) => {
       {gameMap &&
         gameMap.map((line, rowIndex) => (
           <FlatList
-            key={rowIndex + Date.now()}
+            key={uuid.v4()}
             data={line}
             renderItem={({ item, index }) => {
               const bgColor = getBackgroundColor(
