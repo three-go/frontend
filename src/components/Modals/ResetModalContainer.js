@@ -9,7 +9,6 @@ const ResetModalContainer = () => {
   const navigation = useNavigation();
 
   const handleNavigateMain = () => {
-    console.log("초기화 로직 필요?");
     navigation.navigate("Main");
     setModalVisible(false);
   };

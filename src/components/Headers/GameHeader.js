@@ -24,9 +24,11 @@ const GameHeader = ({
 }) => {
   return (
     <View style={styles.container}>
-      <Pressable onPress={onPressBack} style={styles.back}>
-        <Icon name="arrow-left-thick" size={40} color="#96A1A8" />
-      </Pressable>
+      {isReady && (
+        <Pressable onPress={onPressBack} style={styles.back}>
+          <Icon name="arrow-left-thick" size={40} color="#96A1A8" />
+        </Pressable>
+      )}
 
       {currentGameKey === "game1" && (
         <View>
@@ -39,9 +41,9 @@ const GameHeader = ({
           )}
 
           {!isInput &&
-            cameraPermissionStatus === "READY" &&
             isStart &&
-            isReady && (
+            isReady &&
+            cameraPermissionStatus === "READY" && (
               <TextTimer
                 setIsFinish={setIsInput}
                 timerInfo={inputTimer}
@@ -68,7 +70,7 @@ const GameHeader = ({
         </View>
       )}
 
-      <ChanceIcons />
+      {isReady && <ChanceIcons />}
     </View>
   );
 };
