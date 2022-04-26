@@ -14,7 +14,6 @@ import {
   convertContentToArray,
   descendOrderArray,
 } from "../../../utils";
-import { guide } from "../../../utils/property";
 import GameGuide from "../presenter/GameGuide";
 import Main from "../presenter/Main";
 import Page from "../presenter/Page";
@@ -137,7 +136,7 @@ const MainContainer = ({ navigation }) => {
         <ContentModal
           isVisible={descriptionModalVisible}
           title="GUIDE"
-          content={guide}
+          content={game.description[currentGameKey]}
           handleRenderScoreItem={handlerRenderGuideItem}
           size={size}
         >

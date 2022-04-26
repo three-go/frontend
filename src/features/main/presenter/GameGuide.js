@@ -4,7 +4,6 @@ import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const GameGuide = ({ item, style }) => {
-  console.log(item.children);
   return (
     <View style={[styles.container, style]}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -14,7 +13,7 @@ const GameGuide = ({ item, style }) => {
         </View>
         {item.children.map((value) => {
           return (
-            <>
+            <View key={value.id}>
               <View style={styles.imageContainer}>
                 <Text style={styles.title}>{value.title}</Text>
                 <Image style={styles.image} source={value.image} />
@@ -25,7 +24,7 @@ const GameGuide = ({ item, style }) => {
               <View style={styles.contentContainer}>
                 <Text style={styles.content}>{value.content}</Text>
               </View>
-            </>
+            </View>
           );
         })}
       </ScrollView>
