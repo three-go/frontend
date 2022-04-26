@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import SplashScreen from "react-native-splash-screen";
 
 import { GameContextProvider } from "./src/context/GameContext";
 import { MainContainer, Game1Container, Game2Container } from "./src/features";
@@ -9,6 +10,10 @@ import { MainContainer, Game1Container, Game2Container } from "./src/features";
 const Stack = createNativeStackNavigator();
 
 const App = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   return (
     <NavigationContainer>
       <GameContextProvider>
