@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import { useRoute } from "@react-navigation/native";
-import { Platform, StyleSheet } from "react-native";
+import { Platform, StyleSheet, Text, View } from "react-native";
 import RNExitApp from "react-native-exit-app";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import SystemNavigationBar from "react-native-system-navigation-bar";
@@ -14,6 +14,7 @@ import {
   convertContentToArray,
   descendOrderArray,
 } from "../../../utils";
+import GameGuide from "../presenter/GameGuide";
 import Main from "../presenter/Main";
 import Page from "../presenter/Page";
 
@@ -101,6 +102,10 @@ const MainContainer = ({ navigation }) => {
     );
   };
 
+  const handlerRenderGuideItem = ({ item }) => {
+    return <GameGuide item={item} style={styles.pageWrapper(size)} />;
+  };
+
   return (
     <SafeAreaProvider>
       <Main
@@ -130,9 +135,9 @@ const MainContainer = ({ navigation }) => {
       {descriptionModalVisible && (
         <ContentModal
           isVisible={descriptionModalVisible}
-          title="게임 설명"
-          content={convertContentToArray(scoreData, game.keys)}
-          handleRenderScoreItem={handleRenderScoreItem}
+          title="GUIDE"
+          content={game.description[currentGameKey]}
+          handleRenderScoreItem={handlerRenderGuideItem}
           size={size}
         >
           <SmallButton
