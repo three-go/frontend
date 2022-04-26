@@ -91,7 +91,7 @@ const MainContainer = ({ navigation }) => {
 
   const handleStartGame = () => {
     setDescriptionModalVisible(!descriptionModalVisible);
-    navigation.navigate("Game1");
+    navigation.navigate(currentGameKey === "game1" ? "Game1" : "Game2");
   };
 
   const handleRenderScoreItem = ({ item }) => {

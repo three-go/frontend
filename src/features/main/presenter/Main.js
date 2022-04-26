@@ -14,6 +14,7 @@ const Main = ({
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor="#212529" barStyle="light-content" />
+
       <View>
         <Logo style={styles.logo} size="lg" />
       </View>
@@ -22,7 +23,7 @@ const Main = ({
         {game.keys.map((v) => {
           return (
             <SquareButton
-              key={game.names[v]}
+              key={v}
               content={game.names[v]}
               color={game.colors[v]}
               onPress={onSetGameNameAndShowDescriptionModal(v)}

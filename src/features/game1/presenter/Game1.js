@@ -56,6 +56,7 @@ const Game1 = ({
       setInputTimer={setInputTimer}
       score={score}
       cameraPermissionStatus={cameraPermissionStatus}
+      currentGameKey={currentGameKey}
     >
       {currentGameKey === "game1" && (
         <View style={styles.container}>
