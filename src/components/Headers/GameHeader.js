@@ -61,6 +61,7 @@ const GameHeader = ({
       {currentGameKey === "game2" && (
         <View style={styles.scoreWrapper}>
           <Icon name="flag" size={32} color="#96A1A8" />
+
           <Text style={styles.score}>
             {progressRate.current} / {progressRate.total}
           </Text>
