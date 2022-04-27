@@ -12,7 +12,14 @@ import Animated, {
 import uuid from "react-native-uuid";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-const Map = ({ gameMap, characterInfo, arrInfo, boxStyle, directions }) => {
+const Map = ({
+  gameMap,
+  characterInfo,
+  arrInfo,
+  boxStyle,
+  directions,
+  setScore,
+}) => {
   const traslateX = useSharedValue(
     boxStyle.boxWidth * characterInfo.position.x
   );
@@ -74,6 +81,9 @@ const Map = ({ gameMap, characterInfo, arrInfo, boxStyle, directions }) => {
         { duration: 1000 }
       );
     }
+
+    characterInfo.minusScore > 0 &&
+      setScore((prev) => prev - characterInfo.minusScore);
 
     return () => {
       borderColor.value = defaultColor;
@@ -166,7 +176,6 @@ const createCell = (width, height, bgColor, canPass) => {
   return <View style={styles.cell(width, height, bgColor)} />;
 };
 
-// util 함수로 분리 예정
 const isStartOrEndCell = (rowIndex, cellIndex, endRowIndex, endCellIndex) => {
   if (rowIndex === 0 && cellIndex === 0) {
     return true;
