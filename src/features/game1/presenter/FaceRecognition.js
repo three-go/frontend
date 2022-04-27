@@ -14,8 +14,12 @@ const FaceRecognition = ({
   isDirectionPreviewTextShow,
 }) => {
   const openSettingOption = async () => {
-    await Linking.openSettings();
-    RNExitApp.exitApp();
+    try {
+      await Linking.openSettings();
+      RNExitApp.exitApp();
+    } catch (error) {
+      RNExitApp.exitApp();
+    }
   };
 
   return (

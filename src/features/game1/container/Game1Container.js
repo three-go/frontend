@@ -10,8 +10,11 @@ const Game1Container = () => {
   const [isReady, setIsReady] = useState(false);
   const [isStart, setIsStart] = useState(false);
   const [isInput, setIsInput] = useState(false);
-  const [isWin, setIsWin] = useState(null);
+
+  const [isWin, setIsWin] = useState(false);
+  const [isLose, setIsLose] = useState(false);
   const [isEnd, setIsEnd] = useState(false);
+
   const [score, setScore] = useState(500);
   const [cameraPermissionStatus, setCameraPermissionStatus] = useState("");
 
@@ -23,7 +26,7 @@ const Game1Container = () => {
 
   const [startTimer, setStartTimer] = useState({
     text: "맵이 가려지기",
-    count: 10,
+    count: 5,
     size: 15,
   });
 
@@ -38,6 +41,7 @@ const Game1Container = () => {
 
   const [stage, setStage] = useState(1);
   const [chance, setChance] = useState(3);
+
   const gameMap = useMemo(() => {
     return createMap(stage);
   }, [stage]);
@@ -60,7 +64,7 @@ const Game1Container = () => {
     setStartTimer((prev) => {
       return {
         ...prev,
-        count: 10,
+        count: 5,
       };
     });
 
@@ -78,7 +82,7 @@ const Game1Container = () => {
     setIsReady(false);
     setIsStart(false);
     setIsInput(false);
-    setIsWin(null);
+    setIsLose(false);
     setReadyTimer((prev) => {
       return {
         ...prev,
@@ -89,7 +93,7 @@ const Game1Container = () => {
     setStartTimer((prev) => {
       return {
         ...prev,
-        count: 10,
+        count: 5,
       };
     });
 
@@ -146,23 +150,25 @@ const Game1Container = () => {
       setInputTimer={setInputTimer}
       isWin={isWin}
       setIsWin={setIsWin}
-      score={score}
-      setScore={setScore}
+      isLose={isLose}
+      setIsLose={setIsLose}
       isEnd={isEnd}
       setIsEnd={setIsEnd}
+      score={score}
+      setScore={setScore}
+      chance={chance}
+      setChance={setChance}
       stage={stage}
+      gameMap={gameMap}
+      currentGameKey={currentGameKey}
+      handleNextStage={handleNextStage}
+      onRetryCurrentStage={handleRetryStage}
       selectedDirection={selectedDirection}
       setSelectedDirection={setSelectedDirection}
       directions={directions}
       setDirections={setDirections}
       cameraPermissionStatus={cameraPermissionStatus}
       setCameraPermissionStatus={setCameraPermissionStatus}
-      gameMap={gameMap}
-      currentGameKey={currentGameKey}
-      handleNextStage={handleNextStage}
-      onRetryCurrentStage={handleRetryStage}
-      chance={chance}
-      setChance={setChance}
     />
   );
 };

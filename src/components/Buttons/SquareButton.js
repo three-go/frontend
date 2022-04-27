@@ -2,17 +2,6 @@ import React from "react";
 
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
-/*
-[ 사용법 예시(컴포넌트 호출) ]
-
-<SquareButton
-  content="squre"
-  color="orange"
-  onPress={() => {
-    console.log("squre test");
-  }}
-/>
-*/
 const SquareButton = ({ content, color, onPress }) => (
   <TouchableOpacity
     activeOpacity={0.8}

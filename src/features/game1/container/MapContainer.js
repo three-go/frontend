@@ -4,6 +4,9 @@ import useCharacter from "../../../hooks/useCharacter";
 import { Map } from "../presenter";
 import DefaultMap from "../presenter/DefaultMap";
 
+const FIXED_WIDTH = 300;
+const FIXED_HEIGHT = 450;
+
 const MapContainer = ({
   gameMap,
   stage,
@@ -12,13 +15,12 @@ const MapContainer = ({
   isReady,
   isInput,
   setIsWin,
+  setIsLose,
   score,
   setScore,
   setIsEnd,
   setChance,
 }) => {
-  const FIXED_WIDTH = 300;
-  const FIXED_HEIGHT = 450;
   const characterInfo = useCharacter(gameMap, score, setScore);
 
   const arrInfo = {
@@ -52,7 +54,7 @@ const MapContainer = ({
         handleCheckStage(stage);
       } else {
         setChance((prev) => prev - 1);
-        setIsWin(false);
+        setIsLose(true);
       }
     }
 
