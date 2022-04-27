@@ -44,6 +44,19 @@ const game1Guide = [
       },
       {
         id: uuid.v4(),
+        title: "Fail",
+        content:
+          "• 캐릭터가 종료지점에 도착하지 않으면 목숨 하나가 소진된다.\n• 다시시도 또는 메인화면으로 돌아갈수 있다.",
+        image: require("../../public/assets/images/game1/fail.jpg"),
+      },
+      {
+        id: uuid.v4(),
+        title: "End",
+        content: "• 목숨을 모두 소진하면 게임이 종료된다.",
+        image: require("../../public/assets/images/game1/end.jpg"),
+      },
+      {
+        id: uuid.v4(),
         title: "Success",
         content: "• 마지막 stage까지 성공하면 내 점수를 입력할 수 있습니다.",
         image: require("../../public/assets/images/game1/success.jpg"),
