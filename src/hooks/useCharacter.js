@@ -2,25 +2,34 @@ import React, { useState } from "react";
 
 const useCharacter = (gameMap, score, setScore) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [minusScore, setMinusScore] = useState({});
   const [isValid, setIsValid] = useState(true);
 
   const moveLeft = () => {
-    canMove("left") && setPosition({ ...position, x: position.x - 1 });
+    const { canMove, minusScore } = checkCharacterCanMove("left");
+    setMinusScore(minusScore);
+    canMove && setPosition({ ...position, x: position.x - 1 });
   };
 
   const moveRight = () => {
-    canMove("right") && setPosition({ ...position, x: position.x + 1 });
+    const { canMove, minusScore } = checkCharacterCanMove("right");
+    setMinusScore(minusScore);
+    canMove && setPosition({ ...position, x: position.x + 1 });
   };
 
   const moveUp = () => {
-    canMove("up") && setPosition({ ...position, y: position.y - 1 });
+    const { canMove, minusScore } = checkCharacterCanMove("up");
+    setMinusScore(minusScore);
+    canMove && setPosition({ ...position, y: position.y - 1 });
   };
 
   const moveDown = () => {
-    canMove("down") && setPosition({ ...position, y: position.y + 1 });
+    const { canMove, minusScore } = checkCharacterCanMove("down");
+    setMinusScore(minusScore);
+    canMove && setPosition({ ...position, y: position.y + 1 });
   };
 
-  const canMove = (direction) => {
+  const checkCharacterCanMove = (direction) => {
     let isInBoundary = true;
     let nextPosition = -Infinity;
     let result = {};
@@ -50,29 +59,34 @@ const useCharacter = (gameMap, score, setScore) => {
     }
 
     result = checkMove(isInBoundary, nextPosition);
-    setScore((prev) => prev - result.minusScore);
     setIsValid(result.canMove);
 
-    return result.canMove;
+    return result;
   };
 
   const checkMove = (isInBoundary, nextPosition) => {
-    // minusSore 상수 처리 필요
+    const point = {
+      move: 1,
+      outOfBoundary: 20,
+      blocked: 10,
+    };
+
     if (isInBoundary && nextPosition > 0) {
-      return { canMove: true, minusScore: 1 };
+      return { canMove: true, minusScore: point.move };
     }
 
     if (!isInBoundary) {
-      return { canMove: false, minusScore: 21 };
+      return { canMove: false, minusScore: point.move + point.outOfBoundary };
     }
 
     if (!nextPosition) {
-      return { canMove: false, minusScore: 11 };
+      return { canMove: false, minusScore: point.move + point.blocked };
     }
   };
 
   return {
     position,
+    minusScore,
     isValid,
     moveLeft,
     moveRight,
