@@ -10,7 +10,7 @@ const Game1Container = () => {
   const [isReady, setIsReady] = useState(false);
   const [isStart, setIsStart] = useState(false);
   const [isInput, setIsInput] = useState(false);
-  const [isWin, setIsWin] = useState(false);
+  const [isWin, setIsWin] = useState(null);
   const [isEnd, setIsEnd] = useState(false);
   const [score, setScore] = useState(500);
   const [cameraPermissionStatus, setCameraPermissionStatus] = useState("");
@@ -37,7 +37,7 @@ const Game1Container = () => {
   const [directions, setDirections] = useState([]);
 
   const [stage, setStage] = useState(1);
-
+  const [chance, setChance] = useState(3);
   const gameMap = useMemo(() => {
     return createMap(stage);
   }, [stage]);
@@ -71,6 +71,34 @@ const Game1Container = () => {
       };
     });
 
+    setSelectedDirection((prev) => {});
+  };
+
+  const handleRetryStage = () => {
+    setIsReady(false);
+    setIsStart(false);
+    setIsInput(false);
+    setIsWin(null);
+    setReadyTimer((prev) => {
+      return {
+        ...prev,
+        count: 3,
+      };
+    });
+
+    setStartTimer((prev) => {
+      return {
+        ...prev,
+        count: 10,
+      };
+    });
+
+    setInputTimer((prev) => {
+      return {
+        ...prev,
+        count: 15,
+      };
+    });
     setSelectedDirection((prev) => {});
   };
 
@@ -132,6 +160,9 @@ const Game1Container = () => {
       gameMap={gameMap}
       currentGameKey={currentGameKey}
       handleNextStage={handleNextStage}
+      onRetryCurrentStage={handleRetryStage}
+      chance={chance}
+      setChance={setChance}
     />
   );
 };
