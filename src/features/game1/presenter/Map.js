@@ -95,7 +95,6 @@ const Map = ({
     <Animated.View
       style={[styles.container, rotateStyle, backgroundInterpolate]}
     >
-      {/* 게임 맵 view */}
       {gameMap &&
         gameMap.map((line, rowIndex) => (
           <FlatList

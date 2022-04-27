@@ -2,17 +2,6 @@ import React from "react";
 
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
-/*
-[ 사용법 예시(컴포넌트 호출) ]
-
-<DefaultButton
-  content="test"
-  color="darkgray"
-  onPress={() => {
-    console.log("test");
-  }}
-/>
-*/
 const DefaultButton = ({ content, color, onPress }) => (
   <TouchableOpacity
     activeOpacity={0.8}

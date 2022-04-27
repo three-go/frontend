@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import { useRoute } from "@react-navigation/native";
-import { Platform, StyleSheet, Text, View } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import RNExitApp from "react-native-exit-app";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import SystemNavigationBar from "react-native-system-navigation-bar";
@@ -89,8 +89,8 @@ const MainContainer = ({ navigation }) => {
   };
 
   const handleStartGame = () => {
-    setDescriptionModalVisible(!descriptionModalVisible);
     navigation.navigate(currentGameKey === "game1" ? "Game1" : "Game2");
+    setDescriptionModalVisible(!descriptionModalVisible);
   };
 
   const handleRenderScoreItem = ({ item }) => {

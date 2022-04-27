@@ -34,6 +34,8 @@ const Game1 = ({
   setIsEnd,
   isWin,
   setIsWin,
+  isLose,
+  setIsLose,
   selectedDirection,
   setSelectedDirection,
   directions,
@@ -75,6 +77,7 @@ const Game1 = ({
                   setTimerInfo={setReadyTimer}
                 />
               )}
+
               {!isStart && isReady && (
                 <MapContainer
                   stage={stage}
@@ -85,6 +88,7 @@ const Game1 = ({
                   gameMap={gameMap}
                 />
               )}
+
               {!isInput && isStart && isReady && (
                 <FaceRecognitionContainer
                   selectedDirection={selectedDirection}
@@ -93,6 +97,7 @@ const Game1 = ({
                   setCameraPermissionStatus={setCameraPermissionStatus}
                 />
               )}
+
               {isInput && isStart && isReady && (
                 <MapContainer
                   stage={stage}
@@ -101,6 +106,7 @@ const Game1 = ({
                   isReady={isReady}
                   isInput={isInput}
                   setIsWin={setIsWin}
+                  setIsLose={setIsLose}
                   gameMap={gameMap}
                   score={score}
                   setScore={setScore}
@@ -108,14 +114,18 @@ const Game1 = ({
                   setChance={setChance}
                 />
               )}
+
               {isEnd && <InputModalContainer score={score} />}
+
               {isWin && (
                 <NextStageModalContainer onNextStage={handleNextStage} />
               )}
-              {isWin !== null && !isWin && (
+
+              {isLose && (
                 <FailModalContainer onRetryCurrentStage={onRetryCurrentStage} />
               )}
-              {isWin !== null && chance === 0 && <ResetModalContainer />}
+
+              {isLose && chance === 0 && <ResetModalContainer />}
             </View>
           </View>
 

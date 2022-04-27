@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const useCharacter = (gameMap, score, setScore) => {
+const useCharacter = (gameMap) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [minusScore, setMinusScore] = useState({});
   const [isValid, setIsValid] = useState(true);

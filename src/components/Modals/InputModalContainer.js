@@ -11,35 +11,39 @@ import InputModal from "./InputModal";
 
 const InputModalContainer = ({ score }) => {
   const navigation = useNavigation();
-
   const { currentGameKey } = useContext(GameContext);
-
   const [modalVisible, setModalVisible] = useState(true);
   const [userName, setUserName] = useState("");
 
   const onRegister = async () => {
-    const data = await getItemFromAsync(currentGameKey);
+    try {
+      const data = await getItemFromAsync(currentGameKey);
 
-    if (!data) {
-      await setItemToAsync(currentGameKey, [
-        {
+      if (!data) {
+        await setItemToAsync(currentGameKey, [
+          {
+            id: uuid.v4(),
+            name: userName.trim() === "" ? "이름없음" : userName,
+            score,
+          },
+        ]);
+      } else {
+        data.push({
           id: uuid.v4(),
           name: userName.trim() === "" ? "이름없음" : userName,
           score,
-        },
-      ]);
-    } else {
-      data.push({
-        id: uuid.v4(),
-        name: userName.trim() === "" ? "이름없음" : userName,
-        score,
-      });
-      await setItemToAsync(currentGameKey, data);
-    }
+        });
+        await setItemToAsync(currentGameKey, data);
+      }
 
-    setModalVisible(false);
-    Keyboard.dismiss();
-    navigation.navigate("Main", { visible: true });
+      setModalVisible(false);
+      Keyboard.dismiss();
+      navigation.navigate("Main", { visible: true });
+    } catch (error) {
+      setModalVisible(false);
+      Keyboard.dismiss();
+      navigation.navigate("Main");
+    }
   };
 
   return (
