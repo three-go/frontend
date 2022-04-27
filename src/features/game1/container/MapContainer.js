@@ -15,6 +15,7 @@ const MapContainer = ({
   score,
   setScore,
   setIsEnd,
+  setChance,
 }) => {
   const FIXED_WIDTH = 300;
   const FIXED_HEIGHT = 450;
@@ -27,7 +28,7 @@ const MapContainer = ({
 
   const borderWidth = {
     horizontal: 10 + 2 * arrInfo.columnCount,
-    vertical: 10 + 2 * arrInfo.columnCount,
+    vertical: 10,
   };
 
   const boxStyle = {
@@ -50,6 +51,7 @@ const MapContainer = ({
       if (x === arrInfo.columnCount - 1 && y === arrInfo.rowCount - 1) {
         handleCheckStage(stage);
       } else {
+        setChance((prev) => prev - 1);
         setIsWin(false);
       }
     }
@@ -85,6 +87,7 @@ const MapContainer = ({
       arrInfo={arrInfo}
       boxStyle={boxStyle}
       directions={directions}
+      setScore={setScore}
     />
   );
 };
