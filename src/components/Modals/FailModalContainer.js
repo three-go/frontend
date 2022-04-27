@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import { ButtonModal, SmallButton } from "..";
 
-const FailModalContainer = () => {
+const FailModalContainer = ({ onRetryCurrentStage }) => {
   const [modalVisible, setModalVisible] = useState(true);
   const navigation = useNavigation();
 
@@ -14,7 +14,7 @@ const FailModalContainer = () => {
   };
 
   const handleRetry = () => {
-    console.log("다시 시도");
+    onRetryCurrentStage();
     setModalVisible(false);
   };
 

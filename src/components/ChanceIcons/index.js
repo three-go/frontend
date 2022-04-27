@@ -3,15 +3,12 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-const ChanceIcons = () => {
-  // 상위 컴포넌트에서 defaultChanceCount, resctChanceCount 값 불러오기 추가 필요
-  // (전체 시도 가능 횟수, 남은 횟수)
+const ChanceIcons = ({ chance }) => {
   const defaultChance = 3;
-  const restChance = 3;
 
   return (
     <View style={styles.heartWrapper}>
-      {createChanceIcons(defaultChance, restChance).map((iconName, index) => (
+      {createChanceIcons(defaultChance, chance).map((iconName, index) => (
         <Icon key={index} name={iconName} size={28} color="#f45a5a" />
       ))}
     </View>

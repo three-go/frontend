@@ -21,6 +21,7 @@ const GameHeader = ({
   currentGameKey,
   progressRate,
   setProgressRate,
+  chance,
 }) => {
   return (
     <View style={styles.container}>
@@ -70,7 +71,7 @@ const GameHeader = ({
         </View>
       )}
 
-      {isReady && <ChanceIcons />}
+      {isReady && <ChanceIcons chance={chance} />}
     </View>
   );
 };

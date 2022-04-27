@@ -22,6 +22,7 @@ const GameLayout = ({
   currentGameKey,
   progressRate,
   setProgressRate,
+  chance,
 }) => {
   const navigation = useNavigation();
 
@@ -48,6 +49,7 @@ const GameLayout = ({
           currentGameKey={currentGameKey}
           progressRate={progressRate}
           setProgressRate={setProgressRate}
+          chance={chance}
         />
       </View>
       <View style={styles.gameBoard}>{children}</View>
