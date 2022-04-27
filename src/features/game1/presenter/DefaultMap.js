@@ -9,6 +9,8 @@ const DefaultMap = ({ gameMap, arrInfo, boxStyle }) => {
       {gameMap &&
         gameMap.map((line, rowIndex) => (
           <FlatList
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
             key={rowIndex}
             data={line}
             renderItem={({ item, index }) => {

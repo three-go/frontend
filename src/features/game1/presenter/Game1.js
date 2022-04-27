@@ -6,7 +6,9 @@ import {
   GameLayout,
   NextStageModalContainer,
   InputModalContainer,
+  FailModalContainer,
   TextTimer,
+  ResetModalContainer,
 } from "../../../components";
 import { FaceRecognitionContainer } from "../container";
 import MapContainer from "../container/MapContainer";
@@ -40,6 +42,9 @@ const Game1 = ({
   gameMap,
   currentGameKey,
   handleNextStage,
+  onRetryCurrentStage,
+  chance,
+  setChance,
 }) => {
   return (
     <GameLayout
@@ -57,6 +62,7 @@ const Game1 = ({
       score={score}
       cameraPermissionStatus={cameraPermissionStatus}
       currentGameKey={currentGameKey}
+      chance={chance}
     >
       {currentGameKey === "game1" && (
         <View style={styles.container}>
@@ -99,12 +105,17 @@ const Game1 = ({
                   score={score}
                   setScore={setScore}
                   setIsEnd={setIsEnd}
+                  setChance={setChance}
                 />
               )}
               {isEnd && <InputModalContainer score={score} />}
               {isWin && (
                 <NextStageModalContainer onNextStage={handleNextStage} />
               )}
+              {isWin !== null && !isWin && (
+                <FailModalContainer onRetryCurrentStage={onRetryCurrentStage} />
+              )}
+              {isWin !== null && chance === 0 && <ResetModalContainer />}
             </View>
           </View>
 
