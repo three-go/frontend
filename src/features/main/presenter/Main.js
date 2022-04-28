@@ -3,8 +3,8 @@ import React from "react";
 import { View, StyleSheet, StatusBar } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { game } from "../../../common";
 import { DefaultButton, SquareButton, Logo } from "../../../components";
-import { game } from "../../../common/property";
 
 const Main = ({
   onExitApp,

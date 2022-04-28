@@ -3,6 +3,11 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 
 import {
+  FaceRecognitionContainer,
+  MapContainer,
+  FaceDirectionRecord,
+} from "..";
+import {
   GameLayout,
   NextStageModalContainer,
   InputModalContainer,
@@ -10,11 +15,6 @@ import {
   TextTimer,
   ResetModalContainer,
 } from "../../../components";
-import {
-  FaceRecognitionContainer,
-  MapContainer,
-  FaceDirectionRecord,
-} from "..";
 
 const Game1 = ({
   isReady,

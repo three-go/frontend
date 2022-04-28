@@ -3,7 +3,7 @@ import React from "react";
 import { FlatList, View, Text, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-import { colors } from "../../../common/property";
+import { colors } from "../../../common";
 
 const DefaultMap = ({ gameMap, arrInfo, boxStyle }) => {
   return (

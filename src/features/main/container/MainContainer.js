@@ -6,6 +6,8 @@ import RNExitApp from "react-native-exit-app";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import SystemNavigationBar from "react-native-system-navigation-bar";
 
+import { GameGuide, Main, Page } from "..";
+import { game } from "../../../common";
 import { DefaultButton, SmallButton, ContentModal } from "../../../components";
 import { GameContext } from "../../../context";
 import {
@@ -13,8 +15,6 @@ import {
   convertContentToArray,
   descendOrderArray,
 } from "../../../utils";
-import { game } from "../../../common/property";
-import { GameGuide, Main, Page } from "..";
 
 const size = {
   SCREEN_WIDTH: 300,

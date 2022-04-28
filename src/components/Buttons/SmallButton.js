@@ -2,7 +2,7 @@ import React from "react";
 
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
-import { colors } from "../../common/property";
+import { colors } from "../../common";
 
 const SmallButton = ({ content, color, onPress }) => (
   <TouchableOpacity

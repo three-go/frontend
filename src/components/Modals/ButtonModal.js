@@ -2,7 +2,7 @@ import React from "react";
 
 import { Modal, StyleSheet, View, Text } from "react-native";
 
-import { colors } from "../../common/property";
+import { colors } from "../../common";
 
 const ButtonModal = ({ content, isVisible, children }) => {
   const count = React.Children.count(children);

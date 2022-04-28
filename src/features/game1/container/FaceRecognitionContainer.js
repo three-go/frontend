@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { Platform } from "react-native";
 
-import { facePosition, faceYawAngleRange } from "../../../common/constants";
+import { facePosition, faceYawAngleRange } from "../../../common";
 import { FaceRecognition } from "../presenter";
 
 const FaceRecognitionContainer = ({
@@ -15,7 +15,6 @@ const FaceRecognitionContainer = ({
   const [isFaceFront, setIsFaceFront] = useState(false);
   const [isDirectionPreviewTextShow, setIsDirectionPreviewTextShow] =
     useState(true);
-  const focusedFace = faces[0];
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -28,6 +27,8 @@ const FaceRecognitionContainer = ({
   }, [selectedDirection]);
 
   const handlerFacePosition = ({ faces }) => {
+    const focusedFace = faces[0];
+
     if (!focusedFace) {
       return;
     }

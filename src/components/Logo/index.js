@@ -1,13 +1,7 @@
 import React from "react";
 
-import { TouchableOpacity, Text, View, Image, StyleSheet } from "react-native";
+import { Image, StyleSheet } from "react-native";
 
-/*
-[ 사용법 예시(컴포넌트 호출) ]
-
-<Logo size="lg" />
-( size: [sm, md, lg] )
-*/
 const Logo = ({ size }) => (
   <Image
     source={require("../../../public/assets/logo.png")}
