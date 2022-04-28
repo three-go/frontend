@@ -4,10 +4,9 @@ import { useNavigation } from "@react-navigation/native";
 import { Keyboard } from "react-native";
 import uuid from "react-native-uuid";
 
-import { SmallButton } from "..";
+import { SmallButton, InputModal } from "..";
 import { GameContext } from "../../context";
 import { setItemToAsync, getItemFromAsync } from "../../utils";
-import InputModal from "./InputModal";
 
 const InputModalContainer = ({ score }) => {
   const navigation = useNavigation();

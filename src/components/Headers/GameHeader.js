@@ -3,7 +3,7 @@ import React from "react";
 import { Text, View, StyleSheet, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-import { ChanceIcons, TextTimer } from "../index";
+import { ChanceIcons, TextTimer } from "..";
 
 const GameHeader = ({
   onPressBack,

@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { GameHeader } from "../index";
+import { GameHeader } from "..";
 
 const GameLayout = ({
   children,
