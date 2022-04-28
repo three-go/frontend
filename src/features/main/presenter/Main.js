@@ -3,7 +3,7 @@ import React from "react";
 import { View, StyleSheet, StatusBar } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { game } from "../../../common";
+import { colors, game } from "../../../common";
 import { DefaultButton, SquareButton, Logo } from "../../../components";
 
 const Main = ({
@@ -13,20 +13,20 @@ const Main = ({
 }) => {
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor="#212529" barStyle="light-content" />
+      <StatusBar backgroundColor={colors.dark} barStyle="light-content" />
 
       <View>
         <Logo style={styles.logo} size="lg" />
       </View>
 
       <View style={styles.gameWrapper}>
-        {game.keys.map((v) => {
+        {game.keys.map((value) => {
           return (
             <SquareButton
-              key={v}
-              content={game.names[v]}
-              color={game.colors[v]}
-              onPress={onSetGameNameAndShowDescriptionModal(v)}
+              key={value}
+              content={game.names[value]}
+              color={game.colors[value]}
+              onPress={onSetGameNameAndShowDescriptionModal(value)}
             />
           );
         })}
@@ -35,7 +35,7 @@ const Main = ({
       <View style={styles.button}>
         <DefaultButton
           content="점수 보기"
-          color="#96A1A8"
+          color={colors.gray}
           onPress={onShowScoreModal}
         />
       </View>
@@ -43,7 +43,7 @@ const Main = ({
       <View style={styles.button}>
         <DefaultButton
           content="게임 종료"
-          color="#c92a2a"
+          color={colors.darkRed}
           onPress={onExitApp}
         />
       </View>
@@ -56,10 +56,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#212529",
+    backgroundColor: colors.dark,
   },
   statusBar: {
-    backgroundColor: "#212529",
+    backgroundColor: colors.dark,
   },
   gameWrapper: {
     flexDirection: "row",

@@ -10,10 +10,10 @@ const MAX_CHANCE = 3;
 const ChanceIcons = ({ chance }) => {
   return (
     <View style={styles.heartWrapper}>
-      {createChanceIcons(MAX_CHANCE, chance).map((iconName, index) => (
+      {createChanceIcons(MAX_CHANCE, chance).map((value, index) => (
         <Icon
           key={index}
-          name={iconName}
+          name={value}
           size={iconSizes.headerChance}
           color={colors.red}
         />
@@ -22,11 +22,11 @@ const ChanceIcons = ({ chance }) => {
   );
 };
 
-const createChanceIcons = (MAX_CHANCE, restChance) => {
+const createChanceIcons = (maxChance, restChance) => {
   const result = [];
   let restCount = restChance;
 
-  for (let i = 0; i < MAX_CHANCE; i++) {
+  for (let i = 0; i < maxChance; i++) {
     if (restCount > 0) {
       --restCount;
       result.push(iconNames.heart);

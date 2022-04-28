@@ -6,6 +6,8 @@ import {
   colors,
   facePosition,
   faceYawAngleRange,
+  time,
+  textSizes,
 } from "./constants";
 import { game } from "./property";
 
@@ -18,4 +20,6 @@ export {
   facePosition,
   faceYawAngleRange,
   game,
+  time,
+  textSizes,
 };

@@ -9,6 +9,7 @@ const iconSizes = {
   headerChance: 28,
   headerLeftArrow: 40,
   headerFlag: 32,
+  footerArrow: 50,
 };
 
 const colors = {
@@ -25,6 +26,22 @@ const colors = {
   tealGreen: "#00BBD1",
   turquoise: "#00E0EA",
   lightBlue: "#5fceec",
+};
+
+const time = {
+  zero: 0,
+  playInterval: 1000,
+  textTimerInterval: 1000,
+  faceRecognitionInterval: 800,
+  readyTimerSet: 3,
+  startTimerSet: 5,
+  inputTimerSet: 15,
+};
+
+const textSizes = {
+  small: 20,
+  medium: 30,
+  large: 40,
 };
 
 const gameStatus = {
@@ -65,4 +82,6 @@ export {
   colors,
   facePosition,
   faceYawAngleRange,
+  time,
+  textSizes,
 };

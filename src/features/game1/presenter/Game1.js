@@ -7,6 +7,7 @@ import {
   MapContainer,
   FaceDirectionRecord,
 } from "..";
+import { colors } from "../../../common";
 import {
   GameLayout,
   NextStageModalContainer,
@@ -153,7 +154,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     height: "80%",
-    backgroundColor: "#212529",
+    backgroundColor: colors.dark,
   },
   playZone: {
     justifyContent: "center",
@@ -166,7 +167,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     height: "20%",
-    backgroundColor: "#212529",
+    backgroundColor: colors.dark,
   },
 });
 

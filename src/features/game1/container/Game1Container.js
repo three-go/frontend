@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, useMemo } from "react";
 
 import { Game1 } from "..";
+import { time, textSizes } from "../../../common";
 import { GameContext } from "../../../context";
 import { createMap } from "../../../utils";
 
@@ -20,20 +21,20 @@ const Game1Container = () => {
 
   const [readyTimer, setReadyTimer] = useState({
     text: "게임시작",
-    count: 3,
-    size: 30,
+    count: time.readyTimerSet,
+    size: textSizes.medium,
   });
 
   const [startTimer, setStartTimer] = useState({
     text: "맵이 가려지기",
-    count: 5,
-    size: 15,
+    count: time.startTimerSet,
+    size: textSizes.samll,
   });
 
   const [inputTimer, setInputTimer] = useState({
     text: "입력이 종료되기",
-    count: 15,
-    size: 15,
+    count: time.inputTimerSet,
+    size: textSizes.samll,
   });
 
   const [selectedDirection, setSelectedDirection] = useState({});
@@ -46,64 +47,43 @@ const Game1Container = () => {
     return createMap(stage);
   }, [stage]);
 
-  const handleNextStage = () => {
-    setStage((prev) => prev + 1);
-
-    setIsReady(false);
-    setIsStart(false);
-    setIsInput(false);
-    setIsWin(false);
-
+  const handleReset = () => {
     setReadyTimer((prev) => {
       return {
         ...prev,
-        count: 3,
+        count: time.readyTimerSet,
       };
     });
 
     setStartTimer((prev) => {
       return {
         ...prev,
-        count: 5,
+        count: time.startTimerSet,
       };
     });
 
     setInputTimer((prev) => {
       return {
         ...prev,
-        count: 15,
+        count: time.inputTimerSet,
       };
     });
 
+    setIsReady(false);
+    setIsStart(false);
+    setIsInput(false);
     setSelectedDirection((prev) => {});
   };
 
+  const handleNextStage = () => {
+    setStage((prev) => prev + 1);
+    setIsWin(false);
+    handleReset();
+  };
+
   const handleRetryStage = () => {
-    setIsReady(false);
-    setIsStart(false);
-    setIsInput(false);
     setIsLose(false);
-    setReadyTimer((prev) => {
-      return {
-        ...prev,
-        count: 3,
-      };
-    });
-
-    setStartTimer((prev) => {
-      return {
-        ...prev,
-        count: 5,
-      };
-    });
-
-    setInputTimer((prev) => {
-      return {
-        ...prev,
-        count: 15,
-      };
-    });
-    setSelectedDirection((prev) => {});
+    handleReset();
   };
 
   useEffect(() => {
@@ -126,7 +106,7 @@ const Game1Container = () => {
         const copy = directions.slice();
         copy.shift();
         setDirections(copy);
-      }, 1000);
+      }, time.playInterval);
     }
 
     return () => {
