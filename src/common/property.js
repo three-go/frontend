@@ -6,8 +6,8 @@ const gameNames = {
 };
 
 const gameColors = {
-  game1: "#00BBD1",
-  game2: "#00E0EA",
+  game1: colors.tealGreen,
+  game2: colors.turquoise,
 };
 
 const game1Guide = [
@@ -106,7 +106,19 @@ const game = {
 };
 
 const colors = {
+  black: "#000000",
+  dark: "#212529",
+  blueGray: "#2F455C",
+  ligthGray: "#5c6977",
+  gray: "#96A1A8",
   ivory: "#FCF8F6",
+  white: "#ffffff",
+  red: "#f45a5a",
+  darkRed: "#c92a2a",
+  green: "#21D0B2",
+  tealGreen: "#00BBD1",
+  turquoise: "#00E0EA",
+  lightBlue: "#5fceec",
 };
 
 export { game, colors };
