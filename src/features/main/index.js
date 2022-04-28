@@ -1,5 +1,4 @@
 import MainContainer from "./container/MainContainer";
-import Main from "./presenter/Main";
-import Page from "./presenter/Page";
+import { GameGuide, Main, Page } from "./presenter";
 
-export { MainContainer, Main, Page };
+export { MainContainer, GameGuide, Main, Page };

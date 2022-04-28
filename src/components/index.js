@@ -1,15 +1,16 @@
 import { DefaultButton, SmallButton, SquareButton } from "./Buttons";
 import ChanceIcons from "./ChanceIcons";
 import { GameHeader } from "./Headers";
-import { GameLayout } from "./Layouts";
+import { GameLayout, Carousel } from "./Layouts";
 import Logo from "./Logo";
 import {
-  InputModalContainer,
-  ContentModal,
   ButtonModal,
+  ContentModal,
+  FailModalContainer,
+  InputModal,
+  InputModalContainer,
   NextStageModalContainer,
   ResetModalContainer,
-  FailModalContainer,
 } from "./Modals";
 import { TextTimer } from "./Timers";
 
@@ -18,14 +19,16 @@ export {
   SquareButton,
   SmallButton,
   Logo,
-  InputModalContainer,
-  ContentModal,
   ButtonModal,
+  ContentModal,
+  FailModalContainer,
+  InputModal,
+  InputModalContainer,
   NextStageModalContainer,
   ResetModalContainer,
-  FailModalContainer,
   GameHeader,
   GameLayout,
+  Carousel,
   TextTimer,
   ChanceIcons,
 };

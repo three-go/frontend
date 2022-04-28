@@ -2,6 +2,8 @@ import React from "react";
 
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
+import { colors } from "../../common/property";
+
 const SquareButton = ({ content, color, onPress }) => (
   <TouchableOpacity
     activeOpacity={0.8}
@@ -20,14 +22,14 @@ const styles = StyleSheet.create({
       backgroundColor: bgColor,
       borderRadius: 4,
       borderWidth: 4,
-      borderColor: "#FCF8F6",
+      borderColor: colors.ivory,
       alignItems: "center",
       justifyContent: "center",
     };
   },
   text: {
     padding: 8,
-    color: "#FCF8F6",
+    color: colors.ivory,
     fontSize: 18,
     fontWeight: "bold",
   },

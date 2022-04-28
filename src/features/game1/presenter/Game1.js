@@ -10,9 +10,11 @@ import {
   TextTimer,
   ResetModalContainer,
 } from "../../../components";
-import { FaceRecognitionContainer } from "../container";
-import MapContainer from "../container/MapContainer";
-import FaceDirectionRecord from "./FaceDirectionRecord";
+import {
+  FaceRecognitionContainer,
+  MapContainer,
+  FaceDirectionRecord,
+} from "..";
 
 const Game1 = ({
   isReady,

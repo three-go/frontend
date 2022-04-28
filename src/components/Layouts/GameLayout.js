@@ -4,7 +4,9 @@ import { useNavigation } from "@react-navigation/native";
 import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { GameHeader } from "../index";
+import { GameHeader } from "..";
+import { colors } from "../../common/property";
+import { navigations } from "../../common/constants";
 
 const GameLayout = ({
   children,
@@ -27,7 +29,7 @@ const GameLayout = ({
   const navigation = useNavigation();
 
   const handleGoBack = () => {
-    navigation.navigate("Main");
+    navigation.navigate(navigations.main);
   };
 
   return (
@@ -60,7 +62,7 @@ const GameLayout = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#212529",
+    backgroundColor: colors.dark,
   },
   header: {
     height: "10%",
@@ -71,7 +73,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     height: "100%",
-    backgroundColor: "#FCF8F6",
+    backgroundColor: colors.ivory,
   },
 });
 

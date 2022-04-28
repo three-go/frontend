@@ -4,10 +4,11 @@ import { useNavigation } from "@react-navigation/native";
 import { Keyboard } from "react-native";
 import uuid from "react-native-uuid";
 
-import { SmallButton } from "..";
+import { colors } from "../../common/property";
+import { navigations } from "../../common/constants";
 import { GameContext } from "../../context";
 import { setItemToAsync, getItemFromAsync } from "../../utils";
-import InputModal from "./InputModal";
+import { SmallButton, InputModal } from "..";
 
 const InputModalContainer = ({ score }) => {
   const navigation = useNavigation();
@@ -38,11 +39,11 @@ const InputModalContainer = ({ score }) => {
 
       setModalVisible(false);
       Keyboard.dismiss();
-      navigation.navigate("Main", { visible: true });
+      navigation.navigate(navigations.main, { visible: true });
     } catch (error) {
       setModalVisible(false);
       Keyboard.dismiss();
-      navigation.navigate("Main");
+      navigation.navigate(navigations.main);
     }
   };
 
@@ -54,7 +55,11 @@ const InputModalContainer = ({ score }) => {
       setName={setUserName}
       onRegister={onRegister}
     >
-      <SmallButton content="등록" color="#00BBD1" onPress={onRegister} />
+      <SmallButton
+        content="등록"
+        color={colors.tealGreen}
+        onPress={onRegister}
+      />
     </InputModal>
   );
 };

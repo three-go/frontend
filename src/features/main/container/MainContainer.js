@@ -9,14 +9,12 @@ import SystemNavigationBar from "react-native-system-navigation-bar";
 import { DefaultButton, SmallButton, ContentModal } from "../../../components";
 import { GameContext } from "../../../context";
 import {
-  game,
   getItemFromAsync,
   convertContentToArray,
   descendOrderArray,
 } from "../../../utils";
-import GameGuide from "../presenter/GameGuide";
-import Main from "../presenter/Main";
-import Page from "../presenter/Page";
+import { game } from "../../../common/property";
+import { GameGuide, Main, Page } from "..";
 
 const size = {
   SCREEN_WIDTH: 300,

@@ -1,11 +1,23 @@
-import { Game1Container, FaceRecognitionContainer } from "./container";
-import { Game1, Map, FaceRecognition, FaceDirectionRecord } from "./presenter";
-
-export {
-  Game1Container,
+import {
   FaceRecognitionContainer,
+  Game1Container,
+  MapContainer,
+} from "./container";
+import {
+  DefaultMap,
+  FaceDirectionRecord,
+  FaceRecognition,
   Game1,
   Map,
-  FaceRecognition,
+} from "./presenter";
+
+export {
+  FaceRecognitionContainer,
+  Game1Container,
+  MapContainer,
+  DefaultMap,
   FaceDirectionRecord,
+  FaceRecognition,
+  Map,
+  Game1,
 };

@@ -1,11 +1,8 @@
 import React, { useEffect } from "react";
 
 import useCharacter from "../../../hooks/useCharacter";
-import { Map } from "../presenter";
-import DefaultMap from "../presenter/DefaultMap";
-
-const FIXED_WIDTH = 300;
-const FIXED_HEIGHT = 450;
+import { map } from "../../../common/constants";
+import { DefaultMap, Map } from "../presenter";
 
 const MapContainer = ({
   gameMap,
@@ -34,8 +31,8 @@ const MapContainer = ({
   };
 
   const boxStyle = {
-    boxWidth: (FIXED_WIDTH - borderWidth.horizontal) / arrInfo.columnCount,
-    boxHeigth: (FIXED_HEIGHT - borderWidth.vertical) / arrInfo.rowCount,
+    boxWidth: (map.width - borderWidth.horizontal) / arrInfo.columnCount,
+    boxHeigth: (map.height - borderWidth.vertical) / arrInfo.rowCount,
   };
 
   const handleCheckStage = (n) => {

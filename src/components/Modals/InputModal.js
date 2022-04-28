@@ -10,6 +10,8 @@ import {
   Platform,
 } from "react-native";
 
+import { colors } from "../../common/property";
+
 const InputModal = ({
   score,
   modalVisible,
@@ -66,10 +68,10 @@ const styles = StyleSheet.create({
     padding: 15,
     borderWidth: 5,
     borderRadius: 20,
-    borderColor: "#FCF8F6",
-    backgroundColor: "#96A1A8",
+    borderColor: colors.ivory,
+    backgroundColor: colors.gray,
     elevation: 5,
-    shadowColor: "#000000",
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -78,34 +80,34 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
   },
   modalTitle: {
-    color: "#FCF8F6",
+    color: colors.ivory,
     fontSize: 22,
   },
   modalScore: {
-    color: "#FCF8F6",
+    color: colors.ivory,
     fontSize: 30,
     fontWeight: "bold",
   },
   modalText: {
-    color: "#FCF8F6",
+    color: colors.ivory,
     textAlign: "center",
     fontSize: 18,
   },
   inputStyle: {
     borderBottomWidth: 1,
-    borderColor: "#FCF8F6",
-    color: "#FCF8F6",
+    borderColor: colors.ivory,
+    color: colors.ivory,
     fontSize: 18,
     textAlign: "center",
   },
   button: {
     padding: 10,
     borderRadius: 20,
-    backgroundColor: "#00BBD1",
+    backgroundColor: colors.tealGreen,
     elevation: 2,
   },
   textStyle: {
-    color: "#FCF8F6",
+    color: colors.ivory,
     fontWeight: "bold",
     textAlign: "center",
   },

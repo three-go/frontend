@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 
 import { Text, StyleSheet } from "react-native";
 
+import { colors } from "../../common/property";
+
 const TextTimer = ({ setIsFinish, timerInfo, setTimerInfo }) => {
   useEffect(() => {
     let timeoutId;
@@ -37,13 +39,13 @@ const TextTimer = ({ setIsFinish, timerInfo, setTimerInfo }) => {
 const styles = StyleSheet.create({
   text: (size) => {
     return {
-      color: "#FCF8F6",
+      color: colors.ivory,
       fontSize: size ? size : 12,
     };
   },
   number: (size) => {
     return {
-      color: "#FCF8F6",
+      color: colors.ivory,
       fontSize: size ? size * 2 : 18,
     };
   },
