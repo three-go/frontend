@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 import { ButtonModal, SmallButton } from "..";
-import { colors } from "../../common/property";
-import { navigations } from "../../common/constants";
+import { navigations, colors } from "../../common";
 
 const FailModalContainer = ({ onRetryCurrentStage }) => {
   const [modalVisible, setModalVisible] = useState(true);

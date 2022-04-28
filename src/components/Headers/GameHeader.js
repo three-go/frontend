@@ -3,9 +3,8 @@ import React from "react";
 import { Text, View, StyleSheet, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-import { colors } from "../../common/property";
-import { iconNames } from "../../common/constants";
 import { ChanceIcons, TextTimer } from "..";
+import { iconNames, colors, iconSizes, game } from "../../common";
 
 const GameHeader = ({
   onPressBack,
@@ -29,11 +28,15 @@ const GameHeader = ({
     <View style={styles.container}>
       {isReady && (
         <Pressable onPress={onPressBack} style={styles.back}>
-          <Icon name={iconNames.leftArrow} size={40} color={colors.gray} />
+          <Icon
+            name={iconNames.leftArrow}
+            size={iconSizes.headerLeftArrow}
+            color={colors.gray}
+          />
         </Pressable>
       )}
 
-      {currentGameKey === "game1" && (
+      {currentGameKey === game.keys[0] && (
         <View>
           {!isStart && isReady && (
             <TextTimer
@@ -63,9 +66,13 @@ const GameHeader = ({
         </View>
       )}
 
-      {currentGameKey === "game2" && (
+      {currentGameKey === game.keys[1] && (
         <View style={styles.scoreWrapper}>
-          <Icon name={iconNames.flag} size={32} color={colors.gray} />
+          <Icon
+            name={iconNames.flag}
+            size={iconSizes.headerFlag}
+            color={colors.gray}
+          />
 
           <Text style={styles.score}>
             {progressRate.current} / {progressRate.total}

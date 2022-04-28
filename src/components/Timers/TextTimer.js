@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import { Text, StyleSheet } from "react-native";
 
-import { colors } from "../../common/property";
+import { colors } from "../../common";
 
 const TextTimer = ({ setIsFinish, timerInfo, setTimerInfo }) => {
   useEffect(() => {

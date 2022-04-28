@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
+import { map } from "../../../common";
 import useCharacter from "../../../hooks/useCharacter";
-import { map } from "../../../common/constants";
 import { DefaultMap, Map } from "../presenter";
 
 const MapContainer = ({

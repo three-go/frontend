@@ -3,26 +3,30 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-import { colors } from "../../common/property";
-import { iconNames } from "../../common/constants";
+import { iconNames, iconSizes, colors } from "../../common";
+
+const MAX_CHANCE = 3;
 
 const ChanceIcons = ({ chance }) => {
-  const defaultChance = 3;
-
   return (
     <View style={styles.heartWrapper}>
-      {createChanceIcons(defaultChance, chance).map((iconName, index) => (
-        <Icon key={index} name={iconName} size={28} color={colors.red} />
+      {createChanceIcons(MAX_CHANCE, chance).map((iconName, index) => (
+        <Icon
+          key={index}
+          name={iconName}
+          size={iconSizes.headerChance}
+          color={colors.red}
+        />
       ))}
     </View>
   );
 };
 
-const createChanceIcons = (defaultChance, restChance) => {
+const createChanceIcons = (MAX_CHANCE, restChance) => {
   const result = [];
   let restCount = restChance;
 
-  for (let i = 0; i < defaultChance; i++) {
+  for (let i = 0; i < MAX_CHANCE; i++) {
     if (restCount > 0) {
       --restCount;
       result.push(iconNames.heart);

@@ -10,7 +10,7 @@ import {
   Platform,
 } from "react-native";
 
-import { colors } from "../../common/property";
+import { colors } from "../../common";
 
 const InputModal = ({
   score,

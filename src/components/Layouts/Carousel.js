@@ -2,7 +2,7 @@ import React from "react";
 
 import { FlatList, StyleSheet, View } from "react-native";
 
-import { game } from "../../common/property";
+import { game } from "../../common";
 
 const Carousel = ({ content, renderItem, size }) => {
   return (

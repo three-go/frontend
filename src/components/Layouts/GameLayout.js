@@ -5,8 +5,7 @@ import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { GameHeader } from "..";
-import { colors } from "../../common/property";
-import { navigations } from "../../common/constants";
+import { navigations, colors } from "../../common";
 
 const GameLayout = ({
   children,
