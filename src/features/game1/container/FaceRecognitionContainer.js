@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import { Platform } from "react-native";
 
-import FaceRecognition from "../presenter/FaceRecognition";
+import { facePosition, faceYawAngleRange } from "../../../common/constants";
+import { FaceRecognition } from "../presenter";
 
 const FaceRecognitionContainer = ({
   selectedDirection,
@@ -14,6 +15,7 @@ const FaceRecognitionContainer = ({
   const [isFaceFront, setIsFaceFront] = useState(false);
   const [isDirectionPreviewTextShow, setIsDirectionPreviewTextShow] =
     useState(true);
+  const focusedFace = faces[0];
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -26,36 +28,40 @@ const FaceRecognitionContainer = ({
   }, [selectedDirection]);
 
   const handlerFacePosition = ({ faces }) => {
-    if (!faces[0]) {
+    if (!focusedFace) {
       return;
     }
 
     if (
       !isFaceCenter &&
-      faces[0].leftEyePosition.y > 60 &&
-      faces[0].leftEyePosition.y < 390
+      focusedFace.leftEyePosition.y > facePosition.top &&
+      focusedFace.leftEyePosition.y < facePosition.bottom
     ) {
       setIsFaceCenter(true);
     }
 
-    if (!isFaceFront && faces[0].yawAngle > -10 && faces[0].yawAngle < 10) {
+    if (
+      !isFaceFront &&
+      focusedFace.yawAngle > faceYawAngleRange.front.low &&
+      focusedFace.yawAngle < faceYawAngleRange.front.high
+    ) {
       setIsFaceFront(true);
     }
 
     if (isFaceCenter && isFaceFront) {
-      if (faces[0].leftEyePosition.y < 40) {
+      if (focusedFace.leftEyePosition.y < facePosition.top) {
         setIsFaceCenter(false);
         setIsDirectionPreviewTextShow(true);
         onSelectedDirection({ direction: "up" });
       }
 
-      if (faces[0].leftEyePosition.y > 390) {
+      if (focusedFace.leftEyePosition.y > facePosition.bottom) {
         setIsFaceCenter(false);
         setIsDirectionPreviewTextShow(true);
         onSelectedDirection({ direction: "down" });
       }
 
-      if (faces[0].yawAngle < -36) {
+      if (focusedFace.yawAngle < faceYawAngleRange.left) {
         setIsFaceFront(false);
         setIsDirectionPreviewTextShow(true);
         Platform.OS === "ios"
@@ -63,7 +69,7 @@ const FaceRecognitionContainer = ({
           : onSelectedDirection({ direction: "right" });
       }
 
-      if (faces[0].yawAngle > 36) {
+      if (focusedFace.yawAngle > faceYawAngleRange.right) {
         setIsFaceFront(false);
         setIsDirectionPreviewTextShow(true);
         Platform.OS === "ios"

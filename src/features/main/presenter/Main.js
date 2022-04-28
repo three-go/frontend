@@ -4,7 +4,7 @@ import { View, StyleSheet, StatusBar } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { DefaultButton, SquareButton, Logo } from "../../../components";
-import { game } from "../../../utils";
+import { game } from "../../../common/property";
 
 const Main = ({
   onExitApp,

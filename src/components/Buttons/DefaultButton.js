@@ -2,6 +2,8 @@ import React from "react";
 
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
+import { colors } from "../../common/property";
+
 const DefaultButton = ({ content, color, onPress }) => (
   <TouchableOpacity
     activeOpacity={0.8}
@@ -25,7 +27,7 @@ const styles = StyleSheet.create({
   },
   text: {
     padding: 8,
-    color: "#FCF8F6",
+    color: colors.ivory,
     fontSize: 15,
     fontWeight: "bold",
   },

@@ -3,6 +3,8 @@ import React from "react";
 import { FlatList, View, Text, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
+import { colors } from "../../../common/property";
+
 const DefaultMap = ({ gameMap, arrInfo, boxStyle }) => {
   return (
     <View style={styles.container}>
@@ -54,9 +56,9 @@ const getBackgroundColor = (
   let bgColor;
 
   if (isStartOrEndCell(rowIndex, cellIndex, lastRowIndex, lastCellIndex)) {
-    bgColor = "#21D0B2";
+    bgColor = colors.green;
   } else {
-    bgColor = canPass ? "#5fceec" : "#2F455C";
+    bgColor = canPass ? colors.lightBlue : colors.blueGray;
   }
 
   return bgColor;
@@ -66,7 +68,7 @@ const createCell = (width, height, bgColor, canPass) => {
   if (!canPass) {
     return (
       <View style={styles.cell(width, height, bgColor)}>
-        <Icon name="close" size={width} color="#5c6977" />
+        <Icon name="close" size={width} color={colors.ligthGray} />
       </View>
     );
   }
@@ -93,8 +95,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 10,
     borderWidth: 5,
-    borderColor: "#FCF8F6",
-    backgroundColor: "#FCF8F6",
+    borderColor: colors.ivory,
+    backgroundColor: colors.ivory,
   },
   cell: (width, height, bgColor) => {
     return {
@@ -104,7 +106,7 @@ const styles = StyleSheet.create({
       height,
       borderRadius: 10,
       borderWidth: 2,
-      borderColor: "#ffffff",
+      borderColor: colors.white,
       backgroundColor: bgColor,
     };
   },
@@ -133,7 +135,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    color: "#FCF8F6",
+    color: colors.ivory,
   },
 });
 

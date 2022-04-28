@@ -2,6 +2,8 @@ import React from "react";
 
 import { Modal, StyleSheet, View, Text } from "react-native";
 
+import { colors } from "../../common/property";
+
 const ButtonModal = ({ content, isVisible, children }) => {
   const count = React.Children.count(children);
 
@@ -32,9 +34,9 @@ const styles = StyleSheet.create({
     padding: 35,
     borderWidth: 5,
     borderRadius: 20,
-    borderColor: "#FCF8F6",
-    backgroundColor: "#96A1A8",
-    shadowColor: "#000000",
+    borderColor: colors.ivory,
+    backgroundColor: colors.gray,
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     marginBottom: 20,
-    color: "#FCF8F6",
+    color: colors.ivory,
     fontSize: 18,
     fontWeight: "bold",
   },
