@@ -9,11 +9,11 @@ import SystemNavigationBar from "react-native-system-navigation-bar";
 import { DefaultButton, SmallButton, ContentModal } from "../../../components";
 import { GameContext } from "../../../context";
 import {
-  game,
   getItemFromAsync,
   convertContentToArray,
   descendOrderArray,
 } from "../../../utils";
+import { game } from "../../../common/property";
 import { GameGuide, Main, Page } from "..";
 
 const size = {
