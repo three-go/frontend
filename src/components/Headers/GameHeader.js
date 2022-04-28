@@ -3,6 +3,8 @@ import React from "react";
 import { Text, View, StyleSheet, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
+import { colors } from "../../common/property";
+import { iconNames } from "../../common/constants";
 import { ChanceIcons, TextTimer } from "..";
 
 const GameHeader = ({
@@ -27,7 +29,7 @@ const GameHeader = ({
     <View style={styles.container}>
       {isReady && (
         <Pressable onPress={onPressBack} style={styles.back}>
-          <Icon name="arrow-left-thick" size={40} color="#96A1A8" />
+          <Icon name={iconNames.leftArrow} size={40} color={colors.gray} />
         </Pressable>
       )}
 
@@ -63,7 +65,7 @@ const GameHeader = ({
 
       {currentGameKey === "game2" && (
         <View style={styles.scoreWrapper}>
-          <Icon name="flag" size={32} color="#96A1A8" />
+          <Icon name={iconNames.flag} size={32} color={colors.gray} />
 
           <Text style={styles.score}>
             {progressRate.current} / {progressRate.total}
@@ -85,8 +87,8 @@ const styles = StyleSheet.create({
     height: "100%",
     paddingLeft: 8,
     paddingRight: 8,
-    backgroundColor: "#212529",
-    color: "#FCF8F6",
+    backgroundColor: colors.dark,
+    color: colors.ivory,
   },
   back: {
     justifyContent: "center",
@@ -101,7 +103,7 @@ const styles = StyleSheet.create({
   },
   score: {
     marginLeft: 10,
-    color: "#FCF8F6",
+    color: colors.ivory,
     textAlign: "center",
     fontSize: 24,
     fontWeight: "bold",

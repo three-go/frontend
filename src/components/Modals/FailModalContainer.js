@@ -3,13 +3,15 @@ import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 import { ButtonModal, SmallButton } from "..";
+import { colors } from "../../common/property";
+import { navigations } from "../../common/constants";
 
 const FailModalContainer = ({ onRetryCurrentStage }) => {
   const [modalVisible, setModalVisible] = useState(true);
   const navigation = useNavigation();
 
   const handleNavigateMain = () => {
-    navigation.navigate("Main");
+    navigation.navigate(navigations.main);
     setModalVisible(false);
   };
 
@@ -20,10 +22,14 @@ const FailModalContainer = ({ onRetryCurrentStage }) => {
 
   return (
     <ButtonModal isVisible={modalVisible} content="탈출에 실패하셨습니다.">
-      <SmallButton content="다시시도" color="#00BBD1" onPress={handleRetry} />
+      <SmallButton
+        content="다시시도"
+        color={colors.tealGreen}
+        onPress={handleRetry}
+      />
       <SmallButton
         content="메인으로"
-        color="#c92a2a"
+        color={colors.red}
         onPress={handleNavigateMain}
       />
     </ButtonModal>

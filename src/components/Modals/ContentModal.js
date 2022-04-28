@@ -3,6 +3,7 @@ import React from "react";
 import { Modal, StyleSheet, Text, View } from "react-native";
 
 import { Carousel } from "..";
+import { colors } from "../../common/property";
 
 const ContentModal = ({
   isVisible,
@@ -46,9 +47,9 @@ const styles = StyleSheet.create({
     padding: 35,
     borderWidth: 5,
     borderRadius: 20,
-    borderColor: "#FCF8F6",
-    backgroundColor: "#96A1A8",
-    shadowColor: "#000000",
+    borderColor: colors.ivory,
+    backgroundColor: colors.gray,
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 2,
