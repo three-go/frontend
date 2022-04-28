@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 
 import useCharacter from "../../../hooks/useCharacter";
-import { Map } from "../presenter";
-import DefaultMap from "../presenter/DefaultMap";
+import { DefaultMap, Map } from "../presenter";
 
 const FIXED_WIDTH = 300;
 const FIXED_HEIGHT = 450;

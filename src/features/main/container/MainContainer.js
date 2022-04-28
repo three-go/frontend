@@ -14,9 +14,7 @@ import {
   convertContentToArray,
   descendOrderArray,
 } from "../../../utils";
-import GameGuide from "../presenter/GameGuide";
-import Main from "../presenter/Main";
-import Page from "../presenter/Page";
+import { GameGuide, Main, Page } from "..";
 
 const size = {
   SCREEN_WIDTH: 300,

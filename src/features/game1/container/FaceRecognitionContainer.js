@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { Platform } from "react-native";
 
-import FaceRecognition from "../presenter/FaceRecognition";
+import { FaceRecognition } from "../presenter";
 
 const FaceRecognitionContainer = ({
   selectedDirection,
