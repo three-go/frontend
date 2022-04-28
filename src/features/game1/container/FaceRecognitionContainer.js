@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 import { Platform } from "react-native";
+import uuid from "react-native-uuid";
 
-import { facePosition, faceYawAngleRange } from "../../../common";
+import { facePosition, faceYawAngleRange, time } from "../../../common";
 import { FaceRecognition } from "../presenter";
 
 const FaceRecognitionContainer = ({
@@ -19,7 +20,7 @@ const FaceRecognitionContainer = ({
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setIsDirectionPreviewTextShow(false);
-    }, 800);
+    }, time.faceRecognitionInterval);
 
     return () => {
       clearTimeout(timeoutId);
@@ -53,29 +54,29 @@ const FaceRecognitionContainer = ({
       if (focusedFace.leftEyePosition.y < facePosition.top) {
         setIsFaceCenter(false);
         setIsDirectionPreviewTextShow(true);
-        onSelectedDirection({ direction: "up" });
+        onSelectedDirection({ id: uuid.v4(), direction: "up" });
       }
 
       if (focusedFace.leftEyePosition.y > facePosition.bottom) {
         setIsFaceCenter(false);
         setIsDirectionPreviewTextShow(true);
-        onSelectedDirection({ direction: "down" });
+        onSelectedDirection({ id: uuid.v4(), direction: "down" });
       }
 
       if (focusedFace.yawAngle < faceYawAngleRange.left) {
         setIsFaceFront(false);
         setIsDirectionPreviewTextShow(true);
         Platform.OS === "ios"
-          ? onSelectedDirection({ direction: "left" })
-          : onSelectedDirection({ direction: "right" });
+          ? onSelectedDirection({ id: uuid.v4(), direction: "left" })
+          : onSelectedDirection({ id: uuid.v4(), direction: "right" });
       }
 
       if (focusedFace.yawAngle > faceYawAngleRange.right) {
         setIsFaceFront(false);
         setIsDirectionPreviewTextShow(true);
         Platform.OS === "ios"
-          ? onSelectedDirection({ direction: "right" })
-          : onSelectedDirection({ direction: "left" });
+          ? onSelectedDirection({ id: uuid.v4(), direction: "right" })
+          : onSelectedDirection({ id: uuid.v4(), direction: "left" });
       }
     }
   };

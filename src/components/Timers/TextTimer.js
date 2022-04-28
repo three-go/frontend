@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 
 import { Text, StyleSheet } from "react-native";
 
-import { colors } from "../../common";
+import { colors, time } from "../../common";
 
 const TextTimer = ({ setIsFinish, timerInfo, setTimerInfo }) => {
   useEffect(() => {
     let timeoutId;
 
-    if (timerInfo.count > 0) {
+    if (timerInfo.count > time.zero) {
       timeoutId = setTimeout(() => {
         setTimerInfo((state) => {
           return {
@@ -16,10 +16,10 @@ const TextTimer = ({ setIsFinish, timerInfo, setTimerInfo }) => {
             count: state.count - 1,
           };
         });
-      }, 1000);
+      }, time.textTimerInterval);
     }
 
-    if (timerInfo.count === 0) {
+    if (timerInfo.count === time.zero) {
       setIsFinish(true);
     }
 

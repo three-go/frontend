@@ -12,6 +12,8 @@ import Animated, {
 import uuid from "react-native-uuid";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
+import { colors } from "../../../common";
+
 const Map = ({
   gameMap,
   characterInfo,
@@ -27,7 +29,7 @@ const Map = ({
     boxStyle.boxHeigth * characterInfo.position.y
   );
   const rotation = useSharedValue(0);
-  const borderColor = useSharedValue("#FCF8F6");
+  const borderColor = useSharedValue(colors.ivory);
 
   const transformStyles = useAnimatedStyle(() => {
     return {
@@ -52,8 +54,8 @@ const Map = ({
   );
 
   useEffect(() => {
-    const wrongColor = "#f45a5a";
-    const defaultColor = "#FCF8F6";
+    const wrongColor = colors.red;
+    const defaultColor = colors.ivory;
 
     if (characterInfo && !characterInfo.isValid) {
       borderColor.value = withSequence(
@@ -128,7 +130,7 @@ const Map = ({
           transformStyles,
         ]}
       >
-        <Icon name="heart" size={50} color="#f45a5a" style={{ zIndex: 2 }} />
+        <Icon name="heart" size={50} color={colors.red} style={{ zIndex: 2 }} />
       </Animated.View>
 
       {/* start marker view */}
@@ -154,9 +156,9 @@ const getBackgroundColor = (
   let bgColor;
 
   if (isStartOrEndCell(rowIndex, cellIndex, lastRowIndex, lastCellIndex)) {
-    bgColor = "#21D0B2";
+    bgColor = colors.green;
   } else {
-    bgColor = canPass ? "#5fceec" : "#2F455C";
+    bgColor = canPass ? colors.lightBlue : colors.blueGray;
   }
 
   return bgColor;
@@ -167,7 +169,7 @@ const createCell = (width, height, bgColor, canPass) => {
   if (!canPass) {
     return (
       <View style={styles.cell(width, height, bgColor)}>
-        <Icon name="close" size={width} color="#5c6977" />
+        <Icon name="close" size={width} color={colors.ligthGray} />
       </View>
     );
   }
@@ -194,8 +196,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 10,
     borderWidth: 5,
-    borderColor: "#FCF8F6",
-    backgroundColor: "#FCF8F6",
+    borderColor: colors.ivory,
+    backgroundColor: colors.ivory,
   },
   cell: (width, height, bgColor) => {
     return {
@@ -205,7 +207,7 @@ const styles = StyleSheet.create({
       height,
       borderRadius: 10,
       borderWidth: 2,
-      borderColor: "#ffffff",
+      borderColor: colors.ivory,
       backgroundColor: bgColor,
     };
   },
@@ -234,7 +236,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    color: "#FCF8F6",
+    color: colors.ivory,
   },
 });
 

@@ -4,6 +4,7 @@ import { StyleSheet, View, Text, Linking } from "react-native";
 import { RNCamera } from "react-native-camera";
 import RNExitApp from "react-native-exit-app";
 
+import { colors } from "../../../common";
 import { SmallButton } from "../../../components";
 
 const FaceRecognition = ({
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 2,
     borderLeftWidth: 2,
     borderRightWidth: 2,
-    borderColor: "#00E0EA",
+    borderColor: colors.turquoise,
   },
   directionText: {
     fontSize: 100,
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
     height: "50%",
     padding: "5%",
     borderRadius: 20,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: colors.white,
   },
   notAuthorizedViewTitle: {
     fontSize: 20,

@@ -13,7 +13,7 @@ const Carousel = ({ content, renderItem, size }) => {
         data={content}
         decelerationRate="fast"
         horizontal
-        keyExtractor={(_, i) => game.keys[i]}
+        keyExtractor={(_, index) => game.keys[index]}
         pagingEnabled
         renderItem={renderItem}
         snapToInterval={size.PAGE_WIDTH + size.GAP}

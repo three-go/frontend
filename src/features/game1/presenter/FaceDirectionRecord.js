@@ -3,8 +3,16 @@ import React, { useEffect, useRef } from "react";
 import { View, ScrollView, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
 
+import { colors, iconSizes } from "../../../common";
+
 const FaceDirectionRecord = ({ directions, isInput }) => {
   const scrollView = useRef(null);
+
+  const handleContentSizeChange = () => {
+    if (!isInput) {
+      scrollView.current.scrollToEnd({ animated: true });
+    }
+  };
 
   useEffect(() => {
     if (isInput) {
@@ -16,26 +24,22 @@ const FaceDirectionRecord = ({ directions, isInput }) => {
     <View style={styles.container}>
       <ScrollView
         ref={scrollView}
-        style={styles.scrollContainer}
-        contentContainerStyle={styles.contentContainer}
+        style={styles.scrollWrapper}
+        contentContainerStyle={styles.contentWrapper}
         horizontal={true}
-        onContentSizeChange={() => {
-          if (!isInput) {
-            scrollView.current.scrollToEnd({ animated: true });
-          }
-        }}
+        onContentSizeChange={handleContentSizeChange}
       >
-        {directions.map((item, index) => {
+        {directions.map((value, index) => {
           const isHilightedItem = isInput
             ? index === 0
             : !directions[index + 1];
-          const iconColor = isHilightedItem ? "#00E0EA" : "#FFFFFF";
+          const iconColor = isHilightedItem ? colors.turquoise : colors.white;
 
           return (
-            <View key={index} style={styles.itemContainer}>
+            <View key={value.id} style={styles.directionWrapper}>
               <Icon
-                name={`arrow${item.direction}`}
-                size={50}
+                name={`arrow${value.direction}`}
+                size={iconSizes.footerArrow}
                 color={iconColor}
               />
             </View>
@@ -50,19 +54,19 @@ const styles = StyleSheet.create({
   container: {
     height: 80,
   },
-  scrollContainer: {
+  scrollWrapper: {
     flexDirection: "row",
     width: 310,
     height: "100%",
     borderRadius: 10,
-    borderColor: "#FCF8F6",
+    borderColor: colors.ivory,
     borderWidth: 5,
-    backgroundColor: "#96A1A8",
+    backgroundColor: colors.gray,
   },
-  contentContainer: {
+  contentWrapper: {
     alignItems: "center",
   },
-  itemContainer: {
+  directionWrapper: {
     width: 50,
   },
 });
