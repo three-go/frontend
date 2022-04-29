@@ -44,13 +44,6 @@ const textSizes = {
   large: 40,
 };
 
-const gameStatus = {
-  ready: "ready",
-  start: "start",
-  input: "input",
-  end: "end",
-};
-
 const navigations = {
   main: "Main",
 };
