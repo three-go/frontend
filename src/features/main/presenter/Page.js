@@ -2,6 +2,8 @@ import React from "react";
 
 import { StyleSheet, View, Text, ScrollView } from "react-native";
 
+import { colors } from "../../../common";
+
 const Page = ({ item, style }) => {
   return (
     <View style={[styles.container, style]}>
@@ -30,7 +32,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    backgroundColor: "#FCF8F6",
+    backgroundColor: colors.ivory,
   },
   wrapper: (index) => {
     return {
@@ -41,13 +43,13 @@ const styles = StyleSheet.create({
       height: 50,
       borderWidth: 2,
       borderRadius: 5,
-      borderColor: "#FCF8F6",
-      backgroundColor: index % 2 === 0 ? "#96A1A8" : "#FCF8F6",
+      borderColor: colors.ivory,
+      backgroundColor: index % 2 === 0 ? colors.gray : colors.ivory,
     };
   },
   text: {
     width: "50%",
-    color: "#212529",
+    color: colors.dark,
     textAlign: "center",
     fontSize: 15,
     fontWeight: "bold",

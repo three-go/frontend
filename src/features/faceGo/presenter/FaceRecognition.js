@@ -51,7 +51,7 @@ const FaceRecognition = ({
           </Text>
           <SmallButton
             content="설정으로 가기"
-            color="#c92a2a"
+            color={colors.red}
             onPress={() => {
               openSettingOption();
             }}

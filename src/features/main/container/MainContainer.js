@@ -7,7 +7,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import SystemNavigationBar from "react-native-system-navigation-bar";
 
 import { GameGuide, Main, Page } from "..";
-import { game } from "../../../common";
+import { colors, game } from "../../../common";
 import { DefaultButton, SmallButton, ContentModal } from "../../../components";
 import { GameContext } from "../../../context";
 import {
@@ -124,7 +124,7 @@ const MainContainer = ({ navigation }) => {
         >
           <DefaultButton
             content="닫기"
-            color="#c92a2a"
+            color={colors.red}
             onPress={handleShowScoreModal}
           />
         </ContentModal>
@@ -140,12 +140,12 @@ const MainContainer = ({ navigation }) => {
         >
           <SmallButton
             content="게임 시작"
-            color="#00BBD1"
+            color={colors.tealGreen}
             onPress={handleStartGame}
           />
           <SmallButton
             content="닫기"
-            color="#c92a2a"
+            color={colors.red}
             onPress={handleShowDescriptionModal}
           />
         </ContentModal>

@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 15,
-    color: "#FCF8F6",
+    color: colors.ivory,
     textAlign: "center",
     fontSize: 25,
     fontWeight: "bold",
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     flex: 1,
     // width: 300,
     width: "100%",
-    backgroundColor: "#96A1A8",
+    backgroundColor: colors.gray,
   },
   buttonContainer: {
     flexDirection: "row",

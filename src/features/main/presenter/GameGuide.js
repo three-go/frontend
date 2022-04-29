@@ -3,6 +3,8 @@ import React from "react";
 import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
+import { colors } from "../../../common";
+
 const GameGuide = ({ item, style }) => {
   return (
     <View style={[styles.container, style]}>
@@ -38,19 +40,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     padding: 5,
-    backgroundColor: "#212529",
+    backgroundColor: colors.dark,
   },
   title: {
     marginTop: 10,
     marginBottom: 10,
     fontSize: 15,
     fontWeight: "900",
-    color: "#FCF8F6",
+    color: colors.ivory,
   },
   content: {
     marginBottom: 10,
     fontSize: 12,
-    color: "#FCF8F6",
+    color: colors.ivory,
   },
   imageContainer: {
     flex: 1,
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 500,
     borderTopWidth: 5,
-    borderTopColor: "#FCF8F6",
+    borderTopColor: colors.ivory,
   },
   image: {
     flex: 1,
