@@ -100,11 +100,20 @@ const gameDescription = {
 
 const gameKey = ["game1", "game2"];
 
+const gameStatus = {
+  none: "none",
+  open: "mapOpen",
+  directionInput: "directionInput",
+  play: "resultPlay",
+  end: "gameEnd",
+};
+
 const game = {
   keys: gameKey,
   names: gameNames,
   colors: gameColors,
   description: gameDescription,
+  status: gameStatus,
 };
 
-export { game, colors };
+export { game };
