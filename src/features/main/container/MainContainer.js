@@ -30,8 +30,8 @@ const MainContainer = ({ navigation }) => {
   const [scoreModalVisible, setScoreModalVisible] = useState(false);
   const [descriptionModalVisible, setDescriptionModalVisible] = useState(false);
   const [scoreData, setScoreData] = useState({
-    game1: null,
-    game2: null,
+    faceGo: null,
+    shoutGo: null,
   });
 
   useEffect(() => {
@@ -53,14 +53,14 @@ const MainContainer = ({ navigation }) => {
 
   useEffect(() => {
     const loadScoreData = async () => {
-      const game1ScoreData = await getItemFromAsync(game.keys[0]);
-      const game2ScoreData = await getItemFromAsync(game.keys[1]);
+      const faceGoScoreData = await getItemFromAsync(game.keys[0]);
+      const shoutGoScoreData = await getItemFromAsync(game.keys[1]);
 
       setScoreData((data) => {
         return {
           ...data,
-          game1: game1ScoreData,
-          game2: game2ScoreData,
+          faceGo: faceGoScoreData,
+          shoutGo: shoutGoScoreData,
         };
       });
     };
@@ -87,7 +87,7 @@ const MainContainer = ({ navigation }) => {
   };
 
   const handleStartGame = () => {
-    navigation.navigate(currentGameKey === "game1" ? "Game1" : "Game2");
+    navigation.navigate(currentGameKey === "faceGo" ? "FaceGo" : "ShoutGo");
     setDescriptionModalVisible(!descriptionModalVisible);
   };
 
@@ -157,7 +157,8 @@ const MainContainer = ({ navigation }) => {
 const styles = StyleSheet.create({
   pageWrapper: (prop) => {
     return {
-      width: prop.PAGE_WIDTH,
+      // width: prop.PAGE_WIDTH,
+      width: prop.PAGE_WIDTH - 40,
       marginHorizontal: prop.GAP / 2,
     };
   },

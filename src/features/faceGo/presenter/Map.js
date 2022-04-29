@@ -12,11 +12,12 @@ import Animated, {
 import uuid from "react-native-uuid";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-import { colors } from "../../../common";
+import { colors, game } from "../../../common";
 import { getBackgroundColor } from "../../../utils/helper";
 import { MapCell } from "..";
 
 const Map = ({
+  status,
   gameMap,
   characterInfo,
   arrInfo,
@@ -100,7 +101,8 @@ const Map = ({
       );
 
       translateY.value = withSpring(
-        boxStyle.boxHeigth * characterInfo.position.y,
+        boxStyle.boxHeigth * characterInfo.position.y +
+          4 * characterInfo.position.y,
         { duration: 1000 }
       );
     }
@@ -131,14 +133,21 @@ const Map = ({
           />
         ))}
 
-      <Animated.View
-        style={[
-          styles.chracterBox(boxStyle.boxWidth, boxStyle.boxHeigth),
-          transformStyles,
-        ]}
-      >
-        <Icon name="heart" size={50} color={colors.red} style={{ zIndex: 2 }} />
-      </Animated.View>
+      {status === game.status.play && (
+        <Animated.View
+          style={[
+            styles.chracterBox(boxStyle.boxWidth, boxStyle.boxHeigth),
+            transformStyles,
+          ]}
+        >
+          <Icon
+            name="heart"
+            size={50}
+            color={colors.red}
+            style={{ zIndex: 2 }}
+          />
+        </Animated.View>
+      )}
 
       <View style={styles.startText}>
         <Text style={styles.text}>Start</Text>
@@ -159,18 +168,6 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     borderColor: colors.ivory,
     backgroundColor: colors.ivory,
-  },
-  cell: (width, height, bgColor) => {
-    return {
-      justifyContent: "center",
-      alignItems: "center",
-      width,
-      height,
-      borderRadius: 10,
-      borderWidth: 2,
-      borderColor: colors.ivory,
-      backgroundColor: bgColor,
-    };
   },
   chracterBox: (width, height) => {
     return {
@@ -196,7 +193,7 @@ const styles = StyleSheet.create({
     right: 15,
   },
   text: {
-    fontSize: 16,
+    fontSize: 14,
     color: colors.ivory,
   },
 });

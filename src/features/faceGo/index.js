@@ -1,25 +1,23 @@
 import {
   FaceRecognitionContainer,
-  Game1Container,
+  FaceGoContainer,
   MapContainer,
 } from "./container";
 import {
-  DefaultMap,
   FaceDirectionRecord,
   FaceRecognition,
-  Game1,
+  FaceGo,
   Map,
   MapCell,
 } from "./presenter";
 
 export {
   FaceRecognitionContainer,
-  Game1Container,
+  FaceGoContainer,
   MapContainer,
-  DefaultMap,
   FaceDirectionRecord,
   FaceRecognition,
   Map,
   MapCell,
-  Game1,
+  FaceGo,
 };

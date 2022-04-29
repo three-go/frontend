@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 
 import { GameContext } from "../../../context";
-import Game2 from "../presenter/Game2";
+import ShoutGo from "../presenter/ShoutGo";
 
-const Game2Container = () => {
+const ShoutGoContainer = () => {
   const { currentGameKey } = useContext(GameContext);
   const [progressRate, setProgressRate] = useState({
     current: 0,
@@ -11,7 +11,7 @@ const Game2Container = () => {
   });
 
   return (
-    <Game2
+    <ShoutGo
       currentGameKey={currentGameKey}
       progressRate={progressRate}
       setProgressRate={setProgressRate}
@@ -19,4 +19,4 @@ const Game2Container = () => {
   );
 };
 
-export default Game2Container;
+export default ShoutGoContainer;

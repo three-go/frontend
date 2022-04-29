@@ -4,7 +4,7 @@ import { Text } from "react-native";
 
 import { GameLayout } from "../../../components";
 
-const Game2 = ({ currentGameKey, progressRate, setProgressRate }) => {
+const ShoutGo = ({ currentGameKey, progressRate, setProgressRate }) => {
   return (
     <GameLayout
       currentGameKey={currentGameKey}
@@ -12,10 +12,10 @@ const Game2 = ({ currentGameKey, progressRate, setProgressRate }) => {
       setProgressRate={setProgressRate}
     >
       <Text>
-        Game2{"\n"}GameLayout{"\n"}children
+        ShoutGo{"\n"}GameLayout{"\n"}children
       </Text>
     </GameLayout>
   );
 };
 
-export default Game2;
+export default ShoutGo;

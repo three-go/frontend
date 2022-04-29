@@ -17,24 +17,14 @@ import {
   ResetModalContainer,
 } from "../../../components";
 
-const Game1 = ({
+const FaceGo = ({
   status,
   setStatus,
-  readyTimer,
-  setReadyTimer,
-  startTimer,
-  setStartTimer,
-  inputTimer,
-  setInputTimer,
+  result,
+  setResult,
   stage,
   score,
   setScore,
-  isEnd,
-  setIsEnd,
-  isWin,
-  setIsWin,
-  isLose,
-  setIsLose,
   selectedDirection,
   setSelectedDirection,
   directions,
@@ -52,27 +42,17 @@ const Game1 = ({
     <GameLayout
       status={status}
       setStatus={setStatus}
-      readyTimer={readyTimer}
-      setReadyTimer={setReadyTimer}
-      startTimer={startTimer}
-      setStartTimer={setStartTimer}
-      inputTimer={inputTimer}
-      setInputTimer={setInputTimer}
       score={score}
       cameraPermissionStatus={cameraPermissionStatus}
       currentGameKey={currentGameKey}
       chance={chance}
     >
-      {currentGameKey === "game1" && (
+      {currentGameKey === "faceGo" && (
         <View style={styles.container}>
           <View style={styles.playArea}>
             <View style={styles.playZone}>
               {status === game.status.none && (
-                <TextTimer
-                  onTimerEnd={onTimerEnd}
-                  timerInfo={readyTimer}
-                  setTimerInfo={setReadyTimer}
-                />
+                <TextTimer onTimerEnd={onTimerEnd} status={status} />
               )}
 
               {status === game.status.open && (
@@ -80,7 +60,7 @@ const Game1 = ({
                   status={status}
                   stage={stage}
                   directions={directions}
-                  setIsWin={setIsWin}
+                  setResult={setResult}
                   gameMap={gameMap}
                 />
               )}
@@ -99,32 +79,34 @@ const Game1 = ({
                   status={status}
                   stage={stage}
                   directions={directions}
-                  setIsWin={setIsWin}
-                  setIsLose={setIsLose}
+                  setResult={setResult}
                   gameMap={gameMap}
                   score={score}
                   setScore={setScore}
-                  setIsEnd={setIsEnd}
                   setChance={setChance}
                 />
               )}
 
-              {isEnd && <InputModalContainer score={score} />}
-
-              {isWin && (
+              {result === game.result.win && (
                 <NextStageModalContainer onNextStage={handleNextStage} />
               )}
 
-              {isLose && (
+              {result === game.result.lose && (
                 <FailModalContainer onRetryCurrentStage={onRetryCurrentStage} />
               )}
 
-              {isLose && chance === 0 && <ResetModalContainer />}
+              {result === game.result.lose && chance === 0 && (
+                <ResetModalContainer />
+              )}
+
+              {result === game.result.end && (
+                <InputModalContainer score={score} />
+              )}
             </View>
           </View>
 
           <View style={styles.recordArea}>
-            {status === game.status.open && (
+            {status !== game.status.none && (
               <FaceDirectionRecord directions={directions} status={status} />
             )}
           </View>
@@ -162,4 +144,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Game1;
+export default FaceGo;

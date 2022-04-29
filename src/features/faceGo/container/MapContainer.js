@@ -2,18 +2,16 @@ import React, { useEffect } from "react";
 
 import useCharacter from "../../../hooks/useCharacter";
 import { map, game } from "../../../common";
-import { DefaultMap, Map } from "../presenter";
+import { Map } from "../presenter";
 
 const MapContainer = ({
   status,
   gameMap,
   stage,
   directions,
-  setIsWin,
-  setIsLose,
+  setResult,
   score,
   setScore,
-  setIsEnd,
   setChance,
 }) => {
   const characterInfo = useCharacter(gameMap, score, setScore);
@@ -24,8 +22,8 @@ const MapContainer = ({
   };
 
   const borderWidth = {
-    horizontal: 10 + 2 * arrInfo.columnCount,
-    vertical: 10,
+    horizontal: 20 + 2 * arrInfo.columnCount,
+    vertical: 15 + 2 * arrInfo.rowCount,
   };
 
   const boxStyle = {
@@ -35,9 +33,9 @@ const MapContainer = ({
 
   const handleCheckStage = (n) => {
     if (n < 3) {
-      setIsWin(true);
+      setResult(game.result.win);
     } else if (stage === 3) {
-      setIsEnd(true);
+      setResult(game.result.end);
     }
   };
 
@@ -49,7 +47,7 @@ const MapContainer = ({
         handleCheckStage(stage);
       } else {
         setChance((prev) => prev - 1);
-        setIsLose(true);
+        setResult(game.result.lose);
       }
     }
 
@@ -76,21 +74,15 @@ const MapContainer = ({
   }, [directions]);
 
   return (
-    <>
-      {status === game.status.open && (
-        <DefaultMap gameMap={gameMap} arrInfo={arrInfo} boxStyle={boxStyle} />
-      )}
-      {status === game.status.play && (
-        <Map
-          gameMap={gameMap}
-          characterInfo={characterInfo}
-          arrInfo={arrInfo}
-          boxStyle={boxStyle}
-          directions={directions}
-          setScore={setScore}
-        />
-      )}
-    </>
+    <Map
+      status={status}
+      gameMap={gameMap}
+      characterInfo={characterInfo}
+      arrInfo={arrInfo}
+      boxStyle={boxStyle}
+      directions={directions}
+      setScore={setScore}
+    />
   );
 };
 

@@ -1,17 +1,15 @@
 import React, { useState, useEffect, useContext, useMemo } from "react";
 
-import { Game1 } from "..";
+import { FaceGo } from "..";
 import { game, time, textSizes } from "../../../common";
 import { GameContext } from "../../../context";
 import { createMap } from "../../../utils";
 
-const Game1Container = () => {
+const FaceGoContainer = () => {
   const { currentGameKey } = useContext(GameContext);
 
-  const [status, setStatus] = useState("none");
-  const [isWin, setIsWin] = useState(false);
-  const [isLose, setIsLose] = useState(false);
-  const [isEnd, setIsEnd] = useState(false);
+  const [status, setStatus] = useState(game.status.none);
+  const [result, setResult] = useState(game.result.none);
 
   const [cameraPermissionStatus, setCameraPermissionStatus] = useState("");
   const [selectedDirection, setSelectedDirection] = useState({});
@@ -21,62 +19,23 @@ const Game1Container = () => {
   const [stage, setStage] = useState(1);
   const [chance, setChance] = useState(3);
 
-  const [readyTimer, setReadyTimer] = useState({
-    text: "게임시작",
-    count: time.readyTimerSet,
-    size: textSizes.medium,
-  });
-
-  const [startTimer, setStartTimer] = useState({
-    text: "맵이 가려지기",
-    count: time.startTimerSet,
-    size: textSizes.small,
-  });
-
-  const [inputTimer, setInputTimer] = useState({
-    text: "입력이 종료되기",
-    count: time.inputTimerSet,
-    size: textSizes.small,
-  });
-
   const gameMap = useMemo(() => {
     return createMap(stage);
   }, [stage]);
 
   const handleReset = () => {
-    setReadyTimer((prev) => {
-      return {
-        ...prev,
-        count: time.readyTimerSet,
-      };
-    });
-
-    setStartTimer((prev) => {
-      return {
-        ...prev,
-        count: time.startTimerSet,
-      };
-    });
-
-    setInputTimer((prev) => {
-      return {
-        ...prev,
-        count: time.inputTimerSet,
-      };
-    });
-
     setStatus("none");
     setSelectedDirection((prev) => {});
   };
 
   const handleNextStage = () => {
     setStage((prev) => prev + 1);
-    setIsWin(false);
+    setResult(game.result.none);
     handleReset();
   };
 
   const handleRetryStage = () => {
-    setIsLose(false);
+    setResult(game.result.none);
     handleReset();
   };
 
@@ -113,21 +72,11 @@ const Game1Container = () => {
   }, [status, directions.length]);
 
   return (
-    <Game1
+    <FaceGo
       status={status}
+      result={result}
+      setResult={setResult}
       setStatus={setStatus}
-      readyTimer={readyTimer}
-      setReadyTimer={setReadyTimer}
-      startTimer={startTimer}
-      setStartTimer={setStartTimer}
-      inputTimer={inputTimer}
-      setInputTimer={setInputTimer}
-      isWin={isWin}
-      setIsWin={setIsWin}
-      isLose={isLose}
-      setIsLose={setIsLose}
-      isEnd={isEnd}
-      setIsEnd={setIsEnd}
       score={score}
       setScore={setScore}
       chance={chance}
@@ -148,4 +97,4 @@ const Game1Container = () => {
   );
 };
 
-export default Game1Container;
+export default FaceGoContainer;

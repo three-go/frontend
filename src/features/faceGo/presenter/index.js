@@ -1,15 +1,7 @@
 import FaceRecognition from "../presenter/FaceRecognition";
-import Game1 from "../presenter/Game1";
+import FaceGo from "../presenter/FaceGo";
 import Map from "../presenter/Map";
-import DefaultMap from "./DefaultMap";
 import FaceDirectionRecord from "./FaceDirectionRecord";
 import MapCell from "./MapCell";
 
-export {
-  DefaultMap,
-  FaceDirectionRecord,
-  FaceRecognition,
-  Game1,
-  Map,
-  MapCell,
-};
+export { FaceDirectionRecord, FaceRecognition, FaceGo, Map, MapCell };
