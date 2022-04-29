@@ -39,8 +39,8 @@ const time = {
 };
 
 const textSizes = {
-  small: 20,
-  medium: 30,
+  small: 12,
+  medium: 24,
   large: 40,
 };
 
@@ -67,7 +67,13 @@ const faceYawAngleRange = {
   right: 36,
 };
 
+const camera = {
+  permissionReady: "READY",
+  permissionNotAuthorized: "NOT_AUTHORIZED",
+};
+
 export {
+  camera,
   iconNames,
   iconSizes,
   navigations,
