@@ -30,8 +30,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: "75%",
-    height: "20%",
-    padding: 35,
+    height: "25%",
     borderWidth: 5,
     borderRadius: 20,
     borderColor: colors.ivory,
@@ -54,7 +53,7 @@ const styles = StyleSheet.create({
   buttonContainer: (count) => {
     return {
       flexDirection: "row",
-      justifyContent: count > 1 ? "space-between" : "center",
+      justifyContent: count > 1 ? "space-evenly" : "center",
       alignItems: "center",
       width: "100%",
     };
