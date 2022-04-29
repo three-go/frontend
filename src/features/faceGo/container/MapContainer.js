@@ -5,13 +5,13 @@ import { map, game } from "../../../common";
 import { Map } from "../presenter";
 
 const MapContainer = ({
-  status,
-  gameMap,
   stage,
-  directions,
+  status,
   setResult,
+  gameMap,
   score,
   setScore,
+  directions,
   setChance,
 }) => {
   const characterInfo = useCharacter(gameMap, score, setScore);
@@ -77,9 +77,9 @@ const MapContainer = ({
     <Map
       status={status}
       gameMap={gameMap}
-      characterInfo={characterInfo}
       arrInfo={arrInfo}
       boxStyle={boxStyle}
+      characterInfo={characterInfo}
       directions={directions}
       setScore={setScore}
     />

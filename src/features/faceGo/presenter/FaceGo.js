@@ -17,51 +17,51 @@ import {
   ResetModalContainer,
 } from "../../../components";
 
-const FaceGo = ({
-  status,
-  setStatus,
-  result,
-  setResult,
-  stage,
-  score,
-  setScore,
-  selectedDirection,
-  setSelectedDirection,
-  directions,
-  cameraPermissionStatus,
-  setCameraPermissionStatus,
-  gameMap,
-  currentGameKey,
-  handleNextStage,
-  onRetryCurrentStage,
-  chance,
-  setChance,
-  onTimerEnd,
-}) => {
+const FaceGo = ({ gameInfo, userInfo, cameraInfo }) => {
+  const {
+    stage,
+    status,
+    setStatus,
+    result,
+    setResult,
+    currentGameKey,
+    gameMap,
+    handleNextStage,
+    handleRetryStage,
+    handleSetStatusOpen,
+  } = gameInfo;
+  const { score, setScore, chance, setChance, directions } = userInfo;
+  const {
+    selectedDirection,
+    setSelectedDirection,
+    cameraPermissionStatus,
+    setCameraPermissionStatus,
+  } = cameraInfo;
+
   return (
     <GameLayout
       status={status}
       setStatus={setStatus}
+      chance={chance}
       score={score}
       cameraPermissionStatus={cameraPermissionStatus}
       currentGameKey={currentGameKey}
-      chance={chance}
     >
       {currentGameKey === "faceGo" && (
         <View style={styles.container}>
           <View style={styles.playArea}>
             <View style={styles.playZone}>
               {status === game.status.none && (
-                <TextTimer onTimerEnd={onTimerEnd} status={status} />
+                <TextTimer onTimerEnd={handleSetStatusOpen} status={status} />
               )}
 
               {status === game.status.open && (
                 <MapContainer
-                  status={status}
                   stage={stage}
-                  directions={directions}
+                  status={status}
                   setResult={setResult}
                   gameMap={gameMap}
+                  directions={directions}
                 />
               )}
 
@@ -76,13 +76,13 @@ const FaceGo = ({
 
               {status === game.status.play && (
                 <MapContainer
-                  status={status}
                   stage={stage}
-                  directions={directions}
+                  status={status}
                   setResult={setResult}
                   gameMap={gameMap}
                   score={score}
                   setScore={setScore}
+                  directions={directions}
                   setChance={setChance}
                 />
               )}
@@ -92,7 +92,7 @@ const FaceGo = ({
               )}
 
               {result === game.result.lose && (
-                <FailModalContainer onRetryCurrentStage={onRetryCurrentStage} />
+                <FailModalContainer onRetryCurrentStage={handleRetryStage} />
               )}
 
               {result === game.result.lose && chance === 0 && (

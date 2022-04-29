@@ -73,26 +73,32 @@ const FaceGoContainer = () => {
 
   return (
     <FaceGo
-      status={status}
-      result={result}
-      setResult={setResult}
-      setStatus={setStatus}
-      score={score}
-      setScore={setScore}
-      chance={chance}
-      setChance={setChance}
-      stage={stage}
-      gameMap={gameMap}
-      currentGameKey={currentGameKey}
-      handleNextStage={handleNextStage}
-      onRetryCurrentStage={handleRetryStage}
-      selectedDirection={selectedDirection}
-      setSelectedDirection={setSelectedDirection}
-      directions={directions}
-      setDirections={setDirections}
-      cameraPermissionStatus={cameraPermissionStatus}
-      setCameraPermissionStatus={setCameraPermissionStatus}
-      onTimerEnd={handleSetStatusOpen}
+      gameInfo={{
+        stage,
+        status,
+        setStatus,
+        result,
+        setResult,
+        currentGameKey,
+        gameMap,
+        handleNextStage,
+        handleRetryStage,
+        handleSetStatusOpen,
+      }}
+      userInfo={{
+        score,
+        setScore,
+        chance,
+        setChance,
+        directions,
+        setDirections,
+      }}
+      cameraInfo={{
+        selectedDirection,
+        setSelectedDirection,
+        cameraPermissionStatus,
+        setCameraPermissionStatus,
+      }}
     />
   );
 };
