@@ -4,7 +4,7 @@ import { Text, StyleSheet } from "react-native";
 
 import { colors, time } from "../../common";
 
-const TextTimer = ({ setIsFinish, timerInfo, setTimerInfo }) => {
+const TextTimer = ({ onTimerEnd, timerInfo, setTimerInfo }) => {
   useEffect(() => {
     let timeoutId;
 
@@ -20,13 +20,13 @@ const TextTimer = ({ setIsFinish, timerInfo, setTimerInfo }) => {
     }
 
     if (timerInfo.count === time.zero) {
-      setIsFinish(true);
+      onTimerEnd();
     }
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [timerInfo, setTimerInfo, setIsFinish]);
+  }, [onTimerEnd, timerInfo, setTimerInfo]);
 
   return (
     <Text style={styles.text(timerInfo.size)}>
