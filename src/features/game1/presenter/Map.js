@@ -13,6 +13,8 @@ import uuid from "react-native-uuid";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { colors } from "../../../common";
+import { getBackgroundColor } from "../../../utils/helper";
+import { MapCell } from "..";
 
 const Map = ({
   gameMap,
@@ -52,6 +54,25 @@ const Map = ({
     }),
     []
   );
+
+  const generateMapCell = ({ item, index, rowIndex }) => {
+    const bgColor = getBackgroundColor(
+      rowIndex,
+      index,
+      arrInfo.rowCount - 1,
+      arrInfo.columnCount - 1,
+      Boolean(item)
+    );
+
+    return (
+      <MapCell
+        width={boxStyle.boxWidth}
+        height={boxStyle.boxHeigth}
+        bgColor={bgColor}
+        canMove={Boolean(item)}
+      />
+    );
+  };
 
   useEffect(() => {
     const wrongColor = colors.red;
@@ -98,32 +119,18 @@ const Map = ({
       style={[styles.container, rotateStyle, backgroundInterpolate]}
     >
       {gameMap &&
-        gameMap.map((line, rowIndex) => (
+        gameMap.map((value, rowIndex) => (
           <FlatList
             key={uuid.v4()}
-            data={line}
+            data={value}
             renderItem={({ item, index }) => {
-              const bgColor = getBackgroundColor(
-                rowIndex,
-                index,
-                arrInfo.rowCount - 1,
-                arrInfo.columnCount - 1,
-                Boolean(item)
-              );
-
-              return createCell(
-                boxStyle.boxWidth,
-                boxStyle.boxHeigth,
-                bgColor,
-                Boolean(item)
-              );
+              return generateMapCell({ item, index, rowIndex });
             }}
             keyExtractor={(_, index) => index}
             numColumns={arrInfo.columnCount}
           />
         ))}
 
-      {/* 캐릭터 이동 view */}
       <Animated.View
         style={[
           styles.chracterBox(boxStyle.boxWidth, boxStyle.boxHeigth),
@@ -133,60 +140,14 @@ const Map = ({
         <Icon name="heart" size={50} color={colors.red} style={{ zIndex: 2 }} />
       </Animated.View>
 
-      {/* start marker view */}
       <View style={styles.startText}>
         <Text style={styles.text}>Start</Text>
       </View>
-      {/* end marker view */}
       <View style={styles.endText}>
         <Text style={styles.text}>End</Text>
       </View>
     </Animated.View>
   );
-};
-
-// UI 그리기(스타일 지정) 헬퍼 함수
-const getBackgroundColor = (
-  rowIndex,
-  cellIndex,
-  lastRowIndex,
-  lastCellIndex,
-  canPass
-) => {
-  let bgColor;
-
-  if (isStartOrEndCell(rowIndex, cellIndex, lastRowIndex, lastCellIndex)) {
-    bgColor = colors.green;
-  } else {
-    bgColor = canPass ? colors.lightBlue : colors.blueGray;
-  }
-
-  return bgColor;
-};
-
-// UI 그리기(스타일 지정) 헬퍼 함수
-const createCell = (width, height, bgColor, canPass) => {
-  if (!canPass) {
-    return (
-      <View style={styles.cell(width, height, bgColor)}>
-        <Icon name="close" size={width} color={colors.ligthGray} />
-      </View>
-    );
-  }
-
-  return <View style={styles.cell(width, height, bgColor)} />;
-};
-
-const isStartOrEndCell = (rowIndex, cellIndex, endRowIndex, endCellIndex) => {
-  if (rowIndex === 0 && cellIndex === 0) {
-    return true;
-  }
-
-  if (rowIndex === endRowIndex && cellIndex === endCellIndex) {
-    return true;
-  }
-
-  return false;
 };
 
 const styles = StyleSheet.create({
