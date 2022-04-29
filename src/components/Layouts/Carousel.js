@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
   },
   listWrapper: (prop) => {
     return {
-      paddingHorizontal: prop.OFFSET + prop.GAP / 2,
+      // paddingHorizontal: prop.OFFSET + prop.GAP / 2,
+      paddingHorizontal: prop.OFFSET + prop.GAP / 2 - 5,
     };
   },
 });
