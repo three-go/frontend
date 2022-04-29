@@ -4,16 +4,12 @@ import { Text, View, StyleSheet, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { ChanceIcons, TextTimer } from "..";
-import { iconNames, colors, iconSizes, game } from "../../common";
+import { iconNames, camera, colors, iconSizes, game } from "../../common";
 
 const GameHeader = ({
   status,
   setStatus,
   onPressBack,
-  startTimer,
-  setStartTimer,
-  inputTimer,
-  setInputTimer,
   cameraPermissionStatus,
   score,
   currentGameKey,
@@ -46,18 +42,13 @@ const GameHeader = ({
           {status === game.status.open && (
             <TextTimer
               onTimerEnd={handleSetStatusDirectionInput}
-              timerInfo={startTimer}
-              setTimerInfo={setStartTimer}
+              status={status}
             />
           )}
 
           {status === game.status.directionInput &&
-            cameraPermissionStatus === "READY" && (
-              <TextTimer
-                onTimerEnd={handleSetStatusPlay}
-                timerInfo={inputTimer}
-                setTimerInfo={setInputTimer}
-              />
+            cameraPermissionStatus === camera.permissionReady && (
+              <TextTimer onTimerEnd={handleSetStatusPlay} status={status} />
             )}
 
           {status === game.status.play && (
@@ -91,7 +82,7 @@ const GameHeader = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     alignItems: "center",
     width: "100%",
     height: "100%",
@@ -101,10 +92,8 @@ const styles = StyleSheet.create({
     color: colors.ivory,
   },
   back: {
-    justifyContent: "center",
-    width: 80,
+    width: 65,
     height: 40,
-    paddingLeft: 18,
   },
   scoreWrapper: {
     flexDirection: "row",
