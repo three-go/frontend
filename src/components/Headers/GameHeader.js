@@ -7,12 +7,9 @@ import { ChanceIcons, TextTimer } from "..";
 import { iconNames, colors, iconSizes, game } from "../../common";
 
 const GameHeader = ({
+  status,
+  setStatus,
   onPressBack,
-  isReady,
-  isStart,
-  setIsStart,
-  isInput,
-  setIsInput,
   startTimer,
   setStartTimer,
   inputTimer,
@@ -24,9 +21,17 @@ const GameHeader = ({
   setProgressRate,
   chance,
 }) => {
+  const handleSetStatusDirectionInput = () => {
+    setStatus(game.status.directionInput);
+  };
+
+  const handleSetStatusPlay = () => {
+    setStatus(game.status.play);
+  };
+
   return (
     <View style={styles.container}>
-      {isReady && (
+      {status !== game.status.none && (
         <Pressable onPress={onPressBack} style={styles.back}>
           <Icon
             name={iconNames.leftArrow}
@@ -38,26 +43,24 @@ const GameHeader = ({
 
       {currentGameKey === game.keys[0] && (
         <View>
-          {!isStart && isReady && (
+          {status === game.status.open && (
             <TextTimer
-              setIsFinish={setIsStart}
+              onTimerEnd={handleSetStatusDirectionInput}
               timerInfo={startTimer}
               setTimerInfo={setStartTimer}
             />
           )}
 
-          {!isInput &&
-            isStart &&
-            isReady &&
+          {status === game.status.directionInput &&
             cameraPermissionStatus === "READY" && (
               <TextTimer
-                setIsFinish={setIsInput}
+                onTimerEnd={handleSetStatusPlay}
                 timerInfo={inputTimer}
                 setTimerInfo={setInputTimer}
               />
             )}
 
-          {isInput && isStart && isReady && (
+          {status === game.status.play && (
             <Text style={styles.score}>
               SCORE{"\n"}
               {score}
@@ -80,7 +83,7 @@ const GameHeader = ({
         </View>
       )}
 
-      {isReady && <ChanceIcons chance={chance} />}
+      {status !== game.status.none && <ChanceIcons chance={chance} />}
     </View>
   );
 };
