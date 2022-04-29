@@ -1,23 +1,25 @@
 import React, { useState, useEffect, useContext, useMemo } from "react";
 
 import { Game1 } from "..";
-import { time, textSizes } from "../../../common";
+import { game, time, textSizes } from "../../../common";
 import { GameContext } from "../../../context";
 import { createMap } from "../../../utils";
 
 const Game1Container = () => {
   const { currentGameKey } = useContext(GameContext);
 
-  const [isReady, setIsReady] = useState(false);
-  const [isStart, setIsStart] = useState(false);
-  const [isInput, setIsInput] = useState(false);
-
+  const [status, setStatus] = useState("none");
   const [isWin, setIsWin] = useState(false);
   const [isLose, setIsLose] = useState(false);
   const [isEnd, setIsEnd] = useState(false);
 
-  const [score, setScore] = useState(500);
   const [cameraPermissionStatus, setCameraPermissionStatus] = useState("");
+  const [selectedDirection, setSelectedDirection] = useState({});
+  const [directions, setDirections] = useState([]);
+
+  const [score, setScore] = useState(500);
+  const [stage, setStage] = useState(1);
+  const [chance, setChance] = useState(3);
 
   const [readyTimer, setReadyTimer] = useState({
     text: "게임시작",
@@ -28,20 +30,14 @@ const Game1Container = () => {
   const [startTimer, setStartTimer] = useState({
     text: "맵이 가려지기",
     count: time.startTimerSet,
-    size: textSizes.samll,
+    size: textSizes.small,
   });
 
   const [inputTimer, setInputTimer] = useState({
     text: "입력이 종료되기",
     count: time.inputTimerSet,
-    size: textSizes.samll,
+    size: textSizes.small,
   });
-
-  const [selectedDirection, setSelectedDirection] = useState({});
-  const [directions, setDirections] = useState([]);
-
-  const [stage, setStage] = useState(1);
-  const [chance, setChance] = useState(3);
 
   const gameMap = useMemo(() => {
     return createMap(stage);
@@ -69,9 +65,7 @@ const Game1Container = () => {
       };
     });
 
-    setIsReady(false);
-    setIsStart(false);
-    setIsInput(false);
+    setStatus("none");
     setSelectedDirection((prev) => {});
   };
 
@@ -86,6 +80,10 @@ const Game1Container = () => {
     handleReset();
   };
 
+  const handleSetStatusOpen = () => {
+    setStatus(game.status.open);
+  };
+
   useEffect(() => {
     if (!selectedDirection?.direction) {
       return;
@@ -97,7 +95,7 @@ const Game1Container = () => {
   useEffect(() => {
     let timeoutId;
 
-    if (isInput && isStart && isReady) {
+    if (status === game.status.play) {
       if (directions.length < 1) {
         return;
       }
@@ -112,16 +110,12 @@ const Game1Container = () => {
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [isInput, directions.length]);
+  }, [status, directions.length]);
 
   return (
     <Game1
-      isReady={isReady}
-      setIsReady={setIsReady}
-      isStart={isStart}
-      setIsStart={setIsStart}
-      isInput={isInput}
-      setIsInput={setIsInput}
+      status={status}
+      setStatus={setStatus}
       readyTimer={readyTimer}
       setReadyTimer={setReadyTimer}
       startTimer={startTimer}
@@ -149,6 +143,7 @@ const Game1Container = () => {
       setDirections={setDirections}
       cameraPermissionStatus={cameraPermissionStatus}
       setCameraPermissionStatus={setCameraPermissionStatus}
+      onTimerEnd={handleSetStatusOpen}
     />
   );
 };
