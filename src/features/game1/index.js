@@ -9,6 +9,7 @@ import {
   FaceRecognition,
   Game1,
   Map,
+  MapCell,
 } from "./presenter";
 
 export {
@@ -19,5 +20,6 @@ export {
   FaceDirectionRecord,
   FaceRecognition,
   Map,
+  MapCell,
   Game1,
 };
