@@ -43,7 +43,7 @@ const Main = ({
       <View style={styles.button}>
         <DefaultButton
           content="게임 종료"
-          color={colors.darkRed}
+          color={colors.red}
           onPress={onExitApp}
         />
       </View>

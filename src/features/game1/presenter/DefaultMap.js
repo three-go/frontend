@@ -1,35 +1,42 @@
 import React from "react";
 
 import { FlatList, View, Text, StyleSheet } from "react-native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { colors } from "../../../common";
+import { getBackgroundColor } from "../../../utils/helper";
+import { MapCell } from "..";
 
 const DefaultMap = ({ gameMap, arrInfo, boxStyle }) => {
+  const generateMapCell = ({ item, index, rowIndex }) => {
+    const bgColor = getBackgroundColor(
+      rowIndex,
+      index,
+      arrInfo.rowCount - 1,
+      arrInfo.columnCount - 1,
+      Boolean(item)
+    );
+
+    return (
+      <MapCell
+        width={boxStyle.boxWidth}
+        height={boxStyle.boxHeigth}
+        bgColor={bgColor}
+        canMove={Boolean(item)}
+      />
+    );
+  };
+
   return (
     <View style={styles.container}>
       {gameMap &&
-        gameMap.map((line, rowIndex) => (
+        gameMap.map((value, rowIndex) => (
           <FlatList
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}
             key={rowIndex}
-            data={line}
+            data={value}
             renderItem={({ item, index }) => {
-              const bgColor = getBackgroundColor(
-                rowIndex,
-                index,
-                arrInfo.rowCount - 1,
-                arrInfo.columnCount - 1,
-                Boolean(item)
-              );
-
-              return createCell(
-                boxStyle.boxWidth,
-                boxStyle.boxHeigth,
-                bgColor,
-                Boolean(item)
-              );
+              return generateMapCell({ item, index, rowIndex });
             }}
             keyExtractor={(_, index) => index}
             numColumns={arrInfo.columnCount}
@@ -44,48 +51,6 @@ const DefaultMap = ({ gameMap, arrInfo, boxStyle }) => {
       </View>
     </View>
   );
-};
-
-const getBackgroundColor = (
-  rowIndex,
-  cellIndex,
-  lastRowIndex,
-  lastCellIndex,
-  canPass
-) => {
-  let bgColor;
-
-  if (isStartOrEndCell(rowIndex, cellIndex, lastRowIndex, lastCellIndex)) {
-    bgColor = colors.green;
-  } else {
-    bgColor = canPass ? colors.lightBlue : colors.blueGray;
-  }
-
-  return bgColor;
-};
-
-const createCell = (width, height, bgColor, canPass) => {
-  if (!canPass) {
-    return (
-      <View style={styles.cell(width, height, bgColor)}>
-        <Icon name="close" size={width} color={colors.ligthGray} />
-      </View>
-    );
-  }
-
-  return <View style={styles.cell(width, height, bgColor)} />;
-};
-
-const isStartOrEndCell = (rowIndex, cellIndex, endRowIndex, endCellIndex) => {
-  if (rowIndex === 0 && cellIndex === 0) {
-    return true;
-  }
-
-  if (rowIndex === endRowIndex && cellIndex === endCellIndex) {
-    return true;
-  }
-
-  return false;
 };
 
 const styles = StyleSheet.create({

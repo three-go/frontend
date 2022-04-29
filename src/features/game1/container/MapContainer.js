@@ -1,16 +1,14 @@
 import React, { useEffect } from "react";
 
-import { map } from "../../../common";
 import useCharacter from "../../../hooks/useCharacter";
+import { map, game } from "../../../common";
 import { DefaultMap, Map } from "../presenter";
 
 const MapContainer = ({
+  status,
   gameMap,
   stage,
   directions,
-  isStart,
-  isReady,
-  isInput,
   setIsWin,
   setIsLose,
   score,
@@ -44,7 +42,7 @@ const MapContainer = ({
   };
 
   useEffect(() => {
-    if (isInput && isStart && isReady && directions.length === 0) {
+    if (status === game.status.play && directions.length === 0) {
       const { x, y } = characterInfo.position;
 
       if (x === arrInfo.columnCount - 1 && y === arrInfo.rowCount - 1) {
@@ -59,7 +57,7 @@ const MapContainer = ({
       return;
     }
 
-    switch (isInput && directions[0].direction) {
+    switch (status === game.status.play && directions[0].direction) {
       case "left":
         characterInfo.moveLeft();
         break;
@@ -77,17 +75,22 @@ const MapContainer = ({
     }
   }, [directions]);
 
-  return !isStart && isReady ? (
-    <DefaultMap gameMap={gameMap} arrInfo={arrInfo} boxStyle={boxStyle} />
-  ) : (
-    <Map
-      gameMap={gameMap}
-      characterInfo={characterInfo}
-      arrInfo={arrInfo}
-      boxStyle={boxStyle}
-      directions={directions}
-      setScore={setScore}
-    />
+  return (
+    <>
+      {status === game.status.open && (
+        <DefaultMap gameMap={gameMap} arrInfo={arrInfo} boxStyle={boxStyle} />
+      )}
+      {status === game.status.play && (
+        <Map
+          gameMap={gameMap}
+          characterInfo={characterInfo}
+          arrInfo={arrInfo}
+          boxStyle={boxStyle}
+          directions={directions}
+          setScore={setScore}
+        />
+      )}
+    </>
   );
 };
 

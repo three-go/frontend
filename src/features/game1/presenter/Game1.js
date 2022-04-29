@@ -7,7 +7,7 @@ import {
   MapContainer,
   FaceDirectionRecord,
 } from "..";
-import { colors } from "../../../common";
+import { colors, game } from "../../../common";
 import {
   GameLayout,
   NextStageModalContainer,
@@ -18,12 +18,8 @@ import {
 } from "../../../components";
 
 const Game1 = ({
-  isReady,
-  setIsReady,
-  isStart,
-  setIsStart,
-  isInput,
-  setIsInput,
+  status,
+  setStatus,
   readyTimer,
   setReadyTimer,
   startTimer,
@@ -50,14 +46,12 @@ const Game1 = ({
   onRetryCurrentStage,
   chance,
   setChance,
+  onTimerEnd,
 }) => {
   return (
     <GameLayout
-      isReady={isReady}
-      isStart={isStart}
-      setIsStart={setIsStart}
-      isInput={isInput}
-      setIsInput={setIsInput}
+      status={status}
+      setStatus={setStatus}
       readyTimer={readyTimer}
       setReadyTimer={setReadyTimer}
       startTimer={startTimer}
@@ -73,26 +67,25 @@ const Game1 = ({
         <View style={styles.container}>
           <View style={styles.playArea}>
             <View style={styles.playZone}>
-              {!isReady && (
+              {status === game.status.none && (
                 <TextTimer
-                  setIsFinish={setIsReady}
+                  onTimerEnd={onTimerEnd}
                   timerInfo={readyTimer}
                   setTimerInfo={setReadyTimer}
                 />
               )}
 
-              {!isStart && isReady && (
+              {status === game.status.open && (
                 <MapContainer
+                  status={status}
                   stage={stage}
                   directions={directions}
-                  isStart={isStart}
-                  isReady={isReady}
                   setIsWin={setIsWin}
                   gameMap={gameMap}
                 />
               )}
 
-              {!isInput && isStart && isReady && (
+              {status === game.status.directionInput && (
                 <FaceRecognitionContainer
                   selectedDirection={selectedDirection}
                   onSelectedDirection={setSelectedDirection}
@@ -101,13 +94,11 @@ const Game1 = ({
                 />
               )}
 
-              {isInput && isStart && isReady && (
+              {status === game.status.play && (
                 <MapContainer
+                  status={status}
                   stage={stage}
                   directions={directions}
-                  isStart={isStart}
-                  isReady={isReady}
-                  isInput={isInput}
                   setIsWin={setIsWin}
                   setIsLose={setIsLose}
                   gameMap={gameMap}
@@ -133,8 +124,8 @@ const Game1 = ({
           </View>
 
           <View style={styles.recordArea}>
-            {isReady && (
-              <FaceDirectionRecord directions={directions} isInput={isInput} />
+            {status === game.status.open && (
+              <FaceDirectionRecord directions={directions} status={status} />
             )}
           </View>
         </View>
