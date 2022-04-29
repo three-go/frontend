@@ -1,21 +1,21 @@
 import {
-  Game1Container,
+  FaceGoContainer,
   FaceRecognitionContainer,
-  Game1,
+  FaceGo,
   Map,
   FaceRecognition,
   FaceDirectionRecord,
-} from "./game1";
-import { Game2Container, Game2 } from "./game2";
+} from "./faceGo";
+import { ShoutGoContainer, ShoutGo } from "./shoutGo";
 import { MainContainer, Main, Page } from "./main";
 
 export {
   MainContainer,
   Main,
-  Game1Container,
-  Game1,
-  Game2Container,
-  Game2,
+  FaceGoContainer,
+  FaceGo,
+  ShoutGoContainer,
+  ShoutGo,
   Map,
   FaceRecognitionContainer,
   FaceRecognition,
