@@ -12,6 +12,19 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2DA4F6BE281D392F00FBF317 /* quiz_wrong2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6B4281D392E00FBF317 /* quiz_wrong2.mp3 */; };
+		2DA4F6BF281D392F00FBF317 /* quiz_wrong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6B5281D392E00FBF317 /* quiz_wrong.mp3 */; };
+		2DA4F6C0281D392F00FBF317 /* quiz_open.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6B6281D392E00FBF317 /* quiz_open.mp3 */; };
+		2DA4F6C1281D392F00FBF317 /* bomb2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6B7281D392E00FBF317 /* bomb2.mp3 */; };
+		2DA4F6C2281D392F00FBF317 /* timeout.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6B8281D392F00FBF317 /* timeout.mp3 */; };
+		2DA4F6C3281D392F00FBF317 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6B9281D392F00FBF317 /* timer.mp3 */; };
+		2DA4F6C4281D392F00FBF317 /* bomb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6BA281D392F00FBF317 /* bomb.mp3 */; };
+		2DA4F6C5281D392F00FBF317 /* quiz_correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6BB281D392F00FBF317 /* quiz_correct.mp3 */; };
+		2DA4F6C6281D392F00FBF317 /* timer2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6BC281D392F00FBF317 /* timer2.mp3 */; };
+		2DA4F6C7281D392F00FBF317 /* quiz_correct2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6BD281D392F00FBF317 /* quiz_correct2.mp3 */; };
+		2DA4F6CB281D685400FBF317 /* move1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6C8281D685400FBF317 /* move1.mp3 */; };
+		2DA4F6CC281D685400FBF317 /* move2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6C9281D685400FBF317 /* move2.mp3 */; };
+		2DA4F6CD281D685400FBF317 /* move3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6CA281D685400FBF317 /* move3.mp3 */; };
 		7699B88040F8A987B510C191 /* libPods-ThreeGo-ThreeGoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-ThreeGo-ThreeGoTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -37,6 +50,19 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ThreeGo/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ThreeGo/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-ThreeGo-ThreeGoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ThreeGo-ThreeGoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DA4F6B4281D392E00FBF317 /* quiz_wrong2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = quiz_wrong2.mp3; path = ../android/app/src/main/res/raw/quiz_wrong2.mp3; sourceTree = "<group>"; };
+		2DA4F6B5281D392E00FBF317 /* quiz_wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = quiz_wrong.mp3; path = ../android/app/src/main/res/raw/quiz_wrong.mp3; sourceTree = "<group>"; };
+		2DA4F6B6281D392E00FBF317 /* quiz_open.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = quiz_open.mp3; path = ../android/app/src/main/res/raw/quiz_open.mp3; sourceTree = "<group>"; };
+		2DA4F6B7281D392E00FBF317 /* bomb2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bomb2.mp3; path = ../android/app/src/main/res/raw/bomb2.mp3; sourceTree = "<group>"; };
+		2DA4F6B8281D392F00FBF317 /* timeout.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = timeout.mp3; path = ../android/app/src/main/res/raw/timeout.mp3; sourceTree = "<group>"; };
+		2DA4F6B9281D392F00FBF317 /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = timer.mp3; path = ../android/app/src/main/res/raw/timer.mp3; sourceTree = "<group>"; };
+		2DA4F6BA281D392F00FBF317 /* bomb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bomb.mp3; path = ../android/app/src/main/res/raw/bomb.mp3; sourceTree = "<group>"; };
+		2DA4F6BB281D392F00FBF317 /* quiz_correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = quiz_correct.mp3; path = ../android/app/src/main/res/raw/quiz_correct.mp3; sourceTree = "<group>"; };
+		2DA4F6BC281D392F00FBF317 /* timer2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = timer2.mp3; path = ../android/app/src/main/res/raw/timer2.mp3; sourceTree = "<group>"; };
+		2DA4F6BD281D392F00FBF317 /* quiz_correct2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = quiz_correct2.mp3; path = ../android/app/src/main/res/raw/quiz_correct2.mp3; sourceTree = "<group>"; };
+		2DA4F6C8281D685400FBF317 /* move1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = move1.mp3; path = ../../../../../Downloads/move1.mp3; sourceTree = "<group>"; };
+		2DA4F6C9281D685400FBF317 /* move2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = move2.mp3; path = ../../../../../Downloads/move2.mp3; sourceTree = "<group>"; };
+		2DA4F6CA281D685400FBF317 /* move3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = move3.mp3; path = ../../../../../Downloads/move3.mp3; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-ThreeGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThreeGo.debug.xcconfig"; path = "Target Support Files/Pods-ThreeGo/Pods-ThreeGo.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-ThreeGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThreeGo.release.xcconfig"; path = "Target Support Files/Pods-ThreeGo/Pods-ThreeGo.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-ThreeGo-ThreeGoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThreeGo-ThreeGoTests.debug.xcconfig"; path = "Target Support Files/Pods-ThreeGo-ThreeGoTests/Pods-ThreeGo-ThreeGoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -116,6 +142,19 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				2DA4F6BA281D392F00FBF317 /* bomb.mp3 */,
+				2DA4F6B7281D392E00FBF317 /* bomb2.mp3 */,
+				2DA4F6BB281D392F00FBF317 /* quiz_correct.mp3 */,
+				2DA4F6BD281D392F00FBF317 /* quiz_correct2.mp3 */,
+				2DA4F6B6281D392E00FBF317 /* quiz_open.mp3 */,
+				2DA4F6B5281D392E00FBF317 /* quiz_wrong.mp3 */,
+				2DA4F6C8281D685400FBF317 /* move1.mp3 */,
+				2DA4F6C9281D685400FBF317 /* move2.mp3 */,
+				2DA4F6CA281D685400FBF317 /* move3.mp3 */,
+				2DA4F6B4281D392E00FBF317 /* quiz_wrong2.mp3 */,
+				2DA4F6B8281D392F00FBF317 /* timeout.mp3 */,
+				2DA4F6B9281D392F00FBF317 /* timer.mp3 */,
+				2DA4F6BC281D392F00FBF317 /* timer2.mp3 */,
 				13B07FAE1A68108700A75B9A /* ThreeGo */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* ThreeGoTests */,
@@ -242,8 +281,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DA4F6C3281D392F00FBF317 /* timer.mp3 in Resources */,
+				2DA4F6C2281D392F00FBF317 /* timeout.mp3 in Resources */,
+				2DA4F6C6281D392F00FBF317 /* timer2.mp3 in Resources */,
+				2DA4F6C7281D392F00FBF317 /* quiz_correct2.mp3 in Resources */,
+				2DA4F6C4281D392F00FBF317 /* bomb.mp3 in Resources */,
+				2DA4F6C0281D392F00FBF317 /* quiz_open.mp3 in Resources */,
+				2DA4F6CC281D685400FBF317 /* move2.mp3 in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				2DA4F6BF281D392F00FBF317 /* quiz_wrong.mp3 in Resources */,
+				2DA4F6C5281D392F00FBF317 /* quiz_correct.mp3 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				2DA4F6CD281D685400FBF317 /* move3.mp3 in Resources */,
+				2DA4F6BE281D392F00FBF317 /* quiz_wrong2.mp3 in Resources */,
+				2DA4F6CB281D685400FBF317 /* move1.mp3 in Resources */,
+				2DA4F6C1281D392F00FBF317 /* bomb2.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

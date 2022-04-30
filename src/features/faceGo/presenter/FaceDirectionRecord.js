@@ -3,22 +3,22 @@ import React, { useEffect, useRef } from "react";
 import { View, ScrollView, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
 
-import { colors, iconSizes } from "../../../common";
+import { colors, game, iconSizes } from "../../../common";
 
-const FaceDirectionRecord = ({ directions, isInput }) => {
+const FaceDirectionRecord = ({ directions, status }) => {
   const scrollView = useRef(null);
 
   const handleContentSizeChange = () => {
-    if (!isInput) {
+    if (status === game.status.directionInput) {
       scrollView.current.scrollToEnd({ animated: true });
     }
   };
 
   useEffect(() => {
-    if (isInput) {
+    if (status === game.status.play) {
       scrollView.current.scrollTo({ x: 0, y: 0, animated: true });
     }
-  }, [isInput]);
+  }, [status]);
 
   return (
     <View style={styles.container}>
@@ -30,9 +30,8 @@ const FaceDirectionRecord = ({ directions, isInput }) => {
         onContentSizeChange={handleContentSizeChange}
       >
         {directions.map((value, index) => {
-          const isHilightedItem = isInput
-            ? index === 0
-            : !directions[index + 1];
+          const isHilightedItem =
+            status === game.status.play ? index === 0 : !directions[index + 1];
           const iconColor = isHilightedItem ? colors.turquoise : colors.white;
 
           return (

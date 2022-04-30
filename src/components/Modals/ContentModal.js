@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
     width: "80%",
     height: "70%",
     margin: 20,
-    padding: 35,
+    paddingTop: 35,
+    paddingBottom: 35,
     borderWidth: 5,
     borderRadius: 20,
     borderColor: colors.ivory,
@@ -60,15 +61,15 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 15,
-    color: "#FCF8F6",
+    color: colors.ivory,
     textAlign: "center",
     fontSize: 25,
     fontWeight: "bold",
   },
   contentContainer: {
     flex: 1,
-    width: 300,
-    backgroundColor: "#96A1A8",
+    width: "100%",
+    backgroundColor: colors.gray,
   },
   buttonContainer: {
     flexDirection: "row",

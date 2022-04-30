@@ -1,11 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-import { Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
-import { colors, time } from "../../common";
+import { colors, game, textSizes, time } from "../../common";
 
-const TextTimer = ({ setIsFinish, timerInfo, setTimerInfo }) => {
-  useEffect(() => {
+const TextTimer = ({ onTimerEnd, status }) => {
+  const [timerInfo, setTimerInfo] = useState(null);
+
+  const handleTimerInfo = (status) => {
+    switch (status) {
+      case game.status.none:
+        setTimerInfo({
+          text: "게임시작",
+          count: time.readyTimerSet,
+          size: textSizes.medium,
+        });
+        break;
+      case game.status.open:
+        setTimerInfo({
+          text: "맵이 가려지기",
+          count: time.startTimerSet,
+          size: textSizes.small,
+        });
+        break;
+      case game.status.directionInput:
+        setTimerInfo({
+          text: "입력이 종료되기",
+          count: time.inputTimerSet,
+          size: textSizes.small,
+        });
+    }
+  };
+
+  const handleTimer = () => {
+    if (!timerInfo) return;
+
     let timeoutId;
 
     if (timerInfo.count > time.zero) {
@@ -20,35 +49,54 @@ const TextTimer = ({ setIsFinish, timerInfo, setTimerInfo }) => {
     }
 
     if (timerInfo.count === time.zero) {
-      setIsFinish(true);
+      onTimerEnd();
     }
+
+    return timeoutId;
+  };
+
+  useEffect(() => {
+    handleTimerInfo(status);
+  }, [status]);
+
+  useEffect(() => {
+    const timeoutId = handleTimer();
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [timerInfo, setTimerInfo, setIsFinish]);
+  }, [timerInfo, onTimerEnd, status]);
 
   return (
-    <Text style={styles.text(timerInfo.size)}>
-      {timerInfo.text}
-      <Text style={styles.number(timerInfo.size)}>{timerInfo.count}</Text>초 전
-    </Text>
+    <View style={styles.container}>
+      <Text style={styles.text(timerInfo?.size)}>
+        {timerInfo?.text}
+        <Text style={styles.number(timerInfo?.size)}>{timerInfo?.count}</Text>초
+        전
+      </Text>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    marginBottom: 8,
+    alignItems: "center",
+  },
   text: (size) => {
     return {
       color: colors.ivory,
-      fontSize: size ? size : 12,
+      fontSize: size ? size : 10,
     };
   },
   number: (size) => {
     return {
       color: colors.ivory,
-      fontSize: size ? size * 2 : 18,
+      fontSize: size ? size * 2 : 16,
     };
   },
 });
 
-export default TextTimer;
+export default React.memo(TextTimer);

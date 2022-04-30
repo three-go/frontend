@@ -5,7 +5,11 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SplashScreen from "react-native-splash-screen";
 
 import { GameContextProvider } from "./src/context/GameContext";
-import { MainContainer, Game1Container, Game2Container } from "./src/features";
+import {
+  MainContainer,
+  FaceGoContainer,
+  ShoutGoContainer,
+} from "./src/features";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,14 +29,14 @@ const App = () => {
           />
 
           <Stack.Screen
-            name="Game1"
-            component={Game1Container}
+            name="FaceGo"
+            component={FaceGoContainer}
             options={{ headerShown: false }}
           />
 
           <Stack.Screen
-            name="Game2"
-            component={Game2Container}
+            name="ShoutGo"
+            component={ShoutGoContainer}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

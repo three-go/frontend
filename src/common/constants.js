@@ -1,3 +1,19 @@
+const audio = {
+  timer: "timer.mp3",
+  fastTimer: "timer2.mp3",
+  bomb1: "bomb.mp3",
+  bomb2: "bomb2.mp3",
+  timeout: "timeout.mp3",
+  correct1: "quiz_correct.mp3",
+  correct2: "quiz_correct2.mp3",
+  wrong1: "quiz_wrong.mp3",
+  wrong2: "quiz_wrong2.mp3",
+  open: "quiz_open.mp3",
+  move1: "move1.mp3",
+  move2: "move2.mp3",
+  move3: "move3.mp3",
+};
+
 const iconNames = {
   heart: "heart",
   brokenHeart: "heart-broken-outline",
@@ -39,16 +55,9 @@ const time = {
 };
 
 const textSizes = {
-  small: 20,
-  medium: 30,
+  small: 12,
+  medium: 24,
   large: 40,
-};
-
-const gameStatus = {
-  ready: "ready",
-  start: "start",
-  input: "input",
-  end: "end",
 };
 
 const navigations = {
@@ -74,7 +83,14 @@ const faceYawAngleRange = {
   right: 36,
 };
 
+const camera = {
+  permissionReady: "READY",
+  permissionNotAuthorized: "NOT_AUTHORIZED",
+};
+
 export {
+  audio,
+  camera,
   iconNames,
   iconSizes,
   navigations,

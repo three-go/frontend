@@ -1,8 +1,10 @@
 import {
+  audio,
   iconNames,
   iconSizes,
   navigations,
   map,
+  camera,
   colors,
   facePosition,
   faceYawAngleRange,
@@ -12,10 +14,12 @@ import {
 import { game } from "./property";
 
 export {
+  audio,
   iconNames,
   iconSizes,
   navigations,
   map,
+  camera,
   colors,
   facePosition,
   faceYawAngleRange,

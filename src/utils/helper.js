@@ -1,4 +1,7 @@
 import { Vibration } from "react-native";
+import Sound from "react-native-sound";
+
+import { colors } from "../common";
 
 export const convertContentToArray = (object, keyList) => {
   const result = [];
@@ -24,4 +27,52 @@ export const descendOrderArray = (array, key) => {
 
 export const startVibrate = () => {
   Vibration.vibrate();
+};
+
+export const isStartOrEndCell = (
+  rowIndex,
+  cellIndex,
+  endRowIndex,
+  endCellIndex
+) => {
+  if (rowIndex === 0 && cellIndex === 0) {
+    return true;
+  }
+
+  if (rowIndex === endRowIndex && cellIndex === endCellIndex) {
+    return true;
+  }
+
+  return false;
+};
+
+export const getBackgroundColor = (
+  rowIndex,
+  cellIndex,
+  lastRowIndex,
+  lastCellIndex,
+  canPass
+) => {
+  let bgColor;
+
+  if (isStartOrEndCell(rowIndex, cellIndex, lastRowIndex, lastCellIndex)) {
+    bgColor = colors.green;
+  } else {
+    bgColor = canPass ? colors.lightBlue : colors.blueGray;
+  }
+
+  return bgColor;
+};
+
+export const getSound = (fileName) => {
+  const sound = new Sound(fileName, Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+      console.log("failed to load the sound : ", error);
+      return;
+    }
+
+    console.log("Sound load succeed :", fileName);
+  });
+
+  return sound;
 };

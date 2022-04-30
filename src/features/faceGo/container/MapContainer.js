@@ -1,21 +1,17 @@
 import React, { useEffect } from "react";
 
-import { map } from "../../../common";
-import useCharacter from "../../../hooks/useCharacter";
-import { DefaultMap, Map } from "../presenter";
+import { useCharacter } from "../../../hooks";
+import { map, game } from "../../../common";
+import { Map } from "../presenter";
 
 const MapContainer = ({
-  gameMap,
   stage,
-  directions,
-  isStart,
-  isReady,
-  isInput,
-  setIsWin,
-  setIsLose,
+  status,
+  setResult,
+  gameMap,
   score,
   setScore,
-  setIsEnd,
+  directions,
   setChance,
 }) => {
   const characterInfo = useCharacter(gameMap, score, setScore);
@@ -26,8 +22,8 @@ const MapContainer = ({
   };
 
   const borderWidth = {
-    horizontal: 10 + 2 * arrInfo.columnCount,
-    vertical: 10,
+    horizontal: 20 + 2 * arrInfo.columnCount,
+    vertical: 15 + 2 * arrInfo.rowCount,
   };
 
   const boxStyle = {
@@ -37,21 +33,24 @@ const MapContainer = ({
 
   const handleCheckStage = (n) => {
     if (n < 3) {
-      setIsWin(true);
+      setResult(game.result.win);
+      game.sounds.win.play();
     } else if (stage === 3) {
-      setIsEnd(true);
+      setResult(game.result.end);
+      game.sounds.end.play();
     }
   };
 
   useEffect(() => {
-    if (isInput && isStart && isReady && directions.length === 0) {
+    if (status === game.status.play && directions.length === 0) {
       const { x, y } = characterInfo.position;
 
       if (x === arrInfo.columnCount - 1 && y === arrInfo.rowCount - 1) {
         handleCheckStage(stage);
       } else {
         setChance((prev) => prev - 1);
-        setIsLose(true);
+        setResult(game.result.lose);
+        game.sounds.lose.play();
       }
     }
 
@@ -59,7 +58,7 @@ const MapContainer = ({
       return;
     }
 
-    switch (isInput && directions[0].direction) {
+    switch (status === game.status.play && directions[0].direction) {
       case "left":
         characterInfo.moveLeft();
         break;
@@ -77,14 +76,13 @@ const MapContainer = ({
     }
   }, [directions]);
 
-  return !isStart && isReady ? (
-    <DefaultMap gameMap={gameMap} arrInfo={arrInfo} boxStyle={boxStyle} />
-  ) : (
+  return (
     <Map
+      status={status}
       gameMap={gameMap}
-      characterInfo={characterInfo}
       arrInfo={arrInfo}
       boxStyle={boxStyle}
+      characterInfo={characterInfo}
       directions={directions}
       setScore={setScore}
     />

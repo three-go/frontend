@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Linking } from "react-native";
 import { RNCamera } from "react-native-camera";
 import RNExitApp from "react-native-exit-app";
 
-import { colors } from "../../../common";
+import { camera, colors } from "../../../common";
 import { SmallButton } from "../../../components";
 
 const FaceRecognition = ({
@@ -40,7 +40,7 @@ const FaceRecognition = ({
         faceDetectionMode={RNCamera.Constants.FaceDetection.Mode.accurate}
         notAuthorizedView={<View />}
       />
-      {cameraPermissionStatus === "NOT_AUTHORIZED" && (
+      {cameraPermissionStatus === camera.permissionNotAuthorized && (
         <View style={styles.notAuthorizedViewContainer}>
           <Text style={styles.notAuthorizedViewTitle}>
             권한 승인이 필요 합니다.{"\n"}
@@ -51,7 +51,7 @@ const FaceRecognition = ({
           </Text>
           <SmallButton
             content="설정으로 가기"
-            color="#c92a2a"
+            color={colors.red}
             onPress={() => {
               openSettingOption();
             }}
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     borderColor: colors.turquoise,
   },
   directionText: {
-    fontSize: 100,
+    fontSize: 80,
   },
   notAuthorizedViewContainer: {
     flex: 1,

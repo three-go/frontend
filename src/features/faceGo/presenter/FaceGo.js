@@ -7,7 +7,7 @@ import {
   MapContainer,
   FaceDirectionRecord,
 } from "..";
-import { colors } from "../../../common";
+import { colors, game } from "../../../common";
 import {
   GameLayout,
   NextStageModalContainer,
@@ -17,82 +17,55 @@ import {
   ResetModalContainer,
 } from "../../../components";
 
-const Game1 = ({
-  isReady,
-  setIsReady,
-  isStart,
-  setIsStart,
-  isInput,
-  setIsInput,
-  readyTimer,
-  setReadyTimer,
-  startTimer,
-  setStartTimer,
-  inputTimer,
-  setInputTimer,
-  stage,
-  score,
-  setScore,
-  isEnd,
-  setIsEnd,
-  isWin,
-  setIsWin,
-  isLose,
-  setIsLose,
-  selectedDirection,
-  setSelectedDirection,
-  directions,
-  cameraPermissionStatus,
-  setCameraPermissionStatus,
-  gameMap,
-  currentGameKey,
-  handleNextStage,
-  onRetryCurrentStage,
-  chance,
-  setChance,
-}) => {
+const FaceGo = ({ gameInfo, userInfo, cameraInfo }) => {
+  const {
+    stage,
+    status,
+    setStatus,
+    result,
+    setResult,
+    currentGameKey,
+    gameMap,
+    handleNextStage,
+    handleRetryStage,
+    handleSetStatusOpen,
+  } = gameInfo;
+  const { score, setScore, chance, setChance, directions } = userInfo;
+  const {
+    selectedDirection,
+    setSelectedDirection,
+    cameraPermissionStatus,
+    setCameraPermissionStatus,
+  } = cameraInfo;
+
   return (
     <GameLayout
-      isReady={isReady}
-      isStart={isStart}
-      setIsStart={setIsStart}
-      isInput={isInput}
-      setIsInput={setIsInput}
-      readyTimer={readyTimer}
-      setReadyTimer={setReadyTimer}
-      startTimer={startTimer}
-      setStartTimer={setStartTimer}
-      inputTimer={inputTimer}
-      setInputTimer={setInputTimer}
+      status={status}
+      setStatus={setStatus}
+      chance={chance}
       score={score}
       cameraPermissionStatus={cameraPermissionStatus}
       currentGameKey={currentGameKey}
-      chance={chance}
     >
-      {currentGameKey === "game1" && (
+      {currentGameKey === "faceGo" && (
         <View style={styles.container}>
           <View style={styles.playArea}>
             <View style={styles.playZone}>
-              {!isReady && (
-                <TextTimer
-                  setIsFinish={setIsReady}
-                  timerInfo={readyTimer}
-                  setTimerInfo={setReadyTimer}
-                />
+              {status === game.status.none && (
+                <TextTimer onTimerEnd={handleSetStatusOpen} status={status} />
               )}
 
-              {!isStart && isReady && (
+              {status === game.status.open && (
                 <MapContainer
                   stage={stage}
-                  directions={directions}
-                  isStart={isStart}
-                  isReady={isReady}
-                  setIsWin={setIsWin}
+                  status={status}
+                  setResult={setResult}
                   gameMap={gameMap}
+                  directions={directions}
                 />
               )}
 
-              {!isInput && isStart && isReady && (
+              {status === game.status.directionInput && (
                 <FaceRecognitionContainer
                   selectedDirection={selectedDirection}
                   onSelectedDirection={setSelectedDirection}
@@ -101,40 +74,40 @@ const Game1 = ({
                 />
               )}
 
-              {isInput && isStart && isReady && (
+              {status === game.status.play && (
                 <MapContainer
                   stage={stage}
-                  directions={directions}
-                  isStart={isStart}
-                  isReady={isReady}
-                  isInput={isInput}
-                  setIsWin={setIsWin}
-                  setIsLose={setIsLose}
+                  status={status}
+                  setResult={setResult}
                   gameMap={gameMap}
                   score={score}
                   setScore={setScore}
-                  setIsEnd={setIsEnd}
+                  directions={directions}
                   setChance={setChance}
                 />
               )}
 
-              {isEnd && <InputModalContainer score={score} />}
-
-              {isWin && (
+              {result === game.result.win && (
                 <NextStageModalContainer onNextStage={handleNextStage} />
               )}
 
-              {isLose && (
-                <FailModalContainer onRetryCurrentStage={onRetryCurrentStage} />
+              {result === game.result.lose && (
+                <FailModalContainer onRetryCurrentStage={handleRetryStage} />
               )}
 
-              {isLose && chance === 0 && <ResetModalContainer />}
+              {result === game.result.lose && chance === 0 && (
+                <ResetModalContainer />
+              )}
+
+              {result === game.result.end && (
+                <InputModalContainer score={score} />
+              )}
             </View>
           </View>
 
           <View style={styles.recordArea}>
-            {isReady && (
-              <FaceDirectionRecord directions={directions} isInput={isInput} />
+            {status !== game.status.none && (
+              <FaceDirectionRecord directions={directions} status={status} />
             )}
           </View>
         </View>
@@ -171,4 +144,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Game1;
+export default FaceGo;

@@ -4,29 +4,28 @@ import { Text, View, StyleSheet, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { ChanceIcons, TextTimer } from "..";
-import { iconNames, colors, iconSizes, game } from "../../common";
+import { iconNames, camera, colors, iconSizes, game } from "../../common";
 
 const GameHeader = ({
+  status,
+  setStatus,
   onPressBack,
-  isReady,
-  isStart,
-  setIsStart,
-  isInput,
-  setIsInput,
-  startTimer,
-  setStartTimer,
-  inputTimer,
-  setInputTimer,
-  cameraPermissionStatus,
-  score,
-  currentGameKey,
-  progressRate,
-  setProgressRate,
   chance,
+  score,
+  cameraPermissionStatus,
+  currentGameKey,
 }) => {
+  const handleSetStatusDirectionInput = () => {
+    setStatus(game.status.directionInput);
+  };
+
+  const handleSetStatusPlay = () => {
+    setStatus(game.status.play);
+  };
+
   return (
     <View style={styles.container}>
-      {isReady && (
+      {status !== game.status.none && (
         <Pressable onPress={onPressBack} style={styles.back}>
           <Icon
             name={iconNames.leftArrow}
@@ -38,26 +37,19 @@ const GameHeader = ({
 
       {currentGameKey === game.keys[0] && (
         <View>
-          {!isStart && isReady && (
+          {status === game.status.open && (
             <TextTimer
-              setIsFinish={setIsStart}
-              timerInfo={startTimer}
-              setTimerInfo={setStartTimer}
+              onTimerEnd={handleSetStatusDirectionInput}
+              status={status}
             />
           )}
 
-          {!isInput &&
-            isStart &&
-            isReady &&
-            cameraPermissionStatus === "READY" && (
-              <TextTimer
-                setIsFinish={setIsInput}
-                timerInfo={inputTimer}
-                setTimerInfo={setInputTimer}
-              />
+          {status === game.status.directionInput &&
+            cameraPermissionStatus === camera.permissionReady && (
+              <TextTimer onTimerEnd={handleSetStatusPlay} status={status} />
             )}
 
-          {isInput && isStart && isReady && (
+          {status === game.status.play && (
             <Text style={styles.score}>
               SCORE{"\n"}
               {score}
@@ -80,7 +72,7 @@ const GameHeader = ({
         </View>
       )}
 
-      {isReady && <ChanceIcons chance={chance} />}
+      {status !== game.status.none && <ChanceIcons chance={chance} />}
     </View>
   );
 };
@@ -88,7 +80,7 @@ const GameHeader = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     alignItems: "center",
     width: "100%",
     height: "100%",
@@ -98,10 +90,8 @@ const styles = StyleSheet.create({
     color: colors.ivory,
   },
   back: {
-    justifyContent: "center",
-    width: 80,
+    width: 65,
     height: 40,
-    paddingLeft: 18,
   },
   scoreWrapper: {
     flexDirection: "row",
@@ -117,4 +107,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GameHeader;
+export default React.memo(GameHeader);
