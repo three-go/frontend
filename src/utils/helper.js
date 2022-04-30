@@ -1,4 +1,5 @@
 import { Vibration } from "react-native";
+import Sound from "react-native-sound";
 
 import { colors } from "../common";
 
@@ -61,4 +62,17 @@ export const getBackgroundColor = (
   }
 
   return bgColor;
+};
+
+export const getSound = (fileName) => {
+  const sound = new Sound(fileName, Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+      console.log("failed to load the sound : ", error);
+      return;
+    }
+
+    console.log("Sound load succeed :", fileName);
+  });
+
+  return sound;
 };
