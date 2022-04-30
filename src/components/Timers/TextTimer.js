@@ -27,7 +27,6 @@ const TextTimer = ({ onTimerEnd, status }) => {
         setTimerInfo({
           text: "입력이 종료되기",
           count: time.inputTimerSet,
-          // count: 10000 * 5,
           size: textSizes.small,
         });
     }
