@@ -10,12 +10,10 @@ const GameHeader = ({
   status,
   setStatus,
   onPressBack,
-  cameraPermissionStatus,
-  score,
-  currentGameKey,
-  progressRate,
-  setProgressRate,
   chance,
+  score,
+  cameraPermissionStatus,
+  currentGameKey,
 }) => {
   const handleSetStatusDirectionInput = () => {
     setStatus(game.status.directionInput);
@@ -109,4 +107,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GameHeader;
+export default React.memo(GameHeader);

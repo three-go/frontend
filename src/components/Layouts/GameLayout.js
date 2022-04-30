@@ -8,19 +8,13 @@ import { GameHeader } from "..";
 import { navigations, colors } from "../../common";
 
 const GameLayout = ({
-  children,
   status,
   setStatus,
-  startTimer,
-  setStartTimer,
-  inputTimer,
-  setInputTimer,
-  cameraPermissionStatus,
-  score,
-  currentGameKey,
-  progressRate,
-  setProgressRate,
   chance,
+  score,
+  cameraPermissionStatus,
+  currentGameKey,
+  children,
 }) => {
   const navigation = useNavigation();
 
@@ -35,16 +29,10 @@ const GameLayout = ({
           status={status}
           setStatus={setStatus}
           onPressBack={handleGoBack}
-          startTimer={startTimer}
-          setStartTimer={setStartTimer}
-          inputTimer={inputTimer}
-          setInputTimer={setInputTimer}
-          cameraPermissionStatus={cameraPermissionStatus}
-          score={score}
-          currentGameKey={currentGameKey}
-          progressRate={progressRate}
-          setProgressRate={setProgressRate}
           chance={chance}
+          score={score}
+          cameraPermissionStatus={cameraPermissionStatus}
+          currentGameKey={currentGameKey}
         />
       </View>
       <View style={styles.gameBoard}>{children}</View>
