@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
     width: "80%",
     height: "70%",
     margin: 20,
-    // padding: 35,
     paddingTop: 35,
     paddingBottom: 35,
     borderWidth: 5,
@@ -69,7 +68,6 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    // width: 300,
     width: "100%",
     backgroundColor: colors.gray,
   },
