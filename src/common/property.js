@@ -1,6 +1,7 @@
 import uuid from "react-native-uuid";
 
-import { colors } from "../common/constants";
+import { audio, colors } from "../common";
+import { getSound } from "../utils/helper";
 
 const gameNames = {
   faceGo: "Face Go",
@@ -114,6 +115,16 @@ const gameResult = {
   end: "end",
 };
 
+const gameSounds = {
+  timer: getSound(audio.timer),
+  timeout: getSound(audio.timeout),
+  wrong: getSound(audio.wrong1),
+  move: getSound(audio.move3),
+  lose: getSound(audio.wrong2),
+  win: getSound(audio.correct2),
+  end: getSound(audio.open),
+};
+
 const game = {
   keys: gameKey,
   names: gameNames,
@@ -121,6 +132,7 @@ const game = {
   description: gameDescription,
   status: gameStatus,
   result: gameResult,
+  sounds: gameSounds,
 };
 
 export { game };

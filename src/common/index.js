@@ -1,4 +1,5 @@
 import {
+  audio,
   iconNames,
   iconSizes,
   navigations,
@@ -13,6 +14,7 @@ import {
 import { game } from "./property";
 
 export {
+  audio,
   iconNames,
   iconSizes,
   navigations,
