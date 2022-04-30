@@ -99,4 +99,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TextTimer;
+export default React.memo(TextTimer);
