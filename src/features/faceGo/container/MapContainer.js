@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import useCharacter from "../../../hooks/useCharacter";
+import { useCharacter } from "../../../hooks";
 import { map, game } from "../../../common";
 import { Map } from "../presenter";
 
@@ -34,8 +34,10 @@ const MapContainer = ({
   const handleCheckStage = (n) => {
     if (n < 3) {
       setResult(game.result.win);
+      game.sounds.win.play();
     } else if (stage === 3) {
       setResult(game.result.end);
+      game.sounds.end.play();
     }
   };
 
@@ -48,6 +50,7 @@ const MapContainer = ({
       } else {
         setChance((prev) => prev - 1);
         setResult(game.result.lose);
+        game.sounds.lose.play();
       }
     }
 

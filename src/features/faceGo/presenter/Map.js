@@ -80,6 +80,8 @@ const Map = ({
     const defaultColor = colors.ivory;
 
     if (characterInfo && !characterInfo.isValid) {
+      game.sounds.wrong.play();
+
       borderColor.value = withSequence(
         withTiming(wrongColor, { duration: 500 }),
         withTiming(defaultColor, { duration: 500 })
@@ -93,6 +95,13 @@ const Map = ({
         true
       );
     } else {
+      if (
+        status === game.status.play &&
+        !(characterInfo.position.y === 0 && characterInfo.position.x === 0)
+      ) {
+        game.sounds.move.play();
+      }
+
       traslateX.value = withSpring(
         boxStyle.boxWidth * characterInfo.position.x,
         {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useMemo } from "react";
 
 import { FaceGo } from "..";
-import { game, time, textSizes } from "../../../common";
+import { game, time } from "../../../common";
 import { GameContext } from "../../../context";
 import { createMap } from "../../../utils";
 
@@ -70,6 +70,20 @@ const FaceGoContainer = () => {
       clearTimeout(timeoutId);
     };
   }, [status, directions.length]);
+
+  useEffect(() => {
+    if (status !== game.status.play) {
+      game.sounds.timer.setNumberOfLoops(-1);
+      game.sounds.timer.play();
+    }
+
+    return () => {
+      if (status !== game.status.play) {
+        game.sounds.timeout.play();
+        game.sounds.timer.stop();
+      }
+    };
+  }, [status]);
 
   return (
     <FaceGo
