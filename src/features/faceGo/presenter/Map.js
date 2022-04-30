@@ -13,7 +13,7 @@ import uuid from "react-native-uuid";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { colors, game } from "../../../common";
-import { getBackgroundColor } from "../../../utils/helper";
+import { getBackgroundColor, startVibrate } from "../../../utils/helper";
 import { MapCell } from "..";
 
 const Map = ({
@@ -80,6 +80,7 @@ const Map = ({
     const defaultColor = colors.ivory;
 
     if (characterInfo && !characterInfo.isValid) {
+      startVibrate();
       game.sounds.wrong.play();
 
       borderColor.value = withSequence(
