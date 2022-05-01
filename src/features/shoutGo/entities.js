@@ -2,7 +2,7 @@ import Matter from "matter-js";
 import decomp from "poly-decomp";
 import { Dimensions } from "react-native";
 
-import { colors } from "../../common";
+import { colors } from "../../common/constants";
 import svg from "../../utils/obstacleSvg";
 import { getStoneSizePos } from "../../utils/random";
 import Ceil from "../shoutGo/presenter/Ceil";

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 
 import { useNavigation } from "@react-navigation/native";
 
-import { ButtonModal, SmallButton } from "..";
-import { navigations, colors } from "../../common";
+import { navigations, colors } from "../../common/constants";
+import SmallButton from "../Buttons/SmallButton";
+import ButtonModal from "../Modals/ButtonModal";
 
 const RetryModalContainer = ({ onRetryGame }) => {
   const [modalVisible, setModalVisible] = useState(true);
