@@ -163,7 +163,7 @@ const MainContainer = ({ navigation }) => {
 const styles = StyleSheet.create({
   pageWrapper: (prop) => {
     return {
-      width: prop.PAGE_WIDTH - 40,
+      width: prop.PAGE_WIDTH,
       marginHorizontal: prop.GAP / 2,
     };
   },
