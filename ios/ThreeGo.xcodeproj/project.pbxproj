@@ -22,11 +22,11 @@
 		2DA4F6C5281D392F00FBF317 /* quiz_correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6BB281D392F00FBF317 /* quiz_correct.mp3 */; };
 		2DA4F6C6281D392F00FBF317 /* timer2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6BC281D392F00FBF317 /* timer2.mp3 */; };
 		2DA4F6C7281D392F00FBF317 /* quiz_correct2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6BD281D392F00FBF317 /* quiz_correct2.mp3 */; };
-		2DA4F6CB281D685400FBF317 /* move1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6C8281D685400FBF317 /* move1.mp3 */; };
-		2DA4F6CC281D685400FBF317 /* move2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6C9281D685400FBF317 /* move2.mp3 */; };
-		2DA4F6CD281D685400FBF317 /* move3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2DA4F6CA281D685400FBF317 /* move3.mp3 */; };
 		7699B88040F8A987B510C191 /* libPods-ThreeGo-ThreeGoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-ThreeGo-ThreeGoTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		D43A5339281EAEE70025BAB6 /* move3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D43A5337281EAEE70025BAB6 /* move3.mp3 */; };
+		D43A533A281EAEE70025BAB6 /* move2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D43A5338281EAEE70025BAB6 /* move2.mp3 */; };
+		D43A533C281EAEFC0025BAB6 /* move1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D43A533B281EAEFC0025BAB6 /* move1.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,15 +60,15 @@
 		2DA4F6BB281D392F00FBF317 /* quiz_correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = quiz_correct.mp3; path = ../android/app/src/main/res/raw/quiz_correct.mp3; sourceTree = "<group>"; };
 		2DA4F6BC281D392F00FBF317 /* timer2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = timer2.mp3; path = ../android/app/src/main/res/raw/timer2.mp3; sourceTree = "<group>"; };
 		2DA4F6BD281D392F00FBF317 /* quiz_correct2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = quiz_correct2.mp3; path = ../android/app/src/main/res/raw/quiz_correct2.mp3; sourceTree = "<group>"; };
-		2DA4F6C8281D685400FBF317 /* move1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = move1.mp3; path = ../../../../../Downloads/move1.mp3; sourceTree = "<group>"; };
-		2DA4F6C9281D685400FBF317 /* move2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = move2.mp3; path = ../../../../../Downloads/move2.mp3; sourceTree = "<group>"; };
-		2DA4F6CA281D685400FBF317 /* move3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = move3.mp3; path = ../../../../../Downloads/move3.mp3; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-ThreeGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThreeGo.debug.xcconfig"; path = "Target Support Files/Pods-ThreeGo/Pods-ThreeGo.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-ThreeGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThreeGo.release.xcconfig"; path = "Target Support Files/Pods-ThreeGo/Pods-ThreeGo.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-ThreeGo-ThreeGoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThreeGo-ThreeGoTests.debug.xcconfig"; path = "Target Support Files/Pods-ThreeGo-ThreeGoTests/Pods-ThreeGo-ThreeGoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-ThreeGo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ThreeGo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ThreeGo/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-ThreeGo-ThreeGoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThreeGo-ThreeGoTests.release.xcconfig"; path = "Target Support Files/Pods-ThreeGo-ThreeGoTests/Pods-ThreeGo-ThreeGoTests.release.xcconfig"; sourceTree = "<group>"; };
+		D43A5337281EAEE70025BAB6 /* move3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = move3.mp3; sourceTree = "<group>"; };
+		D43A5338281EAEE70025BAB6 /* move2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = move2.mp3; sourceTree = "<group>"; };
+		D43A533B281EAEFC0025BAB6 /* move1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = move1.mp3; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -148,9 +148,9 @@
 				2DA4F6BD281D392F00FBF317 /* quiz_correct2.mp3 */,
 				2DA4F6B6281D392E00FBF317 /* quiz_open.mp3 */,
 				2DA4F6B5281D392E00FBF317 /* quiz_wrong.mp3 */,
-				2DA4F6C8281D685400FBF317 /* move1.mp3 */,
-				2DA4F6C9281D685400FBF317 /* move2.mp3 */,
-				2DA4F6CA281D685400FBF317 /* move3.mp3 */,
+				D43A533B281EAEFC0025BAB6 /* move1.mp3 */,
+				D43A5338281EAEE70025BAB6 /* move2.mp3 */,
+				D43A5337281EAEE70025BAB6 /* move3.mp3 */,
 				2DA4F6B4281D392E00FBF317 /* quiz_wrong2.mp3 */,
 				2DA4F6B8281D392F00FBF317 /* timeout.mp3 */,
 				2DA4F6B9281D392F00FBF317 /* timer.mp3 */,
@@ -199,7 +199,6 @@
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
 				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
-				D3CB91EE818689C27D8AEA3A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -222,7 +221,6 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
-				3D6983A06A7C9B41FBF63E81 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -282,19 +280,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DA4F6C3281D392F00FBF317 /* timer.mp3 in Resources */,
+				D43A5339281EAEE70025BAB6 /* move3.mp3 in Resources */,
 				2DA4F6C2281D392F00FBF317 /* timeout.mp3 in Resources */,
 				2DA4F6C6281D392F00FBF317 /* timer2.mp3 in Resources */,
 				2DA4F6C7281D392F00FBF317 /* quiz_correct2.mp3 in Resources */,
+				D43A533C281EAEFC0025BAB6 /* move1.mp3 in Resources */,
 				2DA4F6C4281D392F00FBF317 /* bomb.mp3 in Resources */,
 				2DA4F6C0281D392F00FBF317 /* quiz_open.mp3 in Resources */,
-				2DA4F6CC281D685400FBF317 /* move2.mp3 in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				D43A533A281EAEE70025BAB6 /* move2.mp3 in Resources */,
 				2DA4F6BF281D392F00FBF317 /* quiz_wrong.mp3 in Resources */,
 				2DA4F6C5281D392F00FBF317 /* quiz_correct.mp3 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				2DA4F6CD281D685400FBF317 /* move3.mp3 in Resources */,
 				2DA4F6BE281D392F00FBF317 /* quiz_wrong2.mp3 in Resources */,
-				2DA4F6CB281D685400FBF317 /* move1.mp3 in Resources */,
 				2DA4F6C1281D392F00FBF317 /* bomb2.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,23 +313,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
-		};
-		3D6983A06A7C9B41FBF63E81 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ThreeGo/Pods-ThreeGo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ThreeGo/Pods-ThreeGo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ThreeGo/Pods-ThreeGo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -375,23 +356,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D3CB91EE818689C27D8AEA3A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ThreeGo-ThreeGoTests/Pods-ThreeGo-ThreeGoTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ThreeGo-ThreeGoTests/Pods-ThreeGo-ThreeGoTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ThreeGo-ThreeGoTests/Pods-ThreeGo-ThreeGoTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {

@@ -6,8 +6,8 @@ import {
   FaceRecognition,
   FaceDirectionRecord,
 } from "./faceGo";
-import { ShoutGoContainer, ShoutGo } from "./shoutGo";
 import { MainContainer, Main, Page } from "./main";
+import ShoutGoContainer from "./shoutGo/container/ShoutGoContainer";
 
 export {
   MainContainer,
@@ -15,7 +15,6 @@ export {
   FaceGoContainer,
   FaceGo,
   ShoutGoContainer,
-  ShoutGo,
   Map,
   FaceRecognitionContainer,
   FaceRecognition,

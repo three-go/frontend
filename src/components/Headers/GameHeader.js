@@ -60,19 +60,16 @@ const GameHeader = ({
 
       {currentGameKey === game.keys[1] && (
         <View style={styles.scoreWrapper}>
-          <Icon
-            name={iconNames.flag}
-            size={iconSizes.headerFlag}
-            color={colors.gray}
-          />
-
           <Text style={styles.score}>
-            {progressRate.current} / {progressRate.total}
+            SCORE{"\n"}
+            {score}
           </Text>
         </View>
       )}
 
-      {status !== game.status.none && <ChanceIcons chance={chance} />}
+      {(status !== game.status.none || currentGameKey === game.keys[1]) && (
+        <ChanceIcons chance={chance} />
+      )}
     </View>
   );
 };
@@ -80,7 +77,7 @@ const GameHeader = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-evenly",
     alignItems: "center",
     width: "100%",
     height: "100%",
@@ -102,7 +99,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     color: colors.ivory,
     textAlign: "center",
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: "bold",
   },
 });

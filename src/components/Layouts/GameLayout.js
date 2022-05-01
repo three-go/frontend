@@ -5,7 +5,7 @@ import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { GameHeader } from "..";
-import { navigations, colors } from "../../common";
+import { navigations, colors, game } from "../../common";
 
 const GameLayout = ({
   status,
@@ -35,7 +35,16 @@ const GameLayout = ({
           currentGameKey={currentGameKey}
         />
       </View>
-      <View style={styles.gameBoard}>{children}</View>
+
+      <View
+        style={
+          currentGameKey === game.keys[0]
+            ? styles.faceGoBoard
+            : styles.shoutGoBoard
+        }
+      >
+        {children}
+      </View>
     </SafeAreaView>
   );
 };
@@ -48,13 +57,18 @@ const styles = StyleSheet.create({
   header: {
     height: "10%",
   },
-  gameBoard: {
+  faceGoBoard: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
     height: "100%",
     backgroundColor: colors.ivory,
+  },
+  shoutGoBoard: {
+    flex: 1,
+    position: "relative",
+    backgroundColor: colors.lightBlue,
   },
 });
 
