@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import PropTypes from "prop-types";
 
-import { useCharacter } from "../../../hooks";
+import useCharacter from "../../../hooks/useCharacter";
 import { map } from "../../../common/constants";
 import { game } from "../../../common/property";
 import { Map } from "../presenter";
