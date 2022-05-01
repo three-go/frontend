@@ -4,7 +4,8 @@ import { View, ScrollView, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
 import PropTypes from "prop-types";
 
-import { colors, game, iconSizes } from "../../../common";
+import { colors, iconSizes } from "../../../common/constants";
+import { game } from "../../../common/property";
 
 const FaceDirectionRecord = ({ directions, status }) => {
   const scrollView = useRef(null);

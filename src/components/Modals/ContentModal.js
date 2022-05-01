@@ -3,8 +3,8 @@ import React from "react";
 import { Modal, StyleSheet, Text, View } from "react-native";
 import PropTypes from "prop-types";
 
-import { Carousel } from "..";
-import { colors } from "../../common";
+import Carousel from "../Layouts/Carousel";
+import { colors } from "../../common/constants";
 
 const ContentModal = ({
   isVisible,
@@ -45,8 +45,7 @@ const styles = StyleSheet.create({
     width: "80%",
     height: "70%",
     margin: 20,
-    paddingTop: 35,
-    paddingBottom: 35,
+    padding: 35,
     borderWidth: 5,
     borderRadius: 20,
     borderColor: colors.ivory,
@@ -69,7 +68,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    width: "100%",
+    width: 300,
     backgroundColor: colors.gray,
   },
   buttonContainer: {

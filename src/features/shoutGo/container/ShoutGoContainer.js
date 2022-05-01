@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 
-import { GameContext } from "../../../context";
+import GameContext from "../../../context/GameContext";
 import ShoutGo from "../presenter/ShoutGo";
 
 const ShoutGoContainer = () => {

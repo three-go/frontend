@@ -5,10 +5,14 @@ import { Keyboard } from "react-native";
 import uuid from "react-native-uuid";
 import PropTypes from "prop-types";
 
-import { SmallButton, InputModal } from "..";
-import { navigations, colors } from "../../common";
-import { GameContext } from "../../context";
-import { setItemToAsync, getItemFromAsync } from "../../utils";
+import InputModal from "./InputModal";
+import SmallButton from "../Buttons/SmallButton";
+import { navigations, colors } from "../../common/constants";
+import GameContext from "../../context/GameContext";
+import {
+  setItemToAsync,
+  getItemFromAsync,
+} from "../../utils/asyncStorageHelper";
 
 const InputModalContainer = ({ score }) => {
   const navigation = useNavigation();

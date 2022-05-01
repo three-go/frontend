@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext, useMemo } from "react";
 
-import { FaceGo } from "..";
-import { game, time } from "../../../common";
-import { GameContext } from "../../../context";
-import { createMap } from "../../../utils";
+import FaceGo from "../presenter/FaceGo";
+import { time } from "../../../common/constants";
+import { game } from "../../../common/property";
+import GameContext from "../../../context/GameContext";
+import { createMap } from "../../../utils/map";
 
 const FaceGoContainer = () => {
   const { currentGameKey } = useContext(GameContext);

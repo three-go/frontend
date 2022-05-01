@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 
-import { colors } from "../../common";
+import { colors } from "../../common/constants";
 
 const InputModal = ({
   score,

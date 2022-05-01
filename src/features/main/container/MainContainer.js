@@ -7,15 +7,20 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import SystemNavigationBar from "react-native-system-navigation-bar";
 import PropTypes from "prop-types";
 
-import { GameGuide, Main, Page } from "..";
-import { colors, game } from "../../../common";
-import { DefaultButton, SmallButton, ContentModal } from "../../../components";
-import { GameContext } from "../../../context";
+import GameGuide from "../presenter/GameGuide";
+import Main from "../presenter/Main";
+import Page from "../presenter/Page";
+import { colors } from "../../../common/constants";
+import { game } from "../../../common/property";
+import ContentModal from "../../../components/Modals/ContentModal";
+import SmallButton from "../../../components/Buttons/SmallButton";
+import DefaultButton from "../../../components/Buttons/DefaultButton";
+import GameContext from "../../../context/GameContext";
+import { getItemFromAsync } from "../../../utils/asyncStorageHelper";
 import {
-  getItemFromAsync,
   convertContentToArray,
   descendOrderArray,
-} from "../../../utils";
+} from "../../../utils/helper";
 
 const size = {
   SCREEN_WIDTH: 300,
@@ -158,7 +163,7 @@ const MainContainer = ({ navigation }) => {
 const styles = StyleSheet.create({
   pageWrapper: (prop) => {
     return {
-      width: prop.PAGE_WIDTH - 40,
+      width: prop.PAGE_WIDTH,
       marginHorizontal: prop.GAP / 2,
     };
   },
