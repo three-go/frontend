@@ -7,7 +7,9 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import SystemNavigationBar from "react-native-system-navigation-bar";
 import PropTypes from "prop-types";
 
-import { GameGuide, Main, Page } from "..";
+import GameGuide from "../presenter/GameGuide";
+import Main from "../presenter/Main";
+import Page from "../presenter/Page";
 import { colors } from "../../../common/constants";
 import { game } from "../../../common/property";
 import { DefaultButton, SmallButton, ContentModal } from "../../../components";
