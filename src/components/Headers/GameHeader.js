@@ -4,7 +4,8 @@ import { Text, View, StyleSheet, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import PropTypes from "prop-types";
 
-import { ChanceIcons, TextTimer } from "..";
+import TextTimer from "../Timers/TextTimer";
+import ChanceIcons from "../ChanceIcons";
 import { iconNames, camera, colors, iconSizes } from "../../common/constants";
 import { game } from "../../common/property";
 

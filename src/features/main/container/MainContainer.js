@@ -12,7 +12,7 @@ import Main from "../presenter/Main";
 import Page from "../presenter/Page";
 import { colors } from "../../../common/constants";
 import { game } from "../../../common/property";
-import { ContentModal } from "../../../components";
+import ContentModal from "../../../components/Modals/ContentModal";
 import SmallButton from "../../../components/Buttons/SmallButton";
 import DefaultButton from "../../../components/Buttons/DefaultButton";
 import GameContext from "../../../context/GameContext";

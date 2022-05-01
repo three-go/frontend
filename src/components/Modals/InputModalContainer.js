@@ -5,7 +5,7 @@ import { Keyboard } from "react-native";
 import uuid from "react-native-uuid";
 import PropTypes from "prop-types";
 
-import { InputModal } from "..";
+import InputModal from "./InputModal";
 import SmallButton from "../Buttons/SmallButton";
 import { navigations, colors } from "../../common/constants";
 import GameContext from "../../context/GameContext";

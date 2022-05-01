@@ -8,14 +8,12 @@ import MapContainer from "../container/MapContainer";
 import FaceDirectionRecord from "./FaceDirectionRecord";
 import { colors } from "../../../common/constants";
 import { game } from "../../../common/property";
-import {
-  GameLayout,
-  NextStageModalContainer,
-  InputModalContainer,
-  FailModalContainer,
-  TextTimer,
-  ResetModalContainer,
-} from "../../../components";
+import FailModalContainer from "../../../components/Modals/FailModalContainer";
+import InputModalContainer from "../../../components/Modals/InputModalContainer";
+import ResetModalContainer from "../../../components/Modals/ResetModalContainer";
+import NextStageModalContainer from "../../../components/Modals/NextStageModalContainer";
+import GameLayout from "../../../components/Layouts/GameLayout";
+import TextTimer from "../../../components/Timers/TextTimer";
 
 const FaceGo = ({ gameInfo, userInfo, cameraInfo }) => {
   const {

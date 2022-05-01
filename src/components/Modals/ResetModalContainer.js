@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { useNavigation } from "@react-navigation/native";
 
-import { ButtonModal } from "..";
+import ButtonModal from "./ButtonModal";
 import SmallButton from "../Buttons/SmallButton";
 import { navigations, colors } from "../../common/constants";
 

@@ -2,7 +2,7 @@ import React from "react";
 
 import { Text } from "react-native";
 
-import { GameLayout } from "../../../components";
+import GameLayout from "../../../components/Layouts/GameLayout";
 
 const ShoutGo = ({ currentGameKey, progressRate, setProgressRate }) => {
   return (

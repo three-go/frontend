@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 import { colors } from "../../../common/constants";
 import { game } from "../../../common/property";
-import { Logo } from "../../../components";
+import Logo from "../../../components/Logo";
 import DefaultButton from "../../../components/Buttons/DefaultButton";
 import SquareButton from "../../../components/Buttons/SquareButton";
 
