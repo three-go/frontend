@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 import PropTypes from "prop-types";
 
-import ButtonModal from "./ButtonModal";
-import SmallButton from "../Buttons/SmallButton";
 import { colors } from "../../common/constants";
+import SmallButton from "../Buttons/SmallButton";
+import ButtonModal from "./ButtonModal";
 
 const NextStageModalContainer = ({ onNextStage }) => {
   const [modalVisible, setModalVisible] = useState(true);

@@ -1,7 +1,7 @@
 import React from "react";
 
-import { FlatList, StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
+import { FlatList, StyleSheet, View } from "react-native";
 
 import { game } from "../../common/property";
 
