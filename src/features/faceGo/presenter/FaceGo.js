@@ -3,11 +3,9 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 
-import {
-  FaceRecognitionContainer,
-  MapContainer,
-  FaceDirectionRecord,
-} from "..";
+import FaceRecognitionContainer from "../container/FaceRecognitionContainer";
+import MapContainer from "../container/MapContainer";
+import FaceDirectionRecord from "./FaceDirectionRecord";
 import { colors } from "../../../common/constants";
 import { game } from "../../../common/property";
 import {

@@ -16,7 +16,7 @@ import PropTypes from "prop-types";
 import { colors } from "../../../common/constants";
 import { game } from "../../../common/property";
 import { getBackgroundColor, startVibrate } from "../../../utils/helper";
-import { MapCell } from "..";
+import MapCell from "./MapCell";
 
 const Map = ({
   status,

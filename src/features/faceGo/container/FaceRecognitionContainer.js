@@ -9,7 +9,7 @@ import {
   faceYawAngleRange,
   time,
 } from "../../../common/constants";
-import { FaceRecognition } from "../presenter";
+import FaceRecognition from "../presenter/FaceRecognition";
 
 const FaceRecognitionContainer = ({
   selectedDirection,

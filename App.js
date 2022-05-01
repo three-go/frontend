@@ -5,11 +5,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SplashScreen from "react-native-splash-screen";
 
 import { GameContextProvider } from "./src/context/GameContext";
-import {
-  MainContainer,
-  FaceGoContainer,
-  ShoutGoContainer,
-} from "./src/features";
+import { MainContainer, ShoutGoContainer } from "./src/features";
+import FaceGoContainer from "./src/features/faceGo/container/FaceGoContainer";
 
 const Stack = createNativeStackNavigator();
 
