@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 
-import { colors, game, textSizes, time } from "../../common";
+import { colors, textSizes, time } from "../../common/constants";
+import { game } from "../../common/property";
 
 const TextTimer = ({ onTimerEnd, status }) => {
   const [timerInfo, setTimerInfo] = useState(null);

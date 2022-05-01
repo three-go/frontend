@@ -3,7 +3,7 @@ import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 
-import { colors } from "../../common";
+import { colors } from "../../common/constants";
 
 const SmallButton = ({ content, color, onPress }) => (
   <TouchableOpacity

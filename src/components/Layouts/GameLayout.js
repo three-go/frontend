@@ -6,7 +6,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import PropTypes from "prop-types";
 
 import { GameHeader } from "..";
-import { navigations, colors } from "../../common";
+import { navigations, colors } from "../../common/constants";
 
 const GameLayout = ({
   status,

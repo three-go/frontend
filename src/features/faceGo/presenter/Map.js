@@ -13,7 +13,8 @@ import uuid from "react-native-uuid";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import PropTypes from "prop-types";
 
-import { colors, game } from "../../../common";
+import { colors } from "../../../common/constants";
+import { game } from "../../../common/property";
 import { getBackgroundColor, startVibrate } from "../../../utils/helper";
 import { MapCell } from "..";
 

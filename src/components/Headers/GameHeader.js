@@ -5,7 +5,8 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import PropTypes from "prop-types";
 
 import { ChanceIcons, TextTimer } from "..";
-import { iconNames, camera, colors, iconSizes, game } from "../../common";
+import { iconNames, camera, colors, iconSizes } from "../../common/constants";
+import { game } from "../../common/property";
 
 const GameHeader = ({
   status,

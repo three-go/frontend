@@ -8,7 +8,8 @@ import {
   MapContainer,
   FaceDirectionRecord,
 } from "..";
-import { colors, game } from "../../../common";
+import { colors } from "../../../common/constants";
+import { game } from "../../../common/property";
 import {
   GameLayout,
   NextStageModalContainer,

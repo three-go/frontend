@@ -6,7 +6,7 @@ import uuid from "react-native-uuid";
 import PropTypes from "prop-types";
 
 import { SmallButton, InputModal } from "..";
-import { navigations, colors } from "../../common";
+import { navigations, colors } from "../../common/constants";
 import { GameContext } from "../../context";
 import { setItemToAsync, getItemFromAsync } from "../../utils";
 

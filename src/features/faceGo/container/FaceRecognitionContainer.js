@@ -4,7 +4,11 @@ import { Platform } from "react-native";
 import uuid from "react-native-uuid";
 import PropTypes from "prop-types";
 
-import { facePosition, faceYawAngleRange, time } from "../../../common";
+import {
+  facePosition,
+  faceYawAngleRange,
+  time,
+} from "../../../common/constants";
 import { FaceRecognition } from "../presenter";
 
 const FaceRecognitionContainer = ({

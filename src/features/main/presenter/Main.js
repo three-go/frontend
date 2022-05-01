@@ -4,7 +4,8 @@ import { View, StyleSheet, StatusBar } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import PropTypes from "prop-types";
 
-import { colors, game } from "../../../common";
+import { colors } from "../../../common/constants";
+import { game } from "../../../common/property";
 import { DefaultButton, SquareButton, Logo } from "../../../components";
 
 const Main = ({

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 import { ButtonModal, SmallButton } from "..";
-import { navigations, colors } from "../../common";
+import { navigations, colors } from "../../common/constants";
 
 const ResetModalContainer = () => {
   const [modalVisible, setModalVisible] = useState(true);

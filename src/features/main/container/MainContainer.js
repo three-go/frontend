@@ -8,7 +8,8 @@ import SystemNavigationBar from "react-native-system-navigation-bar";
 import PropTypes from "prop-types";
 
 import { GameGuide, Main, Page } from "..";
-import { colors, game } from "../../../common";
+import { colors } from "../../../common/constants";
+import { game } from "../../../common/property";
 import { DefaultButton, SmallButton, ContentModal } from "../../../components";
 import { GameContext } from "../../../context";
 import {

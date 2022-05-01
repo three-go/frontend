@@ -5,7 +5,7 @@ import { RNCamera } from "react-native-camera";
 import RNExitApp from "react-native-exit-app";
 import PropTypes from "prop-types";
 
-import { camera, colors } from "../../../common";
+import { camera, colors } from "../../../common/constants";
 import { SmallButton } from "../../../components";
 
 const FaceRecognition = ({

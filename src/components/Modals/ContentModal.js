@@ -4,7 +4,7 @@ import { Modal, StyleSheet, Text, View } from "react-native";
 import PropTypes from "prop-types";
 
 import { Carousel } from "..";
-import { colors } from "../../common";
+import { colors } from "../../common/constants";
 
 const ContentModal = ({
   isVisible,
