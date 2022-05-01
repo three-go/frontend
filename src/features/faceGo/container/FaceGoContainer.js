@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext, useMemo } from "react";
 import { FaceGo } from "..";
 import { time } from "../../../common/constants";
 import { game } from "../../../common/property";
-import { GameContext } from "../../../context";
+import GameContext from "../../../context/GameContext";
 import { createMap } from "../../../utils/map";
 
 const FaceGoContainer = () => {

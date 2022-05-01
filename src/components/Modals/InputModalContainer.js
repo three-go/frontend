@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 import { SmallButton, InputModal } from "..";
 import { navigations, colors } from "../../common/constants";
-import { GameContext } from "../../context";
+import GameContext from "../../context/GameContext";
 import {
   setItemToAsync,
   getItemFromAsync,

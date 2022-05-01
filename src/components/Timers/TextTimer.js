@@ -14,21 +14,24 @@ const TextTimer = ({ onTimerEnd, status }) => {
       case game.status.none:
         setTimerInfo({
           text: "게임시작",
-          count: time.readyTimerSet,
+          // count: time.readyTimerSet,
+          count: 1,
           size: textSizes.medium,
         });
         break;
       case game.status.open:
         setTimerInfo({
           text: "맵이 가려지기",
-          count: time.startTimerSet,
+          // count: time.startTimerSet,
+          count: 1,
           size: textSizes.small,
         });
         break;
       case game.status.directionInput:
         setTimerInfo({
           text: "입력이 종료되기",
-          count: time.inputTimerSet,
+          // count: time.inputTimerSet,
+          count: 1,
           size: textSizes.small,
         });
     }

@@ -11,7 +11,7 @@ import { GameGuide, Main, Page } from "..";
 import { colors } from "../../../common/constants";
 import { game } from "../../../common/property";
 import { DefaultButton, SmallButton, ContentModal } from "../../../components";
-import { GameContext } from "../../../context";
+import GameContext from "../../../context/GameContext";
 import { getItemFromAsync } from "../../../utils/asyncStorageHelper";
 import {
   convertContentToArray,
