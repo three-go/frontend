@@ -1,6 +1,6 @@
 import uuid from "react-native-uuid";
 
-import { audio, colors } from "../common";
+import { audio, colors } from "../common/constants";
 import { getSound } from "../utils/helper";
 
 const gameNames = {

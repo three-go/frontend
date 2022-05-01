@@ -4,9 +4,10 @@ import { View, StyleSheet } from "react-native";
 import { GameEngine } from "react-native-game-engine";
 import RNSoundLevel from "react-native-sound-level";
 
-import { GameLayout, InputModalContainer } from "../../../components";
+import GameLayout from "../../../components/Layouts/GameLayout";
+import InputModalContainer from "../../../components/Modals/InputModalContainer";
 import RetryModalContainer from "../../../components/Modals/RetryModalContainer";
-import { GameContext } from "../../../context";
+import GameContext from "../../../context/GameContext";
 import entities from "../entities";
 import Physics from "../physics";
 

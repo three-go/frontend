@@ -1,5 +1,6 @@
 import React from "react";
 
+import PropTypes from "prop-types";
 import {
   Modal,
   StyleSheet,
@@ -10,7 +11,7 @@ import {
   Platform,
 } from "react-native";
 
-import { colors } from "../../common";
+import { colors } from "../../common/constants";
 
 const InputModal = ({
   score,
@@ -114,3 +115,12 @@ const styles = StyleSheet.create({
 });
 
 export default InputModal;
+
+InputModal.propTypes = {
+  score: PropTypes.number.isRequired,
+  modalVisible: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired,
+  setName: PropTypes.func.isRequired,
+  onRegister: PropTypes.func.isRequired,
+  children: PropTypes.element.isRequired,
+};

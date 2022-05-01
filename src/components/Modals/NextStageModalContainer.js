@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 
-import { ButtonModal, SmallButton } from "..";
-import { colors } from "../../common";
+import PropTypes from "prop-types";
+
+import ButtonModal from "./ButtonModal";
+import SmallButton from "../Buttons/SmallButton";
+import { colors } from "../../common/constants";
 
 const NextStageModalContainer = ({ onNextStage }) => {
   const [modalVisible, setModalVisible] = useState(true);
@@ -23,3 +26,7 @@ const NextStageModalContainer = ({ onNextStage }) => {
 };
 
 export default NextStageModalContainer;
+
+NextStageModalContainer.propTypes = {
+  onNextStage: PropTypes.func,
+};

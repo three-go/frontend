@@ -2,8 +2,9 @@ import React from "react";
 
 import { View, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import PropTypes from "prop-types";
 
-import { iconNames, iconSizes, colors } from "../../common";
+import { iconNames, iconSizes, colors } from "../../common/constants";
 
 const MAX_CHANCE = 3;
 
@@ -45,3 +46,7 @@ const styles = StyleSheet.create({
 });
 
 export default ChanceIcons;
+
+ChanceIcons.propTypes = {
+  chance: PropTypes.number.isRequired,
+};

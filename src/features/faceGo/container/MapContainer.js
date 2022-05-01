@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 
-import { useCharacter } from "../../../hooks";
-import { map, game } from "../../../common";
-import { Map } from "../presenter";
+import PropTypes from "prop-types";
+
+import useCharacter from "../../../hooks/useCharacter";
+import { map } from "../../../common/constants";
+import { game } from "../../../common/property";
+import Map from "../presenter/Map";
 
 const MapContainer = ({
   stage,
@@ -90,3 +93,26 @@ const MapContainer = ({
 };
 
 export default MapContainer;
+
+MapContainer.propTypes = {
+  stage: PropTypes.number.isRequired,
+  status: PropTypes.string.isRequired,
+  setResult: PropTypes.func.isRequired,
+  gameMap: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
+  score: PropTypes.number,
+  setScore: PropTypes.func,
+  directions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      direction: PropTypes.string,
+    })
+  ),
+  setChance: PropTypes.func.isRequired,
+};
+
+MapContainer.defaultProps = {
+  score: 500,
+  setScore: () => {},
+  setChance: () => {},
+  directions: [],
+};

@@ -1,11 +1,13 @@
 import React from "react";
 
 import { useNavigation } from "@react-navigation/native";
+import PropTypes from "prop-types";
 import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { GameHeader } from "..";
-import { navigations, colors, game } from "../../common";
+import { navigations, colors } from "../../common/constants";
+import { game } from "../../common/property";
+import GameHeader from "../Headers/GameHeader";
 
 const GameLayout = ({
   status,
@@ -73,3 +75,13 @@ const styles = StyleSheet.create({
 });
 
 export default GameLayout;
+
+GameLayout.propTypes = {
+  status: PropTypes.string,
+  setStatus: PropTypes.func,
+  chance: PropTypes.number,
+  score: PropTypes.number,
+  cameraPermissionStatus: PropTypes.string,
+  currentGameKey: PropTypes.string,
+  children: PropTypes.element,
+};

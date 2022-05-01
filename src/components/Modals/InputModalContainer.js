@@ -1,13 +1,18 @@
 import React, { useState, useContext } from "react";
 
 import { useNavigation } from "@react-navigation/native";
+import PropTypes from "prop-types";
 import { Keyboard } from "react-native";
 import uuid from "react-native-uuid";
 
-import { SmallButton, InputModal } from "..";
-import { navigations, colors } from "../../common";
-import { GameContext } from "../../context";
-import { setItemToAsync, getItemFromAsync } from "../../utils";
+import { navigations, colors } from "../../common/constants";
+import GameContext from "../../context/GameContext";
+import {
+  setItemToAsync,
+  getItemFromAsync,
+} from "../../utils/asyncStorageHelper";
+import SmallButton from "../Buttons/SmallButton";
+import InputModal from "./InputModal";
 
 const InputModalContainer = ({ score }) => {
   const navigation = useNavigation();
@@ -64,3 +69,7 @@ const InputModalContainer = ({ score }) => {
 };
 
 export default InputModalContainer;
+
+InputModalContainer.propTypes = {
+  score: PropTypes.number.isRequired,
+};

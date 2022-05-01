@@ -1,7 +1,7 @@
 import { Vibration } from "react-native";
 import Sound from "react-native-sound";
 
-import { colors } from "../common";
+import { colors } from "../common/constants";
 
 export const convertContentToArray = (object, keyList) => {
   const result = [];

@@ -11,10 +11,12 @@ import Animated, {
 } from "react-native-reanimated";
 import uuid from "react-native-uuid";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import PropTypes from "prop-types";
 
-import { colors, game } from "../../../common";
+import { colors } from "../../../common/constants";
+import { game } from "../../../common/property";
 import { getBackgroundColor, startVibrate } from "../../../utils/helper";
-import { MapCell } from "..";
+import MapCell from "./MapCell";
 
 const Map = ({
   status,
@@ -209,3 +211,40 @@ const styles = StyleSheet.create({
 });
 
 export default React.memo(Map);
+
+Map.propTypes = {
+  status: PropTypes.string.isRequired,
+  gameMap: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
+  characterInfo: PropTypes.shape({
+    isValid: PropTypes.bool,
+    minusScore: PropTypes.number,
+    position: PropTypes.shape({
+      x: PropTypes.number,
+      y: PropTypes.number,
+    }),
+    moveDown: PropTypes.func,
+    moveUp: PropTypes.func,
+    moveLeft: PropTypes.func,
+    moveRight: PropTypes.func,
+  }),
+  arrInfo: PropTypes.shape({
+    columnCount: PropTypes.number,
+    rowCount: PropTypes.number,
+  }).isRequired,
+  boxStyle: PropTypes.shape({
+    boxHeigth: PropTypes.number,
+    boxStyle: PropTypes.number,
+  }).isRequired,
+  directions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      direction: PropTypes.string,
+    })
+  ),
+  setScore: PropTypes.func.isRequired,
+};
+
+Map.defaultProps = {
+  gameMap: [],
+  directions: [],
+};

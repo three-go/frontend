@@ -2,9 +2,13 @@ import React from "react";
 
 import { View, StyleSheet, StatusBar } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import PropTypes from "prop-types";
 
-import { colors, game } from "../../../common";
-import { DefaultButton, SquareButton, Logo } from "../../../components";
+import { colors } from "../../../common/constants";
+import { game } from "../../../common/property";
+import Logo from "../../../components/Logo";
+import DefaultButton from "../../../components/Buttons/DefaultButton";
+import SquareButton from "../../../components/Buttons/SquareButton";
 
 const Main = ({
   onExitApp,
@@ -75,3 +79,9 @@ const styles = StyleSheet.create({
 });
 
 export default Main;
+
+Main.propTypes = {
+  onExitApp: PropTypes.func.isRequired,
+  onShowScoreModal: PropTypes.func.isRequired,
+  onSetGameNameAndShowDescriptionModal: PropTypes.func.isRequired,
+};

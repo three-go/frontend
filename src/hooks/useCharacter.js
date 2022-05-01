@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const useCharacter = (gameMap) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [minusScore, setMinusScore] = useState({});
+  const [minusScore, setMinusScore] = useState(0);
   const [isValid, setIsValid] = useState(true);
 
   const moveLeft = () => {

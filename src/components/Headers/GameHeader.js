@@ -2,9 +2,12 @@ import React from "react";
 
 import { Text, View, StyleSheet, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import PropTypes from "prop-types";
 
-import { ChanceIcons, TextTimer } from "..";
-import { iconNames, camera, colors, iconSizes, game } from "../../common";
+import TextTimer from "../Timers/TextTimer";
+import ChanceIcons from "../ChanceIcons";
+import { iconNames, camera, colors, iconSizes } from "../../common/constants";
+import { game } from "../../common/property";
 
 const GameHeader = ({
   status,
@@ -105,3 +108,13 @@ const styles = StyleSheet.create({
 });
 
 export default React.memo(GameHeader);
+
+GameHeader.propTypes = {
+  status: PropTypes.string.isRequired,
+  setStatus: PropTypes.func.isRequired,
+  onPressBack: PropTypes.func.isRequired,
+  chance: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired,
+  cameraPermissionStatus: PropTypes.string.isRequired,
+  currentGameKey: PropTypes.string.isRequired,
+};

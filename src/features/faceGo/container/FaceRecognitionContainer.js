@@ -2,9 +2,14 @@ import React, { useState, useEffect } from "react";
 
 import { Platform } from "react-native";
 import uuid from "react-native-uuid";
+import PropTypes from "prop-types";
 
-import { facePosition, faceYawAngleRange, time } from "../../../common";
-import { FaceRecognition } from "../presenter";
+import {
+  facePosition,
+  faceYawAngleRange,
+  time,
+} from "../../../common/constants";
+import FaceRecognition from "../presenter/FaceRecognition";
 
 const FaceRecognitionContainer = ({
   selectedDirection,
@@ -93,3 +98,17 @@ const FaceRecognitionContainer = ({
 };
 
 export default FaceRecognitionContainer;
+
+FaceRecognitionContainer.propTypes = {
+  selectedDirection: PropTypes.shape({
+    id: PropTypes.string,
+    direction: PropTypes.string,
+  }),
+  onSelectedDirection: PropTypes.func.isRequired,
+  cameraPermissionStatus: PropTypes.string.isRequired,
+  setCameraPermissionStatus: PropTypes.func.isRequired,
+};
+
+FaceRecognitionContainer.defaultProps = {
+  selectedDirection: {},
+};

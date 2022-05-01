@@ -1,21 +1,19 @@
 import React from "react";
 
 import { View, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 
-import {
-  FaceRecognitionContainer,
-  MapContainer,
-  FaceDirectionRecord,
-} from "..";
-import { colors, game } from "../../../common";
-import {
-  GameLayout,
-  NextStageModalContainer,
-  InputModalContainer,
-  FailModalContainer,
-  TextTimer,
-  ResetModalContainer,
-} from "../../../components";
+import FaceRecognitionContainer from "../container/FaceRecognitionContainer";
+import MapContainer from "../container/MapContainer";
+import FaceDirectionRecord from "./FaceDirectionRecord";
+import { colors } from "../../../common/constants";
+import { game } from "../../../common/property";
+import FailModalContainer from "../../../components/Modals/FailModalContainer";
+import InputModalContainer from "../../../components/Modals/InputModalContainer";
+import ResetModalContainer from "../../../components/Modals/ResetModalContainer";
+import NextStageModalContainer from "../../../components/Modals/NextStageModalContainer";
+import GameLayout from "../../../components/Layouts/GameLayout";
+import TextTimer from "../../../components/Timers/TextTimer";
 
 const FaceGo = ({ gameInfo, userInfo, cameraInfo }) => {
   const {
@@ -145,3 +143,45 @@ const styles = StyleSheet.create({
 });
 
 export default FaceGo;
+
+FaceGo.propTypes = {
+  gameInfo: PropTypes.shape({
+    stage: PropTypes.number,
+    status: PropTypes.string,
+    setStatus: PropTypes.func,
+    result: PropTypes.string,
+    setResult: PropTypes.func,
+    currentGameKey: PropTypes.string,
+    gameMap: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
+    handleNextStage: PropTypes.func,
+    handleRetryStage: PropTypes.func,
+    handleSetStatusOpen: PropTypes.func,
+  }).isRequired,
+  userInfo: PropTypes.shape({
+    score: PropTypes.number.isRequired,
+    setScore: PropTypes.func.isRequired,
+    chance: PropTypes.number.isRequired,
+    setChance: PropTypes.func.isRequired,
+    directions: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        direction: PropTypes.string,
+      })
+    ),
+  }),
+  cameraInfo: PropTypes.shape({
+    selectedDirection: PropTypes.shape({
+      id: PropTypes.string,
+      direction: PropTypes.string,
+    }),
+    onSelectedDirection: PropTypes.func,
+    cameraPermissionStatus: PropTypes.string.isRequired,
+    setCameraPermissionStatus: PropTypes.func.isRequired,
+  }),
+};
+
+FaceGo.defaultProps = {
+  selectedDirection: {},
+  onSelectedDirection: () => {},
+  directions: [],
+};
