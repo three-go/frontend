@@ -1,6 +1,7 @@
 import React from "react";
 
 import { StyleSheet, View, Text, ScrollView } from "react-native";
+import PropTypes from "prop-types";
 
 import { colors } from "../../../common";
 
@@ -65,3 +66,14 @@ const styles = StyleSheet.create({
 });
 
 export default Page;
+
+Page.propTypes = {
+  item: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      score: PropTypes.number,
+    })
+  ),
+  style: PropTypes.object,
+};

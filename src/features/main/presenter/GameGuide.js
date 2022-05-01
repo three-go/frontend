@@ -2,6 +2,7 @@ import React from "react";
 
 import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import PropTypes from "prop-types";
 
 import { colors } from "../../../common";
 
@@ -79,3 +80,20 @@ const styles = StyleSheet.create({
 });
 
 export default GameGuide;
+
+GameGuide.propTypes = {
+  item: PropTypes.shape({
+    children: PropTypes.arrayOf(
+      PropTypes.shape({
+        content: PropTypes.string.isRequired,
+        icon: PropTypes.string,
+        id: PropTypes.string.isRequired,
+        image: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+      })
+    ),
+    title: PropTypes.string.isRequired,
+    titleContent: PropTypes.string.isRequired,
+  }),
+  style: PropTypes.object,
+};

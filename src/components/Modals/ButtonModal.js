@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Modal, StyleSheet, View, Text } from "react-native";
+import PropTypes from "prop-types";
 
 import { colors } from "../../common";
 
@@ -61,3 +62,9 @@ const styles = StyleSheet.create({
 });
 
 export default ButtonModal;
+
+ButtonModal.propTypes = {
+  content: PropTypes.string.isRequired,
+  isVisible: PropTypes.bool.isRequired,
+  children: PropTypes.node.isRequired,
+};

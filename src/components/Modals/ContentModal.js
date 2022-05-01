@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Modal, StyleSheet, Text, View } from "react-native";
+import PropTypes from "prop-types";
 
 import { Carousel } from "..";
 import { colors } from "../../common";
@@ -81,3 +82,32 @@ const styles = StyleSheet.create({
 });
 
 export default ContentModal;
+
+ContentModal.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.shape({
+        children: PropTypes.array,
+        title: PropTypes.string,
+        titleContent: PropTypes.string,
+      }),
+      PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string,
+          name: PropTypes.string,
+          score: PropTypes.number,
+        })
+      ),
+    ])
+  ).isRequired,
+  handleRenderScoreItem: PropTypes.func,
+  size: PropTypes.shape({
+    GAP: PropTypes.number,
+    OFFSET: PropTypes.number,
+    PAGE_WIDTH: PropTypes.number,
+    SCREEN_WIDTH: PropTypes.number,
+  }).isRequired,
+  children: PropTypes.node.isRequired,
+};

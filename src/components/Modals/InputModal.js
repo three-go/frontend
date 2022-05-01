@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
+import PropTypes from "prop-types";
 
 import { colors } from "../../common";
 
@@ -114,3 +115,12 @@ const styles = StyleSheet.create({
 });
 
 export default InputModal;
+
+InputModal.propTypes = {
+  score: PropTypes.number.isRequired,
+  modalVisible: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired,
+  setName: PropTypes.func.isRequired,
+  onRegister: PropTypes.func.isRequired,
+  children: PropTypes.element.isRequired,
+};

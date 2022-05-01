@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Image, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 
 const Logo = ({ size }) => (
   <Image
@@ -38,3 +39,11 @@ const styles = StyleSheet.create({
 });
 
 export default Logo;
+
+Logo.propTypes = {
+  size: PropTypes.string,
+};
+
+Logo.defaultProps = {
+  size: "sm",
+};

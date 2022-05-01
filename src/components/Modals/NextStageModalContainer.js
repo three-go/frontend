@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import PropTypes from "prop-types";
+
 import { ButtonModal, SmallButton } from "..";
 import { colors } from "../../common";
 
@@ -23,3 +25,7 @@ const NextStageModalContainer = ({ onNextStage }) => {
 };
 
 export default NextStageModalContainer;
+
+NextStageModalContainer.propTypes = {
+  onNextStage: PropTypes.func,
+};

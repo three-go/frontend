@@ -1,6 +1,7 @@
 import React from "react";
 
 import { View, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 
 import {
   FaceRecognitionContainer,
@@ -145,3 +146,45 @@ const styles = StyleSheet.create({
 });
 
 export default FaceGo;
+
+FaceGo.propTypes = {
+  gameInfo: PropTypes.shape({
+    stage: PropTypes.number,
+    status: PropTypes.string,
+    setStatus: PropTypes.func,
+    result: PropTypes.string,
+    setResult: PropTypes.func,
+    currentGameKey: PropTypes.string,
+    gameMap: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
+    handleNextStage: PropTypes.func,
+    handleRetryStage: PropTypes.func,
+    handleSetStatusOpen: PropTypes.func,
+  }).isRequired,
+  userInfo: PropTypes.shape({
+    score: PropTypes.number.isRequired,
+    setScore: PropTypes.func.isRequired,
+    chance: PropTypes.number.isRequired,
+    setChance: PropTypes.func.isRequired,
+    directions: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        direction: PropTypes.string,
+      })
+    ),
+  }),
+  cameraInfo: PropTypes.shape({
+    selectedDirection: PropTypes.shape({
+      id: PropTypes.string,
+      direction: PropTypes.string,
+    }),
+    onSelectedDirection: PropTypes.func,
+    cameraPermissionStatus: PropTypes.string.isRequired,
+    setCameraPermissionStatus: PropTypes.func.isRequired,
+  }),
+};
+
+FaceGo.defaultProps = {
+  selectedDirection: {},
+  onSelectedDirection: () => {},
+  directions: [],
+};

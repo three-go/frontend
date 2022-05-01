@@ -3,6 +3,7 @@ import React from "react";
 import { StyleSheet, View, Text, Linking } from "react-native";
 import { RNCamera } from "react-native-camera";
 import RNExitApp from "react-native-exit-app";
+import PropTypes from "prop-types";
 
 import { camera, colors } from "../../../common";
 import { SmallButton } from "../../../components";
@@ -114,3 +115,18 @@ const styles = StyleSheet.create({
 });
 
 export default FaceRecognition;
+
+FaceRecognition.propTypes = {
+  selectedDirection: PropTypes.shape({
+    id: PropTypes.string,
+    direction: PropTypes.string,
+  }),
+  handlerFacePosition: PropTypes.func.isRequired,
+  cameraPermissionStatus: PropTypes.string.isRequired,
+  setCameraPermissionStatus: PropTypes.func.isRequired,
+  isDirectionPreviewTextShow: PropTypes.bool.isRequired,
+};
+
+FaceRecognition.defaultProps = {
+  selectedDirection: {},
+};

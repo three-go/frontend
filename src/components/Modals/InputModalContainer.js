@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Keyboard } from "react-native";
 import uuid from "react-native-uuid";
+import PropTypes from "prop-types";
 
 import { SmallButton, InputModal } from "..";
 import { navigations, colors } from "../../common";
@@ -64,3 +65,7 @@ const InputModalContainer = ({ score }) => {
 };
 
 export default InputModalContainer;
+
+InputModalContainer.propTypes = {
+  score: PropTypes.number.isRequired,
+};
