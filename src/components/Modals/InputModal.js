@@ -1,5 +1,6 @@
 import React from "react";
 
+import PropTypes from "prop-types";
 import {
   Modal,
   StyleSheet,
@@ -9,7 +10,6 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
-import PropTypes from "prop-types";
 
 import { colors } from "../../common/constants";
 

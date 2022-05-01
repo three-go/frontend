@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 
 import { useNavigation } from "@react-navigation/native";
-import PropTypes from "prop-types";
 
-import { navigations, colors } from "../../common/constants";
-import SmallButton from "../Buttons/SmallButton";
-import ButtonModal from "./ButtonModal";
+import { ButtonModal, SmallButton } from "..";
+import { navigations, colors } from "../../common";
 
-const FailModalContainer = ({ onRetryCurrentStage }) => {
+const RetryModalContainer = ({ onRetryGame }) => {
   const [modalVisible, setModalVisible] = useState(true);
   const navigation = useNavigation();
 
@@ -17,14 +15,14 @@ const FailModalContainer = ({ onRetryCurrentStage }) => {
   };
 
   const handleRetry = () => {
-    onRetryCurrentStage();
+    onRetryGame();
     setModalVisible(false);
   };
 
   return (
-    <ButtonModal isVisible={modalVisible} content="탈출에 실패하셨습니다.">
+    <ButtonModal isVisible={modalVisible} content="계속 도전 하시겠습니까?">
       <SmallButton
-        content="다시시도"
+        content="도전하기"
         color={colors.tealGreen}
         onPress={handleRetry}
       />
@@ -37,8 +35,4 @@ const FailModalContainer = ({ onRetryCurrentStage }) => {
   );
 };
 
-export default FailModalContainer;
-
-FailModalContainer.propTypes = {
-  onRetryCurrentStage: PropTypes.func,
-};
+export default RetryModalContainer;

@@ -1,12 +1,13 @@
 import React from "react";
 
 import { useNavigation } from "@react-navigation/native";
+import PropTypes from "prop-types";
 import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import PropTypes from "prop-types";
 
-import GameHeader from "../Headers/GameHeader";
 import { navigations, colors } from "../../common/constants";
+import { game } from "../../common/property";
+import GameHeader from "../Headers/GameHeader";
 
 const GameLayout = ({
   status,
@@ -36,7 +37,16 @@ const GameLayout = ({
           currentGameKey={currentGameKey}
         />
       </View>
-      <View style={styles.gameBoard}>{children}</View>
+
+      <View
+        style={
+          currentGameKey === game.keys[0]
+            ? styles.faceGoBoard
+            : styles.shoutGoBoard
+        }
+      >
+        {children}
+      </View>
     </SafeAreaView>
   );
 };
@@ -49,13 +59,18 @@ const styles = StyleSheet.create({
   header: {
     height: "10%",
   },
-  gameBoard: {
+  faceGoBoard: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
     height: "100%",
     backgroundColor: colors.ivory,
+  },
+  shoutGoBoard: {
+    flex: 1,
+    position: "relative",
+    backgroundColor: colors.lightBlue,
   },
 });
 

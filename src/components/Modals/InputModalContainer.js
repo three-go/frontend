@@ -1,18 +1,18 @@
 import React, { useState, useContext } from "react";
 
 import { useNavigation } from "@react-navigation/native";
+import PropTypes from "prop-types";
 import { Keyboard } from "react-native";
 import uuid from "react-native-uuid";
-import PropTypes from "prop-types";
 
-import InputModal from "./InputModal";
-import SmallButton from "../Buttons/SmallButton";
 import { navigations, colors } from "../../common/constants";
 import GameContext from "../../context/GameContext";
 import {
   setItemToAsync,
   getItemFromAsync,
 } from "../../utils/asyncStorageHelper";
+import SmallButton from "../Buttons/SmallButton";
+import InputModal from "./InputModal";
 
 const InputModalContainer = ({ score }) => {
   const navigation = useNavigation();
