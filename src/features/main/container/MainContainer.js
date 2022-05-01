@@ -5,6 +5,7 @@ import { Platform, StyleSheet } from "react-native";
 import RNExitApp from "react-native-exit-app";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import SystemNavigationBar from "react-native-system-navigation-bar";
+import PropTypes from "prop-types";
 
 import { GameGuide, Main, Page } from "..";
 import { colors, game } from "../../../common";
@@ -164,3 +165,7 @@ const styles = StyleSheet.create({
 });
 
 export default MainContainer;
+
+MainContainer.propTypes = {
+  navigation: PropTypes.object,
+};

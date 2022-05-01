@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { useNavigation } from "@react-navigation/native";
+import PropTypes from "prop-types";
 
 import { ButtonModal, SmallButton } from "..";
 import { navigations, colors } from "../../common";
@@ -36,3 +37,7 @@ const FailModalContainer = ({ onRetryCurrentStage }) => {
 };
 
 export default FailModalContainer;
+
+FailModalContainer.propTypes = {
+  onRetryCurrentStage: PropTypes.func,
+};

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { View, Text, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 
 import { colors, game, textSizes, time } from "../../common";
 
@@ -100,3 +101,8 @@ const styles = StyleSheet.create({
 });
 
 export default React.memo(TextTimer);
+
+TextTimer.propTypes = {
+  onTimerEnd: PropTypes.func,
+  status: PropTypes.string,
+};

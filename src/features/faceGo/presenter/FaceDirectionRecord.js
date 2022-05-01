@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 
 import { View, ScrollView, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
+import PropTypes from "prop-types";
 
 import { colors, game, iconSizes } from "../../../common";
 
@@ -71,3 +72,17 @@ const styles = StyleSheet.create({
 });
 
 export default FaceDirectionRecord;
+
+FaceDirectionRecord.propTypes = {
+  directions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      direction: PropTypes.string,
+    })
+  ),
+  status: PropTypes.string.isRequired,
+};
+
+FaceDirectionRecord.defaultProps = {
+  directions: [],
+};

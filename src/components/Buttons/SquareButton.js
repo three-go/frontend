@@ -1,6 +1,7 @@
 import React from "react";
 
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 
 import { colors } from "../../common";
 
@@ -36,3 +37,15 @@ const styles = StyleSheet.create({
 });
 
 export default SquareButton;
+
+SquareButton.propTypes = {
+  content: PropTypes.string,
+  color: PropTypes.string,
+  onPress: PropTypes.func,
+};
+
+SquareButton.defaultProps = {
+  content: "Click",
+  color: colors.green,
+  onPress: () => {},
+};

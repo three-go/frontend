@@ -2,6 +2,7 @@ import React from "react";
 
 import { View, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import PropTypes from "prop-types";
 
 import { colors } from "../../../common";
 
@@ -34,3 +35,10 @@ const styles = StyleSheet.create({
 });
 
 export default React.memo(MapCell);
+
+MapCell.propTypes = {
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
+  bgColor: PropTypes.string.isRequired,
+  canMove: PropTypes.bool.isRequired,
+};
