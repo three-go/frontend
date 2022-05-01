@@ -12,7 +12,9 @@ import Main from "../presenter/Main";
 import Page from "../presenter/Page";
 import { colors } from "../../../common/constants";
 import { game } from "../../../common/property";
-import { DefaultButton, SmallButton, ContentModal } from "../../../components";
+import { ContentModal } from "../../../components";
+import SmallButton from "../../../components/Buttons/SmallButton";
+import DefaultButton from "../../../components/Buttons/DefaultButton";
 import GameContext from "../../../context/GameContext";
 import { getItemFromAsync } from "../../../utils/asyncStorageHelper";
 import {

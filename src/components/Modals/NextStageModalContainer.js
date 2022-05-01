@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 import PropTypes from "prop-types";
 
-import { ButtonModal, SmallButton } from "..";
+import { ButtonModal } from "..";
+import SmallButton from "../Buttons/SmallButton";
 import { colors } from "../../common/constants";
 
 const NextStageModalContainer = ({ onNextStage }) => {

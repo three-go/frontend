@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 import { useNavigation } from "@react-navigation/native";
 
-import { ButtonModal, SmallButton } from "..";
+import { ButtonModal } from "..";
+import SmallButton from "../Buttons/SmallButton";
 import { navigations, colors } from "../../common/constants";
 
 const ResetModalContainer = () => {

@@ -1,4 +1,3 @@
-import { DefaultButton, SmallButton, SquareButton } from "./Buttons";
 import ChanceIcons from "./ChanceIcons";
 import { GameHeader } from "./Headers";
 import { GameLayout, Carousel } from "./Layouts";
@@ -15,9 +14,6 @@ import {
 import { TextTimer } from "./Timers";
 
 export {
-  DefaultButton,
-  SquareButton,
-  SmallButton,
   Logo,
   ButtonModal,
   ContentModal,
