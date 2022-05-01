@@ -4,7 +4,7 @@ import { FaceGo } from "..";
 import { time } from "../../../common/constants";
 import { game } from "../../../common/property";
 import { GameContext } from "../../../context";
-import { createMap } from "../../../utils";
+import { createMap } from "../../../utils/map";
 
 const FaceGoContainer = () => {
   const { currentGameKey } = useContext(GameContext);

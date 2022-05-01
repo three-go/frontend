@@ -8,7 +8,10 @@ import PropTypes from "prop-types";
 import { SmallButton, InputModal } from "..";
 import { navigations, colors } from "../../common/constants";
 import { GameContext } from "../../context";
-import { setItemToAsync, getItemFromAsync } from "../../utils";
+import {
+  setItemToAsync,
+  getItemFromAsync,
+} from "../../utils/asyncStorageHelper";
 
 const InputModalContainer = ({ score }) => {
   const navigation = useNavigation();

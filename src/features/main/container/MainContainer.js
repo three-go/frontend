@@ -12,11 +12,11 @@ import { colors } from "../../../common/constants";
 import { game } from "../../../common/property";
 import { DefaultButton, SmallButton, ContentModal } from "../../../components";
 import { GameContext } from "../../../context";
+import { getItemFromAsync } from "../../../utils/asyncStorageHelper";
 import {
-  getItemFromAsync,
   convertContentToArray,
   descendOrderArray,
-} from "../../../utils";
+} from "../../../utils/helper";
 
 const size = {
   SCREEN_WIDTH: 300,
