@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
       top: y,
       width: w,
       height: h,
-      backgroundColor: "red",
     };
   },
 });

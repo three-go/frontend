@@ -35,15 +35,6 @@ const ShoutGoContainer = () => {
   const [status, setStatus] = useState("none");
   const [micPermission, setMicPermission] = useState("");
 
-  const openSettingOption = async () => {
-    try {
-      await Linking.openSettings();
-      RNExitApp.exitApp();
-    } catch (error) {
-      RNExitApp.exitApp();
-    }
-  };
-
   useEffect(() => {
     if (micPermission === RESULTS.GRANTED) {
       return;
@@ -59,34 +50,25 @@ const ShoutGoContainer = () => {
 
       if (result === RESULTS.GRANTED) {
         setMicPermission(RESULTS.GRANTED);
-      }
-
-      if (result === RESULTS.BLOCKED) {
+      } else if (result === RESULTS.BLOCKED) {
         setMicPermission(RESULTS.BLOCKED);
-        return;
-      }
-
-      if (result === RESULTS.DENIED) {
+      } else if (result === RESULTS.DENIED) {
         const requestResult = await request(permission);
-
         setMicPermission(requestResult);
-        return;
       }
     };
 
     checkMicPermission();
-  }, [micPermission]);
+  }, []);
 
   useEffect(() => {
-    if (micPermission !== RESULTS.GRANTED) {
-      return;
+    if (micPermission === RESULTS.GRANTED) {
+      RNSoundLevel.start();
+      RNSoundLevel.onNewFrame = (data) => {
+        setDecibel(data.value);
+      };
+      setRunning(true);
     }
-
-    RNSoundLevel.start();
-    RNSoundLevel.onNewFrame = (data) => {
-      setDecibel(data.value);
-    };
-    setRunning(true);
 
     return () => {
       RNSoundLevel.stop();
@@ -116,6 +98,15 @@ const ShoutGoContainer = () => {
       clearInterval(intervalId);
     };
   }, [running]);
+
+  const openSettingOption = async () => {
+    try {
+      await Linking.openSettings();
+      RNExitApp.exitApp();
+    } catch (error) {
+      RNExitApp.exitApp();
+    }
+  };
 
   const decreaseChance = () => {
     if (chance >= 1) {
@@ -161,17 +152,18 @@ const ShoutGoContainer = () => {
         source={require("../../../../public/assets/images/shoutGo/background.png")}
         resizeMode="stretch"
       />
-      {micPermission === RESULTS.GRANTED && (
-        <SafeAreaView style={styles.container}>
-          <GameEngine
-            ref={gameEngine}
-            systems={[Physics]}
-            entities={entities()}
-            onEvent={handleGameEvent}
-            style={styles.gameEngine}
-          />
-        </SafeAreaView>
-      )}
+
+      <SafeAreaView style={styles.container}>
+        <GameEngine
+          ref={gameEngine}
+          systems={[Physics]}
+          entities={entities()}
+          running={running}
+          onEvent={handleGameEvent}
+          style={styles.gameEngine}
+        />
+      </SafeAreaView>
+
       {micPermission === RESULTS.BLOCKED && (
         <View style={styles.notAuthorizedViewContainer}>
           <Text style={styles.notAuthorizedViewTitle}>
