@@ -93,7 +93,7 @@ const MainContainer = ({ navigation }) => {
   };
 
   const handleStartGame = () => {
-    navigation.navigate(currentGameKey === "faceGo" ? "FaceGo" : "ShoutGo");
+    navigation.navigate(currentGameKey === "faceGo" ? "FaceGo" : "Timer");
     setDescriptionModalVisible(!descriptionModalVisible);
   };
 
