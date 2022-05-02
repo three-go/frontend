@@ -16,7 +16,7 @@ const physics = (entities, { events, time, dispatch }) => {
       if (volume >= -8) {
         const yVelocityValue = -(Math.ceil(volume) + 8);
 
-        Matter.Body.setVelocity(entities.Submarine.body, {
+        Matter.Body.setVelocity(entities.Character.body, {
           x: 0,
           y: yVelocityValue < -15 ? -15 : yVelocityValue,
         });

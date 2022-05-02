@@ -13,7 +13,6 @@
     "@react-native-community/async-storage": "^1.12.1",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.1",
-    "deprecated-react-native-prop-types": "2.2.0",
     "matter-js": "^0.18.0",
     "poly-decomp": "^0.3.0",
     "prop-types": "^15.8.1",

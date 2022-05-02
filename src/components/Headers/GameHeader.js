@@ -110,11 +110,11 @@ const styles = StyleSheet.create({
 export default React.memo(GameHeader);
 
 GameHeader.propTypes = {
-  status: PropTypes.string.isRequired,
-  setStatus: PropTypes.func.isRequired,
+  status: PropTypes.string,
+  setStatus: PropTypes.func,
   onPressBack: PropTypes.func.isRequired,
   chance: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,
-  cameraPermissionStatus: PropTypes.string.isRequired,
+  cameraPermissionStatus: PropTypes.string,
   currentGameKey: PropTypes.string.isRequired,
 };

@@ -1,4 +1,4 @@
-const svg = `
+const obstacleSvg = `
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 156.83 80.36" style="enable-background:new 0 0 156.83 80.36;" xml:space="preserve">
   <path class="st0" d="M127.62,50.14 117.8,45.64 107.97,50.14 97.48,47.89 97.48,37.93 87.66,15.43 87.66,32.79 84.38,50.14 
     73.24,54.64 64.72,42.43 58.83,23.14 52.93,0 49.65,24.43 49.65,47.57 43.1,54.64 34.58,38.57 29.34,27.32 22.14,54.64 3.79,62.36 
@@ -7,4 +7,6 @@ const svg = `
 </svg>
 `;
 
-export default svg;
+const charactoerSvg = ``;
+
+export { obstacleSvg, charactoerSvg };

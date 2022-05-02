@@ -4,6 +4,7 @@ import { View, StyleSheet, Linking, Platform, Text } from "react-native";
 import RNExitApp from "react-native-exit-app";
 import { GameEngine } from "react-native-game-engine";
 import { check, request, PERMISSIONS, RESULTS } from "react-native-permissions";
+import { SafeAreaView } from "react-native-safe-area-context";
 import RNSoundLevel from "react-native-sound-level";
 
 import { colors } from "../../../common/constants";
@@ -110,7 +111,7 @@ const ShoutGoContainer = () => {
   }, [running]);
 
   const decreaseChance = () => {
-    if (chance > 1) {
+    if (chance >= 1) {
       setStatus("collision");
       setChance((prev) => prev - 1);
     } else {
@@ -148,7 +149,7 @@ const ShoutGoContainer = () => {
 
       {status === "end" && <InputModalContainer score={score} />}
       {micPermission === RESULTS.GRANTED && (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
           <GameEngine
             ref={gameEngine}
             systems={[Physics]}
@@ -156,7 +157,7 @@ const ShoutGoContainer = () => {
             onEvent={handleGameEvent}
             style={styles.gameEngine}
           />
-        </View>
+        </SafeAreaView>
       )}
       {micPermission === RESULTS.BLOCKED && (
         <View style={styles.notAuthorizedViewContainer}>
