@@ -8,6 +8,7 @@ import { GameContextProvider } from "./src/context/GameContext";
 import FaceGoContainer from "./src/features/faceGo/container/FaceGoContainer";
 import MainContainer from "./src/features/main/container/MainContainer";
 import ShoutGoContainer from "./src/features/shoutGo/container/ShoutGoContainer";
+import TimmerContainer from "./src/features/shoutGo/container/TimerContainer";
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +36,12 @@ const App = () => {
           <Stack.Screen
             name="ShoutGo"
             component={ShoutGoContainer}
+            options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+            name="Timer"
+            component={TimmerContainer}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

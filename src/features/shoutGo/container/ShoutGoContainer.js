@@ -1,21 +1,10 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 
-import {
-  StyleSheet,
-  Linking,
-  Platform,
-  ImageBackground,
-  View,
-  Text,
-} from "react-native";
-import RNExitApp from "react-native-exit-app";
+import { StyleSheet, ImageBackground } from "react-native";
 import { GameEngine } from "react-native-game-engine";
-import { check, request, PERMISSIONS, RESULTS } from "react-native-permissions";
 import { SafeAreaView } from "react-native-safe-area-context";
 import RNSoundLevel from "react-native-sound-level";
 
-import { colors } from "../../../common/constants";
-import SmallButton from "../../../components/Buttons/SmallButton";
 import GameLayout from "../../../components/Layouts/GameLayout";
 import InputModalContainer from "../../../components/Modals/InputModalContainer";
 import RetryModalContainer from "../../../components/Modals/RetryModalContainer";
@@ -30,56 +19,26 @@ const ShoutGoContainer = () => {
   const [running, setRunning] = useState(false);
   const [score, setScore] = useState(0);
   const [chance, setChance] = useState(3);
+  const [decibel, setDecibel] = useState(-160);
 
   const [status, setStatus] = useState("none");
-  const [micPermission, setMicPermission] = useState("");
-
-  useEffect(() => {
-    if (micPermission === RESULTS.GRANTED) {
-      return;
-    }
-
-    const permission =
-      Platform.OS === "ios"
-        ? PERMISSIONS.IOS.MICROPHONE
-        : PERMISSIONS.ANDROID.RECORD_AUDIO;
-
-    const checkMicPermission = async () => {
-      const result = await check(permission);
-
-      if (result === RESULTS.GRANTED) {
-        setMicPermission(RESULTS.GRANTED);
-      } else if (result === RESULTS.BLOCKED) {
-        setMicPermission(RESULTS.BLOCKED);
-      } else if (result === RESULTS.DENIED) {
-        const requestResult = await request(permission);
-        setMicPermission(requestResult);
-      }
-    };
-
-    checkMicPermission();
-  }, []);
 
   useEffect(() => {
     RNSoundLevel.start();
-
-    if (micPermission === RESULTS.GRANTED) {
-      RNSoundLevel.start();
-      RNSoundLevel.onNewFrame = (data) => {
-        gameEngine.current?.dispatch({
-          type: "decibel",
-          payload: { volume: data.value },
-        });
-      };
-
-      setRunning(true);
-    }
+    RNSoundLevel.onNewFrame = (data) => {
+      // setDecibel(data.value);
+      gameEngine.current.dispatch({
+        type: "decibel",
+        payload: { volume: data.value },
+      });
+    };
+    setRunning(true);
 
     return () => {
       RNSoundLevel.stop();
       setRunning(false);
     };
-  }, [micPermission]);
+  }, []);
 
   useEffect(() => {
     let intervalId;
@@ -94,15 +53,6 @@ const ShoutGoContainer = () => {
       clearInterval(intervalId);
     };
   }, [running]);
-
-  const openSettingOption = async () => {
-    try {
-      await Linking.openSettings();
-      RNExitApp.exitApp();
-    } catch (error) {
-      RNExitApp.exitApp();
-    }
-  };
 
   const decreaseChance = () => {
     if (chance >= 1) {
@@ -156,25 +106,6 @@ const ShoutGoContainer = () => {
           style={styles.gameEngine}
         />
       </SafeAreaView>
-
-      {micPermission === RESULTS.BLOCKED && (
-        <View style={styles.notAuthorizedViewContainer}>
-          <Text style={styles.notAuthorizedViewTitle}>
-            권한 승인이 필요 합니다.{"\n"}
-          </Text>
-          <Text>
-            해당 서비스를 사용하기 위해서는 카메라 권한 승인이 필요합니다. 해당
-            권한을 승인하지 않으면 서비스 이용이 제한됩니다.{"\n"}
-          </Text>
-          <SmallButton
-            content="설정으로 가기"
-            color={colors.red}
-            onPress={() => {
-              openSettingOption();
-            }}
-          />
-        </View>
-      )}
     </GameLayout>
   );
 };
@@ -195,18 +126,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-  },
-  notAuthorizedViewContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    padding: "5%",
-    backgroundColor: colors.white,
-  },
-  notAuthorizedViewTitle: {
-    fontSize: 20,
-    fontWeight: "900",
   },
 });
 
