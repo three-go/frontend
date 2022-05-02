@@ -21,6 +21,7 @@ target 'ThreeGo' do
 
 
   pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
+  pod 'Permission-Microphone', :path => '../node_modules/react-native-permissions/ios/Microphone'
 
   target 'ThreeGoTests' do
     inherit! :complete
