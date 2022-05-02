@@ -25,25 +25,22 @@ const ShoutGoContainer = () => {
   useEffect(() => {
     RNSoundLevel.start();
     setRunning(true);
-
+    RNSoundLevel.onNewFrame = (data) => {
+      setDecibel(data.value);
+    };
+    console.log("useEffect");
     return () => {
       RNSoundLevel.stop();
       setRunning(false);
     };
   }, []);
 
-  // useEffect(() => {
-  //   RNSoundLevel.onNewFrame = (data) => {
-  //     console.log(data);
-
-  //     setDecibel(data.value);
-
-  //     gameEngine.current.dispatch({
-  //       type: "decibel",
-  //       payload: { volume: data.value },
-  //     });
-  //   };
-  // }, [decibel]);
+  useEffect(() => {
+    gameEngine.current.dispatch({
+      type: "decibel",
+      payload: { volume: decibel },
+    });
+  }, [decibel]);
 
   useEffect(() => {
     let intervalId;

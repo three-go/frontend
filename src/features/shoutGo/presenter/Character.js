@@ -3,7 +3,7 @@ import React from "react";
 import Matter from "matter-js";
 import PropTypes from "prop-types";
 import { StyleSheet } from "react-native";
-import { SvgCss, SvgXml } from "react-native-svg";
+import { SvgXml } from "react-native-svg";
 
 const Character = (props) => {
   const widthBody = props.body.bounds.max.x - props.body.bounds.min.x;
