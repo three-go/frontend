@@ -1,10 +1,21 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 
-import { StyleSheet, ImageBackground } from "react-native";
+import {
+  StyleSheet,
+  Linking,
+  Platform,
+  ImageBackground,
+  View,
+  Text,
+} from "react-native";
+import RNExitApp from "react-native-exit-app";
 import { GameEngine } from "react-native-game-engine";
+import { check, request, PERMISSIONS, RESULTS } from "react-native-permissions";
 import { SafeAreaView } from "react-native-safe-area-context";
 import RNSoundLevel from "react-native-sound-level";
 
+import { colors } from "../../../common/constants";
+import SmallButton from "../../../components/Buttons/SmallButton";
 import GameLayout from "../../../components/Layouts/GameLayout";
 import InputModalContainer from "../../../components/Modals/InputModalContainer";
 import RetryModalContainer from "../../../components/Modals/RetryModalContainer";
@@ -22,8 +33,55 @@ const ShoutGoContainer = () => {
   const [decibel, setDecibel] = useState(-160);
 
   const [status, setStatus] = useState("none");
+  const [micPermission, setMicPermission] = useState("");
+
+  const openSettingOption = async () => {
+    try {
+      await Linking.openSettings();
+      RNExitApp.exitApp();
+    } catch (error) {
+      RNExitApp.exitApp();
+    }
+  };
 
   useEffect(() => {
+    if (micPermission === RESULTS.GRANTED) {
+      return;
+    }
+
+    const permission =
+      Platform.OS === "ios"
+        ? PERMISSIONS.IOS.MICROPHONE
+        : PERMISSIONS.ANDROID.RECORD_AUDIO;
+
+    const checkMicPermission = async () => {
+      const result = await check(permission);
+
+      if (result === RESULTS.GRANTED) {
+        setMicPermission(RESULTS.GRANTED);
+      }
+
+      if (result === RESULTS.BLOCKED) {
+        setMicPermission(RESULTS.BLOCKED);
+        return;
+      }
+
+      if (result === RESULTS.DENIED) {
+        const requestResult = await request(permission);
+
+        setMicPermission(requestResult);
+        return;
+      }
+    };
+
+    checkMicPermission();
+  }, [micPermission]);
+
+  useEffect(() => {
+    if (micPermission !== RESULTS.GRANTED) {
+      return;
+    }
+
     RNSoundLevel.start();
     RNSoundLevel.onNewFrame = (data) => {
       setDecibel(data.value);
@@ -34,7 +92,7 @@ const ShoutGoContainer = () => {
       RNSoundLevel.stop();
       setRunning(false);
     };
-  }, []);
+  }, [micPermission]);
 
   useEffect(() => {
     if (gameEngine.current) {
@@ -103,15 +161,35 @@ const ShoutGoContainer = () => {
         source={require("../../../../public/assets/images/shoutGo/background.png")}
         resizeMode="stretch"
       />
-      <SafeAreaView style={styles.container}>
-        <GameEngine
-          ref={gameEngine}
-          systems={[Physics]}
-          entities={entities()}
-          onEvent={handleGameEvent}
-          style={styles.gameEngine}
-        />
-      </SafeAreaView>
+      {micPermission === RESULTS.GRANTED && (
+        <SafeAreaView style={styles.container}>
+          <GameEngine
+            ref={gameEngine}
+            systems={[Physics]}
+            entities={entities()}
+            onEvent={handleGameEvent}
+            style={styles.gameEngine}
+          />
+        </SafeAreaView>
+      )}
+      {micPermission === RESULTS.BLOCKED && (
+        <View style={styles.notAuthorizedViewContainer}>
+          <Text style={styles.notAuthorizedViewTitle}>
+            권한 승인이 필요 합니다.{"\n"}
+          </Text>
+          <Text>
+            해당 서비스를 사용하기 위해서는 카메라 권한 승인이 필요합니다. 해당
+            권한을 승인하지 않으면 서비스 이용이 제한됩니다.{"\n"}
+          </Text>
+          <SmallButton
+            content="설정으로 가기"
+            color={colors.red}
+            onPress={() => {
+              openSettingOption();
+            }}
+          />
+        </View>
+      )}
     </GameLayout>
   );
 };
@@ -132,6 +210,18 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
+  },
+  notAuthorizedViewContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    padding: "5%",
+    backgroundColor: colors.white,
+  },
+  notAuthorizedViewTitle: {
+    fontSize: 20,
+    fontWeight: "900",
   },
 });
 
