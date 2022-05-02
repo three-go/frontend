@@ -1,8 +1,8 @@
 import React from "react";
 
+import PropTypes from "prop-types";
 import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import PropTypes from "prop-types";
 
 import { colors } from "../../../common/constants";
 

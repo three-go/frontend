@@ -28,10 +28,9 @@ const physics = (entities, { events, time, dispatch }) => {
 
   for (let i = 1; i < 4; i++) {
     if (entities[`Obstacle${i}`].body.bounds.max.x <= 0) {
-      const stone = getObstacleSizePos(windowWidth * 1.05);
+      const obstacle = getObstacleSizePos(windowWidth * 1.05);
 
-      Matter.Body.setPosition(entities[`Obstacle${i}`].body, stone.pos);
-      dispatch({ type: "newPoint" });
+      Matter.Body.setPosition(entities[`Obstacle${i}`].body, obstacle.pos);
     }
 
     Matter.Body.translate(entities[`Obstacle${i}`].body, { x: -3, y: 0 });

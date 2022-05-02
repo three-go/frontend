@@ -1,6 +1,7 @@
 import React from "react";
 
 import Matter from "matter-js";
+import PropTypes from "prop-types";
 import { View, StyleSheet } from "react-native";
 
 const Ceil = (props) => {
@@ -47,3 +48,12 @@ const CeilContainer = (world, color, pos, size) => {
 };
 
 export default CeilContainer;
+
+Ceil.propTypes = {
+  body: PropTypes.object,
+  color: PropTypes.string,
+  layout: PropTypes.object,
+  pos: PropTypes.object,
+  renderer: PropTypes.node,
+  screen: PropTypes.object,
+};

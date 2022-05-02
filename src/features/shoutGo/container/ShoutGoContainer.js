@@ -20,16 +20,15 @@ const ShoutGoContainer = () => {
   const [score, setScore] = useState(0);
   const [chance, setChance] = useState(3);
   const [decibel, setDecibel] = useState(-160);
-
   const [status, setStatus] = useState("none");
 
   useEffect(() => {
     RNSoundLevel.start();
+    setRunning(true);
     RNSoundLevel.onNewFrame = (data) => {
       setDecibel(data.value);
     };
-    setRunning(true);
-
+    console.log("useEffect");
     return () => {
       RNSoundLevel.stop();
       setRunning(false);
@@ -37,12 +36,10 @@ const ShoutGoContainer = () => {
   }, []);
 
   useEffect(() => {
-    if (gameEngine.current) {
-      gameEngine.current.dispatch({
-        type: "decibel",
-        payload: { volume: decibel },
-      });
-    }
+    gameEngine.current.dispatch({
+      type: "decibel",
+      payload: { volume: decibel },
+    });
   }, [decibel]);
 
   useEffect(() => {
@@ -83,9 +80,6 @@ const ShoutGoContainer = () => {
           setRunning(false);
           decreaseChance();
         }
-        break;
-      case "newPoint":
-        setScore((prev) => prev + 1);
         break;
     }
   };

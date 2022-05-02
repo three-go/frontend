@@ -1,14 +1,14 @@
 import React from "react";
 
+import PropTypes from "prop-types";
 import { View, StyleSheet, StatusBar } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import PropTypes from "prop-types";
 
 import { colors } from "../../../common/constants";
 import { game } from "../../../common/property";
-import Logo from "../../../components/Logo";
 import DefaultButton from "../../../components/Buttons/DefaultButton";
 import SquareButton from "../../../components/Buttons/SquareButton";
+import Logo from "../../../components/Logo";
 
 const Main = ({
   onExitApp,

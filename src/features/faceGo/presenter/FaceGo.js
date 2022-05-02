@@ -1,19 +1,19 @@
 import React from "react";
 
-import { View, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
+import { View, StyleSheet } from "react-native";
 
+import { colors } from "../../../common/constants";
+import { game } from "../../../common/property";
+import GameLayout from "../../../components/Layouts/GameLayout";
+import FailModalContainer from "../../../components/Modals/FailModalContainer";
+import InputModalContainer from "../../../components/Modals/InputModalContainer";
+import NextStageModalContainer from "../../../components/Modals/NextStageModalContainer";
+import ResetModalContainer from "../../../components/Modals/ResetModalContainer";
+import TextTimer from "../../../components/Timers/TextTimer";
 import FaceRecognitionContainer from "../container/FaceRecognitionContainer";
 import MapContainer from "../container/MapContainer";
 import FaceDirectionRecord from "./FaceDirectionRecord";
-import { colors } from "../../../common/constants";
-import { game } from "../../../common/property";
-import FailModalContainer from "../../../components/Modals/FailModalContainer";
-import InputModalContainer from "../../../components/Modals/InputModalContainer";
-import ResetModalContainer from "../../../components/Modals/ResetModalContainer";
-import NextStageModalContainer from "../../../components/Modals/NextStageModalContainer";
-import GameLayout from "../../../components/Layouts/GameLayout";
-import TextTimer from "../../../components/Timers/TextTimer";
 
 const FaceGo = ({ gameInfo, userInfo, cameraInfo }) => {
   const {
@@ -45,7 +45,7 @@ const FaceGo = ({ gameInfo, userInfo, cameraInfo }) => {
       cameraPermissionStatus={cameraPermissionStatus}
       currentGameKey={currentGameKey}
     >
-      {currentGameKey === "faceGo" && (
+      {game.keys.includes(currentGameKey) && (
         <View style={styles.container}>
           <View style={styles.playArea}>
             <View style={styles.playZone}>

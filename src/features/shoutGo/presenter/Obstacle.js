@@ -1,8 +1,9 @@
 import React from "react";
 
 import Matter from "matter-js";
+import PropTypes from "prop-types";
 import { StyleSheet } from "react-native";
-import { SvgCss } from "react-native-svg";
+import { SvgXml } from "react-native-svg";
 
 const Obstacle = (props) => {
   const widthBody = props.body.bounds.max.x - props.body.bounds.min.x;
@@ -11,7 +12,7 @@ const Obstacle = (props) => {
   const yBody = props.body.position.y - heightBody / 2;
 
   return (
-    <SvgCss
+    <SvgXml
       xml={props.svg.xml}
       width={props.size.width}
       height={props.size.height}
@@ -49,3 +50,14 @@ const ObstacleContainer = (world, label, pos, size, svg) => {
 };
 
 export default ObstacleContainer;
+
+Obstacle.propTypes = {
+  body: PropTypes.object,
+  color: PropTypes.string,
+  layout: PropTypes.object,
+  pos: PropTypes.object,
+  size: PropTypes.object,
+  renderer: PropTypes.node,
+  screen: PropTypes.object,
+  svg: PropTypes.object,
+};
