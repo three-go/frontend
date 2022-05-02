@@ -20,18 +20,10 @@ const ShoutGoContainer = () => {
   const [score, setScore] = useState(0);
   const [chance, setChance] = useState(3);
   const [decibel, setDecibel] = useState(-160);
-
   const [status, setStatus] = useState("none");
 
   useEffect(() => {
     RNSoundLevel.start();
-    RNSoundLevel.onNewFrame = (data) => {
-      // setDecibel(data.value);
-      gameEngine.current.dispatch({
-        type: "decibel",
-        payload: { volume: data.value },
-      });
-    };
     setRunning(true);
 
     return () => {
@@ -39,6 +31,19 @@ const ShoutGoContainer = () => {
       setRunning(false);
     };
   }, []);
+
+  // useEffect(() => {
+  //   RNSoundLevel.onNewFrame = (data) => {
+  //     console.log(data);
+
+  //     setDecibel(data.value);
+
+  //     gameEngine.current.dispatch({
+  //       type: "decibel",
+  //       payload: { volume: data.value },
+  //     });
+  //   };
+  // }, [decibel]);
 
   useEffect(() => {
     let intervalId;
