@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 
-import { View, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { GameEngine } from "react-native-game-engine";
+import { SafeAreaView } from "react-native-safe-area-context";
 import RNSoundLevel from "react-native-sound-level";
 
 import GameLayout from "../../../components/Layouts/GameLayout";
@@ -59,7 +60,7 @@ const ShoutGoContainer = () => {
   }, [running]);
 
   const decreaseChance = () => {
-    if (chance > 1) {
+    if (chance >= 1) {
       setStatus("collision");
       setChance((prev) => prev - 1);
     } else {
@@ -97,7 +98,7 @@ const ShoutGoContainer = () => {
 
       {status === "end" && <InputModalContainer score={score} />}
 
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <GameEngine
           ref={gameEngine}
           systems={[Physics]}
@@ -105,7 +106,7 @@ const ShoutGoContainer = () => {
           onEvent={handleGameEvent}
           style={styles.gameEngine}
         />
-      </View>
+      </SafeAreaView>
     </GameLayout>
   );
 };

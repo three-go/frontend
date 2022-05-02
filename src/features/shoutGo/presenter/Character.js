@@ -3,7 +3,7 @@ import React from "react";
 import Matter from "matter-js";
 import { View, StyleSheet } from "react-native";
 
-const Submarine = (props) => {
+const Character = (props) => {
   const widthBody = props.body.bounds.max.x - props.body.bounds.min.x;
   const heightBody = props.body.bounds.max.y - props.body.bounds.min.y;
   const xBody = props.body.position.x - widthBody / 2;
@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const SubmarineContainer = (world, color, pos, size) => {
-  const submarine = Matter.Bodies.rectangle(
+const CharacterContainer = (world, color, pos, size) => {
+  const character = Matter.Bodies.rectangle(
     pos.x,
     pos.y,
     size.width,
@@ -41,14 +41,14 @@ const SubmarineContainer = (world, color, pos, size) => {
     { label: "Submarine" }
   );
 
-  Matter.Composite.add(world, submarine);
+  Matter.Composite.add(world, character);
 
   return {
-    body: submarine,
+    body: character,
     color,
     pos,
-    renderer: <Submarine />,
+    renderer: <Character />,
   };
 };
 
-export default SubmarineContainer;
+export default CharacterContainer;

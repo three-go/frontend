@@ -83,5 +83,4 @@ GameLayout.propTypes = {
   score: PropTypes.number,
   cameraPermissionStatus: PropTypes.string,
   currentGameKey: PropTypes.string,
-  children: PropTypes.element,
 };

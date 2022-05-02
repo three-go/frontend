@@ -3,12 +3,12 @@ import decomp from "poly-decomp";
 import { Dimensions } from "react-native";
 
 import { colors } from "../../common/constants";
-import svg from "../../utils/obstacleSvg";
 import { getStoneSizePos } from "../../utils/random";
+import { obstacleSvg } from "../../utils/svg";
 import Ceil from "../shoutGo/presenter/Ceil";
 import Floor from "../shoutGo/presenter/Floor";
 import Obstacle from "../shoutGo/presenter/Obstacle";
-import Submarine from "../shoutGo/presenter/Submarine";
+import Character from "./presenter/Character";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -26,7 +26,7 @@ export default () => {
 
   return {
     physics: { engine, world },
-    Submarine: Submarine(
+    Character: Character(
       world,
       "green",
       { x: 50, y: 300 },
@@ -38,7 +38,7 @@ export default () => {
       "red",
       stoneA.pos,
       stoneA.size,
-      svg
+      obstacleSvg
     ),
     Obstacle2: Obstacle(
       world,
@@ -46,7 +46,7 @@ export default () => {
       "green",
       stoneB.pos,
       stoneB.size,
-      svg
+      obstacleSvg
     ),
     Obstacle3: Obstacle(
       world,
@@ -54,19 +54,19 @@ export default () => {
       "purple",
       stoneC.pos,
       stoneC.size,
-      svg
+      obstacleSvg
     ),
     Ceil: Ceil(
       world,
       colors.dark,
       { x: windowWidth / 2, y: 0 },
-      { height: 30, width: windowWidth * 2 }
+      { height: 30, width: windowWidth * 1.5 }
     ),
     Floor: Floor(
       world,
       "orange",
       { x: windowWidth / 2, y: windowHeight },
-      { height: 350, width: windowWidth * 2 }
+      { height: 350, width: windowWidth * 1.5 }
     ),
   };
 };

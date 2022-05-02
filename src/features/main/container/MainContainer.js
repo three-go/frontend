@@ -1,26 +1,26 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import { useRoute } from "@react-navigation/native";
+import PropTypes from "prop-types";
 import { Platform, StyleSheet } from "react-native";
 import RNExitApp from "react-native-exit-app";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import SystemNavigationBar from "react-native-system-navigation-bar";
-import PropTypes from "prop-types";
 
-import GameGuide from "../presenter/GameGuide";
-import Main from "../presenter/Main";
-import Page from "../presenter/Page";
 import { colors } from "../../../common/constants";
 import { game } from "../../../common/property";
-import ContentModal from "../../../components/Modals/ContentModal";
-import SmallButton from "../../../components/Buttons/SmallButton";
 import DefaultButton from "../../../components/Buttons/DefaultButton";
+import SmallButton from "../../../components/Buttons/SmallButton";
+import ContentModal from "../../../components/Modals/ContentModal";
 import GameContext from "../../../context/GameContext";
 import { getItemFromAsync } from "../../../utils/asyncStorageHelper";
 import {
   convertContentToArray,
   descendOrderArray,
 } from "../../../utils/helper";
+import GameGuide from "../presenter/GameGuide";
+import Main from "../presenter/Main";
+import Page from "../presenter/Page";
 
 const size = {
   SCREEN_WIDTH: 300,
