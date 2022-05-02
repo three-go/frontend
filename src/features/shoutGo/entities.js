@@ -25,9 +25,9 @@ export default () => {
 
   engine.gravity.y = 0.6;
 
-  const stoneA = getObstacleSizePos();
-  const stoneB = getObstacleSizePos(windowWidth * 0.7);
-  const stoneC = getObstacleSizePos(windowWidth * 1.4);
+  const obstacleA = getObstacleSizePos();
+  const obstacleB = getObstacleSizePos(windowWidth * 0.7);
+  const obstacleC = getObstacleSizePos(windowWidth * 1.4);
 
   return {
     physics: { engine, world },
@@ -37,15 +37,15 @@ export default () => {
       { height: 50, width: 70 },
       { xml: characterSvg, path: charaterPath }
     ),
-    Obstacle1: Obstacle(world, "Obstacle1", stoneA.pos, stoneA.size, {
+    Obstacle1: Obstacle(world, "Obstacle1", obstacleA.pos, obstacleA.size, {
       xml: sharkSvg,
       path: sharkPath,
     }),
-    Obstacle2: Obstacle(world, "Obstacle2", stoneB.pos, stoneB.size, {
+    Obstacle2: Obstacle(world, "Obstacle2", obstacleB.pos, obstacleB.size, {
       xml: sharkSvg,
       path: sharkPath,
     }),
-    Obstacle3: Obstacle(world, "Obstacle3", stoneC.pos, stoneC.size, {
+    Obstacle3: Obstacle(world, "Obstacle3", obstacleC.pos, obstacleC.size, {
       xml: sharkSvg,
       path: sharkPath,
     }),

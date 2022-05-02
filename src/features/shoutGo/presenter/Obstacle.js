@@ -1,6 +1,7 @@
 import React from "react";
 
 import Matter from "matter-js";
+import PropTypes from "prop-types";
 import { StyleSheet } from "react-native";
 import { SvgCss } from "react-native-svg";
 
@@ -49,3 +50,14 @@ const ObstacleContainer = (world, label, pos, size, svg) => {
 };
 
 export default ObstacleContainer;
+
+Obstacle.propTypes = {
+  body: PropTypes.object,
+  color: PropTypes.string,
+  layout: PropTypes.object,
+  pos: PropTypes.object,
+  size: PropTypes.object,
+  renderer: PropTypes.node,
+  screen: PropTypes.object,
+  svg: PropTypes.object,
+};

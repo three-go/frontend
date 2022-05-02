@@ -30,7 +30,6 @@ const ShoutGoContainer = () => {
   const [running, setRunning] = useState(false);
   const [score, setScore] = useState(0);
   const [chance, setChance] = useState(3);
-  const [decibel, setDecibel] = useState(-160);
 
   const [status, setStatus] = useState("none");
   const [micPermission, setMicPermission] = useState("");
@@ -62,11 +61,17 @@ const ShoutGoContainer = () => {
   }, []);
 
   useEffect(() => {
+    RNSoundLevel.start();
+
     if (micPermission === RESULTS.GRANTED) {
       RNSoundLevel.start();
       RNSoundLevel.onNewFrame = (data) => {
-        setDecibel(data.value);
+        gameEngine.current?.dispatch({
+          type: "decibel",
+          payload: { volume: data.value },
+        });
       };
+
       setRunning(true);
     }
 
@@ -75,15 +80,6 @@ const ShoutGoContainer = () => {
       setRunning(false);
     };
   }, [micPermission]);
-
-  useEffect(() => {
-    if (gameEngine.current) {
-      gameEngine.current.dispatch({
-        type: "decibel",
-        payload: { volume: decibel },
-      });
-    }
-  }, [decibel]);
 
   useEffect(() => {
     let intervalId;
@@ -132,9 +128,6 @@ const ShoutGoContainer = () => {
           setRunning(false);
           decreaseChance();
         }
-        break;
-      case "newPoint":
-        setScore((prev) => prev + 1);
         break;
     }
   };

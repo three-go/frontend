@@ -1,6 +1,7 @@
 import React from "react";
 
 import Matter from "matter-js";
+import PropTypes from "prop-types";
 import { View, StyleSheet } from "react-native";
 
 const Floor = (props) => {
@@ -40,3 +41,12 @@ const FloorContainer = (world, pos, size) => {
 };
 
 export default FloorContainer;
+
+Floor.propTypes = {
+  body: PropTypes.object,
+  layout: PropTypes.object,
+  pos: PropTypes.object,
+  size: PropTypes.object,
+  renderer: PropTypes.node,
+  screen: PropTypes.object,
+};

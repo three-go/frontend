@@ -1,6 +1,7 @@
 import React from "react";
 
 import Matter from "matter-js";
+import PropTypes from "prop-types";
 import { StyleSheet } from "react-native";
 import { SvgCss } from "react-native-svg";
 
@@ -39,11 +40,6 @@ const CharacterContainer = (world, pos, size, svg) => {
     { label: "Character" }
   );
 
-  // const vertices = Matter.Vertices.fromPath(svg.path);
-  // const character = Matter.Bodies.fromVertices(pos.x, pos.y, vertices, {
-  //   label: "Character",
-  // });
-
   Matter.Composite.add(world, character);
 
   return {
@@ -56,3 +52,14 @@ const CharacterContainer = (world, pos, size, svg) => {
 };
 
 export default CharacterContainer;
+
+Character.propTypes = {
+  body: PropTypes.object,
+  color: PropTypes.string,
+  layout: PropTypes.object,
+  pos: PropTypes.object,
+  size: PropTypes.object,
+  renderer: PropTypes.node,
+  screen: PropTypes.object,
+  svg: PropTypes.object,
+};
