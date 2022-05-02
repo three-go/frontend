@@ -8,29 +8,24 @@ const Floor = (props) => {
   const heightBody = props.body.bounds.max.y - props.body.bounds.min.y;
   const xBody = props.body.position.x - widthBody / 2;
   const yBody = props.body.position.y - heightBody / 2;
-  const color = props.color;
 
-  return (
-    <View
-      style={styles.container(color, xBody, yBody, widthBody, heightBody)}
-    />
-  );
+  return <View style={styles.container(xBody, yBody, widthBody, heightBody)} />;
 };
 
 const styles = StyleSheet.create({
-  container: (color, x, y, w, h) => {
+  container: (x, y, w, h) => {
     return {
       position: "absolute",
       left: x,
       top: y,
       width: w,
       height: h,
-      backgroundColor: color,
+      backgroundColor: "red",
     };
   },
 });
 
-const FloorContainer = (world, color, pos, size) => {
+const FloorContainer = (world, pos, size) => {
   const floor = Matter.Bodies.rectangle(pos.x, pos.y, size.width, size.height, {
     label: "Floor",
     isStatic: true,
@@ -40,7 +35,6 @@ const FloorContainer = (world, color, pos, size) => {
 
   return {
     body: floor,
-    color,
     pos,
     renderer: <Floor />,
   };

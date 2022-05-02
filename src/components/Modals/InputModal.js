@@ -28,7 +28,6 @@ const InputModal = ({
         style={styles.container}
       >
         <View style={styles.modalView}>
-          <Text style={styles.modalTitle}>축하합니다 !</Text>
           <Text style={styles.modalScore}>점수: {score}</Text>
 
           <Text style={styles.modalText}>
@@ -79,10 +78,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
-  },
-  modalTitle: {
-    color: colors.ivory,
-    fontSize: 22,
   },
   modalScore: {
     color: colors.ivory,

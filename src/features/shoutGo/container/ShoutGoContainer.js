@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 
-import { View, StyleSheet, Linking, Platform, Text } from "react-native";
+import {
+  StyleSheet,
+  Linking,
+  Platform,
+  ImageBackground,
+  View,
+  Text,
+} from "react-native";
 import RNExitApp from "react-native-exit-app";
 import { GameEngine } from "react-native-game-engine";
 import { check, request, PERMISSIONS, RESULTS } from "react-native-permissions";
@@ -148,6 +155,12 @@ const ShoutGoContainer = () => {
       )}
 
       {status === "end" && <InputModalContainer score={score} />}
+
+      <ImageBackground
+        style={styles.background}
+        source={require("../../../../public/assets/images/shoutGo/background.png")}
+        resizeMode="stretch"
+      />
       {micPermission === RESULTS.GRANTED && (
         <SafeAreaView style={styles.container}>
           <GameEngine
@@ -185,6 +198,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     position: "absolute",
+  },
+  background: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
   },
   gameEngine: {
     position: "absolute",
