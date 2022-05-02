@@ -1,7 +1,7 @@
 import Matter from "matter-js";
 import { Dimensions } from "react-native";
 
-import { getStoneSizePos } from "../../utils/random";
+import { getObstacleSizePos } from "../../utils/random";
 
 const windowWidth = Dimensions.get("window").width;
 const exceptionLabels = ["Floor", "Ceil"];
@@ -28,7 +28,7 @@ const physics = (entities, { events, time, dispatch }) => {
 
   for (let i = 1; i < 4; i++) {
     if (entities[`Obstacle${i}`].body.bounds.max.x <= 0) {
-      const stone = getStoneSizePos(windowWidth * 1.05);
+      const stone = getObstacleSizePos(windowWidth * 1.05);
 
       Matter.Body.setPosition(entities[`Obstacle${i}`].body, stone.pos);
       dispatch({ type: "newPoint" });

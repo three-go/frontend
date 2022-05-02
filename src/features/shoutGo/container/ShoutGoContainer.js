@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 
-import { View, StyleSheet, Linking, Platform, Text } from "react-native";
+import { StyleSheet, ImageBackground } from "react-native";
 import { GameEngine } from "react-native-game-engine";
 import { SafeAreaView } from "react-native-safe-area-context";
 import RNSoundLevel from "react-native-sound-level";
@@ -98,11 +98,18 @@ const ShoutGoContainer = () => {
 
       {status === "end" && <InputModalContainer score={score} />}
 
+      <ImageBackground
+        style={styles.background}
+        source={require("../../../../public/assets/images/shoutGo/background.png")}
+        resizeMode="stretch"
+      />
+
       <SafeAreaView style={styles.container}>
         <GameEngine
           ref={gameEngine}
           systems={[Physics]}
           entities={entities()}
+          running={running}
           onEvent={handleGameEvent}
           style={styles.gameEngine}
         />
@@ -115,6 +122,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     position: "absolute",
+  },
+  background: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
   },
   gameEngine: {
     position: "absolute",
