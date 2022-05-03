@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 
+import PropTypes from "prop-types";
 import { FlatList, View, Text, StyleSheet } from "react-native";
 import Animated, {
   useSharedValue,
@@ -11,7 +12,6 @@ import Animated, {
 } from "react-native-reanimated";
 import uuid from "react-native-uuid";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import PropTypes from "prop-types";
 
 import { colors } from "../../../common/constants";
 import { game } from "../../../common/property";

@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import RNSoundLevel from "react-native-sound-level";
 
 import { game } from "../../../common/property";
 import GameContext from "../../../context/GameContext";
-import { startVibrate } from "../../../utils/helper";
 import entities from "../entities";
 import ShoutGo from "../presenter/ShoutGo";
 
@@ -66,7 +65,6 @@ const ShoutGoContainer = () => {
         if (status === game.status.none) {
           setRunning(false);
           decreaseChance();
-          startVibrate();
         }
         break;
     }
