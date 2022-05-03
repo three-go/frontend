@@ -1,46 +1,34 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 
-import { StyleSheet, ImageBackground } from "react-native";
-import { GameEngine } from "react-native-game-engine";
-import { SafeAreaView } from "react-native-safe-area-context";
 import RNSoundLevel from "react-native-sound-level";
 
-import GameLayout from "../../../components/Layouts/GameLayout";
-import InputModalContainer from "../../../components/Modals/InputModalContainer";
-import RetryModalContainer from "../../../components/Modals/RetryModalContainer";
+import { game } from "../../../common/property";
 import GameContext from "../../../context/GameContext";
+import { startVibrate } from "../../../utils/helper";
 import entities from "../entities";
-import Physics from "../physics";
+import ShoutGo from "../presenter/ShoutGo";
 
 const ShoutGoContainer = () => {
   const { currentGameKey } = useContext(GameContext);
-  const gameEngine = useRef();
 
   const [running, setRunning] = useState(false);
   const [score, setScore] = useState(0);
   const [chance, setChance] = useState(3);
   const [decibel, setDecibel] = useState(-160);
-  const [status, setStatus] = useState("none");
+  const [status, setStatus] = useState(game.status.none);
 
   useEffect(() => {
     RNSoundLevel.start();
-    setRunning(true);
     RNSoundLevel.onNewFrame = (data) => {
       setDecibel(data.value);
     };
-    console.log("useEffect");
+    setRunning(true);
+
     return () => {
       RNSoundLevel.stop();
       setRunning(false);
     };
   }, []);
-
-  useEffect(() => {
-    gameEngine.current.dispatch({
-      type: "decibel",
-      payload: { volume: decibel },
-    });
-  }, [decibel]);
 
   useEffect(() => {
     let intervalId;
@@ -58,77 +46,44 @@ const ShoutGoContainer = () => {
 
   const decreaseChance = () => {
     if (chance >= 1) {
-      setStatus("collision");
       setChance((prev) => prev - 1);
+      setStatus(game.status.collision);
     } else {
-      setStatus("end");
+      setStatus(game.status.end);
     }
   };
 
-  const handleRetryGame = () => {
-    gameEngine.current.swap(entities());
-    gameEngine.current.start();
+  const handleRetryGame = (ref) => {
+    ref.current.swap(entities());
+    ref.current.start();
     setRunning(true);
-    setStatus("none");
+    setStatus(game.status.none);
   };
 
   const handleGameEvent = (event) => {
     switch (event.type) {
-      case "gameOver":
-        if (status === "none") {
-          gameEngine.current.stop();
+      case game.event.gameOver:
+        if (status === game.status.none) {
           setRunning(false);
           decreaseChance();
+          startVibrate();
         }
         break;
     }
   };
 
   return (
-    <GameLayout currentGameKey={currentGameKey} score={score} chance={chance}>
-      {status === "collision" && (
-        <RetryModalContainer onRetryGame={handleRetryGame} />
-      )}
-
-      {status === "end" && <InputModalContainer score={score} />}
-
-      <ImageBackground
-        style={styles.background}
-        source={require("../../../../public/assets/images/shoutGo/background.png")}
-        resizeMode="stretch"
-      />
-
-      <SafeAreaView style={styles.container}>
-        <GameEngine
-          ref={gameEngine}
-          systems={[Physics]}
-          entities={entities()}
-          running={running}
-          onEvent={handleGameEvent}
-          style={styles.gameEngine}
-        />
-      </SafeAreaView>
-    </GameLayout>
+    <ShoutGo
+      currentGameKey={currentGameKey}
+      status={status}
+      chance={chance}
+      score={score}
+      decibel={decibel}
+      running={running}
+      onRetryGame={handleRetryGame}
+      onGameEvent={handleGameEvent}
+    />
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    position: "absolute",
-  },
-  background: {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-  },
-  gameEngine: {
-    position: "absolute",
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
-});
 
 export default ShoutGoContainer;

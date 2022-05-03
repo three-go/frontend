@@ -1,6 +1,7 @@
 import Matter from "matter-js";
 import { Dimensions } from "react-native";
 
+import { game } from "../../common/property";
 import { getObstacleSizePos } from "../../utils/random";
 
 const windowWidth = Dimensions.get("window").width;
@@ -10,15 +11,15 @@ const physics = (entities, { events, time, dispatch }) => {
   const engine = entities.physics.engine;
 
   events.forEach(({ type, payload }) => {
-    if (type === "decibel") {
+    if (type === game.event.decibel) {
       const { volume } = payload;
 
-      if (volume >= -8) {
-        const yVelocityValue = -(Math.ceil(volume) + 8);
+      if (volume >= -12) {
+        const yVelocityValue = -(Math.ceil(volume) + 12);
 
         Matter.Body.setVelocity(entities.Character.body, {
           x: 0,
-          y: yVelocityValue < -15 ? -15 : yVelocityValue,
+          y: yVelocityValue < -18 ? -18 : yVelocityValue,
         });
       }
     }
@@ -37,7 +38,7 @@ const physics = (entities, { events, time, dispatch }) => {
 
     Matter.Events.on(engine, "collisionStart", (event) => {
       if (!exceptionLabels.includes(event.pairs[0].bodyB.label)) {
-        dispatch({ type: "gameOver" });
+        dispatch({ type: game.event.gameOver });
       }
     });
   }

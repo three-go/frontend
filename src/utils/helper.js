@@ -67,11 +67,8 @@ export const getBackgroundColor = (
 export const getSound = (fileName) => {
   const sound = new Sound(fileName, Sound.MAIN_BUNDLE, (error) => {
     if (error) {
-      console.log("failed to load the sound : ", error);
       return;
     }
-
-    console.log("Sound load succeed :", fileName);
   });
 
   return sound;
