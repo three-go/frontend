@@ -1,9 +1,9 @@
 import React from "react";
 
-import { StyleSheet, View, Text, Linking } from "react-native";
+import PropTypes from "prop-types";
+import { StyleSheet, View, Text, Linking, Image } from "react-native";
 import { RNCamera } from "react-native-camera";
 import RNExitApp from "react-native-exit-app";
-import PropTypes from "prop-types";
 
 import { camera, colors } from "../../../common/constants";
 import SmallButton from "../../../components/Buttons/SmallButton";
@@ -40,6 +40,10 @@ const FaceRecognition = ({
         faceDetectionLandmarks={RNCamera.Constants.FaceDetection.Landmarks.all}
         faceDetectionMode={RNCamera.Constants.FaceDetection.Mode.accurate}
         notAuthorizedView={<View />}
+      />
+      <Image
+        style={styles.previewImage}
+        source={require("../../../../public/assets/images/faceGo/faceShape.png")}
       />
       {cameraPermissionStatus === camera.permissionNotAuthorized && (
         <View style={styles.notAuthorizedViewContainer}>
@@ -82,6 +86,12 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     overflow: "hidden",
+  },
+  previewImage: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    opacity: 0.3,
   },
   previewDirection: {
     position: "absolute",

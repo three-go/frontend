@@ -30,8 +30,7 @@ const faceGoGuide = [
         id: uuid.v4(),
         title: "Face",
         content: "• 얼굴로 캐릭터가 움직이는 방향을 기록하세요.\n",
-        image: require("../../public/assets/images/faceGo/camera.png"),
-        icon: "face-recognition",
+        image: require("../../public/assets/images/faceGo/face.jpg"),
       },
       {
         id: uuid.v4(),
@@ -81,8 +80,7 @@ const faceGoGuide = [
         title: "Face",
         content:
           "• 위쪽: 얼굴의 눈 위치를 카메라 화면에 상단에 위치시키세요\n• 아래쪽: 얼굴의 눈 위치를 카메라 화면에 하단에 위치시키세요\n• 왼쪽: 얼굴의 고개를 왼쪽으로 돌리세요.\n• 오른쪽: 얼굴의 고개를 오른쪽으로 돌리세요.\n",
-        image: require("../../public/assets/images/faceGo/camera.png"),
-        icon: "face-recognition",
+        image: require("../../public/assets/images/faceGo/face.jpg"),
       },
       {
         id: uuid.v4(),

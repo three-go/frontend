@@ -2,7 +2,6 @@ import React from "react";
 
 import PropTypes from "prop-types";
 import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { colors } from "../../../common/constants";
 
@@ -20,9 +19,6 @@ const GameGuide = ({ item, style }) => {
               <View style={styles.imageContainer}>
                 <Text style={styles.title}>{value.title}</Text>
                 <Image style={styles.image} source={value.image} />
-                {value.icon && (
-                  <Icon style={styles.icon} name={value.icon} size={100} />
-                )}
               </View>
               <View style={styles.contentContainer}>
                 <Text style={styles.content}>{value.content}</Text>
@@ -71,11 +67,6 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-  },
-  icon: {
-    position: "absolute",
-    top: 200,
-    left: 63,
   },
 });
 
