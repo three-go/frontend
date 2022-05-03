@@ -1,26 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 import { useNavigation } from "@react-navigation/native";
-import { View, StyleSheet, Platform, Text, Linking } from "react-native";
+import { Platform, Linking } from "react-native";
 import RNExitApp from "react-native-exit-app";
 import { check, request, PERMISSIONS, RESULTS } from "react-native-permissions";
 
-import { colors } from "../../../common/constants";
-import SmallButton from "../../../components/Buttons/SmallButton";
-import TextTimer from "../../../components/Timers/TextTimer";
+import { navigations } from "../../../common/constants";
+import Timer from "../presenter/Timer";
 
 const TimmerContainer = () => {
   const navigaion = useNavigation();
   const [micPermission, setMicPermission] = useState("");
-
-  const openSettingOption = async () => {
-    try {
-      await Linking.openSettings();
-      RNExitApp.exitApp();
-    } catch (error) {
-      RNExitApp.exitApp();
-    }
-  };
 
   useEffect(() => {
     if (micPermission === RESULTS.GRANTED) {
@@ -55,56 +45,26 @@ const TimmerContainer = () => {
     checkMicPermission();
   }, [micPermission]);
 
+  const handleSettingOption = async () => {
+    try {
+      await Linking.openSettings();
+      RNExitApp.exitApp();
+    } catch (error) {
+      RNExitApp.exitApp();
+    }
+  };
+
   const handleSetStatusPlay = () => {
-    navigaion.navigate("ShoutGo");
+    navigaion.navigate(navigations.shoutGo);
   };
 
   return (
-    <View style={styles.container}>
-      {micPermission === RESULTS.GRANTED && (
-        <TextTimer onTimerEnd={handleSetStatusPlay} status={"none"} />
-      )}
-      {micPermission === RESULTS.BLOCKED && (
-        <View style={styles.notAuthorizedViewContainer}>
-          <Text style={styles.notAuthorizedViewTitle}>
-            권한 승인이 필요 합니다.{"\n"}
-          </Text>
-          <Text>
-            해당 서비스를 사용하기 위해서는 카메라 권한 승인이 필요합니다. 해당
-            권한을 승인하지 않으면 서비스 이용이 제한됩니다.{"\n"}
-          </Text>
-          <SmallButton
-            content="설정으로 가기"
-            color={colors.red}
-            onPress={() => {
-              openSettingOption();
-            }}
-          />
-        </View>
-      )}
-    </View>
+    <Timer
+      micPermission={micPermission}
+      onOpenSettingOption={handleSettingOption}
+      onSetStatusPlay={handleSetStatusPlay}
+    />
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "black",
-  },
-  notAuthorizedViewContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    height: "50%",
-    padding: "5%",
-    borderRadius: 20,
-    backgroundColor: colors.white,
-  },
-  notAuthorizedViewTitle: {
-    fontSize: 20,
-    fontWeight: "900",
-  },
-});
 
 export default TimmerContainer;

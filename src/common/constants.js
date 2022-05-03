@@ -62,6 +62,8 @@ const textSizes = {
 
 const navigations = {
   main: "Main",
+  shoutGo: "ShoutGo",
+  faceGo: "FaceGo",
 };
 
 const map = {

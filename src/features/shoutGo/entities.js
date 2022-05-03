@@ -18,8 +18,9 @@ import Character from "./presenter/Character";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
+Matter.Common.setDecomp(decomp);
+
 export default () => {
-  Matter.Common.setDecomp(decomp);
   const engine = Matter.Engine.create({ enableSleeping: false });
   const world = engine.world;
 

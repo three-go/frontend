@@ -106,6 +106,8 @@ const gameStatus = {
   open: "mapOpen",
   directionInput: "directionInput",
   play: "resultPlay",
+  collision: "collision",
+  end: "end",
 };
 
 const gameResult = {
@@ -113,6 +115,11 @@ const gameResult = {
   win: "win",
   lose: "lose",
   end: "end",
+};
+
+const gameEvent = {
+  decibel: "decibel",
+  gameOver: "gameOver",
 };
 
 const gameSounds = {
@@ -133,6 +140,7 @@ const game = {
   status: gameStatus,
   result: gameResult,
   sounds: gameSounds,
+  event: gameEvent,
 };
 
 export { game };
