@@ -31,6 +31,10 @@ const ShoutGoContainer = () => {
   }, []);
 
   useEffect(() => {
+    gameEngine?.swap(createEntities());
+  }, [gameEngine]);
+
+  useEffect(() => {
     if (gameEngine !== null && decibel !== -160) {
       gameEngine.dispatch({
         type: game.event.decibel,
