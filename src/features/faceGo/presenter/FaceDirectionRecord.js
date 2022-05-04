@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 
+import PropTypes from "prop-types";
 import { View, ScrollView, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
-import PropTypes from "prop-types";
 
 import { colors, iconSizes } from "../../../common/constants";
 import { game } from "../../../common/property";

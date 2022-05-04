@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     return {
       position: "absolute",
       left: x,
-      top: y + 10,
+      top: y,
     };
   },
 });

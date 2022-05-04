@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+import PropTypes from "prop-types";
 import { Platform } from "react-native";
 import uuid from "react-native-uuid";
-import PropTypes from "prop-types";
 
 import {
   facePosition,

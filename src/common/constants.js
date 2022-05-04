@@ -64,6 +64,7 @@ const navigations = {
   main: "Main",
   shoutGo: "ShoutGo",
   faceGo: "FaceGo",
+  timer: "Timer",
 };
 
 const map = {

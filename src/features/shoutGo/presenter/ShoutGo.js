@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
 import PropTypes from "prop-types";
-import { StyleSheet, ImageBackground } from "react-native";
+import { StyleSheet, ImageBackground, Platform } from "react-native";
 import { GameEngine } from "react-native-game-engine";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -9,7 +9,7 @@ import { game } from "../../../common/property";
 import GameLayout from "../../../components/Layouts/GameLayout";
 import InputModalContainer from "../../../components/Modals/InputModalContainer";
 import RetryModalContainer from "../../../components/Modals/RetryModalContainer";
-import entities from "../entities";
+import entities, { createEntities } from "../entities";
 import Physics from "../physics";
 
 const ShoutGo = ({
@@ -17,24 +17,15 @@ const ShoutGo = ({
   status,
   chance,
   score,
-  decibel,
   running,
+  setGameEngine,
   onRetryGame,
   onGameEvent,
 }) => {
-  const gameEngine = useRef();
-
-  useEffect(() => {
-    gameEngine.current.dispatch({
-      type: game.event.decibel,
-      payload: { volume: decibel },
-    });
-  }, [decibel]);
-
   return (
     <GameLayout currentGameKey={currentGameKey} score={score} chance={chance}>
       {status === game.status.collision && (
-        <RetryModalContainer onRetryGame={onRetryGame.bind(null, gameEngine)} />
+        <RetryModalContainer onRetryGame={onRetryGame} />
       )}
 
       {status === game.status.end && <InputModalContainer score={score} />}
@@ -47,9 +38,9 @@ const ShoutGo = ({
 
       <SafeAreaView style={styles.container}>
         <GameEngine
-          ref={gameEngine}
+          ref={(ref) => setGameEngine(ref)}
           systems={[Physics]}
-          entities={entities()}
+          entities={Platform.OS === "android" ? entities : createEntities()}
           running={running}
           onEvent={onGameEvent}
           style={styles.gameEngine}

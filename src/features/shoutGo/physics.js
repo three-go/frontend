@@ -14,12 +14,12 @@ const physics = (entities, { events, time, dispatch }) => {
     if (type === game.event.decibel) {
       const { volume } = payload;
 
-      if (volume >= -12) {
-        const yVelocityValue = -(Math.ceil(volume) + 12);
+      if (volume >= -20) {
+        const yVelocityValue = -(Math.ceil(volume) + 20);
 
         Matter.Body.setVelocity(entities.Character.body, {
           x: 0,
-          y: yVelocityValue < -18 ? -18 : yVelocityValue,
+          y: yVelocityValue < -20 ? -20 : yVelocityValue,
         });
       }
     }

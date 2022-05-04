@@ -20,7 +20,7 @@ const windowHeight = Dimensions.get("window").height;
 
 Matter.Common.setDecomp(decomp);
 
-export default () => {
+export const createEntities = () => {
   const engine = Matter.Engine.create({ enableSleeping: false });
   const world = engine.world;
 
@@ -63,3 +63,5 @@ export default () => {
     ),
   };
 };
+
+export default createEntities();

@@ -142,6 +142,7 @@ const Map = ({
             }}
             keyExtractor={(_, index) => index}
             numColumns={arrInfo.columnCount}
+            scrollEnabled={false}
           />
         ))}
 
