@@ -7,7 +7,7 @@ import RNExitApp from "react-native-exit-app";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import SystemNavigationBar from "react-native-system-navigation-bar";
 
-import { colors } from "../../../common/constants";
+import { colors, navigations } from "../../../common/constants";
 import { game } from "../../../common/property";
 import DefaultButton from "../../../components/Buttons/DefaultButton";
 import SmallButton from "../../../components/Buttons/SmallButton";
@@ -49,14 +49,12 @@ const MainContainer = ({ navigation }) => {
       hideSoftKey();
     }
   }, []);
-
   useEffect(() => {
     if (route.params?.visible) {
       setScoreModalVisible(true);
       route.params.visible = false;
     }
   });
-
   useEffect(() => {
     const loadScoreData = async () => {
       const faceGoScoreData = await getItemFromAsync(game.keys[0]);
@@ -93,7 +91,9 @@ const MainContainer = ({ navigation }) => {
   };
 
   const handleStartGame = () => {
-    navigation.navigate(currentGameKey === "faceGo" ? "FaceGo" : "Timer");
+    navigation.push(
+      currentGameKey === game.keys[0] ? navigation.faceGo : navigations.timer
+    );
     setDescriptionModalVisible(!descriptionModalVisible);
   };
 

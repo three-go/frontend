@@ -11,7 +11,7 @@ const RetryModalContainer = ({ onRetryGame }) => {
   const navigation = useNavigation();
 
   const handleNavigateMain = () => {
-    navigation.navigate(navigations.main);
+    navigation.popToTop();
     setModalVisible(false);
   };
 

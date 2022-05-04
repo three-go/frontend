@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
   shoutGoBoard: {
     flex: 1,
     position: "relative",
-    // backgroundColor: colors.lightBlue,
   },
 });
 

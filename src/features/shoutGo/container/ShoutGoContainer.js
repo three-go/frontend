@@ -4,7 +4,7 @@ import RNSoundLevel from "react-native-sound-level";
 
 import { game } from "../../../common/property";
 import GameContext from "../../../context/GameContext";
-import entities from "../entities";
+import { createEntities } from "../entities";
 import ShoutGo from "../presenter/ShoutGo";
 
 const ShoutGoContainer = () => {
@@ -15,6 +15,7 @@ const ShoutGoContainer = () => {
   const [chance, setChance] = useState(3);
   const [decibel, setDecibel] = useState(-160);
   const [status, setStatus] = useState(game.status.none);
+  const [gameEngine, setGameEngine] = useState(null);
 
   useEffect(() => {
     RNSoundLevel.start();
@@ -28,6 +29,15 @@ const ShoutGoContainer = () => {
       setRunning(false);
     };
   }, []);
+
+  useEffect(() => {
+    if (gameEngine !== null && decibel !== -160) {
+      gameEngine.dispatch({
+        type: game.event.decibel,
+        payload: { volume: decibel },
+      });
+    }
+  }, [decibel]);
 
   useEffect(() => {
     let intervalId;
@@ -52,9 +62,8 @@ const ShoutGoContainer = () => {
     }
   };
 
-  const handleRetryGame = (ref) => {
-    ref.current.swap(entities());
-    ref.current.start();
+  const handleRetryGame = () => {
+    gameEngine.swap(createEntities());
     setRunning(true);
     setStatus(game.status.none);
   };
@@ -78,6 +87,7 @@ const ShoutGoContainer = () => {
       score={score}
       decibel={decibel}
       running={running}
+      setGameEngine={setGameEngine}
       onRetryGame={handleRetryGame}
       onGameEvent={handleGameEvent}
     />
