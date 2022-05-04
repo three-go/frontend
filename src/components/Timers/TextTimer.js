@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import { View, Text, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
+import { View, Text, StyleSheet } from "react-native";
 
 import { colors, textSizes, time } from "../../common/constants";
 import { game } from "../../common/property";
