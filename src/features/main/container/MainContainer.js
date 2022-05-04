@@ -91,7 +91,7 @@ const MainContainer = ({ navigation }) => {
   };
 
   const handleStartGame = () => {
-    navigation.push(
+    navigation.navigate(
       currentGameKey === game.keys[0] ? navigations.faceGo : navigations.timer
     );
     setDescriptionModalVisible(!descriptionModalVisible);
