@@ -5,6 +5,7 @@ import { StyleSheet, View, Text, Linking, Image } from "react-native";
 import { RNCamera } from "react-native-camera";
 import RNExitApp from "react-native-exit-app";
 
+import cameraPreview from "../../../../public/assets/images/faceGo/faceShape.png";
 import { camera, colors } from "../../../common/constants";
 import SmallButton from "../../../components/Buttons/SmallButton";
 
@@ -41,10 +42,7 @@ const FaceRecognition = ({
         faceDetectionMode={RNCamera.Constants.FaceDetection.Mode.accurate}
         notAuthorizedView={<View />}
       />
-      <Image
-        style={styles.previewImage}
-        source={require("../../../../public/assets/images/faceGo/faceShape.png")}
-      />
+      <Image style={styles.previewImage} source={cameraPreview} />
       {cameraPermissionStatus === camera.permissionNotAuthorized && (
         <View style={styles.notAuthorizedViewContainer}>
           <Text style={styles.notAuthorizedViewTitle}>
