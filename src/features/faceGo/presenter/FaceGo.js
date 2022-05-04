@@ -89,11 +89,11 @@ const FaceGo = ({ gameInfo, userInfo, cameraInfo }) => {
                 <NextStageModalContainer onNextStage={handleNextStage} />
               )}
 
-              {result === game.result.lose && (
+              {result === game.result.lose && chance > -1 && (
                 <FailModalContainer onRetryCurrentStage={handleRetryStage} />
               )}
 
-              {result === game.result.lose && chance === 0 && (
+              {result === game.result.lose && chance === -1 && (
                 <ResetModalContainer />
               )}
 
