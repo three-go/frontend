@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Image, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
+import { Image, StyleSheet } from "react-native";
 
 const Logo = ({ size }) => (
   <Image
