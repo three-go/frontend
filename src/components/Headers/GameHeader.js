@@ -34,7 +34,6 @@ const GameHeader = ({
             name={iconNames.leftArrow}
             size={iconSizes.headerLeftArrow}
             color={colors.gray}
-            testID="backIcon"
           />
         </Pressable>
       )}
@@ -72,7 +71,7 @@ const GameHeader = ({
       )}
 
       {(status !== game.status.none || currentGameKey === game.keys[1]) && (
-        <ChanceIcons testID="chanceIcons" chance={chance} />
+        <ChanceIcons chance={chance} />
       )}
     </View>
   );
