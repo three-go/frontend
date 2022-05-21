@@ -34,6 +34,7 @@ const GameHeader = ({
             name={iconNames.leftArrow}
             size={iconSizes.headerLeftArrow}
             color={colors.gray}
+            testID="backIcon"
           />
         </Pressable>
       )}
