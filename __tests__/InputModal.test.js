@@ -32,6 +32,7 @@ describe("InputModal", () => {
     expect(component.toJSON).toMatchSnapshot();
     expect(component.toJSON).toBeTruthy();
   });
+
   it("InputModal submit textInput", () => {
     const score = 100;
     const modalVisible = true;
