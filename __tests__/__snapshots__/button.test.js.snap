@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Test DefaultButton Test 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#21D0B2",
+      "borderRadius": 4,
+      "height": 40,
+      "justifyContent": "center",
+      "opacity": 1,
+      "width": 150,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#FCF8F6",
+        "fontSize": 15,
+        "fontWeight": "bold",
+        "padding": 8,
+      }
+    }
+  >
+    Click
+  </Text>
+</View>
+`;
+
+exports[`Button Test SmallButton Test 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#00BBD1",
+      "borderRadius": 20,
+      "height": 40,
+      "justifyContent": "center",
+      "opacity": 1,
+      "width": 100,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#FCF8F6",
+        "fontSize": 15,
+        "fontWeight": "bold",
+        "padding": 8,
+      }
+    }
+  >
+    Back
+  </Text>
+</View>
+`;
+
+exports[`Button Test SquareButton Test 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#00E0EA",
+      "borderColor": "#FCF8F6",
+      "borderRadius": 4,
+      "borderWidth": 4,
+      "height": 120,
+      "justifyContent": "center",
+      "opacity": 1,
+      "width": 120,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#FCF8F6",
+        "fontSize": 18,
+        "fontWeight": "bold",
+        "padding": 8,
+      }
+    }
+  >
+    Play
+  </Text>
+</View>
+`;

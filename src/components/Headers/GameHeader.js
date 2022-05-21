@@ -29,7 +29,11 @@ const GameHeader = ({
   return (
     <View style={styles.container}>
       {status !== game.status.none && (
-        <Pressable onPress={onPressBack} style={styles.back}>
+        <Pressable
+          onPress={onPressBack}
+          style={styles.back}
+          testID="backButton"
+        >
           <Icon
             name={iconNames.leftArrow}
             size={iconSizes.headerLeftArrow}

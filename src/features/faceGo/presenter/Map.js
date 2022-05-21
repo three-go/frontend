@@ -130,6 +130,7 @@ const Map = ({
 
   return (
     <Animated.View
+      testID="map"
       style={[styles.container, rotateStyle, backgroundInterpolate]}
     >
       {gameMap &&
