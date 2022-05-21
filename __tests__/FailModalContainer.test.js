@@ -20,7 +20,6 @@ it("FailModalContainer should render correctly", () => {
     <FailModalContainer onRetryCurrentStage={() => {}} />
   );
 
-  // expect(component).toMatchSnapshot();
   expect(component).toBeTruthy();
 });
 
