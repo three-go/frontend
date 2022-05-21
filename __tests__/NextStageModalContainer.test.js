@@ -14,6 +14,7 @@ describe("NextStageModalContainer", () => {
     expect(component.getByText("탈출에 성공하셨습니다.")).toBeTruthy();
     expect(component.getByText("다음 단계로")).toBeTruthy();
     expect(component.toJSON).toMatchSnapshot();
+    expect(component.toJSON).toBeTruthy();
   });
 
   it("NextStageModalContainer '다음 단계로' button click", () => {

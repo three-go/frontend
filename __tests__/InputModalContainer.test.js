@@ -34,5 +34,6 @@ describe("InputModalContainer", () => {
 
     expect(component.getByText(new RegExp(score, "i"))).toBeTruthy();
     expect(component.toJSON).toMatchSnapshot();
+    expect(component.toJSON).toBeTruthy();
   });
 });

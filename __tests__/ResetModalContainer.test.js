@@ -21,6 +21,7 @@ describe("ResetModalContainer", () => {
     expect(component.getByText("남은 하트가 없습니다.")).toBeTruthy();
     expect(component.getByText("메인으로")).toBeTruthy();
     expect(component.toJSON).toMatchSnapshot();
+    expect(component.toJSON).toBeTruthy();
   });
 
   it("ResetModalContainer '메인으로' button click", () => {

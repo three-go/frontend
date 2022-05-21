@@ -40,6 +40,7 @@ describe("GameHeader.js", () => {
     expect(component.getByTestId("backIcon")).toBeTruthy();
     expect(mockOnPressBack.mock.calls.length).toBe(1);
     expect(component.toJSON().children[2].children.length).toBe(3);
+    expect(component.toJSON).toBeTruthy();
   });
 
   it("FaceGo before the input ends", () => {

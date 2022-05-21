@@ -30,6 +30,7 @@ describe("InputModal", () => {
     expect(component.getByPlaceholderText("이름을 입력하세요.")).toBeTruthy();
     expect(component.getByText("Testing")).toBeTruthy();
     expect(component.toJSON).toMatchSnapshot();
+    expect(component.toJSON).toBeTruthy();
   });
   it("InputModal submit textInput", () => {
     const score = 100;

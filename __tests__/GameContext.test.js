@@ -35,5 +35,6 @@ describe("Context API", () => {
 
     expect(component.getByText(testContextValue)).toBeTruthy();
     expect(component.toJSON).toMatchSnapshot();
+    expect(component.toJSON).toBeTruthy();
   });
 });

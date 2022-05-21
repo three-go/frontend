@@ -25,6 +25,7 @@ describe("RetryModalContainer", () => {
     expect(component.getByText("도전하기")).toBeTruthy();
     expect(component.getByText("메인으로")).toBeTruthy();
     expect(component.toJSON).toMatchSnapshot();
+    expect(component.toJSON).toBeTruthy();
   });
 
   it("RetryModalContainer '도전하기' button click", () => {
