@@ -14,6 +14,7 @@ jest.mock("@react-navigation/native", () => {
     }),
   };
 });
+
 jest.mock("@react-native-community/async-storage", (key, value) => {
   const storage = {
     setItemToAsync: () => {},
