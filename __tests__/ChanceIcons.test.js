@@ -1,6 +1,7 @@
 import React from "react";
+
 import { render } from "@testing-library/react-native";
-import "@testing-library/react-native";
+
 import ChanceIcons from "../src/components/ChanceIcons";
 
 const getRandomChanceCount = () => {

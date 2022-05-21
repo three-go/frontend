@@ -1,7 +1,8 @@
 import React from "react";
+
 import { render } from "@testing-library/react-native";
-import "@testing-library/react-native";
 import { Text, View } from "react-native";
+
 import ContentModal from "../src/components/Modals/ContentModal";
 
 jest.mock("react-native-sound", () => {

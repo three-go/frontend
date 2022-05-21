@@ -1,7 +1,8 @@
 import React from "react";
+
 import { render } from "@testing-library/react-native";
-import "@testing-library/react-native";
 import { Text } from "react-native";
+
 import ButtonModal from "../src/components/Modals/ButtonModal";
 
 it("ButtonModal should render correctly", () => {

@@ -1,6 +1,7 @@
 import React from "react";
+
 import { render, fireEvent } from "@testing-library/react-native";
-import "@testing-library/react-native";
+
 import FailModalContainer from "../src/components/Modals/FailModalContainer";
 
 const mockNavigations = jest.fn();
