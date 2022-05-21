@@ -70,7 +70,7 @@ const TextTimer = ({ onTimerEnd, status }) => {
   }, [timerInfo, onTimerEnd, status]);
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="timer">
       <Text style={styles.text(timerInfo?.size)}>
         {timerInfo?.text}
         <Text style={styles.number(timerInfo?.size)}>{timerInfo?.count}</Text>초

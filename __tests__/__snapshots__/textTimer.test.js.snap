@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextTimer Test TextTimer Test 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+      "marginBottom": 8,
+    }
+  }
+  testID="timer"
+>
+  <Text
+    style={
+      Object {
+        "color": "#FCF8F6",
+        "fontSize": 24,
+      }
+    }
+  >
+    게임시작
+    <Text
+      style={
+        Object {
+          "color": "#FCF8F6",
+          "fontSize": 48,
+        }
+      }
+    >
+      3
+    </Text>
+    초 전
+  </Text>
+</View>
+`;

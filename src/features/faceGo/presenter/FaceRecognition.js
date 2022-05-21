@@ -26,7 +26,7 @@ const FaceRecognition = ({
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="recognition">
       <RNCamera
         style={styles.preview}
         type={RNCamera.Constants.Type.front}

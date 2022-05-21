@@ -25,7 +25,7 @@ const GameLayout = ({
   };
 
   return (
-    <SafeAreaView style={styles.container} edges={["top"]}>
+    <SafeAreaView style={styles.container} edges={["top"]} testID="layout">
       <View style={styles.header}>
         <GameHeader
           status={status}
