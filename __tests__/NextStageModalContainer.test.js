@@ -7,7 +7,6 @@ import NextStageModalContainer from "../src/components/Modals/NextStageModalCont
 describe("NextStageModalContainer", () => {
   it("NextStageModalContainer render check", () => {
     const mockOnNextStage = jest.fn();
-
     const component = render(
       <NextStageModalContainer onNextStage={mockOnNextStage} />
     );
@@ -19,7 +18,6 @@ describe("NextStageModalContainer", () => {
 
   it("NextStageModalContainer '다음 단계로' button click", () => {
     const mockOnNextStage = jest.fn();
-
     const component = render(
       <NextStageModalContainer onNextStage={mockOnNextStage} />
     );

@@ -26,7 +26,6 @@ jest.mock("@react-native-community/async-storage", (key, value) => {
 describe("InputModalContainer", () => {
   it("InputModalContainer render check", () => {
     const score = 100;
-
     const component = render(
       <GameContextProvider>
         <InputModalContainer score={score} />
