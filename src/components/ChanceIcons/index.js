@@ -15,6 +15,7 @@ const ChanceIcons = ({ chance }) => {
         <Icon
           key={index}
           name={value}
+          testID={value}
           size={iconSizes.headerChance}
           color={colors.red}
         />
