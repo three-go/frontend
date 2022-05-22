@@ -23,7 +23,7 @@ const FaceDirectionRecord = ({ directions, status }) => {
   }, [status]);
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="faceDirection">
       <ScrollView
         ref={scrollView}
         style={styles.scrollWrapper}
@@ -40,6 +40,7 @@ const FaceDirectionRecord = ({ directions, status }) => {
             <View key={value.id} style={styles.directionWrapper}>
               <Icon
                 name={`arrow${value.direction}`}
+                testID={`arrow${value.direction}`}
                 size={iconSizes.footerArrow}
                 color={iconColor}
               />
