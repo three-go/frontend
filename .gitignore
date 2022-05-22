@@ -29,6 +29,7 @@ local.properties
 
 # node.js
 node_modules/
+coverage/
 .vscode
 yarn-error.log
 
