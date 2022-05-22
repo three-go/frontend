@@ -59,6 +59,10 @@ const validateMap = (map) => {
 };
 
 const createMap = (stage) => {
+  if (stage > 3 || undefined || typeof stage !== "number") {
+    return "Invalid Stage Value";
+  }
+
   let row = 0;
   let column = 0;
   let totalWall = 0;

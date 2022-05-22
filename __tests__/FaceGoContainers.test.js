@@ -131,10 +131,12 @@ describe("Container Test", () => {
     const mapContainer = render(<MapContainer {...props} />);
     const mapContainerJson = mapContainer.toJSON();
 
-    mapContainer.debug();
-
     expect(mapContainer.getByTestId("map")).toHaveTextContent("Start");
     expect(mapContainer.getByTestId("map")).toHaveTextContent("End");
+    expect(
+      mapContainer.getAllByTestId("possible").length +
+        mapContainer.getAllByTestId("impossible").length
+    ).toBe(12);
     expect(mapContainerJson).toBeTruthy();
     expect(mapContainerJson).toMatchSnapshot();
   });

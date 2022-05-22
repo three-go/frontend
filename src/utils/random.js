@@ -8,7 +8,7 @@ export const getObstacleSizePos = (addToPosX = 0) => {
   let width = 140;
   let height = 70;
 
-  const stone = {
+  const obstacle = {
     pos: {
       x: windowWidth + addToPosX,
       y: windowHeight + yPosTop,
@@ -19,5 +19,5 @@ export const getObstacleSizePos = (addToPosX = 0) => {
     },
   };
 
-  return stone;
+  return obstacle;
 };

@@ -10,6 +10,7 @@ const SmallButton = ({ content, color, onPress }) => (
     activeOpacity={0.8}
     style={styles.container(color)}
     onPress={onPress}
+    testID="smallButton"
   >
     <Text style={styles.text}>{content}</Text>
   </TouchableOpacity>

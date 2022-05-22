@@ -9,9 +9,11 @@ import { colors } from "../../../common/constants";
 const MapCell = ({ width, height, bgColor, canMove }) => {
   return (
     <>
-      {canMove && <View style={styles.cell(width, height, bgColor)} />}
+      {canMove && (
+        <View style={styles.cell(width, height, bgColor)} testID="possible" />
+      )}
       {!canMove && (
-        <View style={styles.cell(width, height, bgColor)}>
+        <View style={styles.cell(width, height, bgColor)} testID="impossible">
           <Icon name="close" size={width} color={colors.ligthGray} />
         </View>
       )}
