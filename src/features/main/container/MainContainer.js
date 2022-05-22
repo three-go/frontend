@@ -49,12 +49,14 @@ const MainContainer = ({ navigation }) => {
       hideSoftKey();
     }
   }, []);
+
   useEffect(() => {
     if (route.params?.visible) {
       setScoreModalVisible(true);
       route.params.visible = false;
     }
   });
+
   useEffect(() => {
     const loadScoreData = async () => {
       const faceGoScoreData = await getItemFromAsync(game.keys[0]);
@@ -111,7 +113,7 @@ const MainContainer = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider testID="mainContainer">
       <Main
         onExitApp={exitApp}
         onShowScoreModal={handleShowScoreModal}
