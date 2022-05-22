@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentModal should have content property 1`] = `
+<Modal
+  animationType="fade"
+  hardwareAccelerated={false}
+  transparent={true}
+  visible={true}
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+        "marginTop": 22,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#96A1A8",
+          "borderColor": "#FCF8F6",
+          "borderRadius": 20,
+          "borderWidth": 5,
+          "elevation": 5,
+          "height": "70%",
+          "margin": 20,
+          "padding": 35,
+          "shadowColor": "#000000",
+          "shadowOffset": Object {
+            "height": 2,
+            "width": 0,
+          },
+          "shadowOpacity": 0.25,
+          "shadowRadius": 4,
+          "width": "90%",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#FCF8F6",
+            "fontSize": 25,
+            "fontWeight": "bold",
+            "marginBottom": 15,
+            "textAlign": "center",
+          }
+        }
+      >
+        test title
+      </Text>
+      <View
+        style={
+          Object {
+            "backgroundColor": "#96A1A8",
+            "flex": 1,
+            "width": 300,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "flex": 1,
+              "height": "60%",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <RCTScrollView
+            automaticallyAdjustContentInsets={false}
+            contentContainerStyle={
+              Object {
+                "paddingHorizontal": 22.5,
+              }
+            }
+            data={
+              Array [
+                Object {
+                  "description": "description1",
+                  "title": "Title1",
+                },
+                Object {
+                  "description": "description2",
+                  "title": "Title2",
+                },
+              ]
+            }
+            decelerationRate="fast"
+            getItem={[Function]}
+            getItemCount={[Function]}
+            horizontal={true}
+            keyExtractor={[Function]}
+            onContentSizeChange={[Function]}
+            onLayout={[Function]}
+            onMomentumScrollBegin={[Function]}
+            onMomentumScrollEnd={[Function]}
+            onScroll={[Function]}
+            onScrollBeginDrag={[Function]}
+            onScrollEndDrag={[Function]}
+            pagingEnabled={true}
+            removeClippedSubviews={false}
+            renderItem={[Function]}
+            scrollEventThrottle={50}
+            showsHorizontalScrollIndicator={false}
+            snapToAlignment="start"
+            snapToInterval={255}
+            stickyHeaderIndices={Array []}
+            viewabilityConfigCallbackPairs={Array []}
+          >
+            <View>
+              <View
+                onLayout={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "flexDirection": "row",
+                    },
+                    null,
+                  ]
+                }
+              >
+                <View>
+                  <Text>
+                    Title1
+                  </Text>
+                  <Text>
+                    description1
+                  </Text>
+                </View>
+              </View>
+              <View
+                onLayout={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "flexDirection": "row",
+                    },
+                    null,
+                  ]
+                }
+              >
+                <View>
+                  <Text>
+                    Title2
+                  </Text>
+                  <Text>
+                    description2
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </RCTScrollView>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-evenly",
+            "marginTop": 22,
+            "width": "100%",
+          }
+        }
+      >
+        <Text>
+          test children
+        </Text>
+      </View>
+    </View>
+  </View>
+</Modal>
+`;

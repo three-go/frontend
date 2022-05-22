@@ -14,7 +14,9 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   useEffect(() => {
-    SplashScreen.hide();
+    if (SplashScreen.hide) {
+      SplashScreen.hide();
+    }
   }, []);
 
   return (
