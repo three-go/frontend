@@ -34,9 +34,10 @@ const ShoutGo = ({
         style={styles.background}
         source={require("../../../../public/assets/images/shoutGo/background.png")}
         resizeMode="stretch"
+        testID="backgroundImage"
       />
 
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={styles.container} testID="gameLayout">
         <GameEngine
           ref={(ref) => setGameEngine(ref)}
           systems={[Physics]}
