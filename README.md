@@ -66,7 +66,7 @@ ThreeGo는 눈의 위치 , 데시벨을 이용하여 FACE GO , SHOUT GO 라는 2
     ```
   - React Native Game Engine
     ```
-    소수의 엔터티와 간단한 물리학이 포함된 간단한 턴 기반 게임에 적합합니다. ShoutGo 게임은 React Native Game Engine에서 위 인용문처럼 소수의 엔티티와 간단한 물리학 게임에 사용이 적합하다고 생각하였습니다. 그리고  Component Entity 시스템을 통하여 각 게임의 개체들을 컴포넌트화 하여 조금 더 쉽게 개발할 수 있는 구조이여서 선택하게 되었습니다.
+    소수의 엔터티와 간단한 물리학이 포함된 간단한 턴 기반 게임에 적합합니다. ShoutGo 게임은 React Native Game Engine에서 위 인용문처럼 소수의 엔티티와 간단한 물리학 게임에 사용이 적합하다고 생각하였습니다. 그리고 Component Entity 시스템을 통하여 각 게임의 개체들을 컴포넌트화 하여 조금 더 쉽게 개발할 수 있는 구조이여서 선택하게 되었습니다.
     ```
   - Matter Js
     ```
