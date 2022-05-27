@@ -24,9 +24,8 @@ ThreeGo는 눈의 위치 , 데시벨을 이용하여 FACE GO , SHOUT GO 라는 2
 - SHOUT GO  
   몰려오는 상어를 피해 최대한 오랫동안 살아 남아야 하는 미니 게임으로 소리를 내어 통해 위로 이동할 수 있으며 소리를 내지 않는다면 아래로 떨어지게 됩니다. Score는 게임 진행시간에 비례해 증가합니다. 기회는 총 4번이 주어집니다. FACE GO와 마찬가지로 모든 기회 소진시 이름과 점수를 등록해 기록합니다.
 
-### 설명
-
-### gif -> 첨부s
+<img width="200" height="390" alt="logo" src="https://user-images.githubusercontent.com/54696956/170681855-c65d787b-82ba-480f-b987-0a7659645e01.gif">&nbsp;&nbsp;&nbsp;&nbsp;
+<img width="200" height="390" alt="logo" src="https://user-images.githubusercontent.com/54696956/170686314-0b4566e7-ebb0-4981-b65b-90b2bbcc5f10.gif">
 
 ### 프로젝트 동기
 
@@ -70,6 +69,9 @@ ThreeGo는 눈의 위치 , 데시벨을 이용하여 FACE GO , SHOUT GO 라는 2
     소수의 엔터티와 간단한 물리학이 포함된 간단한 턴 기반 게임에 적합합니다. ShoutGo 게임은 React Native Game Engine에서 위 인용문처럼 소수의 엔티티와 간단한 물리학 게임에 사용이 적합하다고 생각하였습니다. 그리고 Component Entity 시스템을 통하여 각 게임의 개체들을 컴포넌트화 하여 조금 더 쉽게 개발할 수 있는 구조이여서 선택하게 되었습니다.
     ```
   - Matter Js
+    ```
+    React native game engine을 사용하기 위해서Matter.js를 설치해 엔진 , 월드, 게임 내 오브젝트의 세팅을 구성해야 하며 많은 부분을 쉽게 추상화 시켜놓은 상태이므로 필요한 부분을 적절히 사용하였습니다
+    ```
   - React Natice Sound Level
     ```
     React Native Sound 라이브러리가 안정화되어있고 많은 기능을 제공하지만 React Native Sound Level를 사용한 이유는 해당 애플리케이션을 구동하기 위한 최소한의 기능이 있고 라이브러리 용량도 50%정도 작아서 더 효율적으로 사용하기위해 선택하였습니다.
@@ -124,4 +126,68 @@ ThreeGo는 눈의 위치 , 데시벨을 이용하여 FACE GO , SHOUT GO 라는 2
 
 ## 챌린지
 
-RN에서 제공하는 Animated의 Animated API를 사용하면 애니메이션을 개산할 때 UI Thread와 JS Thread의 비동기 통신에 의존해야하는 반면, Reanimated는 모든 로직을 UI Thread에서 실행하기 때문에 JS Thread의 무거운 작업으로 병목현상이 발생해도 frame drop 없이 애니메이션을 실행할 수 있습니다.
+#### React Native CLI
+
+React Native 개발을 게획하며 가장 먼저 정해야 했던 사항은 Expo와 CLI 환경 중 하나를 선택해야 하는 일 입니다.
+우리 팀은 사용, 개발, 배포가 쉬우며 , Window,Linux에서도 사용이 가능하고 적절하고 많은 기능의 네이티브 모듈을 가진 Expo가 아닌 CLI를 선택하였습니다.
+Expo처럼 앱 주변에 Wrapper가 있어 크기가 커지는 것은 경계해야 할 사항이라고 생각했기 때문이며 RN의 첫 개발 프로젝트에서 현업에서 사용하는 CLI로 개발 하는 것은 같은 환경에서 개발을 해본 좋은 경험이라고 공감했기 때문입니다.
+
+#### React Native GameEngine
+
+개발 초기에는 RN Game Engine의 각각의 엔티티들을 Matter.js에서 제공해주는 간단한 도형으로만 생성을 하였을떄 화면의 끊김 현상이 없었지만 각각 엔티티들의 이미지를 이용해서 생성했을때는 화면 끊김 현상이 발생하였습니다.
+
+```
+// 간단한 도형으로 생성
+Matter.Bodies.rectangle();
+
+// 이미지로 생성
+Matter.Vertices.fromPath(svg 정보);
+Matter.Bodies.fromVertices();
+```
+
+React Native에서는 javascript 비즈니스 로직관련 코드들을 javascript Thread가 관리하고 javascript Thread가 Native bridge를 통해
+Native side(Android, ios)와 통신을 한다고 합니다.
+javascript Thread가 처리해야할 로직이 많고 무거울 경우에는 Native bridge에서 병목현상이 발생하여 화면 끊김 현상이 발생합니다.
+
+```
+// 화면 끊김 현상 발생
+<GameEngine
+  (...중략...)
+  entities={createEntities()}
+  (...중략...)
+/>
+```
+
+현재 해당 게임에서 스코어 점수 상태로 인해 0.1초마다 GameEngine 컴포넌트가 리렌더링이 되고 있는 상황에서 위 예시 코드에 createEntities 함수가 0.1초 마다 실행되어 무겁고, 처리해야할 로직이 많아 병목현상 일어나 화면이 끊김 현상이 발생이 하였습니다.
+
+```
+<GameEngine
+  (...중략...)
+  entities={entities}
+  (...중략...)
+/>
+```
+
+그래서 위와 같이 리렌더링시에 함수 실행문을 제거하고 해당 함수를 실행한 결과를 할당하여 리렌더링마다 실행되어지는 비즈니스 로직을 줄여 병목현상이 발생하지 않도록 해서 화면 끊김 문제는 해결되었습니다.
+
+**해당 문제가 iOS 기기에선 발생하지 않고 Android 기기에서 발생한 이유?**
+
+Android 기기는 저주파로 멀티 코어 전원(대부분 8코어)을 지원하는 반면 iPhone은 적은 코어(2-4코어)를 사용하지만 고주파수를 사용합니다.
+React Native에서는 이러한 병목 현상을 해결하기 위해 다중 코어를 사용하지 않고 싱글 코어를 사용합니다.
+그래서 싱글 코어 점수(고주파)가 높은 ios기기에서는 정상적으로 실행이 되었지만 싱글 코어 점수(저주파)가 낮은 Android기기 에서는 해당 현상이 발생을 한 상황이였습니다.
+
+#### React Native Animation
+
+FaceGo 게임에서 캐릭터의 이동시 애니메이션 작업이 필요했고, 막힌 루트로 이동했을 때도 사용자에게 명확히 표시해주기 위해 React-Native의 Animated를 사용하여 각종 애니메이션 효과를 추가했습니다. 하지만 안드로이드 테스트 도중 애니메이션이 버벅이는 상황이 있었고, 조사해본 결과 Animated의 API는 JS Thread를 사용하기 때문에 JS Thread에 다른 작업이 있다면 frame drop이 생길 수 있다는 내용을 확인하였습니다. RN에서 제공하는 Animated 대신 Reanimated 라이브러리를 도입하여 애니메이션 계산 로직을 UI Thread에서만 실행하도록 수정하는 작업을 거쳤고, frame drop 없이 원하는 애니메이션 효과를 표현할 수 있었습니다.
+
+#### Presentational and Container Components
+
+로직을 수행하는 컴포넌트, UI를 보내주는 컴포넌트가 분리된 패턴으로 기능, UI에 대한 구분이 쉬워지는 장점이 있습니다.
+짧은 개발기간 내 RN의 학습도 병행해야 했기에 러닝커브가 적고 팀원 모두가 이해하고 있는 디자인 패턴을 사용하는 것은
+이번 프로젝트에서 장점으로 적용되었고 컴포넌트를 작성하고 분리하며 각각의 컴포넌트를 정비할 수 있었습니다.
+
+#### iOS, Android
+
+UI, UX를 맞추기 위한 작업과 더불어 라이브러리를 사용시에도 iOS, Android 양쪽에 대해서 모든 기능을 제공하는 것에 대한 확인도 필요했으며 같은 코드임에도 운영체제 마다 매끄럽게 동작하지 않는 부분도 발생하는 등의 다양한 노력이 필요했고 이는 RN이 가지는 장점을 위해 감수할 수 있는 부분으로 판단해 작업하였습니다.
+React 생태계에 비해 아직 불안정한 상태인 RN개발을 하며 많은 에러를 접하고 해결해가며 버전의 중요성 또한 상기할 수 있었습니다.
+Play Store, App Store에 배포까지 목표했기에 부족한 시간내에서도 우선순위를 높게 잡아 진행했습니다.
