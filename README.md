@@ -1,0 +1,127 @@
+<img width="200" alt="logo" src="https://user-images.githubusercontent.com/54696956/170207121-5bfe9dac-935f-49af-bc15-38992c199b2c.png">
+
+# ThreeGo
+
+### 설치 및 게임 설명
+
+#### 설치
+
+- ThreeGo는 <b>App Store(for ios), Play Store(for android)</b>에 모두 출시되었습니다. 각 스토어에서 "ThreeGo" 검색 후 다운로드 받을 수 있습니다.
+- 다운로드 후에 카메라 권한과 마이크 권한 허용 후 게임을 진행할 수 있습니다.
+
+<img width="200" alt="logo" src="https://user-images.githubusercontent.com/54696956/170207803-e7d2c609-5ef9-4fba-942f-1902ee4afce9.jpg">&nbsp;&nbsp;&nbsp;&nbsp;
+<img width="200" height="390" alt="logo" src="https://user-images.githubusercontent.com/54696956/170207833-c58ac3f1-000b-47c0-9b67-a3136dc22bf4.jpg">
+<br><br>
+
+#### 게임설명
+
+ThreeGo는 눈의 위치 , 데시벨을 이용하여 FACE GO , SHOUT GO 라는 2가지
+미니게임을 즐길 수 있는 어플리케이션 입니다.
+
+- FACE GO  
+  총 3개의 스테이지로 구성되어 있으며 5초동안 공개되는 미로맵의 탈출경로를 기억한 뒤 정해진 시간 안에서 얼굴을 상하로 움직이고 좌우로 돌려 캐릭터의 움직임을 기록합니다. 이후 해당 기록대로 캐릭터가 움직이는 결과 확인 단계로 진행됩니다. 이동한 횟수 + 장애물이나 , 맵을 벗어난 이동은 Score를 차감시킵니다. 기회는 총 4번 주어지며 모든 스테이지 통과시 이름과 점수를 등록해 결과를 남길 수 있습니다.
+
+- SHOUT GO  
+  몰려오는 상어를 피해 최대한 오랫동안 살아 남아야 하는 미니 게임으로 소리를 내어 통해 위로 이동할 수 있으며 소리를 내지 않는다면 아래로 떨어지게 됩니다. Score는 게임 진행시간에 비례해 증가합니다. 기회는 총 4번이 주어집니다. FACE GO와 마찬가지로 모든 기회 소진시 이름과 점수를 등록해 기록합니다.
+
+### 설명
+
+### gif -> 첨부s
+
+### 프로젝트 동기
+
+일상생활에서 매일 모바일을 사용하지만 그동안 앱 개발에 대한 경험이 없었습니다. 웹 환경이 아닌 앱 환경에 도전해보며 앱 환경을 이해해보는 시간을 갖기 위해 단기 프로젝트를 진행했습니다. React-Native라는 새로운 환경 그리고 게임이라는 새로운 장르에 도전하며 그동안 겸험하지 못했던 것들에 직접 부딪혀보고 싶었습니다.
+단순 게임이 아닌 재밌는 아이디어와 함께 게임을 컨트롤 할 수 있는 방법을 고민해보았고, 얼굴 인식 데이터를 방향으로 변환하여 맵을 탈출하고, 소리의 데시벨 데이터를 사용하여 캐릭터를 컨트롤 하여 장애물을 피하는 게임을 기획하였습니다.
+현업에서는 React-Native Expo가 아닌 CLI로 작업을 한다고 하였고, Expo의 장단점을 찾아보면서 CLI로 도전해보고 싶었습니다. Expo를 사용하면 Expo SDK에서 지원해주는 기능이 많고 간단하게 사용할 수 있기 때문에 빠르고 쉽게 개발할 수 있습니다. 하지만 Native Module과 연결하여 커스터마이징 할 수 없다는 단점과, 빌드할때 유료를 사용하지 않거나, 자체 빌드 서버가 없다면 빌드 큐에서 순서를 기다려야 한다는 단점이 존재합니다. 긴 빌드 시간과 Expo가 자체적으로 제공하는 기능이 많기 때문에 큰 용량 또한 단점이 되어 현업에서는 사용하지 않는다고 합니다. 따라서 Expo가 아닌 CLI로 개발을 진행하면서 직접 환경 설정, 빌드 등 모든 환경에 대한 경험을 해보고자 프로젝트를 기획하게 되었습니다.
+
+### 기술
+
+- Storage
+  - React Native Async Storage
+    ```
+    게임에 저장되는 데이터는 이름, 스코어 2가지 이며 새로운 이름과 스코어를 등록하는 기능, 점수기록 전체를 불러오는 기능이 필요했습니다.Async Storage, Realm, SQLite 중 저장 데이터의 양이 적은상태(100건 미만)에서 저장 및 전체불러오기 속도가 빠른 AsyncStorage를 사용하였습니다.
+    ```
+- Navigation
+  - React Native Navigation
+  - React Native Stack
+  - React Native Gesture Handler
+  - React Native Safe Area Context
+  - React Native Screens
+    ```
+    공식문서의 예시에 나온 네비게이션을 사용했습니다. 의존성있는 라이브러리들을 함께 설치해 화면전환을 구성했습니다
+    ```
+- Game
+
+  - React Native Permissions
+
+    ```
+    애플리케이션은 사용자를 보호하기 위해 사용자의 카메라, 마이크, 위치 등에 직접 액세스할 수 없어야 합니다. 그래서 애플리케이션을 구동하기 위해서는 사용자가 권한을 부여해야 합니다. ThreeGo 게임에서는 사용자의 카메라, 오디오 권한이 필요하기 때문에 권한을 조금 더 쉽게 얻기 위해서 해당 라이브러리를 사용하였습니다.
+
+    ios 권한 인증 flow[사진첨부]
+    android 권한 인증 flow[사진첨부]
+    ```
+
+  - React Native Camera
+    ```
+    FaceGo 게임에서 사용자의 얼굴을 활용하여 캐릭터의 움직임을 기록하기 때문에 모바일에서 카메라에 접근 및 사용자의 얼굴의 위치, 각도를 알기 위해서 해당 라이브러리에 포함되어있는 얼굴 인식 기능을 사용하기 위해서 해당 라이브러를 선택하였습니다.
+    ```
+  - React Native Game Engine
+    ```
+    소수의 엔터티와 간단한 물리학이 포함된 간단한 턴 기반 게임에 적합합니다. ShoutGo 게임은 React Native Game Engine에서 위 인용문처럼 소수의 엔티티와 간단한 물리학 게임에 사용이 적합하다고 생각하였습니다. 그리고 Component Entity 시스템을 통하여 각 게임의 개체들을 컴포넌트화 하여 조금 더 쉽게 개발할 수 있는 구조이여서 선택하게 되었습니다.
+    ```
+  - Matter Js
+  - React Natice Sound Level
+    ```
+    React Native Sound 라이브러리가 안정화되어있고 많은 기능을 제공하지만 React Native Sound Level를 사용한 이유는 해당 애플리케이션을 구동하기 위한 최소한의 기능이 있고 라이브러리 용량도 50%정도 작아서 더 효율적으로 사용하기위해 선택하였습니다.
+    ```
+
+- Animation
+  - React Native Reanimated
+    ```
+    RN에서 제공하는 Animated의 Animated API를 사용하면 애니메이션을 개산할 때 UI Thread와 JS Thread의 비동기 통신에 의존해야하는 반면, Reanimated는 모든 로직을 UI Thread에서 실행하기 때문에 JS Thread의 무거운 작업으로 병목현상이 발생해도 frame drop 없이 애니메이션을 실행할 수 있습니다.
+    ```
+- ETC
+  |ETC||||
+  |------|---|---|---|
+  |Context Api|React Native Vector Icons|React Native Sound|React Native Splash Screen|
+  React Native Svg|React Native Svg Transformer||||
+
+### 개발 기간
+
+- 전체 일정 : 2022 년 4 월 15 일 ~ 5 월 1 일 (약 2주)
+
+[ 기획 ] 2022 년 4 월 15 일 ~ 4 월 17 일 (3일)
+
+- 아이디어 수집
+- 기술 선정
+- 게임 기획 구성
+
+[ FaceGo 개발 ] 2022 년 4 월 18 일 ~ 4 월 24 일 (1주)
+
+- Git Repository 생성
+- 개발 환경 셋팅
+- Container-Presenter 디자인 패턴 적용
+- 공통 컴포넌트 작업
+- 기본 asset 설정
+- 네비게이션 기능 추가
+- 얼굴 인식 기록 기능 추가
+- AsyncStorage 연결
+- 애니메이션 추가
+- 게임 실행, 결과 로직 추가
+- 게임 효과 (진동, 사운드) 기능 추가
+
+[ ShoutGo 개발 ] 2022 년 4 월 25 일 ~ 5 월 1 일 (1주)
+
+- 로딩 및 세로 모드 추가
+- 공통 컴포넌트 작업
+- android 최적화
+- 기본 asset 설정
+- svg path를 사용한 object 충돌 로직 개선
+- 마이크 권한 추가
+- 데시벨 활용 로직 추가
+- Mater.js 게임 엔진 추가
+- 게임 실행, 결과 로직 추가
+
+## 챌린지
+
+RN에서 제공하는 Animated의 Animated API를 사용하면 애니메이션을 개산할 때 UI Thread와 JS Thread의 비동기 통신에 의존해야하는 반면, Reanimated는 모든 로직을 UI Thread에서 실행하기 때문에 JS Thread의 무거운 작업으로 병목현상이 발생해도 frame drop 없이 애니메이션을 실행할 수 있습니다.
