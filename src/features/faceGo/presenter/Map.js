@@ -27,7 +27,7 @@ const Map = ({
   directions,
   setScore,
 }) => {
-  const traslateX = useSharedValue(
+  const translateX = useSharedValue(
     boxStyle.boxWidth * characterInfo.position.x
   );
   const translateY = useSharedValue(
@@ -39,7 +39,7 @@ const Map = ({
   const transformStyles = useAnimatedStyle(() => {
     return {
       transform: [
-        { translateX: traslateX.value },
+        { translateX: translateX.value },
         { translateY: translateY.value },
       ],
     };
@@ -105,7 +105,7 @@ const Map = ({
         game.sounds.move.play();
       }
 
-      traslateX.value = withSpring(
+      translateX.value = withSpring(
         boxStyle.boxWidth * characterInfo.position.x,
         {
           duration: 1000,
@@ -166,6 +166,7 @@ const Map = ({
       <View style={styles.startText}>
         <Text style={styles.text}>Start</Text>
       </View>
+
       <View style={styles.endText}>
         <Text style={styles.text}>End</Text>
       </View>

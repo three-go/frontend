@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const useCharacter = (gameMap) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
