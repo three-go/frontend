@@ -1,7 +1,7 @@
 import React from "react";
 
 import PropTypes from "prop-types";
-import { StyleSheet, ImageBackground, Platform } from "react-native";
+import { StyleSheet, ImageBackground } from "react-native";
 import { GameEngine } from "react-native-game-engine";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -9,7 +9,7 @@ import { game } from "../../../common/property";
 import GameLayout from "../../../components/Layouts/GameLayout";
 import InputModalContainer from "../../../components/Modals/InputModalContainer";
 import RetryModalContainer from "../../../components/Modals/RetryModalContainer";
-import entities, { createEntities } from "../entities";
+import entities from "../entities";
 import Physics from "../physics";
 
 const ShoutGo = ({
@@ -41,7 +41,7 @@ const ShoutGo = ({
         <GameEngine
           ref={(ref) => setGameEngine(ref)}
           systems={[Physics]}
-          entities={Platform.OS === "android" ? entities : createEntities()}
+          entities={entities}
           running={running}
           onEvent={onGameEvent}
           style={styles.gameEngine}
