@@ -191,3 +191,41 @@ FaceGo 게임에서 캐릭터의 이동시 애니메이션 작업이 필요했�
 UI, UX를 맞추기 위한 작업과 더불어 라이브러리를 사용시에도 iOS, Android 양쪽에 대해서 모든 기능을 제공하는 것에 대한 확인도 필요했으며 같은 코드임에도 운영체제 마다 매끄럽게 동작하지 않는 부분도 발생하는 등의 다양한 노력이 필요했고 이는 RN이 가지는 장점을 위해 감수할 수 있는 부분으로 판단해 작업하였습니다.
 React 생태계에 비해 아직 불안정한 상태인 RN개발을 하며 많은 에러를 접하고 해결해가며 버전의 중요성 또한 상기할 수 있었습니다.
 Play Store, App Store에 배포까지 목표했기에 부족한 시간내에서도 우선순위를 높게 잡아 진행했습니다.
+
+## 개선할 사항  
+
+### 제스처 처리  
+어플리케이션 실행 중 제스처에 대한 처리를 못한 부분이 있었고 알아보니 아래의 방법으로 간단히 수정할 수 있었습니다.  
+  - createStackNavigator( )를 통해 생성한 Navigator의 screenOptions속성에 gestureEnabled: false 를 통해 화면에 대한 제스처를 금지할 수 있습니다.  
+
+백그라운드 처리  
+게임 중 foreground >>> background >>> foreground로 전환시 중단 후 재시작 해야하는 부분이 고려되지
+못했습니다.  
+
+React Native 내장 모듈인 AppState는 어플리케이션이 foreground, background중 어디에 위치하는지 알려주며 아래와 같이 상태변경을 감지할 수 있는데  
+
+  - active : 어플리케이션이 foreground 에서 실행 중
+  - background: 어플리케이션이 background 에서 실행 중으로
+    - 다른 어플리케이션 사용
+    - 홈 화면
+    - 안드로이드-> 다른 화면
+  - inactive: iOS에서 foreground, background 전환 시, 멀티태스킹, 알림센터, 통화 같은 비활성 기간동안 발생하는 상태  
+
+background, inactive 상태로 진입 시 게임의 상태를 저장해 stop하고
+foreground로 진입 시 저장된 게임의 상태를 활용해 이어서 진행할 수 있도록 구성할 수 있습니다.  
+
+### 얼굴 인식 pitch angle 처리  
+
+React Native Camera 라이브러리에서 모바일 기기 카메라 권한과 얼굴인식 관련 부분을 한번에 처리하기 위해 해당 라이브러리를 선택하였는데 얼굴 좌, 우로 돌리는 각도(yaw angle) 정보는 받아서 치리 할 수 있어지만, 얼굴 위, 아래로 돌리는 각도(pitch angle) 정보를 제공해주지 않아 사용자 얼굴의 눈의 위치 정보를 받아서 처리 하였는데 해당 부분이 매끄럽게 처리되지 않고 있는 상황입니다.  
+
+해당 라이브러리 대신 모바일 기기 카메라 권한은 React Native Vision Camera 라이브러리르 사용하고 얼굴 인식 라이브러리는 Vision Camera Face Detector를 사용하여 현재 사용하고 있는 React Native Camera 라이브러리보단 카메라 라이브러리와 얼굴 인식 라이브러리 두개의 라이브러리를 사용한다는 단점이 있지만 Vision Camera Face Detector 라이브러리에서 아래처럼 pitch angle을 제공해주기 때문에 얼굴 인식 관련 처리는 더 매끄럽게 개선할 수 있을것 같습니다.
+```
+export interface Face {
+  (...중략...)
+  rollAngle: number;
+  pitchAngle: number; // pitch angle 정보 제공
+  yawAngle: number;
+  (...중략...)
+}
+
+```
