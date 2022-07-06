@@ -38,7 +38,10 @@ ThreeGo는 눈의 위치 , 데시벨을 이용하여 FACE GO , SHOUT GO 라는 2
 - Storage
   - React Native Async Storage
     ```
-    게임에 저장되는 데이터는 이름, 스코어 2가지 이며 새로운 이름과 스코어를 등록하는 기능, 점수기록 전체를 불러오는 기능이 필요했습니다.Async Storage, Realm, SQLite 중 저장 데이터의 양이 적은상태(100건 미만)에서 저장 및 전체불러오기 속도가 빠른 AsyncStorage를 사용하였습니다.
+    게임에 저장되는 데이터는 이름, 스코어 2가지 이며 새로운 이름과 스코어를 등록하는 기능,  
+    점수기록 전체를 불러오는 기능이 필요했습니다.  
+    Async Storage, Realm, SQLite 중 저장 데이터의 양이 적은상태(100건 미만)에서  
+    저장 및 전체불러오기 속도가 빠른 AsyncStorage를 사용하였습니다.
     ```
 - Navigation
   - React Native Navigation
@@ -54,7 +57,10 @@ ThreeGo는 눈의 위치 , 데시벨을 이용하여 FACE GO , SHOUT GO 라는 2
   - React Native Permissions
 
     ```
-    애플리케이션은 사용자를 보호하기 위해 사용자의 카메라, 마이크, 위치 등에 직접 액세스할 수 없어야 합니다. 그래서 애플리케이션을 구동하기 위해서는 사용자가 권한을 부여해야 합니다. ThreeGo 게임에서는 사용자의 카메라, 오디오 권한이 필요하기 때문에 권한을 조금 더 쉽게 얻기 위해서 해당 라이브러리를 사용하였습니다.
+    애플리케이션은 사용자를 보호하기 위해 사용자의 카메라, 마이크, 위치 등에 직접 액세스할 수 없어야 합니다.  
+    그래서 애플리케이션을 구동하기 위해서는 사용자가 권한을 부여해야 합니다.  
+    ThreeGo 게임에서는 사용자의 카메라, 오디오 권한이 필요하기 때문에 권한을 조금 더 쉽게 얻기 위해서  
+    해당 라이브러리를 사용하였습니다.
 
     ios 권한 인증 flow[사진첨부]
     android 권한 인증 flow[사진첨부]
@@ -62,25 +68,36 @@ ThreeGo는 눈의 위치 , 데시벨을 이용하여 FACE GO , SHOUT GO 라는 2
 
   - React Native Camera
     ```
-    FaceGo 게임에서 사용자의 얼굴을 활용하여 캐릭터의 움직임을 기록하기 때문에 모바일에서 카메라에 접근 및 사용자의 얼굴의 위치, 각도를 알기 위해서 해당 라이브러리에 포함되어있는 얼굴 인식 기능을 사용하기 위해서 해당 라이브러를 선택하였습니다.
+    FaceGo 게임에서 사용자의 얼굴을 활용하여 캐릭터의 움직임을 기록하기 때문에 모바일에서 카메라에 접근 및  
+    사용자의 얼굴의 위치, 각도를 알기 위해서 해당 라이브러리에 포함되어있는 얼굴 인식 기능을  
+    사용하기 위해서 해당 라이브러를 선택하였습니다.
     ```
   - React Native Game Engine
     ```
-    소수의 엔터티와 간단한 물리학이 포함된 간단한 턴 기반 게임에 적합합니다. ShoutGo 게임은 React Native Game Engine에서 위 인용문처럼 소수의 엔티티와 간단한 물리학 게임에 사용이 적합하다고 생각하였습니다. 그리고 Component Entity 시스템을 통하여 각 게임의 개체들을 컴포넌트화 하여 조금 더 쉽게 개발할 수 있는 구조이여서 선택하게 되었습니다.
+    소수의 엔터티와 간단한 물리학이 포함된 간단한 턴 기반 게임에 적합합니다.  
+    ShoutGo 게임은 React Native Game Engine에서 위 인용문처럼 소수의 엔티티와 간단한 물리학 게임에  
+    사용이 적합하다고 생각하였습니다. 그리고 Component Entity 시스템을 통하여 각 게임의 개체들을  
+    컴포넌트화 하여 조금 더 쉽게 개발할 수 있는 구조이여서 선택하게 되었습니다.
     ```
   - Matter Js
     ```
-    React native game engine을 사용하기 위해서Matter.js를 설치해 엔진 , 월드, 게임 내 오브젝트의 세팅을 구성해야 하며 많은 부분을 쉽게 추상화 시켜놓은 상태이므로 필요한 부분을 적절히 사용하였습니다
+    React native game engine을 사용하기 위해서Matter.js를 설치해 엔진 , 월드, 게임 내 오브젝트의  
+    세팅을 구성해야 하며 많은 부분을 쉽게 추상화 시켜놓은 상태이므로 필요한 부분을 적절히 사용하였습니다
     ```
   - React Natice Sound Level
     ```
-    React Native Sound 라이브러리가 안정화되어있고 많은 기능을 제공하지만 React Native Sound Level를 사용한 이유는 해당 애플리케이션을 구동하기 위한 최소한의 기능이 있고 라이브러리 용량도 50%정도 작아서 더 효율적으로 사용하기위해 선택하였습니다.
+    React Native Sound 라이브러리가 안정화되어있고 많은 기능을 제공하지만  
+    React Native Sound Level를 사용한 이유는 해당 애플리케이션을 구동하기 위한 최소한의 기능이 있고  
+    라이브러리 용량도 50%정도 작아서 더 효율적으로 사용하기위해 선택하였습니다.
     ```
 
 - Animation
   - React Native Reanimated
     ```
-    RN에서 제공하는 Animated의 Animated API를 사용하면 애니메이션을 개산할 때 UI Thread와 JS Thread의 비동기 통신에 의존해야하는 반면, Reanimated는 모든 로직을 UI Thread에서 실행하기 때문에 JS Thread의 무거운 작업으로 병목현상이 발생해도 frame drop 없이 애니메이션을 실행할 수 있습니다.
+    RN에서 제공하는 Animated의 Animated API를 사용하면 애니메이션을 개산할 때  
+    UI Thread와 JS Thread의 비동기 통신에 의존해야하는 반면, Reanimated는  
+    모든 로직을 UI Thread에서 실행하기 때문에 JS Thread의 무거운 작업으로  
+    병목현상이 발생해도 frame drop 없이 애니메이션을 실행할 수 있습니다.
     ```
 - ETC
   |ETC||||
