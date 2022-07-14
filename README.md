@@ -236,9 +236,9 @@ foreground로 진입 시 저장된 게임의 상태를 활용해 이어서 진�
 
 ### 얼굴 인식 pitch angle 처리
 
-React Native Camera 라이브러리에서 모바일 기기 카메라 권한과 얼굴인식 관련 부분을 한번에 처리하기 위해 해당 라이브러리를 선택하였는데 얼굴 좌, 우로 돌리는 각도(yaw angle) 정보는 받아서 치리 할 수 있어지만, 얼굴 위, 아래로 돌리는 각도(pitch angle) 정보를 제공해주지 않아 사용자 얼굴의 눈의 위치 정보를 받아서 처리 하였는데 해당 부분이 매끄럽게 처리되지 않고 있는 상황입니다.
+React Native Camera 라이브러리에서 모바일 기기 카메라 권한과 얼굴인식 관련 부분을 한번에 처리하기 위해 해당 라이브러리를 선택하였는데 얼굴 좌, 우로 돌리는 각도(yaw angle) 정보는 받아서 치리 할 수 있어지만, 얼굴 위, 아래로 돌리는 각도(pitch angle) 정보를 제공해주지 않아 사용자 얼굴의 눈의 위치 정보를 받아서 처리하였는데 해당 부분이 매끄럽게 처리되지 않고 있는 상황입니다.
 
-해당 라이브러리 대신 모바일 기기 카메라 권한은 React Native Vision Camera 라이브러리르 사용하고 얼굴 인식 라이브러리는 Vision Camera Face Detector를 사용하여 현재 사용하고 있는 React Native Camera 라이브러리보단 카메라 라이브러리와 얼굴 인식 라이브러리 두개의 라이브러리를 사용한다는 단점이 있지만 Vision Camera Face Detector 라이브러리에서 아래처럼 pitch angle을 제공해주기 때문에 얼굴 인식 관련 처리는 더 매끄럽게 개선할 수 있을것 같습니다.
+해당 라이브러리 대신 모바일 기기 카메라 권한은 React Native Vision Camera 라이브러리를 사용하고 얼굴 인식 라이브러리는 Vision Camera Face Detector를 사용하여 현재 사용하고 있는 React Native Camera 라이브러리보단 카메라 라이브러리와 얼굴 인식 라이브러리 두개의 라이브러리를 사용한다는 단점이 있지만 Vision Camera Face Detector 라이브러리에서 아래처럼 pitch angle을 제공해주기 때문에 얼굴 인식 관련 처리는 더 매끄럽게 개선할 수 있을것 같습니다.
 
 ```
 export interface Face {
